@@ -1,0 +1,6 @@
+Settings > toggle soft wrap by default
+Settings > preffered line length: 200
+Settings > Font family: Georgia (blank for default)
+Themes > UI Theme: Atom Light (previous Atom Dark)
+Themes > Syntax Theme: Atom Light (previous Atom Dark)
+Settings > Font size: 16 (previous 13)
