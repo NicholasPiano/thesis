@@ -1,0 +1,5 @@
+Background
+
+1. Sufficient background information to allow the reader to understand the context and significance of the question you are trying to address. 
+
+2. Proper acknowledgement of the previous work on which you are building. Sufficient references such that a reader could, by going to the library, achieve a sophisticated understanding of the context and significance of the question.

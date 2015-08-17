@@ -1,0 +1,17 @@
+http://www.ncbi.nlm.nih.gov/books/NBK26880/
+
+What are brightfield images and how do they relate to the problem of live cell imaging?
+
+The simplest type of microscopy is Brightfield Microscopy, where the light (usually white) is allowed to pass through or reflect from objects of interest. This produces images that might be seen when looking through a manual microscope lens. There are four basic types of brightfield microscopy:
+
+1. Brightfield illumination: a measure of the light absorbed by the objects.
+2. Dark field illumination: a measure of the light scattered by the objects.
+3. Cross-Polarisation: measure the difference in polarisation of two different wavelengths of light passing through the objects.
+
+4. Phase contrast: measure the difference in path-length of a wavelength of light interfering through the objects.
+
+The images used in this project were taken using the Brightfield illumination method, yielding dark edges and light background and object interiors.
+
+A typical animal cell is between 10-20 microns in diameter. The normal imaging setup allows for a resolution of 0.5 microns per pixel. This could theoretically be increased to 0.2 microns per pixel. Light cannot practically be used resolve features smaller than its wavelength. Visible light ranges in wavelength from 0.4 microns (violet light) to 0.7 microns (red light). The smallest resolution possible can be achieved under ideal conditions, with violet light and a lens configuration with a numerical aperture of 1.4. This is possible with an oil immersion lens, such as the one used. While a 0.2 micron per pixel resolution is possible, to capture the highest number of cells requires a wider field of view and hence a lower resolution. Under the current conditions, about 40 pixels of different intensities are available to describe the structure of a cell in one dimension.
+
+The environment used in the experiments featured a micro-channel framework printed on a PDMS (plastic) substrate. The channel itself was approximately 100 microns thick, allowing cells a range vertical movement several times their diameter. Consequently, cells at different levels in the environment would appear to be in or out of focus depending on the current focal plane of the microscope. The edges of cells when out of focus appear blurred with the background or even lose all contrast and become indistinguishable. In order to resolve cells, the focal plane of the microscope must adjusted until a cell is in focus. This cannot be done simultaneously for all cells in the environment since their vertical positions are spread throughout. The type of focus on a cell can be used to distinguish features such as protrusions and the cell nucleus.

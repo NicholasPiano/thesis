@@ -1,0 +1,7 @@
+how does basic edge detection work?
+Cite canny, sobel.
+what does this mean for cells?
+
+Distinguishing edges in a continuous background is a crucial task in segmenting objects. The data available in an image is 2D map of pixel intensities. A dark edge in this framework is a discontinuity where the intensity will initially be bright before passing the edge, dark through the edge, and finally bright having passed the edge. This intensity curve along a path can be described by its derivative and second derivative such that points in the image that satisfy the same functional pattern can be highlighted and deemed to be edge pixels. This secondary 2D map of accepted and rejected pixels is known as a “mask”. It can be laid over an image of any channel and be used to select pixels from that channel. In this way, binary decisions in one channel can be used to affect another.
+
+A commonly used edge detection method uses the Canny filter, which selects edges by calculating the vertical and horizontal gradients of the image, suppressing pixels that do not lie on the highest point of the edge (non-maximal suppression), and completing discontinuous edges with the same orientation (edge hysteresis). This method not only locates edges, but also indicates their orientation. This is especially useful when trying to locate complex, but closed shapes like cells.
