@@ -14,11 +14,11 @@
 
 -- 02_image_processing
 -- -- 140 words -- 00_overview.txt
--- -- 229 words -- 01_edge_detection.txt
+-- -- 306 words -- 01_edge_detection.txt
 -- -- 0 words -- 02_blobs.txt
 -- -- 0 words -- 03_complex_features.txt
 -- -- 0 words -- 04_pattern_recognition_and_machine_learning.txt
--- 369 words
+-- 446 words
 
 -- 03_cell_segmentation
 -- -- 0 words -- 00_overview.txt
@@ -29,7 +29,7 @@
 
 -- 61 words -- overview.txt
 
-1691 words
+1768 words
 
 
 03_method
@@ -100,4 +100,4 @@
 0 words
 
 
-1691 words
+1768 words
