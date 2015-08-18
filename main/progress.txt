@@ -1,0 +1,103 @@
+01_introduction
+-- 0 words -- introduction.txt
+
+0 words
+
+
+02_background
+-- 01_digital_microscopy
+-- -- 198 words -- 00_overview.txt
+-- -- 433 words -- 01_brightfield_microscopy.txt
+-- -- 241 words -- 02_fluorescence_microscopy.txt
+-- -- 286 words -- 03_confocal_microscopy.txt
+-- 1158 words
+
+-- 02_image_processing
+-- -- 140 words -- 00_overview.txt
+-- -- 229 words -- 01_edge_detection.txt
+-- -- 0 words -- 02_blobs.txt
+-- -- 0 words -- 03_complex_features.txt
+-- -- 0 words -- 04_pattern_recognition_and_machine_learning.txt
+-- 369 words
+
+-- 03_cell_segmentation
+-- -- 0 words -- 00_overview.txt
+-- -- 0 words -- 01_optical_structure_of_the_cell.txt
+-- -- 0 words -- 02_literature_review.txt
+-- -- 164 words -- 03_cell_segmentation_software.txt
+-- 164 words
+
+-- 61 words -- overview.txt
+
+1691 words
+
+
+03_method
+-- 01_primitive_segmentation
+-- -- 0 words -- 00_overview.txt
+-- -- 0 words -- 01_sqaussh_with_bf_and_gfp.txt
+-- -- 0 words -- 02_cp_with_bf_and_gfp.txt
+-- -- 0 words -- 03_cp_with_combined_bf_gfp.txt
+-- 0 words
+
+-- 02_bulk_segmentation
+-- -- 0 words -- 00_overview.txt
+-- -- 0 words -- 01_database_models.txt
+-- -- 0 words -- 02_brightfield_profile.txt
+-- -- 0 words -- 03_combining_segmentation_results.txt
+-- 0 words
+
+-- 03_zmod_compression
+-- -- 0 words -- 01_revised_database_models.txt
+-- -- 0 words -- 02_gfp_profile.txt
+-- -- 0 words -- 03_protrusions.txt
+-- 0 words
+
+-- 0 words -- overview.txt
+
+0 words
+
+
+04_results
+-- 01_primitive_segmentation
+-- 0 words
+
+-- 02_bulk_segmentation
+-- 0 words
+
+-- 03_zmod_compression
+-- 0 words
+
+-- 0 words -- overview.txt
+
+0 words
+
+
+05_discussion
+-- 01_area_comparison
+-- 0 words
+
+-- 0 words -- overview.txt
+
+0 words
+
+
+06_conclusion
+-- 0 words -- conclusion.txt
+
+0 words
+
+
+07_references
+-- 0 words -- references.txt
+
+0 words
+
+
+08_appendices
+-- 0 words -- appendices.txt
+
+0 words
+
+
+1691 words
