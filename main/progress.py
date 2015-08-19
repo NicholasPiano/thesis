@@ -1,6 +1,7 @@
 # word counts and tree structure
 
 import os
+import re
 from os.path import join, isdir
 
 def word_count(file_path):
@@ -10,6 +11,13 @@ def word_count(file_path):
       count += len(line.split(' '))
 
   return count
+
+def name_from_path(path):
+  print(path)
+  name_template = r'(?P<id>[0-9]+)_(?P<name>.+)\.txt'
+  m = re.match(name_template, path).groupdict()
+  name = ' '.join(m['name'].split('_')).capitalize()
+  return name
 
 root_path = '/Users/nicholaspiano/Documents/Employment/Cambridge/thesis/main'
 progress_path = join(root_path, 'progress.txt')
@@ -34,7 +42,7 @@ with open(progress_path, 'w+') as progress_file:
 
           subsubsection_path = join(subsection_path, subsubsection)
           subsubsection_total_words = word_count(subsubsection_path)
-          progress_file.write('-- -- {} words -- {}\n'.format(subsubsection_total_words, subsubsection))
+          progress_file.write('-- -- {} words -- {}\n'.format(subsubsection_total_words, name_from_path(subsubsection)))
           subsection_total_words += subsubsection_total_words
 
         progress_file.write('-- {} words\n'.format(subsection_total_words))
@@ -42,7 +50,7 @@ with open(progress_path, 'w+') as progress_file:
 
       else:
         subsection_total_words = word_count(subsection_path)
-        progress_file.write('-- {} words -- {}\n'.format(subsection_total_words, subsection))
+        progress_file.write('-- {} words -- {}\n'.format(subsection_total_words, name_from_path(subsection)))
         progress_file.write('\n')
 
       section_total_words += subsection_total_words

@@ -1,64 +1,66 @@
 01_introduction
--- 0 words -- introduction.txt
+-- 0 words -- Introduction
 
 0 words
 
 
 02_background
+-- 61 words -- Overview
+
 -- 01_digital_microscopy
--- -- 198 words -- 00_overview.txt
--- -- 433 words -- 01_brightfield_microscopy.txt
--- -- 241 words -- 02_fluorescence_microscopy.txt
--- -- 286 words -- 03_confocal_microscopy.txt
+-- -- 198 words -- Overview
+-- -- 433 words -- Brightfield microscopy
+-- -- 241 words -- Fluorescence microscopy
+-- -- 286 words -- Confocal microscopy
 -- 1158 words
 
 -- 02_image_processing
--- -- 140 words -- 00_overview.txt
--- -- 306 words -- 01_edge_detection.txt
--- -- 124 words -- 02_blobs.txt
--- -- 0 words -- 03_complex_features.txt
--- -- 0 words -- 04_pattern_recognition_and_machine_learning.txt
+-- -- 140 words -- Overview
+-- -- 306 words -- Edge detection
+-- -- 124 words -- Blobs
+-- -- 0 words -- Complex features
+-- -- 0 words -- Pattern recognition and machine learning
 -- 570 words
 
 -- 03_cell_segmentation
--- -- 0 words -- 00_overview.txt
--- -- 0 words -- 01_optical_structure_of_the_cell.txt
--- -- 0 words -- 02_literature_review.txt
--- -- 164 words -- 03_cell_segmentation_software.txt
+-- -- 0 words -- Overview
+-- -- 0 words -- Optical structure of the cell
+-- -- 0 words -- Literature review
+-- -- 164 words -- Cell segmentation software
 -- 164 words
-
--- 61 words -- overview.txt
 
 1953 words
 
 
 03_method
+-- 0 words -- Overview
+
 -- 01_primitive_segmentation
--- -- 0 words -- 00_overview.txt
--- -- 0 words -- 01_sqaussh_with_bf_and_gfp.txt
--- -- 0 words -- 02_cp_with_bf_and_gfp.txt
--- -- 0 words -- 03_cp_with_combined_bf_gfp.txt
+-- -- 0 words -- Overview
+-- -- 0 words -- Sqaussh with bf and gfp
+-- -- 0 words -- Cp with bf and gfp
+-- -- 0 words -- Cp with combined bf gfp
 -- 0 words
 
 -- 02_bulk_segmentation
--- -- 0 words -- 00_overview.txt
--- -- 0 words -- 01_database_models.txt
--- -- 0 words -- 02_brightfield_profile.txt
--- -- 0 words -- 03_combining_segmentation_results.txt
+-- -- 0 words -- Overview
+-- -- 0 words -- Database models
+-- -- 0 words -- Brightfield profile
+-- -- 0 words -- Combining segmentation results
 -- 0 words
 
 -- 03_zmod_compression
--- -- 0 words -- 01_revised_database_models.txt
--- -- 0 words -- 02_gfp_profile.txt
--- -- 0 words -- 03_protrusions.txt
+-- -- 0 words -- Revised database models
+-- -- 0 words -- Gfp profile
+-- -- 0 words -- Protrusions
 -- 0 words
-
--- 0 words -- overview.txt
 
 0 words
 
 
 04_results
+-- 0 words -- Overview
+
 -- 01_primitive_segmentation
 -- 0 words
 
@@ -68,34 +70,32 @@
 -- 03_zmod_compression
 -- 0 words
 
--- 0 words -- overview.txt
-
 0 words
 
 
 05_discussion
+-- 0 words -- Overview
+
 -- 01_area_comparison
 -- 0 words
-
--- 0 words -- overview.txt
 
 0 words
 
 
 06_conclusion
--- 0 words -- conclusion.txt
+-- 0 words -- Conclusion
 
 0 words
 
 
 07_references
--- 0 words -- references.txt
+-- 0 words -- References
 
 0 words
 
 
 08_appendices
--- 0 words -- appendices.txt
+-- 0 words -- Appendices
 
 0 words
 
