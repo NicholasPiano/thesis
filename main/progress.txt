@@ -17,10 +17,10 @@
 -- 02_image_processing
 -- -- 140 words -- Overview
 -- -- 306 words -- Edge detection
--- -- 124 words -- Blobs
+-- -- 263 words -- Blobs
 -- -- 0 words -- Complex features
 -- -- 0 words -- Pattern recognition and machine learning
--- 570 words
+-- 709 words
 
 -- 03_cell_segmentation
 -- -- 0 words -- Overview
@@ -29,7 +29,7 @@
 -- -- 164 words -- Cell segmentation software
 -- 164 words
 
-1953 words
+2092 words
 
 
 03_method
@@ -100,4 +100,4 @@
 0 words
 
 
-1953 words
+2092 words

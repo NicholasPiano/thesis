@@ -13,7 +13,6 @@ def word_count(file_path):
   return count
 
 def name_from_path(path):
-  print(path)
   name_template = r'(?P<id>[0-9]+)_(?P<name>.+)\.txt'
   m = re.match(name_template, path).groupdict()
   name = ' '.join(m['name'].split('_')).capitalize()
