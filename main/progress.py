@@ -41,7 +41,9 @@ with open(progress_path, 'w+') as progress_file:
         progress_file.write('\n')
 
       else:
-        progress_file.write('-- {} words -- {}\n'.format(word_count(subsection_path), subsection))
+        subsubsection_total_words = word_count(subsubsection_path)
+        subsection_total_words += subsubsection_total_words
+        progress_file.write('-- {} words -- {}\n'.format(subsubsection_total_words, subsection))
         progress_file.write('\n')
 
       section_total_words += subsection_total_words
