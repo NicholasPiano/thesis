@@ -3,3 +3,11 @@ The context of cell segmentation requires an overview of digital microscopy; its
 The main set of data used in the this study comes from brightfield microscope images, discussed first. This is followed by a description of fluorescence microscopy and its applications in cell studies. Finally, the main apparatus will be described; a confocal microscope used for live cell imaging. The limitations of the apparatus and the imaging process will be used to justify the need for this project and its results.
 
 *1 too informal "coming out"
+
+Resources:
+1. "Spectral imaging for brightfield microscopy"
+  a. url: http://libsta28.lib.cam.ac.uk:2656/proceeding.aspx?articleid=891225
+  b. name: Spectral_imaging_for_brightfield_microscopy.pdf
+  c. search: "brightfield cell imaging"
+
+2. ""

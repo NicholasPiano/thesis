@@ -3,3 +3,29 @@ Background
 1. Sufficient background information to allow the reader to understand the context and significance of the question you are trying to address. 
 
 2. Proper acknowledgement of the previous work on which you are building. Sufficient references such that a reader could, by going to the library, achieve a sophisticated understanding of the context and significance of the question.
+
+Why can't I just say to a person:
+
+"I took some images from a microscope. They are pictures of a micro-fluidics environment on a small plastic chip. I called these my "data". They were organised by z, channel, and frame so that I could find any image I wanted by specifying these parameters. Going further than this, I split images into their constituent pixels and made it so that I could reference any position in the pixel space by x, y, z, channel, or frame. This system was built into a database.
+
+The GFP channel stored information about 3D shapes, so I used it tell which parts of the brightfield images I should use to find the edges of cells. I called this zMod. I couldn't use the GFP to find the edges as during the experiments, we had to sacrifice resolution for increased field of view, which led to poorly defined edges in the GFP. The images I generated could then be segmented using Cell Profiler, a common cell segmentation software package.
+
+Looking at the cells, there were a few features we really wanted to see, namely protrusion lengths, areas, and velocities. We defined regions of the environment that could be moved around to see if the cells behaved any differently in each region. Some of the results show potential differences between the regions. This can not only be used to test the original environment, but can also show that this method of finding cells is useful for this application and others."
+
+Because they won't understand:
+1. What kind of images do digital microscopes give you? What is a confocal microscope?
+2. How did you organise the data? Why is this useful? What is a database? What are relational models?
+3. What is GFP? How does it give 3D information?
+4. How did you make zMod? What is it? What is used for? Is it accurate?
+5. How does resolution relate to field of view?
+6. What is cell segmentation? How does it work? What is Cell Profiler?
+7. What do cells look like? Why do their features matter? What do they indicate?
+8. What regions did you define? Why?
+9. What was the environment meant to test? Why was it built?
+10. What other applications could you consider using this method for?
+
+Some of this belongs in the dicussiong and method sections, but they are valid questions. A person should be able to read this through and be brought up to speed on how everything works.
+
+The background should read like a story:
+
+I want to tell you a story about a new way of finding cells in images, but first you need to understand a few things. You need to understand how images are made and their limitations, including the different types of imaging used to look at cancer cells in 2D and 3D. 3D imaging requires you to understand confocal imaging and fluorescence microscopy. 
