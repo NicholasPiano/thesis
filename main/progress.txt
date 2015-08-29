@@ -5,22 +5,22 @@
 
 
 02_background
--- 61 words -- Overview
+-- 573 words -- Overview
 
 -- 01_digital_microscopy
--- -- 198 words -- Overview
--- -- 433 words -- Brightfield microscopy
--- -- 241 words -- Fluorescence microscopy
--- -- 286 words -- Confocal microscopy
--- 1158 words
+-- -- 240 words -- Overview
+-- -- 878 words -- Brightfield microscopy
+-- -- 371 words -- Fluorescence microscopy
+-- -- 318 words -- Confocal microscopy
+-- 1807 words
 
 -- 02_image_processing
 -- -- 140 words -- Overview
--- -- 306 words -- Edge detection
+-- -- 327 words -- Edge detection
 -- -- 263 words -- Blobs
 -- -- 0 words -- Complex features
 -- -- 0 words -- Pattern recognition and machine learning
--- 709 words
+-- 730 words
 
 -- 03_cell_segmentation
 -- -- 0 words -- Overview
@@ -29,7 +29,7 @@
 -- -- 164 words -- Cell segmentation software
 -- 164 words
 
-2092 words
+3274 words
 
 
 03_method
@@ -61,23 +61,11 @@
 04_results
 -- 0 words -- Overview
 
--- 01_primitive_segmentation
--- 0 words
-
--- 02_bulk_segmentation
--- 0 words
-
--- 03_zmod_compression
--- 0 words
-
 0 words
 
 
 05_discussion
 -- 0 words -- Overview
-
--- 01_area_comparison
--- 0 words
 
 0 words
 
@@ -100,4 +88,4 @@
 0 words
 
 
-2092 words
+3274 words

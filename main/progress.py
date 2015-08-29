@@ -61,3 +61,4 @@ with open(progress_path, 'w+') as progress_file:
     progress_file.write('\n')
 
   progress_file.write('{} words\n'.format(total_words))
+  print('{} words'.format(total_words))

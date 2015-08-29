@@ -28,4 +28,4 @@ Some of this belongs in the dicussiong and method sections, but they are valid q
 
 The background should read like a story:
 
-I want to tell you a story about a new way of finding cells in images, but first you need to understand a few things. You need to understand how images are made and their limitations, including the different types of imaging used to look at cancer cells in 2D and 3D. 3D imaging requires you to understand confocal imaging and fluorescence microscopy. 
+I want to tell you a story about a new way of finding cells in images, but first you need to understand a few things. You need to understand how images are made and their limitations, including the different types of imaging used to look at cancer cells in 2D and 3D. 3D imaging requires you to understand confocal microscopes and fluorescence microscopy. I should also tell you a bit about GFP and how it works. It only 
