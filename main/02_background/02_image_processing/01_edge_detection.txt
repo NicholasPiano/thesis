@@ -7,3 +7,5 @@ Distinguishing edges in a continuous background is a crucial task in segmenting 
 PARAGRAPH EXPLAINING BINARY MASKS (AND NON-BINARY MASK) [ref]
 
 A commonly used edge detection method uses the Canny filter. This selects edges by calculating the vertical and horizontal gradients of the image, suppressing pixels that do not lie on the highest point of the edge [diagram] (non-maximal suppression), and completing discontinuous edges with the same orientation (edge hysteresis). This method not only locates edges, but also indicates their orientation. This is especially useful when trying to locate complex, but closed shapes like cells. The orientations of the edges can help to guide the segmentation around the path of the edge until it meets itself. The Canny edge detector also ranks edge pixels by the strength of the gradient and removes those with a gradient that is either too small or too big, a "double threshold" [ref], assuming that these pixels are accounted for by noise. The final product very accurately represents the apparent edges in the image, hence the method's widespread use.
+
+Things to Google:
