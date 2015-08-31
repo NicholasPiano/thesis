@@ -20,6 +20,8 @@ A typical animal cell is between 10-20 microns in diameter [ref]. At maximum res
 
 A live cell can also move in the environment at speeds of between 0.1-1.0 microns per minute [ref]. These speeds are not insignificant compared with the size of the environment (50-200 microns). During the period of the imaging, which might be as long as 10-15 hours [ref], a cell can move between 100-1000 microns, so the field of view needs to accomodate this movement.
 
+INCLUDE FULL CALCULATION WHEN FORMATTED
+
 >>> Transmission and focus limitations
 
 Another disadvantage of brightfield images is their dependence of the location of the focal plane with respect to the objects of interest. If the objects lie in the focal plane, their edges will appear sharp and clearly distinguishable from the background, but outside of the focal plane, objects will become blurred and distorted. The edges of cells when out of focus appear blurred with the background or even lose all contrast and become indistinguishable. In planar environments, this is not a problem, since all objects lie at the same level and the image can be focussed manually or even automatically. Throughout the imaging, the focus can stay fixed and all objects will remain in focus. In extended environments, where cells are free to move vertically, or towards and away from the focal plane, a single focus cannot be used to capture the whole environment. The focus must be fixed at a level that will represent the environment approximately for the duration of the imaging, blurring cells that lie off the focal plane, or the focus must be constant adjusted to capture the greatest number of cells possible. Both methods do not fully capture all available data in the environment.

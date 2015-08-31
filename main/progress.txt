@@ -9,10 +9,10 @@
 
 -- 01_digital_microscopy
 -- -- 240 words -- Overview
--- -- 878 words -- Brightfield microscopy
+-- -- 884 words -- Brightfield microscopy
 -- -- 371 words -- Fluorescence microscopy
 -- -- 318 words -- Confocal microscopy
--- 1807 words
+-- 1813 words
 
 -- 02_image_processing
 -- -- 140 words -- Overview
@@ -29,7 +29,7 @@
 -- -- 164 words -- Cell segmentation software
 -- 164 words
 
-3278 words
+3284 words
 
 
 03_method
@@ -88,4 +88,4 @@
 0 words
 
 
-3278 words
+3284 words

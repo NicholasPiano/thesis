@@ -11,3 +11,14 @@ Resources:
   c. search: "brightfield cell imaging"
 
 2. ""
+
+Why pick BF?
+Why do live cell images need to be so large?
+What is GFP? What is it used for?
+What is confocal microscopy?
+What are channels?
+What are edges/features?
+How have people tried to find edges? blobs?
+How have people tried to find cells?
+What are some limitations of edge detection methods?
+What are some limitations of the methods currently used to find cells?
