@@ -1,0 +1,7 @@
+I need to judge the effectiveness and disadvantages of my image processing methods, and also look at how some of the segmentation compares to previous methods using my images.
+
+Section 1: Images
+
+
+
+Section 2: Segmentation

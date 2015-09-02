@@ -1,0 +1,4 @@
+This covers two things:
+
+1. How I modified the images to make segmentation easier.
+2. How I went about the segmentation using the improved images.
