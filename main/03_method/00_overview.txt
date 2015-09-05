@@ -1,4 +1,15 @@
 This covers two things:
 
 1. How I modified the images to make segmentation easier.
+
+# first try
+State goal again
+3D information about cells
+The GFP profile
+Each set of images and their uses
+
+To find cells in a 3D environment, the images containing the most useful information need to be found. The GFP channel contains reliable 3D information about the cells. The Brightfield channel provides edges and other features that can be used to describe them. To combine these two channels, I built a database that could associate and access pixel data from any part of the images. I then scanned the GFP image set in Z to build up a GFP profile for each pixel in X and Y. This mean of and variance of this vertical profile gave an indication of the presence of an object, regardless of its absolute intensity. This meant parts of an object with low absolute intensity could be found with the GFP profile. The Z peak of the profile could be used to find the location of the object in Z, at least the part located at the X and Y of the pixel. A single image, known as zMod, could then be generated from the 3D bulk. The intensity of each pixel in X and Y is proportional to its Z position, so that a type of "terrain" containing 3D information about the image set could be built up. This zMod image was then use to produce another image, called zBF, which contained pixel values drawn from the XYZ locations in the image set indicated by zMod. This meant that every object in the zBF image was in focus. This could then be fed into cell segmentation software.
+
 2. How I went about the segmentation using the improved images.
+
+To ensure good segmentation, a combination of the images produced was fed into the chosen cell segmentation software, CellProfiler. The image containing the best features for segmentation, zBF, was not enough to produce reliable masks since the way CellProfiler works means that a small gap in an edge will cause the segmentation to spill into the background, since the background and the interior of a cell were a similar colour. I first marked the centre of each cell, and made the zDiff image. This used zMod and compare the Z of every point in the image with the Z of each marker. A higher value meant a Z closer to the Z of the marker. In this way, the parts of the image at the same level as a marker (the level of the object) were highlighted in the recognizer. This highlight formed the boundary of the segmentation. I made an artificial edge in the image that prevented the segmentation from spilling into the background. This would sometimes cutoff part of the segmentation that extended outside the GFP. This was because 
