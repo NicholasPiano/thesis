@@ -8,66 +8,63 @@
 -- 573 words -- Overview
 
 -- 01_digital_microscopy
--- -- 240 words -- Overview
+-- -- 307 words -- Overview
 -- -- 884 words -- Brightfield microscopy
--- -- 371 words -- Fluorescence microscopy
+-- -- 477 words -- Fluorescence microscopy
 -- -- 318 words -- Confocal microscopy
--- 1813 words
+-- 1986 words
 
 -- 02_image_processing
 -- -- 140 words -- Overview
--- -- 331 words -- Edge detection
+-- -- 429 words -- Edge detection
 -- -- 263 words -- Blobs
 -- -- 0 words -- Complex features
 -- -- 0 words -- Pattern recognition and machine learning
--- 734 words
+-- 832 words
 
 -- 03_cell_segmentation
 -- -- 0 words -- Overview
 -- -- 0 words -- Optical structure of the cell
--- -- 0 words -- Literature review
+-- -- 1 words -- Literature review
 -- -- 164 words -- Cell segmentation software
--- 164 words
+-- 165 words
 
-3284 words
+3556 words
 
 
 03_method
--- 0 words -- Overview
+-- 987 words -- Overview
 
--- 01_primitive_segmentation
+-- 01_zmod_compression
 -- -- 0 words -- Overview
--- -- 0 words -- Sqaussh with bf and gfp
--- -- 0 words -- Cp with bf and gfp
--- -- 0 words -- Cp with combined bf gfp
--- 0 words
-
--- 02_bulk_segmentation
--- -- 0 words -- Overview
--- -- 0 words -- Database models
--- -- 0 words -- Brightfield profile
--- -- 0 words -- Combining segmentation results
--- 0 words
-
--- 03_zmod_compression
--- -- 0 words -- Revised database models
+-- -- 0 words -- Definitions and data models
 -- -- 0 words -- Gfp profile
--- -- 0 words -- Protrusions
+-- -- 0 words -- Zmod
 -- 0 words
 
-0 words
+-- 02_segmentation
+-- -- 0 words -- Overview
+-- -- 0 words -- Cellprofiler parameters
+-- -- 0 words -- Cellprofiler behaviour
+-- -- 0 words -- Zedge
+-- 0 words
+
+987 words
 
 
 04_results
--- 0 words -- Overview
+-- 39 words -- Overview
 
-0 words
+-- 01_image_processing
+-- -- 0 words -- Overview
+-- -- 0 words -- Zmod
+-- -- 0 words -- Zbf
+-- 0 words
 
+-- 02_cell_segmentation
+-- 0 words
 
-05_discussion
--- 0 words -- Overview
-
-0 words
+39 words
 
 
 06_conclusion
@@ -88,4 +85,4 @@
 0 words
 
 
-3284 words
+4582 words
