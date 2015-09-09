@@ -1,0 +1,1 @@
+The results for the image modification, the core of the new method of preprocessing, includes a comparison of the images with some alternatives and the 

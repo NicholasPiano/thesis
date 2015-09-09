@@ -1,0 +1,19 @@
+The goal of zMod is to represent the 3D environment in 2D in a meaningful way that could provide enough information to improve segmentation. A single plane from the 3D stack could not, on its own, provide information about all objects in the environment. zMod helps to combine the images with 3D information and effectively segment all objects of interest simultaneously.
+
+Below are several examples of the zMod applied to different environments.
+[050714][260714]
+
+In [background > mask], the concept of a binary mask is 
+
+Advantages:
+
+1. zMod provides accurate Z positions of each pixel in the environment.
+
+The image can be manipulated like any other image
+Can be used with any 3D data
+
+Disadvantages:
+
+Depends on smoothing of GFP: loosely, does not affect Z, but affects noise for single column
+Depends on linear mask for single column: will mix Z
+If image is smoothed, very Z levels can mix a lot

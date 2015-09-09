@@ -33,38 +33,38 @@
 
 
 03_method
--- 987 words -- Overview
+-- 989 words -- Overview
 
 -- 01_zmod_compression
--- -- 295 words -- Overview
+-- -- 337 words -- Overview
 -- -- 714 words -- Definitions and data models
 -- -- 323 words -- Gfp profile
 -- -- 274 words -- Zmod
--- 1606 words
+-- 1648 words
 
 -- 02_segmentation
--- -- 166 words -- Overview
+-- -- 187 words -- Overview
 -- -- 217 words -- Cellprofiler parameters
 -- -- 138 words -- Cellprofiler behaviour
 -- -- 191 words -- Zedge
--- 712 words
+-- 733 words
 
-3305 words
+3370 words
 
 
 04_results
 -- 39 words -- Overview
 
 -- 01_image_processing
--- -- 0 words -- Overview
--- -- 0 words -- Zmod
+-- -- 26 words -- Overview
+-- -- 159 words -- Zmod
 -- -- 0 words -- Zbf
--- 0 words
+-- 185 words
 
 -- 02_cell_segmentation
 -- 0 words
 
-39 words
+224 words
 
 
 06_conclusion
@@ -85,4 +85,4 @@
 0 words
 
 
-6900 words
+7150 words
