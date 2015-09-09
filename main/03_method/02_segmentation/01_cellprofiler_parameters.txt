@@ -1,0 +1,8 @@
+CellProfiler operates most effectively when appropriate parameters for its algorithms are specified. Most parameters can be estimated automatically, but some adjustments are often necessary to obtain the best results.
+
+Object size
+Smoothing
+Threshold correction factor
+Adaptive thresholding
+Clumped objects
+Three-class segmentation

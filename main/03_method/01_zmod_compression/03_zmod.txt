@@ -1,0 +1,7 @@
+zMod is the image produced when the Z peak of a GFP profile is found for each XY pixel in the GFP stack at constant T. The pixel value of an XY pixel in zMod is proportional (though normalisation) to the Z coordinate found for the profile in the stack. This image is 2D and a single image is produced for each frame. It is highly dependent on the smoothing filter applied to GFP data.
+
+Increasing the size of the gaussian smoothing filter on the GFP data leads to smoother transitions between Z values in a region of pixels, such as those representing a cell. The values inside a cell will generally have the same or very similar Z values, leading to this zMod's utility in finding and outlining cells.
+
+Increasing the size of the mask in XY for creating the GFP profile will take into account more GFP data to estimate the Z position, but the peak will remain at a similar value. This is because neighbouring pixels tend to lie at similar levels, and a bright centre of the mask will dominate data on the outside.
+
+This method applied to XY locations that do not contain cells at any level will tend to have very flat distributions since all the GFP intensities are low, but the distribution will still have a maximum to add to zMod. This maximum might not be very meaningful, but might be influenced by cells that exists directly adjacent to the background. These Z estimate regions in zMod are not considered as they are highly variable are not coherent enough to affect the cell segmentation.

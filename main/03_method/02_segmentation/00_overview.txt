@@ -1,0 +1,3 @@
+
+
+The zBF images can be run through CellProfiler without further modification and are an improvement on the 3D Brightfield stack, but more specific 3D data can be used to improve some results.

@@ -1,0 +1,3 @@
+Interior vs background
+Threshold
+Secondary object

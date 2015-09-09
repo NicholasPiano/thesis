@@ -1,0 +1,25 @@
+Several different techniques are combined to create the zMod algorithm, and some terms are specific to this field or project.
+
+Abstraction
+
+To ensure that data can be verified and compared with previous studies, the relationship between the data and the physical environment must be understood. Digital images, as previously described, consist of pixel values accessed by coordinates, usually in 2D. To convert these coordinates into their physical equivalents, certain scaling relations must be stored. To recover the speed of a cell in real world units, its speed must first be measured in pixel units. The scaling relations can then be applied. The real world is represented in terms of data abstractions.
+
+Tracks and markers
+
+The first abstraction is the concept of a track. Tracking refers to a record of the movements of a single object of interest over time. A single "track" can consist of "markers" that store locations and other properties of the object. A single marker stores properties at a single point in time. The period between points in time is known as the frame length, and represents the temporal resolution of the data. A typical frame length is between 5-10 minutes in the data for this project, and is dependent on the live cell imaging limitations detailed in [background > limitations]. Tracks and markers are the first layer of abstraction because they claim to have information only about the general location of a cell at a point in time. They do not attempt to describe the cell in any other way. This decision is left to the cell data structure.
+
+Cells and cell instances
+
+Cell and cell instance are analogous to track and marker, but more information is processed to arrive at a decision. Some markers can be filtered or combined before allowing them to represent cell instances. A cell instance refers to the combined properties of a cell object at a single point in time. In addition to position (there could be several positions specified such as centre of mass, point of highest density, point furthest from edge), other properties such as area, eccentricity of the bounding ellipse, and protrusion length can be stored in a cell instance. The cell object serves as the successor to the track object. The cell instance was created because a cell object cannot be said to have an area, since this changes with time. This applies to all other properties. This is the second abstraction.
+
+Coordinate system
+
+In order to describe the relationships between the images and objects in them mathematically, a coordinate system is imposed on the dataset. The coordinates X and Y refer respectively to the columns and rows in a single image from the top left-hand corner. The Z coordinate refers to the position in an image stack. Image files can only store a 2D array of pixel values, but stacking them vertically can add a third dimension. Z then refers to an image index. Referencing three coordinates, XYZ, will select a pixel found in the image in the stack with index Z and local pixel coordiantes X and Y.
+
+Images are stacked with other images in the same frame, so that all data refers to the same point in time. The T, or frame coordinate, indicates the time index of the image stack. These four coordiantes, XYZT have scaling relationships associated with them that can translate their values into real world dimensons.
+
+Images are also divided into channels. This "coordinate" is referred to as C. Images with different channels share the same physical space, but can contain very different information. For example, the Brightfield channel contains only 2D information about the environment, but the GFP channel can contain 3D information. References to these five coordinates, XYZTC, will yield a single pixel value. Object can sometimes be distinguished in one channel but not immediately in another. Information about their location in the first channel can provide a recogniser with enough information to find the same object in the second channel. In this way, cell representations, or "masks", can also be confined to a channel in the same way as a pixel.
+
+Mask
+
+A mask is a simplified representation of a real world object found in image data. 
