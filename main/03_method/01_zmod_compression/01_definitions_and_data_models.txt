@@ -22,4 +22,6 @@ Images are also divided into channels. This "coordinate" is referred to as C. Im
 
 Mask
 
-A mask is a simplified representation of a real world object found in image data. 
+A mask is a simplified representation of a real world object found in image data.
+
+Delta-Z

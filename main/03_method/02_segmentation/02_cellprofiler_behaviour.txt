@@ -1,3 +1,7 @@
-Interior vs background
+Interior vs background with secondary objects
+
+Segmentation of zBF is done with primary objects (markers from manual tracking) and secondary objects (objects found using markers as a seed). The intensity of the background at the chosen focus level is very similar to the interior of cells. The recogniser divides the interior of objects from the background by using the dark edge. Gaps in this edge can cause the recognition to extend into the background. This is not desireable behaviour and can lead to large errors.
+
+Secondary objects is not biased to any range of sizes, but it can be adjusted so that the "energy function" used to extend the object values a stricter range of intensity values around the intensity of the primary (interior) than the distance from the primary or any other primary.
+
 Threshold
-Secondary object

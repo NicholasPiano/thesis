@@ -1,8 +1,15 @@
 CellProfiler operates most effectively when appropriate parameters for its algorithms are specified. Most parameters can be estimated automatically, but some adjustments are often necessary to obtain the best results.
 
 Object size
-Smoothing
-Threshold correction factor
+
+This parameter is meant as an initial estimate of the typical sizes of objects and can be used to search for contiguous blobs of colour. This is a single value and gives the size of the gaussian smoothing kernel that looks for responses from blobs. This is only necessary for picking up the markers, which are between 3-13 pixels across.
+
 Adaptive thresholding
-Clumped objects
+
+Thresholding is used to decide what regions of the image contain objects before deciding how to divide them into individual objects. Adaptive thresholding means the image will be divided into small squares for each square to be treated individually in terms of brightness. This accounts for uneven illumination and conditions in different parts of the image.
+
+Threshold correction factor
+
+The threshold correction factor can be used further constrain the recognition by raising the threshold value above its automatic estimate. This is usually used to prevent the segmentation from spreading too far. It is set to 1.1-1.2 meaning that the threshold value is allowed to vary by as much as 10%-20% more than it normally would.
+
 Three-class segmentation

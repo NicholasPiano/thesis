@@ -1,2 +1,12 @@
 Prevent spilling
 Create and segment zDiff
+
+zDiff
+
+Taking a single marker at a fixed T, the Z position of can be found from zMod. The entire zMod image can be reset to the absolute value of the difference from this Z value. This means points in the image with similar Z values, such as points within the same cell, will have very low differences. Inverting this image leads to high values for similar Z. The regions of similar Z for a single cell often extend outside the cells into the background that is still affected by the GFP glow. This gives a boundary when segmented or thresholded. Theoretically, the cell cannot extend past the effects of the GFP it contains.
+
+zEdge
+
+The zDiff edges can be added to the Brightfield image by copying the typical intensity profile of edges in the image and artificially generating them around the zDiff segmentation. The product of this is zEdge. When this maximum boundary is imposed on the segmentation, the rapidly expanding secondary object should stop at the artificial boundary.
+
+This modification can then be segmented like any other image.
