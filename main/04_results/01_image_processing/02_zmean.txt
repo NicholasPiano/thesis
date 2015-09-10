@@ -1,13 +1,15 @@
-The zMean image is used to highlight cell features and offers some important advantages over using the absolute intensity of the Brightfield images. Each pixel in the zMean image is the mean of the normalised GFP profile at the pixel XY coordinates.
+The zMean image is used to highlight cell features and offers some important advantages over using the absolute intensity of the Brightfield images. Each pixel in the zMean image is the mean of the normalised GFP profile at the pixel XY coordinates. This value is dependent on the relative intensity of the background that rises to the peak and the value of the peak itself, if it exists.
 
 Advantages
 
-1. Higher contrast than the absolute GFP.
-2. Does not treat cell centres and protrusions equally, but it has a more uniform response to different parts of the cell than the GFP.
-3. Can be used to subtract the background if some assumptions are made.
+In order for the GFP to be useful in marking cells, it must be clearly distinguishable from the surrounding environment in the data. This requires high contrast and a high signal to noise ratio. For live-cell imaging, the power of the excitation laser is reduced to prevent harming the cells. This leads to a lower response from the GFP. There is still noise from the detector and other sources in the environment, which leads to low contrast. This contrast can be increased by smoothing to reduce noise and thresholding, but it will not improve the original data.
+
+The zMean image not treat cell centres and protrusions equally, but it has a more uniform response to different parts of the cell than the GFP. The image contains information about the GFP in 3D and will reduce noise by removing pixels that do not contain objects. Even if the object or part of the object (such as a protrusion) is of lower intensity, the zMean image will still have a high value, leading to a high contrast and  hence a more reliable ability to differentiate between objects and the background.
 
 Disadvantages
 
-1. Still affected by noise
 2. Dependent on the relative intensity of an object and the background. Could be misleading.
+
+
+
 3. Does not fully reveal protrusions. Still limited by lack of GFP. No profile will give no response.

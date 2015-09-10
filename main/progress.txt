@@ -58,9 +58,9 @@
 -- 01_image_processing
 -- -- 26 words -- Overview
 -- -- 1428 words -- Zmod
--- -- 131 words -- Zmean
+-- -- 300 words -- Zmean
 -- -- 140 words -- Zbf
--- 1725 words
+-- 1894 words
 
 -- 02_cell_segmentation
 -- -- 17 words -- Comparison tradition images
@@ -68,7 +68,7 @@
 -- -- 6 words -- Zedge segmentation
 -- 32 words
 
-1796 words
+1965 words
 
 
 06_conclusion
@@ -99,4 +99,4 @@
 0 words
 
 
-8772 words
+8941 words
