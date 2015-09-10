@@ -11,3 +11,6 @@ I don't want to
 I want to play games to relieve stress
 I want to code instead
 The problems with the code are making me stressed
+
+Background
+Subtract values in very flat distributions. These must be background.

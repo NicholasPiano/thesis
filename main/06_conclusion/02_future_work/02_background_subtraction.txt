@@ -1,0 +1,1 @@
+Combine the profile knowledge with background pixels low intensity

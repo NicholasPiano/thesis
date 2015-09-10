@@ -1,0 +1,13 @@
+The zMean image is used to highlight cell features and offers some important advantages over using the absolute intensity of the Brightfield images. Each pixel in the zMean image is the mean of the normalised GFP profile at the pixel XY coordinates.
+
+Advantages
+
+1. Higher contrast than the absolute GFP.
+2. Does not treat cell centres and protrusions equally, but it has a more uniform response to different parts of the cell than the GFP.
+3. Can be used to subtract the background if some assumptions are made.
+
+Disadvantages
+
+1. Still affected by noise
+2. Dependent on the relative intensity of an object and the background. Could be misleading.
+3. Does not fully reveal protrusions. Still limited by lack of GFP. No profile will give no response.

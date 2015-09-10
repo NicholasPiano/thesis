@@ -1,0 +1,4 @@
+1. Mid z slice
+2. Level set segmentation?
+3. Max GFP level
+4. GFP only (sum, max)

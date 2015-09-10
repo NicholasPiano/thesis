@@ -1,0 +1,16 @@
+The zBF image is a very useful tool for segmenting an entire 3D environment with a single image. It clearly shows objects in focus (subject to adjustment of Delta-Z) regardless of their position in the environment. The information from different parts of the Brightfield stack has been "fetched" by the zMod image and placed into a single plane. There are also some notable disadvantages that should be mentioned.
+
+Advantages
+
+1. "Flattens" a 3D environment. Brings objects from different levels into focus.
+
+
+
+2. Allows for quick global cell segmentation.
+3. Can be adjusted via Delta-Z.
+
+Disadvantages
+
+1. Does not avoid unclear or ambiguous edges in the Brightfield.
+2. Cannot reveal objects that lie underneath other matter.
+3. Areas of cells that do not contain much GFP might not be placed at the correct level

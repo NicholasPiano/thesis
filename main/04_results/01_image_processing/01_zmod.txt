@@ -3,17 +3,44 @@ The goal of zMod is to represent the 3D environment in 2D in a meaningful way th
 Below are several examples of the zMod applied to different environments.
 [050714][260714]
 
-In [background > mask], the concept of a binary mask is 
+In [background > mask], the concept of a binary mask is introduced. The zMod image can be seen as an "N-mask", where N is the number of Z levels in the environment. Instead of selecting only on or off pixels in an image, zMod can be used to select pixels from many images. Binary masks were originally intended to add parts of a "sprite set" [ref] or composite of small images to a larger image or background by simple bitwise operations [ref]. The zMod approach is an extension of this concept applied to dimensionality instead of background/foreground image manipulation.
 
 Advantages:
 
-1. zMod provides accurate Z positions of each pixel in the environment.
+1. zMod provides accurate Z positions of each pixel in the environment where GFP is present.
 
-The image can be manipulated like any other image
-Can be used with any 3D data
+Areas of the image stack where there is high intensity GFP have strong profiles where the peak of the distribution is easy to identify, since the maximum value is unambiguous. The peak can also be found with peak detection algorithms. If different type of smoothing are applied to the images used to calculate the peak value, the peak can be affected, but although there might be noise in the 3D GFP data, the signal/noise ratio is usually high enough that the maximum of a pixel containing a cell is high enough to differentiate it from background or noise in the cell GFP. Cell GFP will dominate enough for the algorithm to make no mistakes within cells
+
+2. The image can be manipulated like any other image
+
+Smoothing and other operations such as segmentation can be applied to the zMod image in the same way as other images. Smoothing can be useful for preventing sharp transitions that might be mistaken for edges by the recogniser. For example, if background pixels in the Brightfield appear at slightly different intensities at the top and bottom of the environment, or if there is a lighting gradient between the top and the bottom, a sharp discontinuity in the zMod image will select Brightfield pixels from these very different levels. The result will be a Brightfield image, or zBF, with a sharp intensity discontinuity. CellProfiler's algorithms might falsely select this as an edge, when in reality it divides background from another section of background. This effect can be seen in an example of zMod with very low smoothing [figure].
+
+3. Can be used with any 3D data
+
+Although this study only uses 3D GFP data, any data captured using a 3D device such as other fluorescence targeting a different band of wavelengths or tissue can be used to generate a version of zMod. Below is a data taken from a multiphoton imaging system [figure]. This image set is not from live imaging, which allows a higher quality of imaging since the cells are fixed and inert [ref].
 
 Disadvantages:
 
-Depends on smoothing of GFP: loosely, does not affect Z, but affects noise for single column
-Depends on linear mask for single column: will mix Z
-If image is smoothed, very Z levels can mix a lot
+1. Depends on accuracy of GFP
+
+The accuracy of the GFP data, or any 3D data used is not under the control of the zMod algorithm, and cannot be corrected without supplementary information. Below is an example of a 3D reconstruction taken from a frame of the live imaging [figure]. The physical scaling relations have been applied such that the dimensions of the image box are proportional to those of the experiment. Dark pixels have been made transparent to allow structure to be visible. The outlined cell is visible as an extended structure that appears to span almost the whole environment. In reality, the cell cannot have this shape, and is flattened. Although this might appear unreliable, the important piece of the data used is the point at which the maximum occurs, which will remain the same. The cause of this distortion may because of reflection of light from the cell's material and other parts of the environment near the cell [ref], or refraction caused by materials in the experiment with different optical properties [ref].
+
+2. A GFP profile can have more than one peak due to the presence of more than one object.
+
+If two stained cells were to lie either wholly or in part along the same line or area in the Z dimension and were separated by a large distance proportional to their size and the size of the environment, there would be two distinct peaks in the GFP profile at that point in XY. Only the maximum would be selected in this algorithm as peak detection is not used. This effect was not observed in the live cell data, but an example of this effect is shown from the multiphoton image [figure].
+
+Although peak detection could be used to separate objects in a 3D channel, this would not avoid the distortion in the Brightfield channel, and would have no effect on another 3D channel, since the objects are already separable. In the Brightfield, two objects overlapping at two different levels would appear to be alternately in and out of focus at the bext focus level of the other. 2D information obscured by the upper cell would not be able to be recovered using the 3D information in the GFP profile. A possible improvement to this method might be to select not the highest peak, but the one closest to the top of the environment in the case of an overlap.
+
+2. Depends on smoothing of GFP.
+
+If the GFP is smoothed in 2D, it cause the maximum value of a single GFP profile to be repositioned. For example, a system can be created with cells on two distinct levels. A single bright cell lies in the top level and a low intensity cell surrounded by several other low intensity cells lie below it. Where they overlap, the profile maxima will lie on the top level with the bright cell, but if the images are smoothed sufficiently by the same amount, the bright information will spread and drop below the value of the less intense information below, since the lower information would not decrease as quickly in the centre of the group of cells. This is not projected to be a common occurence. In general, smoothing the images in 2D will have little effect on the pattern of zMod, other than reducing noise in the GFP profiles, more precisely locating the maximum in Z.
+
+On the other hand, smoothing the GFP information in 3D could cause the Z estimates of neighbouring cells to mix as information would be shared between Z levels.
+
+3. Depends on linear mask for single column:
+
+The Z estimate for a pixel can also vary with the size of the mask used to approximate the single column. This reduces noise, but has the effect of a linear smoothing filter. Information in neighbouring profiles and regions is treated equally, so if the mask is large enough, the Z estimate for neighbouring profiles will tend to the same value. The limiting case of this is a mask the size of the image. In this case, the entire GFP stack will yield a single profile and a single maximum value indicating the average position of all objects in the environment. This is of limited utillity as it loses information about individual cells. In general, masks extending beyond a typical cell diameter will lead to mixing of Z estimates between neighbouring cells. Regions of the mask containing background pixels will have no effect as the value estimate for each level will be dominated by the cell information.
+
+4. Data outside of areas of high GFP intensity can be misleading due to noise.
+
+Outside areas of high GFP intensity, GFP profiles become very flat as the levels fall to the background. In the case of these distributions, there is still a maximum, so this value will produce the Z estimate for each respective background pixel in the zMod image. This leads to random values for the maximum in a profile, apparent in the image of the PDMS pillar in the figure below [figure]. This information can be misleading and can lie directly adjacent to meaningful regions around cells. When calculating zDiff, for example, background regions near a cell can contribute to its segmentation.

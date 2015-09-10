@@ -1,0 +1,2 @@
+zMod works well
+zEdge segmentation is an improvement on previous methods

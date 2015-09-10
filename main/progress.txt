@@ -57,32 +57,46 @@
 
 -- 01_image_processing
 -- -- 26 words -- Overview
--- -- 159 words -- Zmod
--- -- 0 words -- Zbf
--- 185 words
+-- -- 1428 words -- Zmod
+-- -- 131 words -- Zmean
+-- -- 140 words -- Zbf
+-- 1725 words
 
 -- 02_cell_segmentation
--- 0 words
+-- -- 17 words -- Comparison tradition images
+-- -- 9 words -- Zbf segmentation
+-- -- 6 words -- Zedge segmentation
+-- 32 words
 
-224 words
+1796 words
 
 
 06_conclusion
--- 0 words -- Conclusion
+-- 11 words -- Conclusion
 
-0 words
+-- 02_future_work
+-- -- 13 words -- Brightfield profile
+-- -- 9 words -- Background subtraction
+-- -- 5 words -- Multichannel profiles
+-- 27 words
+
+38 words
 
 
 07_references
--- 0 words -- References
+-- 12 words -- References
 
-0 words
+12 words
 
 
 08_appendices
 -- 0 words -- Appendices
 
+-- 0 words -- Database models
+
+-- 0 words -- Algorithms
+
 0 words
 
 
-7150 words
+8772 words
