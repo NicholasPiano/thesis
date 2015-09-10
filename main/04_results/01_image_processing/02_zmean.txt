@@ -10,6 +10,8 @@ Disadvantages
 
 2. Dependent on the relative intensity of an object and the background. Could be misleading.
 
-
+The zMean image value at an XY position is highly dependent on the relative intensity of the peak and the surrounding background in Z. If a profile was full of objects and had a uniform, high value intensity curve, the result would be a very flat distribution. This would give a low value in the zMean image even though objects are present. This could be misleading, and if an experiment with a very high density of cells is analysed, this image might not be very useful.
 
 3. Does not fully reveal protrusions. Still limited by lack of GFP. No profile will give no response.
+
+The image is also limited by the extent of the GFP. If there are only small amounts of GFP inside an object of interest, the zMean will not be meaningful, as profiles will only extend a short way above the background. This will not provide very high contrast.

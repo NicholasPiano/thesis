@@ -1,0 +1,5 @@
+The true test of the pre-processing method should be an application in cell segmentation, especially compared with previous methods. Cells can be judged on how consistent their area estimates are. The cells will have an outline that corresponds to the dark edge. The segmentation should ideally contain the entire projected area of the cell. The "projected" area is the visible area of the cell in 2D. This is the information available in the Brightfield.
+
+In order to judge the analysis, the cell instances and cells are assigned a property called "confidence". The confidence of the cell instance can be defined as a linear function of the difference between the mean area value and the minimum, or the size of the marker recognition.
+
+This gives an idea of the consistency of the area with respect to the rest of the series.

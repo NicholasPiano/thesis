@@ -2,15 +2,20 @@ The zBF image is a very useful tool for segmenting an entire 3D environment with
 
 Advantages
 
-1. "Flattens" a 3D environment. Brings objects from different levels into focus.
+In most cases, selecting Brightfield pixels from different z-levels in a 3D environment and combining them into a single image will produce an image that is indistinguishable from a planar image from a 2D environment. All objects in the image marked with GFP will appear in focus, whereas the levels of cells not marked with GFP will be left as they were. This 2D projection allows for quick global cell segmentation using the same parameters.
 
-
-
-2. Allows for quick global cell segmentation.
-3. Can be adjusted via Delta-Z.
+Accurate segmentation depends on a good choice of the Delta-Z parameter. Delta-Z can be adjusted and move the Z level up or down across the whole environment. In this way, different types of edges and cell interiors can be revealed for use in segmentation.
 
 Disadvantages
 
 1. Does not avoid unclear or ambiguous edges in the Brightfield.
+
+A major problem in the brightfield channel is distortion. For this reason, most experimental procedures tend to avoid the Brightfield as a source of useful information. Although the zMod image can help to bring objects into focus, any distortion that exists independent of the focus, such as from adjacent or overlapping objects, is not corrected or avoided by the zBF projection.
+
 2. Cannot reveal objects that lie underneath other matter.
+
+
+
 3. Areas of cells that do not contain much GFP might not be placed at the correct level
+
+In some cases, a sharp decrease in the relative intensities of the GFP in the cancer cells and the surrounding background from one frame to another will cause Z levels to be difficult to determine.
