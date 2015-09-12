@@ -5,17 +5,46 @@
 \contentsline {section}{\numberline {1.1}Motivation of current project}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Importance of accurate cell segmentation}{1}{section.1.2}
 \contentsline {section}{\numberline {1.3}Using 3D data to improve 2D images}{1}{section.1.3}
-\contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Short title}{3}{section.2.1}
-\contentsline {chapter}{\numberline {3}Background}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Short title}{9}{section.3.1}
-\contentsline {chapter}{\numberline {4}Background}{15}{chapter.4}
-\contentsline {section}{\numberline {4.1}Short title}{15}{section.4.1}
-\contentsline {chapter}{\numberline {5}Background}{21}{chapter.5}
-\contentsline {section}{\numberline {5.1}Short title}{21}{section.5.1}
-\contentsline {chapter}{\numberline {6}Background}{27}{chapter.6}
-\contentsline {section}{\numberline {6.1}Short title}{27}{section.6.1}
-\contentsline {chapter}{\numberline {7}Background}{33}{chapter.7}
-\contentsline {section}{\numberline {7.1}Short title}{33}{section.7.1}
-\contentsline {chapter}{Appendix \numberline {A}How to install \LaTeX }{39}{Appendix.a.A}
-\contentsline {chapter}{Appendix \numberline {B}Installing the CUED class file}{43}{Appendix.a.B}
+\contentsline {section}{\numberline {1.4}Thesis outline}{1}{section.1.4}
+\contentsline {chapter}{\numberline {2}Cell segmentation}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Basics of image manipulation}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Edge detection}{3}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Blobs}{3}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Complex features and machine learning}{3}{subsection.2.1.3}
+\contentsline {section}{\numberline {2.2}Basics of cell segmentation}{3}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Optical structure of the cell}{3}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Cell shape}{3}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Fluorescence microscopy}{3}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Review of studies on cell segmentation}{3}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Studies using GFP fluorescence data}{3}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Studies using brightfield data}{3}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Review of studies}{3}{subsection.2.3.3}
+\contentsline {chapter}{\numberline {3}Preparing images for segmentation}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}3D confocal imaging}{5}{section.3.1}
+\contentsline {section}{\numberline {3.2}Using GFP fluorescence data}{5}{section.3.2}
+\contentsline {section}{\numberline {3.3}Using Brightfield image data}{5}{section.3.3}
+\contentsline {section}{\numberline {3.4}Review of a study using Brightfield data}{5}{section.3.4}
+\contentsline {chapter}{\numberline {4}Methodology}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}Definitions and assumptions}{7}{section.4.1}
+\contentsline {section}{\numberline {4.2}Generating zMod}{7}{section.4.2}
+\contentsline {section}{\numberline {4.3}Manual tracking}{7}{section.4.3}
+\contentsline {section}{\numberline {4.4}Generating zEdge for segmentation}{7}{section.4.4}
+\contentsline {section}{\numberline {4.5}Sensitivity analysis of zMod parameters}{7}{section.4.5}
+\contentsline {chapter}{\numberline {5}Results}{9}{chapter.5}
+\contentsline {section}{\numberline {5.1}Image modification}{9}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}zMod}{9}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}zBF}{9}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}zEdge}{9}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}Segmentation}{9}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}GFP segmentation}{9}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Brightfield variance segmentation}{9}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}zEdge segmentation}{9}{subsection.5.2.3}
+\contentsline {chapter}{\numberline {6}Discussion}{11}{chapter.6}
+\contentsline {section}{\numberline {6.1}zMod sensitivity results}{11}{section.6.1}
+\contentsline {section}{\numberline {6.2}zEdge}{11}{section.6.2}
+\contentsline {section}{\numberline {6.3}Previous method comparison}{11}{section.6.3}
+\contentsline {chapter}{\numberline {7}Conclusion}{13}{chapter.7}
+\contentsline {section}{\numberline {7.1}Summary}{13}{section.7.1}
+\contentsline {section}{\numberline {7.2}Future work}{13}{section.7.2}
+\contentsline {chapter}{Appendix \numberline {A}How to install \LaTeX }{15}{Appendix.a.A}
+\contentsline {chapter}{Appendix \numberline {B}Installing the CUED class file}{19}{Appendix.a.B}

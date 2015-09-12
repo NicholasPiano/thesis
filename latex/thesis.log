@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  12 SEP 2015 14:34
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  12 SEP 2015 16:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1354,132 +1354,10 @@ Package: translator 2010/06/12 ver 1.10
 uage-mappings.tex)))) (./thesis-info.tex) (./thesis.aux
 (./Dedication/dedication.aux) (./Declaration/declaration.aux)
 (./Acknowledgement/acknowledgement.aux) (./Abstract/abstract.aux)
-(./Chapter1/chapter1.aux) (./Chapter2/chapter2.aux) (./Chapter3/chapter3.aux
-
-LaTeX Warning: Label `fig:minion' multiply defined.
-
-
-LaTeX Warning: Label `fig:TomJerry' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:TomJerry' multiply defined.
-
-
-LaTeX Warning: Label `fig:WallE' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:WallE' multiply defined.
-
-
-LaTeX Warning: Label `fig:Minnion' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:Minnion' multiply defined.
-
-
-LaTeX Warning: Label `fig:animations' multiply defined.
-
-) (./Chapter4/chapter4.aux
-
-LaTeX Warning: Label `fig:minion' multiply defined.
-
-
-LaTeX Warning: Label `fig:TomJerry' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:TomJerry' multiply defined.
-
-
-LaTeX Warning: Label `fig:WallE' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:WallE' multiply defined.
-
-
-LaTeX Warning: Label `fig:Minnion' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:Minnion' multiply defined.
-
-
-LaTeX Warning: Label `fig:animations' multiply defined.
-
-) (./Chapter5/chapter5.aux
-
-LaTeX Warning: Label `fig:minion' multiply defined.
-
-
-LaTeX Warning: Label `fig:TomJerry' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:TomJerry' multiply defined.
-
-
-LaTeX Warning: Label `fig:WallE' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:WallE' multiply defined.
-
-
-LaTeX Warning: Label `fig:Minnion' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:Minnion' multiply defined.
-
-
-LaTeX Warning: Label `fig:animations' multiply defined.
-
-) (./Chapter6/chapter6.aux
-
-LaTeX Warning: Label `fig:minion' multiply defined.
-
-
-LaTeX Warning: Label `fig:TomJerry' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:TomJerry' multiply defined.
-
-
-LaTeX Warning: Label `fig:WallE' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:WallE' multiply defined.
-
-
-LaTeX Warning: Label `fig:Minnion' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:Minnion' multiply defined.
-
-
-LaTeX Warning: Label `fig:animations' multiply defined.
-
-) (./Chapter7/chapter7.aux
-
-LaTeX Warning: Label `fig:minion' multiply defined.
-
-
-LaTeX Warning: Label `fig:TomJerry' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:TomJerry' multiply defined.
-
-
-LaTeX Warning: Label `fig:WallE' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:WallE' multiply defined.
-
-
-LaTeX Warning: Label `fig:Minnion' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:Minnion' multiply defined.
-
-
-LaTeX Warning: Label `fig:animations' multiply defined.
-
-) (./Appendix1/appendix1.aux) (./Appendix2/appendix2.aux))
+(./Chapter1/chapter1.aux) (./Chapter2/chapter2.aux) (./Chapter3/chapter3.aux)
+(./Chapter4/chapter4.aux) (./Chapter5/chapter5.aux) (./Chapter6/chapter6.aux)
+(./Chapter7/chapter7.aux) (./Appendix1/appendix1.aux)
+(./Appendix2/appendix2.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
@@ -1659,7 +1537,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 113.
 \PHD@crest=\box47
 
-<Figs/University_Crest.pdf, id=88, 59.22125pt x 69.25874pt>
+<Figs/University_Crest.pdf, id=205, 59.22125pt x 69.25874pt>
 File: Figs/University_Crest.pdf Graphic file (type pdf)
 
 <use Figs/University_Crest.pdf>
@@ -1718,21 +1596,22 @@ University_Crest.pdf>]
 ] (./thesis.toc
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
+ [11
+
+]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 20.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 49.
 )
 \tf@toc=\write6
 \openout6 = `thesis.toc'.
 
- [11
-
-] [12
-
-] (./thesis.lof)
+ [12] (./thesis.lof)
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
- [13] [14
+ [13
+
+] [14
 
 ] (./thesis.lot)
 \tf@lot=\write8
@@ -1759,241 +1638,65 @@ Chapter 1.
 
 ]
 Chapter 2.
-<Chapter2/Figs/Raster/minion.png, id=226, 636.6987pt x 582.4962pt>
-File: Chapter2/Figs/Raster/minion.png Graphic file (type png)
-
-<use Chapter2/Figs/Raster/minion.png>
-Package pdftex.def Info: Chapter2/Figs/Raster/minion.png used on input line 26.
-
-(pdftex.def)             Requested size: 437.46112pt x 400.22517pt.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 45.
-
-(/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [3] [4 <./Chapter2/Figs/Raster/minion.png>] [5]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
- [6
-
-]
-<Chapter2/Figs/Raster/TomandJerry.png, id=260, 324.33366pt x 216.81pt>
-File: Chapter2/Figs/Raster/TomandJerry.png Graphic file (type png)
-
-<use Chapter2/Figs/Raster/TomandJerry.png>
-Package pdftex.def Info: Chapter2/Figs/Raster/TomandJerry.png used on input lin
-e 83.
-(pdftex.def)             Requested size: 131.23967pt x 87.73148pt.
-
-<Chapter2/Figs/Raster/WallE.png, id=261, 341.9605pt x 515.58476pt>
-File: Chapter2/Figs/Raster/WallE.png Graphic file (type png)
-
-<use Chapter2/Figs/Raster/WallE.png>
-Package pdftex.def Info: Chapter2/Figs/Raster/WallE.png used on input line 88.
-(pdftex.def)             Requested size: 131.23967pt x 197.8753pt.
-File: Chapter2/Figs/Raster/minion.png Graphic file (type png)
- <use Chapter2/Figs/Raster/minion.png>
-Package pdftex.def Info: Chapter2/Figs/Raster/minion.png used on input line 93.
-
-(pdftex.def)             Requested size: 131.23967pt x 120.06133pt.
-
-[7
-
- <./Chapter2/Figs/Raster/TomandJerry.png> <./Chapter2/Figs/Raster/WallE.png>])
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 16.
+) [3]
 \openout2 = `Chapter3/chapter3.aux'.
 
- (./Chapter3/chapter3.tex [8
-
+ (./Chapter3/chapter3.tex [4
 
 
 
 ]
 Chapter 3.
-<Chapter4/Figs/Raster/minion.png, id=276, 636.6987pt x 582.4962pt>
-File: Chapter4/Figs/Raster/minion.png Graphic file (type png)
-
-<use Chapter4/Figs/Raster/minion.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/minion.png used on input line 26.
-
-(pdftex.def)             Requested size: 437.46112pt x 400.22517pt.
- [9] [10 <./Chapter4/Figs/Raster/minion.png>] [11] [12
-
-]
-<Chapter4/Figs/Raster/TomandJerry.png, id=310, 324.33366pt x 216.81pt>
-File: Chapter4/Figs/Raster/TomandJerry.png Graphic file (type png)
-
-<use Chapter4/Figs/Raster/TomandJerry.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/TomandJerry.png used on input lin
-e 83.
-(pdftex.def)             Requested size: 131.23967pt x 87.73148pt.
-
-<Chapter4/Figs/Raster/WallE.png, id=311, 341.9605pt x 515.58476pt>
-File: Chapter4/Figs/Raster/WallE.png Graphic file (type png)
-
-<use Chapter4/Figs/Raster/WallE.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/WallE.png used on input line 88.
-(pdftex.def)             Requested size: 131.23967pt x 197.8753pt.
-File: Chapter4/Figs/Raster/minion.png Graphic file (type png)
- <use Chapter4/Figs/Raster/minion.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/minion.png used on input line 93.
-
-(pdftex.def)             Requested size: 131.23967pt x 120.06133pt.
-
-[13
-
- <./Chapter4/Figs/Raster/TomandJerry.png> <./Chapter4/Figs/Raster/WallE.png>])
+) [5]
 \openout2 = `Chapter4/chapter4.aux'.
 
- (./Chapter4/chapter4.tex [14
-
+ (./Chapter4/chapter4.tex [6
 
 
 
 ]
 Chapter 4.
-File: Chapter4/Figs/Raster/minion.png Graphic file (type png)
-<use Chapter4/Figs/Raster/minion.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/minion.png used on input line 26.
-
-(pdftex.def)             Requested size: 437.46112pt x 400.22517pt.
- [15] [16] [17] [18
-
-]
-File: Chapter4/Figs/Raster/TomandJerry.png Graphic file (type png)
-
-<use Chapter4/Figs/Raster/TomandJerry.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/TomandJerry.png used on input lin
-e 83.
-(pdftex.def)             Requested size: 131.23967pt x 87.73148pt.
-File: Chapter4/Figs/Raster/WallE.png Graphic file (type png)
-
-<use Chapter4/Figs/Raster/WallE.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/WallE.png used on input line 88.
-(pdftex.def)             Requested size: 131.23967pt x 197.8753pt.
-File: Chapter4/Figs/Raster/minion.png Graphic file (type png)
- <use Chapter4/Figs/Raster/minion.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/minion.png used on input line 93.
-
-(pdftex.def)             Requested size: 131.23967pt x 120.06133pt.
-
-[19
-
-])
+) [7]
 \openout2 = `Chapter5/chapter5.aux'.
 
- (./Chapter5/chapter5.tex [20
-
+ (./Chapter5/chapter5.tex [8
 
 
 
 ]
 Chapter 5.
-File: Chapter4/Figs/Raster/minion.png Graphic file (type png)
-<use Chapter4/Figs/Raster/minion.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/minion.png used on input line 26.
-
-(pdftex.def)             Requested size: 437.46112pt x 400.22517pt.
- [21] [22] [23] [24
-
-]
-File: Chapter4/Figs/Raster/TomandJerry.png Graphic file (type png)
-
-<use Chapter4/Figs/Raster/TomandJerry.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/TomandJerry.png used on input lin
-e 83.
-(pdftex.def)             Requested size: 131.23967pt x 87.73148pt.
-File: Chapter4/Figs/Raster/WallE.png Graphic file (type png)
-
-<use Chapter4/Figs/Raster/WallE.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/WallE.png used on input line 88.
-(pdftex.def)             Requested size: 131.23967pt x 197.8753pt.
-File: Chapter4/Figs/Raster/minion.png Graphic file (type png)
- <use Chapter4/Figs/Raster/minion.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/minion.png used on input line 93.
-
-(pdftex.def)             Requested size: 131.23967pt x 120.06133pt.
-
-[25
-
-])
+) [9]
 \openout2 = `Chapter6/chapter6.aux'.
 
- (./Chapter6/chapter6.tex [26
-
+ (./Chapter6/chapter6.tex [10
 
 
 
 ]
 Chapter 6.
-File: Chapter4/Figs/Raster/minion.png Graphic file (type png)
-<use Chapter4/Figs/Raster/minion.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/minion.png used on input line 26.
 
-(pdftex.def)             Requested size: 437.46112pt x 400.22517pt.
- [27] [28] [29] [30
+Overfull \hbox (0.3407pt too wide) in paragraph at lines 14--14
+[]\T1/ptm/b/n/17.28 zMod sen-si-tiv-ity to pa-ram-e-ters and their ef-fects on 
+zBF 
+ []
 
-]
-File: Chapter4/Figs/Raster/TomandJerry.png Graphic file (type png)
 
-<use Chapter4/Figs/Raster/TomandJerry.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/TomandJerry.png used on input lin
-e 83.
-(pdftex.def)             Requested size: 131.23967pt x 87.73148pt.
-File: Chapter4/Figs/Raster/WallE.png Graphic file (type png)
+Overfull \hbox (0.15108pt too wide) in paragraph at lines 22--22
+[]\T1/ptm/b/n/17.28 Comparison of Bright-field vari-ance and zEdge seg-men-
+ []
 
-<use Chapter4/Figs/Raster/WallE.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/WallE.png used on input line 88.
-(pdftex.def)             Requested size: 131.23967pt x 197.8753pt.
-File: Chapter4/Figs/Raster/minion.png Graphic file (type png)
- <use Chapter4/Figs/Raster/minion.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/minion.png used on input line 93.
-
-(pdftex.def)             Requested size: 131.23967pt x 120.06133pt.
-
-[31
-
-])
+) [11]
 \openout2 = `Chapter7/chapter7.aux'.
 
- (./Chapter7/chapter7.tex [32
-
+ (./Chapter7/chapter7.tex [12
 
 
 
 ]
 Chapter 7.
-File: Chapter4/Figs/Raster/minion.png Graphic file (type png)
-<use Chapter4/Figs/Raster/minion.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/minion.png used on input line 26.
-
-(pdftex.def)             Requested size: 437.46112pt x 400.22517pt.
- [33] [34] [35] [36
-
-]
-File: Chapter4/Figs/Raster/TomandJerry.png Graphic file (type png)
-
-<use Chapter4/Figs/Raster/TomandJerry.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/TomandJerry.png used on input lin
-e 83.
-(pdftex.def)             Requested size: 131.23967pt x 87.73148pt.
-File: Chapter4/Figs/Raster/WallE.png Graphic file (type png)
-
-<use Chapter4/Figs/Raster/WallE.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/WallE.png used on input line 88.
-(pdftex.def)             Requested size: 131.23967pt x 197.8753pt.
-File: Chapter4/Figs/Raster/minion.png Graphic file (type png)
- <use Chapter4/Figs/Raster/minion.png>
-Package pdftex.def Info: Chapter4/Figs/Raster/minion.png used on input line 93.
-
-(pdftex.def)             Requested size: 131.23967pt x 120.06133pt.
-
-[37
-
-]) [38
-
+) [13] [14
 
 
 ]
@@ -2008,26 +1711,24 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 6.
-[39
+[15
 
 
-] [40]
+] [16]
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 71.
  (/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-[41]) [42]
+[17]) [18]
 \openout2 = `Appendix2/appendix2.aux'.
 
  (./Appendix2/appendix2.tex
 Appendix B.
-) [43
+) [19
 
 
 
-] [44
+] [20
 
 
 ]
@@ -2043,21 +1744,17 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 186.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 186.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 186.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: B632C1B0114F6DA9D67B7E860A880FBB;3203.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
+(rerunfilecheck)             Checksum: 31936DB5E8281FFA256657D46F044509;9356.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 186.
  ) 
 Here is how much of TeX's memory you used:
- 21465 strings out of 493488
- 388201 string characters out of 3141326
- 456850 words of memory out of 3000000
- 23927 multiletter control sequences out of 15000+200000
- 86734 words of font info for 219 fonts, out of 3000000 for 9000
+ 21226 strings out of 493488
+ 384593 string characters out of 3141326
+ 457630 words of memory out of 3000000
+ 23826 multiletter control sequences out of 15000+200000
+ 64081 words of font info for 154 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 49i,15n,45p,1344b,961s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,15n,45p,891b,963s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
 live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texl
@@ -2068,10 +1765,10 @@ e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on thesis.pdf (60 pages, 841188 bytes).
+Output written on thesis.pdf (36 pages, 180087 bytes).
 PDF statistics:
- 655 PDF objects out of 1000 (max. 8388607)
- 558 compressed objects within 6 object streams
- 204 named destinations out of 1000 (max. 500000)
- 61644 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 538 PDF objects out of 1000 (max. 8388607)
+ 478 compressed objects within 5 object streams
+ 131 named destinations out of 1000 (max. 500000)
+ 38806 words of extra memory for PDF output out of 42996 (max. 10000000)
 
