@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  12 SEP 2015 16:48
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  12 SEP 2015 17:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1642,7 +1642,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 16.
 
 <Chapter2/Figs/Raster/211-digital_image_sample_bf-050714_s13_ch1_t85_z30.png, i
-d=367, 513.92pt x 513.92pt>
+d=369, 513.92pt x 513.92pt>
 File: Chapter2/Figs/Raster/211-digital_image_sample_bf-050714_s13_ch1_t85_z30.p
 ng Graphic file (type png)
 
@@ -1651,38 +1651,61 @@ g>
 Package pdftex.def Info: Chapter2/Figs/Raster/211-digital_image_sample_bf-05071
 4_s13_ch1_t85_z30.png used on input line 20.
 (pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
-) [3] [4 <./Chapter2/Figs/Raster/211-digital_image_sample_bf-050714_s13_ch1_t85
-_z30.png (PNG copy)>]
+
+<Chapter2/Figs/Raster/212-canny_bf-050714_s13_ch1_t85_z30.png, id=370, 513.92pt
+ x 513.92pt>
+File: Chapter2/Figs/Raster/212-canny_bf-050714_s13_ch1_t85_z30.png Graphic file
+ (type png)
+
+<use Chapter2/Figs/Raster/212-canny_bf-050714_s13_ch1_t85_z30.png>
+Package pdftex.def Info: Chapter2/Figs/Raster/212-canny_bf-050714_s13_ch1_t85_z
+30.png used on input line 29.
+(pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
+
+<Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z30.png, id=371, 513.92pt
+ x 513.92pt>
+File: Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z30.png Graphic file
+ (type png)
+
+<use Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z30.png>
+Package pdftex.def Info: Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z
+30.png used on input line 38.
+(pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
+) [3]
+[4 <./Chapter2/Figs/Raster/211-digital_image_sample_bf-050714_s13_ch1_t85_z30.p
+ng (PNG copy)>] [5 <./Chapter2/Figs/Raster/212-canny_bf-050714_s13_ch1_t85_z30.
+png>] [6 <./Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z30.png (PNG c
+opy)>]
 \openout2 = `Chapter3/chapter3.aux'.
 
  (./Chapter3/chapter3.tex
 Chapter 3.
-) [5
+) [7
 
 
 
 ]
 \openout2 = `Chapter4/chapter4.aux'.
 
- (./Chapter4/chapter4.tex [6
+ (./Chapter4/chapter4.tex [8
 
 
 
 ]
 Chapter 4.
-) [7]
+) [9]
 \openout2 = `Chapter5/chapter5.aux'.
 
- (./Chapter5/chapter5.tex [8
+ (./Chapter5/chapter5.tex [10
 
 
 
 ]
 Chapter 5.
-) [9]
+) [11]
 \openout2 = `Chapter6/chapter6.aux'.
 
- (./Chapter6/chapter6.tex [10
+ (./Chapter6/chapter6.tex [12
 
 
 
@@ -1699,16 +1722,16 @@ Overfull \hbox (0.15108pt too wide) in paragraph at lines 34--34
 []\T1/ptm/b/n/17.28 Comparison of Bright-field vari-ance and zEdge seg-men-
  []
 
-) [11]
+) [13]
 \openout2 = `Chapter7/chapter7.aux'.
 
- (./Chapter7/chapter7.tex [12
+ (./Chapter7/chapter7.tex [14
 
 
 
 ]
 Chapter 7.
-) [13] [14
+) [15] [16
 
 
 ]
@@ -1723,24 +1746,24 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
-[15
+[17
 
 
-] [16]
+] [18]
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 71.
  (/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-[17]) [18]
+[19]) [20]
 \openout2 = `Appendix2/appendix2.aux'.
 
  (./Appendix2/appendix2.tex
 Appendix B.
-) [19
+) [21
 
 
 
-] [20
+] [22
 
 
 ]
@@ -1757,13 +1780,17 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 186.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 186.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 8EA9866C855C35E5904D7F8E44BD2AEE;10160.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 186.
  ) 
 Here is how much of TeX's memory you used:
- 21245 strings out of 493488
- 385232 string characters out of 3141326
- 459670 words of memory out of 3000000
- 23838 multiletter control sequences out of 15000+200000
+ 21261 strings out of 493488
+ 385920 string characters out of 3141326
+ 459741 words of memory out of 3000000
+ 23848 multiletter control sequences out of 15000+200000
  64081 words of font info for 154 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,15n,45p,891b,963s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1777,10 +1804,10 @@ e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on thesis.pdf (36 pages, 371434 bytes).
+Output written on thesis.pdf (38 pages, 705583 bytes).
 PDF statistics:
- 563 PDF objects out of 1000 (max. 8388607)
- 501 compressed objects within 6 object streams
- 136 named destinations out of 1000 (max. 500000)
- 38843 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 581 PDF objects out of 1000 (max. 8388607)
+ 514 compressed objects within 6 object streams
+ 140 named destinations out of 1000 (max. 500000)
+ 38853 words of extra memory for PDF output out of 42996 (max. 10000000)
 
