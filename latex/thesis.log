@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  12 SEP 2015 17:19
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  14 SEP 2015 01:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1354,10 +1354,13 @@ Package: translator 2010/06/12 ver 1.10
 uage-mappings.tex)))) (./thesis-info.tex) (./thesis.aux
 (./Dedication/dedication.aux) (./Declaration/declaration.aux)
 (./Acknowledgement/acknowledgement.aux) (./Abstract/abstract.aux)
-(./Chapter1/chapter1.aux) (./Chapter2/chapter2.aux) (./Chapter3/chapter3.aux)
-(./Chapter4/chapter4.aux) (./Chapter5/chapter5.aux) (./Chapter6/chapter6.aux)
-(./Chapter7/chapter7.aux) (./Appendix1/appendix1.aux)
-(./Appendix2/appendix2.aux))
+(./Chapter1/chapter1.aux) (./Chapter2/chapter2.aux
+
+LaTeX Warning: Label `fig:blob_detection_bf' multiply defined.
+
+) (./Chapter3/chapter3.aux) (./Chapter4/chapter4.aux) (./Chapter5/chapter5.aux)
+(./Chapter6/chapter6.aux) (./Chapter7/chapter7.aux) (./Chapter8/chapter8.aux)
+(./Appendix1/appendix1.aux) (./Appendix2/appendix2.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
@@ -1537,7 +1540,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 113.
 \PHD@crest=\box47
 
-<Figs/University_Crest.pdf, id=221, 59.22125pt x 69.25874pt>
+<Figs/University_Crest.pdf, id=233, 59.22125pt x 69.25874pt>
 File: Figs/University_Crest.pdf Graphic file (type pdf)
 
 <use Figs/University_Crest.pdf>
@@ -1600,7 +1603,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 
 ]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 53.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 58.
 )
 \tf@toc=\write6
 \openout6 = `thesis.toc'.
@@ -1626,23 +1629,19 @@ No file thesis.nls.
 
  (./Chapter1/chapter1.tex
 Chapter 1.
-) [1
+[1
 
 
-]
+]) [2]
 \openout2 = `Chapter2/chapter2.aux'.
 
- (./Chapter2/chapter2.tex [2
-
-
-
-]
+ (./Chapter2/chapter2.tex
 Chapter 2.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 16.
 
 <Chapter2/Figs/Raster/211-digital_image_sample_bf-050714_s13_ch1_t85_z30.png, i
-d=369, 513.92pt x 513.92pt>
+d=383, 513.92pt x 513.92pt>
 File: Chapter2/Figs/Raster/211-digital_image_sample_bf-050714_s13_ch1_t85_z30.p
 ng Graphic file (type png)
 
@@ -1652,86 +1651,115 @@ Package pdftex.def Info: Chapter2/Figs/Raster/211-digital_image_sample_bf-05071
 4_s13_ch1_t85_z30.png used on input line 20.
 (pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
 
-<Chapter2/Figs/Raster/212-canny_bf-050714_s13_ch1_t85_z30.png, id=370, 513.92pt
+<Chapter2/Figs/Raster/212-canny_bf-050714_s13_ch1_t85_z30.png, id=384, 513.92pt
  x 513.92pt>
 File: Chapter2/Figs/Raster/212-canny_bf-050714_s13_ch1_t85_z30.png Graphic file
  (type png)
 
 <use Chapter2/Figs/Raster/212-canny_bf-050714_s13_ch1_t85_z30.png>
 Package pdftex.def Info: Chapter2/Figs/Raster/212-canny_bf-050714_s13_ch1_t85_z
-30.png used on input line 29.
+30.png used on input line 35.
 (pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
+ [3
 
-<Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z30.png, id=371, 513.92pt
+
+
+] [4 <./Chapter2/Figs/Raster/211-digital_image_sample_bf-050714_s13_ch1_t85_z30
+.png (PNG copy)>] [5 <./Chapter2/Figs/Raster/212-canny_bf-050714_s13_ch1_t85_z3
+0.png>]
+<Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z30.png, id=399, 513.92pt
  x 513.92pt>
 File: Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z30.png Graphic file
  (type png)
 
 <use Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z30.png>
 Package pdftex.def Info: Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z
-30.png used on input line 38.
+30.png used on input line 46.
 (pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
-) [3]
-[4 <./Chapter2/Figs/Raster/211-digital_image_sample_bf-050714_s13_ch1_t85_z30.p
-ng (PNG copy)>] [5 <./Chapter2/Figs/Raster/212-canny_bf-050714_s13_ch1_t85_z30.
-png>] [6 <./Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z30.png (PNG c
-opy)>]
+
+Underfull \vbox (badness 1571) has occurred while \output is active []
+
+ [6 <./Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z30.png (PNG copy)>
+]
+Underfull \vbox (badness 1975) has occurred while \output is active []
+
+ [7]
+File: Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z30.png Graphic file
+ (type png)
+
+<use Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z30.png>
+Package pdftex.def Info: Chapter2/Figs/Raster/213-blobs_bf-050714_s13_ch1_t85_z
+30.png used on input line 78.
+(pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
+ [8] [9])
+[10]
 \openout2 = `Chapter3/chapter3.aux'.
 
  (./Chapter3/chapter3.tex
 Chapter 3.
-) [7
+[11
 
 
 
-]
+]) [12]
 \openout2 = `Chapter4/chapter4.aux'.
 
- (./Chapter4/chapter4.tex [8
-
-
-
-]
+ (./Chapter4/chapter4.tex
 Chapter 4.
-) [9]
+[13
+
+
+
+] [14]) [15]
 \openout2 = `Chapter5/chapter5.aux'.
 
- (./Chapter5/chapter5.tex [10
+ (./Chapter5/chapter5.tex [16
 
 
 
 ]
 Chapter 5.
-) [11]
+[17] [18] [19] [20]
+Overfull \hbox (24.4117pt too wide) in paragraph at lines 118--118
+[]\T1/ptm/b/n/17.28 Generating zEdge to pre-vent Cell-Pro-filer mis-recognition
+s 
+ []
+
+[21] [22]) [23]
 \openout2 = `Chapter6/chapter6.aux'.
 
- (./Chapter6/chapter6.tex [12
+ (./Chapter6/chapter6.tex [24
 
 
 
 ]
 Chapter 6.
+[25]
+Underfull \vbox (badness 2229) has occurred while \output is active []
 
-Overfull \hbox (0.3407pt too wide) in paragraph at lines 14--14
-[]\T1/ptm/b/n/17.28 zMod sen-si-tiv-ity to pa-ram-e-ters and their ef-fects on 
-zBF 
- []
+ [26]
+Underfull \vbox (badness 7030) has occurred while \output is active []
 
-
-Overfull \hbox (0.15108pt too wide) in paragraph at lines 34--34
-[]\T1/ptm/b/n/17.28 Comparison of Bright-field vari-ance and zEdge seg-men-
- []
-
-) [13]
+ [27])
+[28]
 \openout2 = `Chapter7/chapter7.aux'.
 
- (./Chapter7/chapter7.tex [14
-
-
-
-]
+ (./Chapter7/chapter7.tex
 Chapter 7.
-) [15] [16
+[29
+
+
+
+]) [30]
+\openout2 = `Chapter8/chapter8.aux'.
+
+ (./Chapter8/chapter8.tex
+Chapter 8.
+[31
+
+
+
+] [32]) [33] [34
 
 
 ]
@@ -1746,68 +1774,66 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
-[17
+[35
 
 
-] [18]
+] [36]
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 71.
  (/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-[19]) [20]
+[37]) [38]
 \openout2 = `Appendix2/appendix2.aux'.
 
  (./Appendix2/appendix2.tex
 Appendix B.
-) [21
+) [39
 
 
 
-] [22
+] [40
 
 
 ]
 No file thesis.ind.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 186.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 186.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 187.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 187.
 (./thesis.aux (./Dedication/dedication.aux) (./Declaration/declaration.aux)
 (./Acknowledgement/acknowledgement.aux) (./Abstract/abstract.aux)
 (./Chapter1/chapter1.aux) (./Chapter2/chapter2.aux) (./Chapter3/chapter3.aux)
 (./Chapter4/chapter4.aux) (./Chapter5/chapter5.aux) (./Chapter6/chapter6.aux)
-(./Chapter7/chapter7.aux) (./Appendix1/appendix1.aux)
+(./Chapter7/chapter7.aux) (./Chapter8/chapter8.aux) (./Appendix1/appendix1.aux)
 (./Appendix2/appendix2.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 186.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 186.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 187.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 187.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 8EA9866C855C35E5904D7F8E44BD2AEE;10160.
+(rerunfilecheck)             Checksum: 9FEB2414125919B903AF4DE1CC94D2CF;10921.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 186.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 187.
  ) 
 Here is how much of TeX's memory you used:
- 21261 strings out of 493488
- 385920 string characters out of 3141326
- 459741 words of memory out of 3000000
- 23848 multiletter control sequences out of 15000+200000
- 64081 words of font info for 154 fonts, out of 3000000 for 9000
+ 21387 strings out of 493488
+ 387084 string characters out of 3141326
+ 461232 words of memory out of 3000000
+ 23851 multiletter control sequences out of 15000+200000
+ 64449 words of font info for 202 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 49i,15n,45p,891b,963s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,15n,45p,1102b,961s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
-live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texl
-ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texliv
-e/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
-/2012/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2
-012/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2012/texmf-d
-ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/
-type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/
-times/utmri8a.pfb>
-Output written on thesis.pdf (38 pages, 705583 bytes).
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texli
+ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
+e/2012/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/
+2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf
+-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/font
+s/type1/urw/times/utmri8a.pfb>
+Output written on thesis.pdf (56 pages, 746910 bytes).
 PDF statistics:
- 581 PDF objects out of 1000 (max. 8388607)
- 514 compressed objects within 6 object streams
- 140 named destinations out of 1000 (max. 500000)
- 38853 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 689 PDF objects out of 1000 (max. 8388607)
+ 607 compressed objects within 7 object streams
+ 179 named destinations out of 1000 (max. 500000)
+ 38877 words of extra memory for PDF output out of 42996 (max. 10000000)
 

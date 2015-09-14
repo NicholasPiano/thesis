@@ -1,0 +1,39 @@
+%*******************************************************************************
+%****************************** Fourth Chapter *********************************
+%*******************************************************************************
+
+\chapter{Conclusion}
+
+\ifpdf
+    \graphicspath{{Chapter8/Figs/Raster/}{Chapter8/Figs/PDF/}{Chapter8/Figs/}}
+\else
+    \graphicspath{{Chapter8/Figs/Vector/}{Chapter8/Figs/}}
+\fi
+
+%********************************** %First Section  **************************************
+\section{Summary}
+
+This project was undertaken in order to improve the segmentation of cells in a 3D environment represented by a stack of Brightfield images. To achieve this, images from the 3D Brightfield stack were preprocessed to allow them to be segmented by CellProfiler, a popular cell segmentation software tool, which operates best on 2D images.
+
+Various methods of preprocessing were already available, such as a 3D GFP maximum projection method and a Brightfield preprocessing method described by Selinummi et al. These methods had a number of disadvantages that we attempted to address. Among them: poor definition of cell edges, non-uniformity of cell interiors, and the lack of distinction between several types of cell in an experiment.
+
+The method we propose for solving this problem involves the use of the 3D GFP stack to select high-quality portions of the Brightfield stack and combine them into a single image containing features that were easily and consistently recognisable by CellProfiler. These features include dark continuous edges and high-uniformity cell interiors.
+
+This method does not increase the contrast between cells and the background. Instead it focusses on improving the quality of the features desired for segmentation. Optionally, the features can then be highlighted (contrast can be increased) by modifying the images using the GFP, with the disadvantage that this can suppress meaningful cell features (such as protrusions) as described by Arce et al.
+
+The method is dependent on several parameters, the most important of which were thought to be the size of the smoothing kernel Sigma used for smoothing of the GFP in 2D and the size of the pixel mask R used to generate the 3D GFP pixel profile. An analysis of the sensitivity revealed that these parameters, while having a great effect on the visual outcome of the images, had little practical effect on the segmentation, at least using the metric of Fscore from Selinummi et al.
+
+Unfortunately, the ground truth used in this analysis (the manual segmentation) is impractical to apply to large amounts of cell data. For their ground truth, Selinummi et al. use the GFP maximum projection method, which while easy to generate from large amounts of cell data, has a lower Fscore than the result of segmenting data preprocessed via our method. Hence, unless a clear relationship can be found between the GFP maximum projection and the current method, the GFP maximum projection should not be used as an effective ground truth to judge the cell segmentation data of the entire dataset.
+
+A common problem in cell segmentation is the inability of the segmentation algorithms to distinguish between bright cell interiors and adjacent bright background regions. This is normally solved by increasing the contrast between cell matter and surrounding image background, but we found that the 3D GFP data can be used to clarify the full extent of the cell and therefore be used to derive maximum limits on the extent of the cells when the Brightfield is segmented. A disadvantage of our method is that limits may be placed on the extent of the cell protrusions.
+
+In conclusion, we have used the 3D GFP information to locate cells individually in 3D space and find limits to their maximum size. This preprocessing of the Brightfield images improves cell segmentation and limits the effect of mis-recognition errors.
+
+%********************************** %Second Section  **************************************
+\section{Future work}
+
+A crucial assumption in this current study has been the uniformity of Brightfield edge discontinuity magnitudes. In reality, even within a single cell, the functional form of these discontinuities can vary significantly. A deeper analysis of these edges could lead to a more robust representation of a cell. Specifically, edges that lie closer to the core cell structure are often darker and more defined. This is perhaps due to the higher density of cell matter closer to the centre. As protrusions extend further from the cell, edges become less defined and closer to the background. This transition from defined to less defined edges could be modelled effectively to allow for better segmentation.
+
+Another problem has been the poorly understood relationship between the extent of the GFP and the extent of the structure of the cell. An analysis of these boundary relationships, where the GFP cell data ends but the Brightfield cell data continues to exist,  could highlight areas where the investigation of the cell edges should extend beyond the limits seen in the GFP data. Traditionally, the GFP data is simply used to threshold this search, and data outside these thresholds is not considered. This does not correspond with reality and hence relevant data about the protrusion lengths and other cell features is lost.
+
+Investigations of the issues noted above might greatly improve on the work done here.

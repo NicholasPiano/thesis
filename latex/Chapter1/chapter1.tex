@@ -11,26 +11,30 @@
 \fi
 
 %********************************** %First Section  **************************************
-\section{Motivation of current project} %Section - 1.1
+\section{Motivation of the current project} %Section - 1.1
 \label{section1.1}
 
-\begin{align}
-CIF: \hspace*{5mm}F_0^j(a) = \frac{1}{2\pi \iota} \oint_{\gamma} \frac{F_0^j(z)}{z - a} dz
-\end{align}
+In cell microbiology and related fields, large amounts of cell image data are commonly generated using a confocal microscope. The processing of this data often relies on cell segmentation, or the identification of the boundaries of each cell in an image. Manual segmentation of cells in microscopy is often time-consuming. Algorithms exist that will segment cells automatically, but they often have some important limitations.
+
+While cells can be imaged in vivo, 3D PMDS (plastic) environments containing cells can be used to simulate organs or blood vessels. This provides a more convenient and repeatable imaging environment Cells may be located at different heights within these environments. In an image produced at any particular focal length, some cells may be blurred or distorted. A confocal microscope can be used to produce a set of images using a range of focal lengths.
+
+Available cell segmentation software operates best using 2D images that contain consistent cell features. Any single 2D image slice from a 3D image stack will be likely to include blurred and distorted cells. It is also difficult to perform manual segmentation on cells that are out-of-focus in a 2D image.
+
+A confocal microscope can also be used to produce images using GFP fluorescence data (instead of using white light), which provides 3D spatial information about each cell. Cell segmentation algorithms can also be applied to GFP images. However, the results are again unsatisfactory, as the GFP intensity is often low in cell nuclei and protrusions, causing them to be omitted from the segmentation. 
+
+The aim of this project is to find a robust, accurate method that uses GFP data about the 3D cell environment to preprocess Brightfield (visible light) image data into a form that cell segmentation algorithms can process more easily.
 
 %********************************** %Second Section  *************************************
 \section{Importance of accurate cell segmentation} %Section - 1.2
 \label{section1.2}
 
+The experiment from which data for this project was gathered involved tracking the movement of cancer cells through an endothelial cell wall. In this experimental context, in order to accurately judge the movements of a live cell, all aspects of its shape and extent should be identified. If data after segmentation produces only a small circular object at the centre of the cell, this is not an adequate representation for studying cell morphodynamics.
 
 %********************************** % Third Section  *************************************
-\section{Using 3D data to improve 2D images}  %Section - 1.3
+\section{Thesis outline}  %Section - 1.3
 \label{section1.3}
 
-\nomenclature[z-DEM]{DEM}{Discrete Element Method}
+First, introductory information about image processing and manipulation is provided, followed by an overview of modern cell segmentation. Some common ways of preparing images for segmentation are discussed. Several studies that involve different ways of preprocessing images are reviewed. We will then describe the experimental apparatus used to produce data for this project and its limitations.
+We then detail the method of image preparation. We investigate some of the aspects of the prepared images and the results of their segmentation. We also perform a sensitivity analysis of the parameters used to produce the images.
 
-%********************************** % Fourth Section  *************************************
-\section{Thesis outline}  %Section - 1.3
-\label{section1.4}
-
-\nomenclature[z-DEM]{DEM}{Discrete Element Method}
+We then conclude with a summary of the work and note some opportunities for future study.

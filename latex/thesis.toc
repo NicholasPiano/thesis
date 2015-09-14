@@ -2,53 +2,58 @@
 \contentsline {chapter}{List of figures}{xiii}{chapter*.5}
 \contentsline {chapter}{List of tables}{xv}{chapter*.6}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Motivation of current project}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}Importance of accurate cell segmentation}{1}{section.1.2}
-\contentsline {section}{\numberline {1.3}Using 3D data to improve 2D images}{1}{section.1.3}
-\contentsline {section}{\numberline {1.4}Thesis outline}{1}{section.1.4}
+\contentsline {section}{\numberline {1.1}Motivation of the current project}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Importance of accurate cell segmentation}{2}{section.1.2}
+\contentsline {section}{\numberline {1.3}Thesis outline}{2}{section.1.3}
 \contentsline {chapter}{\numberline {2}Cell segmentation}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Basics of image manipulation}{3}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Image manipulation overview}{3}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}Edge detection}{3}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Blobs}{3}{subsection.2.1.3}
-\contentsline {subsection}{\numberline {2.1.4}Complex features and machine learning}{3}{subsection.2.1.4}
-\contentsline {section}{\numberline {2.2}Basics of cell segmentation}{3}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Optical structure of the cell}{3}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Cell shape}{3}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Fluorescence microscopy}{3}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Review of studies on cell segmentation}{3}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Studies using GFP fluorescence data}{3}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Studies using brightfield data}{3}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Review of studies}{3}{subsection.2.3.3}
-\contentsline {chapter}{\numberline {3}Preparing images for segmentation}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}3D confocal imaging}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Using GFP fluorescence data}{7}{section.3.2}
-\contentsline {section}{\numberline {3.3}Using Brightfield image data}{7}{section.3.3}
-\contentsline {section}{\numberline {3.4}Review of a study using Brightfield data}{7}{section.3.4}
-\contentsline {chapter}{\numberline {4}Methodology}{9}{chapter.4}
-\contentsline {section}{\numberline {4.1}Definitions and assumptions}{9}{section.4.1}
-\contentsline {section}{\numberline {4.2}Generating zMod}{9}{section.4.2}
-\contentsline {section}{\numberline {4.3}Manual tracking}{9}{section.4.3}
-\contentsline {section}{\numberline {4.4}Generating zEdge for segmentation}{9}{section.4.4}
-\contentsline {section}{\numberline {4.5}Sensitivity analysis of zMod parameters}{9}{section.4.5}
-\contentsline {chapter}{\numberline {5}Results}{11}{chapter.5}
-\contentsline {section}{\numberline {5.1}Image modification}{11}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}zMod}{11}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}zBF}{11}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}zEdge}{11}{subsection.5.1.3}
-\contentsline {section}{\numberline {5.2}Segmentation}{11}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}GFP segmentation}{11}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Brightfield variance segmentation}{11}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}zEdge segmentation}{11}{subsection.5.2.3}
-\contentsline {subsection}{\numberline {5.2.4}Manual segmentation}{11}{subsection.5.2.4}
-\contentsline {chapter}{\numberline {6}Discussion}{13}{chapter.6}
-\contentsline {section}{\numberline {6.1}zMod sensitivity results}{13}{section.6.1}
-\contentsline {section}{\numberline {6.2}zEdge}{13}{section.6.2}
-\contentsline {section}{\numberline {6.3}Previous method comparison}{13}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Precision, Recall, and FScore}{13}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Results}{13}{subsection.6.3.2}
-\contentsline {chapter}{\numberline {7}Conclusion}{15}{chapter.7}
-\contentsline {section}{\numberline {7.1}Summary}{15}{section.7.1}
-\contentsline {section}{\numberline {7.2}Future work}{15}{section.7.2}
-\contentsline {chapter}{Appendix \numberline {A}How to install \LaTeX }{17}{Appendix.a.A}
-\contentsline {chapter}{Appendix \numberline {B}Installing the CUED class file}{21}{Appendix.a.B}
+\contentsline {subsection}{\numberline {2.1.3}Blobs}{6}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Complex features and machine learning}{7}{subsection.2.1.4}
+\contentsline {section}{\numberline {2.2}Basics of cell segmentation}{7}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Optical structure of the cell}{7}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Cell shape}{7}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Fluorescence microscopy}{8}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Cell segmentation errors}{8}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}Review of studies on cell segmentation}{8}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Studies using GFP fluorescence data}{8}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Studies using brightfield data}{10}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Studies using confocal imaging}{10}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Review of studies}{10}{subsection.2.3.4}
+\contentsline {chapter}{\numberline {3}Preparing images for segmentation}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}3D confocal imaging}{11}{section.3.1}
+\contentsline {section}{\numberline {3.2}Using GFP fluorescence data}{11}{section.3.2}
+\contentsline {section}{\numberline {3.3}Using Brightfield image data}{12}{section.3.3}
+\contentsline {section}{\numberline {3.4}Review of a study using Brightfield data}{12}{section.3.4}
+\contentsline {chapter}{\numberline {4}Experimental apparatus}{13}{chapter.4}
+\contentsline {section}{\numberline {4.1}micro-fluidics environment}{13}{section.4.1}
+\contentsline {section}{\numberline {4.2}Imaging limitations}{14}{section.4.2}
+\contentsline {chapter}{\numberline {5}Methodology}{17}{chapter.5}
+\contentsline {section}{\numberline {5.1}Definitions and assumptions}{17}{section.5.1}
+\contentsline {section}{\numberline {5.2}GFP profile}{18}{section.5.2}
+\contentsline {section}{\numberline {5.3}Generating zMod}{19}{section.5.3}
+\contentsline {section}{\numberline {5.4}Generating zBF}{20}{section.5.4}
+\contentsline {section}{\numberline {5.5}Manual tracking}{20}{section.5.5}
+\contentsline {section}{\numberline {5.6}Generating zEdge to prevent CellProfiler mis-recognitions}{21}{section.5.6}
+\contentsline {section}{\numberline {5.7}Sensitivity analysis of zMod parameters}{22}{section.5.7}
+\contentsline {chapter}{\numberline {6}Results}{25}{chapter.6}
+\contentsline {section}{\numberline {6.1}Image modification}{25}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}zMod}{25}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}zBF}{26}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}zEdge}{27}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}Segmentation}{27}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Segmentation results}{27}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Fscore comparison}{28}{subsection.6.2.2}
+\contentsline {subsubsection}{Manual ground truth}{28}{section*.11}
+\contentsline {subsubsection}{Fluorescence ground truth}{28}{section*.12}
+\contentsline {subsection}{\numberline {6.2.3}zMod sensitivity analysis}{28}{subsection.6.2.3}
+\contentsline {chapter}{\numberline {7}Discussion}{29}{chapter.7}
+\contentsline {section}{\numberline {7.1}zEdge segmentation results}{29}{section.7.1}
+\contentsline {section}{\numberline {7.2}zMod sensitivity results}{29}{section.7.2}
+\contentsline {section}{\numberline {7.3}Comparison of preprocessing methods}{30}{section.7.3}
+\contentsline {chapter}{\numberline {8}Conclusion}{31}{chapter.8}
+\contentsline {section}{\numberline {8.1}Summary}{31}{section.8.1}
+\contentsline {section}{\numberline {8.2}Future work}{32}{section.8.2}
+\contentsline {chapter}{Appendix \numberline {A}How to install \LaTeX }{35}{Appendix.a.A}
+\contentsline {chapter}{Appendix \numberline {B}Installing the CUED class file}{39}{Appendix.a.B}

@@ -13,46 +13,23 @@
 %********************************** %First Section  **************************************
 \section{3D confocal imaging}
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{}
-%\caption[]{}
-%\label{fig:}
-%\end{figure}
+In normal cell imaging, a microscope can be calibrated to observe a single focal plane. Confocal microscopy produces a set of images, not just a single image [ref]. The focal length is incremented over a range. The extent of this range is the depth of the 3D environment. At each increment, the microscope produces an image. This is similar to looking through the viewfinder on a personal digital camera and steadily changing the focus, observing objects becoming alternately blurred and focused. Additionally, an area of an experiment can be scanned by moving the sample under the microscope section by section to reduce lens distortion for each image section. 
+
+If the band of wavelengths of light being imaged is small enough, the light detected by the microscope can be can be confined to the focal plane it originated from in reality [ref]. There is little to no interference from fluorescence sources located on other focal planes. The set of images produced via GFP fluorescence detection is therefore more similar to the results of an MRI than to normal photographs.
 
 %********************************** %Second Section  **************************************
 \section{Using GFP fluorescence data}
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{}
-%\caption[]{}
-%\label{fig:}
-%\end{figure}
+There are three advantages of using GFP fluorescence data. Firstly, there is very high contrast between the cell matter and the background. The second is that we can choose to only mark the cells that we wish to observe. The third is that the data is localisable in 3D.
+
+GFP data also has some disadvantages. There are often large amounts of noise, causing cell interiors to be grainy and edges to be poorly defined. Important parts of the cell such as protrusions often contain lower amounts of GFP and are sometimes hard to distinguish from the background, given lower contrast. Another disadvantage is that reflection and other optical effects in the environment could cause higher intensities of GFP at levels where the cell is not present.
 
 %********************************** %Third Section  **************************************
 \section{Using Brightfield image data}
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{}
-%\caption[]{}
-%\label{fig:}
-%\end{figure}
-
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{}
-%\caption[]{}
-%\label{fig:}
-%\end{figure}
+The properties of a single object (such as a cell) will change if viewed at different focal planes. The intensity differences between their edges, their interiors, and the background will change. In order to provide ideal features for segmentation, the best focal plane to observe the cell needs to be located. This plane will contain the darkest edges and the most uniform interiors. It should be noted that a cell can spread over multiple focal planes, depending on the microscope resolution.
 
 %********************************** %Fourth Section  **************************************
 \section{Review of a study using Brightfield data}
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{}
-%\caption[]{}
-%\label{fig:}
-%\end{figure}
+Selinummi et al. [ref] developed a method for preprocessing Brightfield image data for cell segmentation. They reasoned that pixels that contained only background noise would not vary very much in intensity through the z-dimension and that pixels that contained cells would vary more in intensity. They decided that for each pixel in the image, they would calculate various statistical properties: the standard deviation, the inter-quartile range, the coefficient of variation, and the mean absolute deviation. They aimed to quantify a measure of confidence that an x-y pixel contained (at some level in the stack) a part of a cell. Their larger goal was to develop a method that didn't rely on projection of GFP fluorescence data. Instead, they projected the Brightfield data. This would allow studies to be performed without gathering any fluorescence data. Their study includes a pixel-by-pixel analysis of the cell masks produced by the previous GFP method and their new Brightfield projection method. Their results showed high reliability for their method.
