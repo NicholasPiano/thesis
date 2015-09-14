@@ -22,7 +22,7 @@
 \label{fig:zmod_result}
 \end{figure}
 
-Although the cell outlines are not clearly visible, regions that contain cells have very uniform z-locations. Even regions outside the cells have assigned z-locations; this includes background noise and the even lower levels of background noise found in the PDMS pillars.
+Although the cell outlines are not clearly visible, regions that contain cells have very uniform z-locations. Even regions outside the cells have assigned z-locations; this includes background noise and the even lower levels of background noise found in the PDMS pillars. An example is shown in Figure~\ref{fig:zmod_result}. Groups of cells at a low level are outlined in blue, mid level cells adjacent to the barrier in red, and high level cells in green.
 
 It should be noted that this image does not indicate anything about the absolute intensity of the GFP or the Brightfield.
 
@@ -41,7 +41,7 @@ This image does not indicate whether any cells overlap. It also does not reveal 
 \label{fig:r_and_sigma}
 \end{figure}
 
-The two main parameters that we can vary are R and Sigma.
+The two main parameters that we can vary are R and Sigma. The maximum values and their results are shown in Figure~\ref{fig:r_and_sigma}.
 
 R indicates the size of the mask used to search around the x-y position of a pixel for GFP information to use in estimating the z-position of that pixel. If R=1, only information immediately in that pixel is used to make that decision and thus the z-levels of neighbouring GFP profiles do not affect each other.
 
@@ -62,7 +62,7 @@ If Sigma=1, then the transitions between z-levels are sharper. The noise in the 
 \label{fig:zbf_example}
 \end{figure}
 
-All cells previously marked with GFP are now in focus, regardless of their z-level in the 3d environment. Delta-z has been adjusted manually to optimise the features of the cells for segmentation, i.e. where the Brightfield edges are as dark as possible and the Brightfield cell interiors are as uniform as possible. If delta-z were chosen to be higher or lower, the entire environment would appear slightly out of focus. The interiors of the cells are often non-uniform but have a higher intensity than the background. Some protrusions can clearly be seen, but others have been hidden or appear closer to the intensity of the background because they did not contain enough GFP to be adjusted by zMod properly.
+As seen in Figure~\ref{fig:zbf_example}, all cells previously marked with GFP are now in focus, regardless of their z-level in the 3d environment. Delta-z has been adjusted manually to optimise the features of the cells for segmentation, i.e. where the Brightfield edges are as dark as possible and the Brightfield cell interiors are as uniform as possible. If delta-z were chosen to be higher or lower, the entire environment would appear slightly out of focus. The interiors of the cells are often non-uniform but have a higher intensity than the background. Some protrusions can clearly be seen, but others have been hidden or appear closer to the intensity of the background because they did not contain enough GFP to be adjusted by zMod properly.
 
 The intensities in the background (notably the pillars) are highly randomised. This is due to the highly random nature of zMod in these regions but it does not directly affect the segmentation of the cancer cells.
 
@@ -77,7 +77,7 @@ There are some cells that appear out-of-focus such as within, above, and below t
 \label{fig:zedge_example}
 \end{figure}
 
-The edges drawn on zEdge are similar to the Brightfield cell boundaries but are more distinct and regular. These edges closely approximate the true boundaries of the cells. They are also better defined, which will prevent the segmentation from spilling over into the background. The edges drawn in the background are highly randomised, but this will have no effect on segmentation because there are no markers in the background.
+The edges drawn on zEdge are similar to the Brightfield cell boundaries but are more distinct and regular, shown in Figure~\ref{fig:zedge_example}. These edges closely approximate the true boundaries of the cells. They are also better defined, which will prevent the segmentation from spilling over into the background. The edges drawn in the background are highly randomised, but this will have no effect on segmentation because there are no markers in the background.
 
 %********************************** %Second Section  **************************************
 \section{Segmentation}
@@ -91,7 +91,7 @@ The edges drawn on zEdge are similar to the Brightfield cell boundaries but are 
 \label{fig:zedge_segmentation}
 \end{figure}
 
-Most of the segmentation results very closely match the dark edges of the Brightfield. Some of the segmentation fails, especially when the interior of the cell is very non-uniform. In the bottom left of the image, there is a cluster of cells, in which there is a cell at the centre of this cluster for which segmentation has failed. The protrusions are not very well recognised, either because zEdge is limiting the protrusions or the protrusions are not distinct enough from the background because of the lack of GFP within them.
+Most of the segmentation results, shown in Figure~\ref{fig:zedge_segmentation}, very closely match the dark edges of the Brightfield. Some of the segmentation fails, especially when the interior of the cell is very non-uniform. In the bottom left of Figure~\ref{fig:zedge_segmentation}, there is a cluster of cells, in which there is a cell at the centre of this cluster for which segmentation has failed. The protrusions are not very well recognised, either because zEdge is limiting the protrusions or the protrusions are not distinct enough from the background because of the lack of GFP within them.
 
 \begin{figure}[htbp!]
 \centering
@@ -100,7 +100,7 @@ Most of the segmentation results very closely match the dark edges of the Bright
 \label{fig:accurate_zedge}
 \end{figure}
 
-This image, taken from another experiment from which we gathered data, is included for illustrative purposes. In this series, the cell protrusions contain more GFP and extend further from the cells. This image showcases the results of applying the zMod method more clearly in terms of protrusions. Particularly noteworthy are Cells 43, 44, and 51, whose recognitions extend very far into their protrusions with no spillover effects. Admittedly, the protrusions are still longer than the segmentation results, due to the boundaries imposed by zEdge.
+Figure~\ref{fig:accurate_zedge}, taken from another experiment from which we gathered data, is included for illustrative purposes. In this series, the cell protrusions contain more GFP and extend further from the cells. This image showcases the results of applying the zMod method more clearly in terms of protrusions. Particularly noteworthy are Cells 43, 44, and 51, whose recognitions extend very far into their protrusions with no spillover effects. Admittedly, the protrusions are still longer than the segmentation results, due to the boundaries imposed by zEdge.
 
 \subsection{Fscore comparison}
 
@@ -113,7 +113,7 @@ This image, taken from another experiment from which we gathered data, is includ
 \label{fig:manual_ground}
 \end{figure}
 
-In the graph, we take the result of manual segmentation to be the ground truth. The line labelled zMod represents the results of the method we propose. The line labelled bMod represents the results of the method used by Selinummi et al. The line labelled gMod represents the result of the segmentation of the GFP maximum, in which the maximum of each 3D profile in z is selected as the value for that 2D x-y position. gMod is used as ground truth in the paper by Selinummi et al.
+In Figure~\ref{fig:manual_ground}, we take the result of manual segmentation to be the ground truth. The line labelled zMod represents the results of the method we propose. The line labelled bMod represents the results of the method used by Selinummi et al. The line labelled gMod represents the result of the segmentation of the GFP maximum, in which the maximum of each 3D profile in z is selected as the value for that 2D x-y position. gMod is used as ground truth in the paper by Selinummi et al.
 
 All three of the Fscore values over time stay quite consistent. zMod has a greater median value than that of either gMod (Selinummi's ground truth) or bMod (their test method).
 
@@ -126,7 +126,7 @@ All three of the Fscore values over time stay quite consistent. zMod has a great
 %\label{fig:gfp_maximum}
 %\end{figure}
 
-In the graph, both of the methods zMod and bMod, with reference to maximum fluorescence levels used as ground truth (as seen in the Selinummi paper), have very constant median Fscores. The zMod Fscore is above the bMod Fscore.
+In Figure~\ref{fig:gfp_maximum}, both of the methods zMod and bMod, with reference to maximum fluorescence levels used as ground truth (as seen in the Selinummi paper), have very constant median Fscores. The zMod Fscore is above the bMod Fscore.
 
 \subsection{zMod sensitivity analysis}
 
@@ -137,7 +137,7 @@ In the graph, both of the methods zMod and bMod, with reference to maximum fluor
 %\label{fig:fscore_sigma3}
 %\end{figure}
 
-The Fscore for our method, zMod, does not vary significantly with increasing R. This means that the quality of the segmentation, using standard values for segmentation parameters, is independent of the R-value or the size of the mask linearly mixing the z-values. This would not necessarily be the case with large numbers of cells that overlapped in the z-dimension.
+The Fscore for our method, zMod, does not vary significantly with increasing R, as shown in Figure~\ref{fig:fscore_sigma3}. This means that the quality of the segmentation, using standard values for segmentation parameters, is independent of the R-value or the size of the mask linearly mixing the z-values. This would not necessarily be the case with large numbers of cells that overlapped in the z-dimension.
 
 %\begin{figure}[htbp!]
 %\centering
@@ -146,4 +146,4 @@ The Fscore for our method, zMod, does not vary significantly with increasing R. 
 %\label{fig:fscore_r3}
 %\end{figure}
 
-Holding R constant, the Fscore does not vary significantly with increasing Sigma. This indicates that the smoothing of the GFP in 2D has little effect on zMod and, in turn, on zEdge.
+Holding R constant, the Fscore does not vary significantly with increasing Sigma, as shown in Figure~\ref{fig:fscore_r3}. This indicates that the smoothing of the GFP in 2D has little effect on zMod and, in turn, on zEdge.

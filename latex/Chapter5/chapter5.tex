@@ -37,7 +37,7 @@ We make the following definitions:
 
 In addition, some assumptions are made about the environment and the imaging process:
 \begin{enumerate}
-\item In this 3D reconstruction of the GFP, cells are shown as flat discs in the z-dimension. Unfortunately, they are surrounded by high levels of noise. We can't trust the GFP to produce an accurate 3D reconstruction of the cells, but we assume that the vertical position in z of maximum GFP intensity corresponds with the z-location of the cell in reality.
+\item In this 3D reconstruction of the GFP, cells are shown as flat discs in the z-dimension. Unfortunately, they are surrounded by high levels of noise, shown in Figure~\ref{fig:gfp_3d_recon}. We can't trust the GFP to produce an accurate 3D reconstruction of the cells, but we assume that the vertical position in z of maximum GFP intensity corresponds with the z-location of the cell in reality.
 \item We assume for our method that the 2D intensity discontinuities of the Brightfield edges can be approximated by a single function. In reality, even within a single cell, the functional form of the edge discontinuity can change significantly.
 \end{enumerate}
 
@@ -50,16 +50,16 @@ In addition, some assumptions are made about the environment and the imaging pro
 \label{fig:3D_gfp_profile}
 \end{figure}
 
-In our experimental setup, the cells have very high fluorescence intensity compared to the background environment. Using the data from the GFP channel, we create a profile for each pixel. This GFP pixel profile is the basis for our combination algorithm.
+In our experimental setup, the cells have very high fluorescence intensity compared to the background environment. Using the data from the GFP channel, we create a profile for each pixel. This GFP pixel profile is the basis for our combination algorithm. An example for a single pixel is shown in Figure~\ref{fig:3D_gfp_profile}
 
-If the profile does not pass through a cell, it will be comprised only of GFP background noise. The distribution of its values will have low variance and be quite flat. Conversely, over a z-range where a GFP pixel profile passes through a cell instance, the profile will contain very high intensity values. The distribution will have high variance and a peak will be visible. In general, the description of a pixel profile that intercepts a cell is as follows: It will start at a low value where the cell is not present, slowly increase to a maximum at the centre of the cell in the z-dimension, and decrease again on the other side of the cell. If a profile passes through the edge of a cell, it will still show a peak, but the peak will be smaller and less distinct.
+If the profile does not pass through a cell, it will be comprised only of GFP background noise. The distribution of its values will have low variance and be quite flat. Conversely, over a z-range where a GFP pixel profile passes through a cell instance, the profile will contain very high intensity values. The distribution will have high variance and a peak will be visible. In general, the description of a pixel profile that intercepts a cell is as follows: It will start at a low value where the cell is not present, slowly increase to a maximum at the centre of the cell in the z-dimension, and decrease again on the other side of the cell. If a profile passes through the edge of a cell, it will still show a peak, but the peak will be smaller and less distinct. These types of peak can be compared in Figure~\ref{fig:gfp_profile_scatter}.
 
 We investigated three properties of the profile intensity distributions in particular: The mean, the variance, and the z-location of the profile peak.
 
 \begin{figure}[htbp!]
 \centering
 \includegraphics[width=1.0\textwidth]{412-scatter}
-\caption[GFP profile types scatter plot]{A scatter plot of GFP profile mean value against the variance. Several different types of profiles can be distinguished. Profiles from the centres of cells are found in the top left with low means and high variances. Blue points represent manually chosen points. Edge profiles cluster in a large group in the centre with median mean values and median variances. Points in the background tend to have a high mean and low variance. These are normalised values, so high mean inidicates a very flat distribution.}
+\caption[GFP profile types scatter plot]{A scatter plot of GFP profile mean value against the variance. Several different types of profiles can be distinguished. Profiles from the centres of cells are found in the top left with low means and high variances. Blue points represent manually chosen points. Edge profiles cluster in a large group in the centre with median mean values and median variances. Points in the background tend to have a high mean and low variance. These are normalised values, so high mean indicates a very flat distribution.}
 \label{fig:gfp_profile_scatter}
 \end{figure}
 
@@ -93,7 +93,7 @@ A user might spend 30 minutes to an hour tracking cells through a typical series
 
 We use some image processing to improve the contrast between the cells and the rest of the environment. This makes the cell locations clearer for the user and increases the speed of performing manual tracking.
 
-From each 3D GFP image stack, we produce a new 2D image that we term zMean. We take each GFP pixel profile, normalise the intensities by dividing every value by the maximum value (the height of the GFP intensity peak), and then calculate the mean of the normalised distribution. Profiles with peaks will have low normalised means. Profiles of background noise will have high normalised means. We therefore invert the mean, so that this algorithm will produce a high value for a profile that passes through a cell and low value for one that contains only background noise. We then store this value at the corresponding pixel in zMean.
+From each 3D GFP image stack, we produce a new 2D image that we term zMean. We take each GFP pixel profile, normalise the intensities by dividing every value by the maximum value (the height of the GFP intensity peak), and then calculate the mean of the normalised distribution. Profiles with peaks will have low normalised means. Profiles of background noise will have high normalised means. We therefore invert the mean, so that this algorithm will produce a high value for a profile that passes through a cell and low value for one that contains only background noise. We then store this value at the corresponding pixel in zMean. The final image is shown in Figure~\ref{fig:zmean_example}
 
 \begin{figure}[htbp!]
 \centering
@@ -102,7 +102,7 @@ From each 3D GFP image stack, we produce a new 2D image that we term zMean. We t
 \label{fig:zmean_example}
 \end{figure}
 
-We then multiply each pixel value in zBF by the corresponding pixel value in zMean. This raises the intensity of the cancer cells and darkens everything else in the image. We term the resulting image zComp.
+We then multiply each pixel value in zBF by the corresponding pixel value in zMean. This raises the intensity of the cancer cells and darkens everything else in the image. We term the resulting image zComp, shown in Figure~\ref{fig:zcomp}.
 
 \begin{figure}[htbp!]
 \centering
@@ -128,7 +128,7 @@ It should be noted that some background noise pixels elsewhere in the image migh
 \label{fig:zdiff}
 \end{figure}
 
-zDiff is a 2D image with large, incoherent blobs that lack detail. However, each blob defines the limit of relevance within an image for a particular cell, according to the GFP. We can use this to limit the effect of a CellProfiler misrecognition error. We therefore use the blob outlines of zDiff to draw artificially darkened edges onto zBF. CellProfiler misrecognitions will generally not be able to spill out beyond these strengthened edges. We term the resulting image zEdge.
+zDiff is a 2D image with large, incoherent blobs that lack detail, as in Figure~\ref{fig:zdiff}. However, each blob defines the limit of relevance within an image for a particular cell, according to the GFP. We can use this to limit the effect of a CellProfiler misrecognition error. We therefore use the blob outlines of zDiff to draw artificially darkened edges onto zBF. CellProfiler misrecognitions will generally not be able to spill out beyond these strengthened edges. We term the resulting image zEdge.
 
 \section{Sensitivity analysis of zMod parameters}
 
