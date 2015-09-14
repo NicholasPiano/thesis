@@ -14,13 +14,13 @@
 \section{Motivation of the current project} %Section - 1.1
 \label{section1.1}
 
-In cell microbiology and related fields, large amounts of cell image data for study are commonly generated using a confocal microscope. The processing of this data often relies on cell segmentation, or the identification of the boundaries of each cell in an image.  Manual segmentation of cells in microscopy is often time-consuming. Algorithms exist that will segment cells automatically, but they often have some important limitations.
+In cell microbiology and related fields, large amounts of cell image data for study are commonly generated using a confocal microscope. The processing of this data often relies on cell segmentation, or the identification of the boundaries of each cell in an image.~\cite{liao} Manual segmentation of cells in microscopy is often time-consuming. Algorithms exist that will segment cells automatically, but they often have some important limitations.
 
-While cells can be imaged \emph{in vivo}, 3D PMDS (plastic) environments containing cells can be used to simulate organs or blood vessels.  This provides a more convenient and repeatable imaging environment Cells may be located at different heights within these environments. In an image produced at any particular focal length, some cells may be blurred or distorted. A confocal microscope can be used to produce a set of images using a range of focal lengths. 
+While cells can be imaged \emph{in vivo}, 3D PMDS (plastic) environments containing cells can be used to simulate organs or blood vessels.~\cite{huh} This provides a more convenient and repeatable imaging environment Cells may be located at different heights within these environments. In an image produced at any particular focal length, some cells may be blurred or distorted. A confocal microscope can be used to produce a set of images using a range of focal lengths.
 
 Available cell segmentation software operates best using 2D images that contain consistent cell features. Any single 2D image slice from a 3D image stack will be likely to include blurred and distorted cells. It is also difficult to perform manual segmentation on cells that are out-of-focus in a 2D image.
 
-A confocal microscope can also be used to produce images using GFP fluorescence data (instead of using white light), which provides 3D spatial information about each cell.  Cell segmentation algorithms can also be applied to GFP images. However, the results are again unsatisfactory, as the GFP intensity is often low in cell nuclei and protrusions, causing them to be omitted from the segmentation.
+A confocal microscope can also be used to produce images using GFP fluorescence data (instead of using white light), which provides 3D spatial information about each cell.~\cite{booth}~\cite{carlsson} Cell segmentation algorithms can also be applied to GFP images. However, the results are again unsatisfactory, as the GFP intensity is often low in cell nuclei and protrusions, causing them to be omitted from the segmentation.~\cite{arce}
 
 The aim of this project is to find a robust, accurate method that uses GFP data about the 3D cell environment to preprocess Brightfield (visible light) image data into a form that cell segmentation algorithms can process more easily.
 

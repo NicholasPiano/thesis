@@ -22,7 +22,7 @@
 \label{fig:digital_image_sample_bf}
 \end{figure}
 
-The ability to segment cells is dependent on a mathematical description of digital images. Images are stored as 2D arrays of pixel intensities . Specifying two coordinates will access a single intensity value. This can be thought of as a matrix and is subject to many of the same algebra and element-wise operations. Image manipulation is the use of various algorithmic techniques to mathematically describe features and search for similar patterns within image data.
+The ability to segment cells is dependent on a mathematical description of digital images. Images are stored as 2D arrays of pixel intensities~\cite{glassner}. Specifying two coordinates will access a single intensity value. This can be thought of as a matrix and is subject to many of the same algebra and element-wise operations. Image manipulation is the use of various algorithmic techniques to mathematically describe features and search for similar patterns within image data.
 
 We use the term "pixel" in this paper to refer specifically to the data structure that holds one of these intensity values, not to the physical surface section in a detector. The data structure can be visualised as a parking space, into which "cars" (intensity values) are inserted. In this analogy, an image data structure is a large rectangular car park. An example of a Brightfield image is shown in Figure~\ref{fig:digital_image_sample_bf}.
 
@@ -33,11 +33,11 @@ In this section, several key techniques are described that allow images to be se
 \begin{figure}[htbp!]
 \centering
 \includegraphics[width=1.0\textwidth]{212-canny_bf-050714_s13_ch1_t85_z30}
-\caption[The canny filter]{Edges can be found using the Canny Edge Detection Filter.}
+\caption[The Canny filter]{Edges can be found using the Canny Edge Detection Filter.}
 \label{fig:canny_filter_bf}
 \end{figure}
 
-An edge in a 2D image can be described as an "intensity discontinuity"  between two regions. This discontinuity can be described mathematically, and can be approximated by a number of functions, such as the commonly-used Laplacian of Gaussian function . Through convolution, parts of the image that share the same functional form as the approximating function can be highlighted and deemed to be edge pixels. A popular formalisation of this method is known as the Canny edge detection filter. This works by combining information about the directionality as well as the intensity of edges . An example of this method applied to a Brightfield image is shown in Figure~\ref{fig:canny_filter_bf}.
+An edge in a 2D image can be described as an "intensity discontinuity"~\cite{haralick} between two regions. This discontinuity can be described mathematically, and can be approximated by a number of functions, such as the commonly-used Laplacian of Gaussian function~\cite{sotak}. Through convolution, parts of the image that share the same functional form as the approximating function can be highlighted and deemed to be edge pixels. A popular formalisation of this method is known as the Canny edge detection filter. This works by combining information about the directionality as well as the intensity of edges~\cite{canny}. An example of this method applied to a Brightfield image is shown in Figure~\ref{fig:canny_filter_bf}.
 
 \subsection{Blobs}
 
@@ -48,7 +48,7 @@ An edge in a 2D image can be described as an "intensity discontinuity"  between 
 \label{fig:blob_detection_bf}
 \end{figure}
 
-A blob is a continuous region of uniform colour in an image. "Uniform" means a single colour or slight variations around a single colour. Blobs are often associated with objects. A blob could represent the interior of a cell object, for example. Different objects that share similar properties might contain blobs of similar size or shape. In a similar way to edges, blobs can be convolved with an approximating function, often a Gaussian kernel . A Gaussian kernel of a defined size will highlight blobs of a similar size, as shown in Figure~\ref{fig:blob_detection_bf} using a Gaussian filter of size 5 pixels. Boundaries between blobs are edges.
+A blob is a continuous region of uniform colour in an image. "Uniform" means a single colour or slight variations around a single colour. Blobs are often associated with objects. A blob could represent the interior of a cell object, for example. Different objects that share similar properties might contain blobs of similar size or shape. In a similar way to edges, blobs can be convolved with an approximating function, often a Gaussian kernel~\cite{lindeberg}. A Gaussian kernel of a defined size will highlight blobs of a similar size, as shown in Figure~\ref{fig:blob_detection_bf} using a Gaussian filter of size 5 pixels. Boundaries between blobs are edges.
 
 \subsection{Complex features and machine learning}
 
