@@ -1,8 +1,8 @@
 http://www.ncbi.nlm.nih.gov/books/NBK26880/
 
-What are brightfield images and how do they relate to the problem of live cell imaging?
+What are Brightfield images and how do they relate to the problem of live cell imaging?
 
-The simplest type of microscopy is Brightfield Microscopy, where the light (usually white) is allowed to pass through or reflect from objects of interest. This produces images that might be seen when looking through a manual microscope lens. There are four basic types of brightfield microscopy:
+The simplest type of microscopy is Brightfield Microscopy, where the light (usually white) is allowed to pass through or reflect from objects of interest. This produces images that might be seen when looking through a manual microscope lens. There are four basic types of Brightfield microscopy:
 
 Table of [name, application, pros, cons] http://www.nature.com/nprot/journal/v7/n9/fig_tab/nprot.2012.096_T1.html
 1. Brightfield illumination: a measure of the light absorbed by the objects.
@@ -24,13 +24,13 @@ INCLUDE FULL CALCULATION WHEN FORMATTED
 
 >>> Transmission and focus limitations
 
-Another disadvantage of brightfield images is their dependence of the location of the focal plane with respect to the objects of interest. If the objects lie in the focal plane, their edges will appear sharp and clearly distinguishable from the background, but outside of the focal plane, objects will become blurred and distorted. The edges of cells when out of focus appear blurred with the background or even lose all contrast and become indistinguishable. In planar environments, this is not a problem, since all objects lie at the same level and the image can be focussed manually or even automatically. Throughout the imaging, the focus can stay fixed and all objects will remain in focus. In extended environments, where cells are free to move vertically, or towards and away from the focal plane, a single focus cannot be used to capture the whole environment. The focus must be fixed at a level that will represent the environment approximately for the duration of the imaging, blurring cells that lie off the focal plane, or the focus must be constant adjusted to capture the greatest number of cells possible. Both methods do not fully capture all available data in the environment.
+Another disadvantage of Brightfield images is their dependence of the location of the focal plane with respect to the objects of interest. If the objects lie in the focal plane, their edges will appear sharp and clearly distinguishable from the background, but outside of the focal plane, objects will become blurred and distorted. The edges of cells when out of focus appear blurred with the background or even lose all contrast and become indistinguishable. In planar environments, this is not a problem, since all objects lie at the same level and the image can be focussed manually or even automatically. Throughout the imaging, the focus can stay fixed and all objects will remain in focus. In extended environments, where cells are free to move vertically, or towards and away from the focal plane, a single focus cannot be used to capture the whole environment. The focus must be fixed at a level that will represent the environment approximately for the duration of the imaging, blurring cells that lie off the focal plane, or the focus must be constant adjusted to capture the greatest number of cells possible. Both methods do not fully capture all available data in the environment.
 
 It should be noted that the type of focus on a cell can be used to distinguish features such as protrusions and the cell nucleus. Moving the cell in and out of focus can reveal details not accessible from looking at a single level. A microscope only observing a single level will miss this extra information.
 
 Things to Google:
 1. Diameter of cell
-2. Maximum resolution of brightfield
+2. Maximum resolution of Brightfield
 3. Cell speed
 4. Size of camera sensors
 5. Blurring, in and out of focus, focal plane.

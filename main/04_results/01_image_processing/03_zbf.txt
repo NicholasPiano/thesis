@@ -10,7 +10,7 @@ Disadvantages
 
 1. Does not avoid unclear or ambiguous edges in the Brightfield.
 
-A major problem in the brightfield channel is distortion. For this reason, most experimental procedures tend to avoid the Brightfield as a source of useful information. Although the zMod image can help to bring objects into focus, any distortion that exists independent of the focus, such as from adjacent or overlapping objects, is not corrected or avoided by the zBF projection.
+A major problem in the Brightfield channel is distortion. For this reason, most experimental procedures tend to avoid the Brightfield as a source of useful information. Although the zMod image can help to bring objects into focus, any distortion that exists independent of the focus, such as from adjacent or overlapping objects, is not corrected or avoided by the zBF projection.
 
 2. Cannot reveal objects that lie underneath other matter.
 

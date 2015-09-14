@@ -1,1 +1,1 @@
-Combine brightfield and gfp profiles
+Combine Brightfield and gfp profiles

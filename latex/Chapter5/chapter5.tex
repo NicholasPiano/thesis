@@ -128,11 +128,11 @@ It should be noted that some background noise pixels elsewhere in the image migh
 \label{fig:zdiff}
 \end{figure}
 
-zDiff is a 2D image with large, incoherent blobs that lack detail, as in Figure~\ref{fig:zdiff}. However, each blob defines the limit of relevance within an image for a particular cell, according to the GFP. We can use this to limit the effect of a CellProfiler misrecognition error. We therefore use the blob outlines of zDiff to draw artificially darkened edges onto zBF. CellProfiler misrecognitions will generally not be able to spill out beyond these strengthened edges. We term the resulting image zEdge.
+zDiff is a 2D image with large, incoherent blobs that lack detail, as in Figure~\ref{fig:zdiff}. However, each blob defines the limit of relevance within an image for a particular cell, according to the GFP. We can use this to limit the effect of a CellProfiler mis-recognition error. We therefore use the blob outlines of zDiff to draw artificially darkened edges onto zBF. CellProfiler mis-recognitions will generally not be able to spill out beyond these strengthened edges. We term the resulting image zEdge.
 
 \section{Sensitivity analysis of zMod parameters}
 
-The masks found by segmentation of zEdge are compared to the masks of some ground truth. In this case, we used manual segmentation for the ground truth. This is also compared firstly to the segmentation that uses the preprocessing method of Selinummi et al. and secondly to their ground truth (the GFP projection segmentation). Selinummi et al. define formulae for precision and recall, which are then combined to give a value for the Fscore.
+The masks found by segmentation of zEdge are compared to the masks of some ground truth. In this case, we used manual segmentation for the ground truth. This is also compared firstly to the segmentation that uses the preprocessing method of Selinummi et al.~\cite{selinummi} and secondly to their ground truth (the GFP projection segmentation). Selinummi et al. define formulae for precision and recall, which are then combined to give a value for the Fscore.
 
 To compare two versions of segmentation of the same cell, one is defined as the ground truth. Observing the segmentation pixel-by-pixel, three parameters are used, true positive (TP), false positive (FP), and false negative (FN). Pixels that are true positive are contained both in the ground truth segmentation and the version of segmentation under testing. False positives are contained in the test segmentation but not in the ground truth. False negatives are contained in the ground truth but not in the test segmentation. These three parameters can be combined into two parameters, precision and recall, which are defined by the following formulas:
 
