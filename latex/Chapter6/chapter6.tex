@@ -113,20 +113,20 @@ Figure~\ref{fig:accurate_zedge}, taken from another experiment from which we gat
 \label{fig:manual_ground}
 \end{figure}
 
-In Figure~\ref{fig:manual_ground}, we take the result of manual segmentation to be the ground truth. The line labelled zMod represents the results of the method we propose. The line labelled bMod represents the results of the method used by Selinummi et al. The line labelled gMod represents the result of the segmentation of the GFP maximum, in which the maximum of each 3D profile in z is selected as the value for that 2D x-y position. gMod is used as ground truth in the paper by Selinummi et al.
+In the graph in Figure~\ref{fig:manual_ground}, we take the result of manual segmentation to be the ground truth. The line labelled zMod represents the results of the method we propose. The line labelled BPP (Brightfield Profile Projection) represents the results of the method used by Selinummi et al. The line labelled GMP (GFP Maximum Projection) represents the result of the segmentation of the GFP maximum, in which the maximum of each 3D profile in z is selected as the value for that 2D x-y position. GMP is used as ground truth in the paper by Selinummi et al.
 
-All three of the Fscore values over time stay quite consistent. zMod has a greater median value than that of either gMod (Selinummi's ground truth) or bMod (their test method).
+All three of the Fscore values over time stay quite consistent. GPP has a greater median value than that of either GMP (Selinummi's ground truth) or BPP (their test method).
 
 \subsubsection{Fluorescence ground truth}
 
 \begin{figure}[htbp!]
 \centering
-\includegraphics[width=1.0\textwidth]{6211-fscore_manual-GT_zmod_r3_s3-gmod-bmod}
+\includegraphics[width=1.0\textwidth]{6211-fscore_gmod-GT_zmod_r3_s3}
 \caption{GFP maximum projection segmentation}
 \label{fig:gfp_maximum}
 \end{figure}
 
-In Figure~\ref{fig:gfp_maximum}, both of the methods zMod and bMod, with reference to maximum fluorescence levels used as ground truth (as seen in the Selinummi paper), have very constant median Fscores. The zMod Fscore is above the bMod Fscore.
+In Figure~\ref{fig:gfp_maximum}, both of the methods BPP and GPP, with reference to maximum fluorescence levels used as ground truth (as seen in the Selinummi paper), have very constant median Fscores. The GPP Fscore is above the BPP Fscore.
 
 \subsection{zMod sensitivity analysis}
 
@@ -137,7 +137,7 @@ In Figure~\ref{fig:gfp_maximum}, both of the methods zMod and bMod, with referen
 \label{fig:fscore_sigma3}
 \end{figure}
 
-The Fscore for our method, zMod, does not vary significantly with increasing R, as shown in Figure~\ref{fig:fscore_sigma3}. This means that the quality of the segmentation, using standard values for segmentation parameters, is independent of the R-value or the size of the mask linearly mixing the z-values. This would not necessarily be the case with large numbers of cells that overlapped in the z-dimension.
+The Fscore for our method, GPP, does not vary significantly with increasing R, as shown in Figure~\ref{fig:fscore_sigma3}. This means that the quality of the segmentation, using standard values for segmentation parameters, is independent of the R-value or the size of the mask linearly mixing the z-values. This would not necessarily be the case with large numbers of cells that overlapped in the z-dimension.
 
 \begin{figure}[htbp!]
 \centering

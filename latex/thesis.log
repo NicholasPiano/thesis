@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  14 SEP 2015 10:29
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  14 SEP 2015 11:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1724,7 +1724,7 @@ t>
 File: Chapter5/Figs/Raster/3D_gfp_extended_tails.png Graphic file (type png)
  <use Chapter5/Figs/Raster/3D_gfp_extended_tails.png>
 Package pdftex.def Info: Chapter5/Figs/Raster/3D_gfp_extended_tails.png used on
- input line 33.
+ input line 34.
 (pdftex.def)             Requested size: 437.46112pt x 250.18431pt.
  [20 <./Chapter5/Figs/Raster/3D_gfp_extended_tails.png>]
 <Chapter5/Figs/Raster/411-profile.png, id=543, 1028.84375pt x 516.93124pt>
@@ -1732,53 +1732,54 @@ File: Chapter5/Figs/Raster/411-profile.png Graphic file (type png)
 
 <use Chapter5/Figs/Raster/411-profile.png>
 Package pdftex.def Info: Chapter5/Figs/Raster/411-profile.png used on input lin
-e 48.
+e 49.
 (pdftex.def)             Requested size: 437.46112pt x 219.79935pt.
  [21 <./Chapter5/Figs/Raster/411-profile.png>]
-<Chapter5/Figs/Raster/412-scatter.png, id=552, 1297.2465pt x 739.3221pt>
+<Chapter5/Figs/Raster/412-scatter.png, id=553, 1297.2465pt x 739.3221pt>
 File: Chapter5/Figs/Raster/412-scatter.png Graphic file (type png)
 
 <use Chapter5/Figs/Raster/412-scatter.png>
 Package pdftex.def Info: Chapter5/Figs/Raster/412-scatter.png used on input lin
-e 61.
+e 62.
 (pdftex.def)             Requested size: 437.46112pt x 249.31302pt.
  [22 <./Chapter5/Figs/Raster/412-scatter.png>] [23] [24]
-<Chapter5/Figs/Raster/zmean_example-050714_s13_ch-zmean-8-3-3_t0_z00.png, id=56
-8, 513.92pt x 513.92pt>
+<Chapter5/Figs/Raster/zmean_example-050714_s13_ch-zmean-8-3-3_t0_z00.png, id=57
+0, 513.92pt x 513.92pt>
 File: Chapter5/Figs/Raster/zmean_example-050714_s13_ch-zmean-8-3-3_t0_z00.png G
 raphic file (type png)
 
 <use Chapter5/Figs/Raster/zmean_example-050714_s13_ch-zmean-8-3-3_t0_z00.png>
 Package pdftex.def Info: Chapter5/Figs/Raster/zmean_example-050714_s13_ch-zmean
--8-3-3_t0_z00.png used on input line 100.
+-8-3-3_t0_z00.png used on input line 101.
 (pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
 
-<Chapter5/Figs/Raster/431-zcomp_example-050714_s13_ch-zcomp_t00_z00.png, id=570
+<Chapter5/Figs/Raster/431-zcomp_example-050714_s13_ch-zcomp_t00_z00.png, id=572
 , 513.92pt x 513.92pt>
 File: Chapter5/Figs/Raster/431-zcomp_example-050714_s13_ch-zcomp_t00_z00.png Gr
 aphic file (type png)
 
 <use Chapter5/Figs/Raster/431-zcomp_example-050714_s13_ch-zcomp_t00_z00.png>
 Package pdftex.def Info: Chapter5/Figs/Raster/431-zcomp_example-050714_s13_ch-z
-comp_t00_z00.png used on input line 109.
+comp_t00_z00.png used on input line 110.
 (pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
 
-Underfull \vbox (badness 4013) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25 <./Chapter5/Figs/Raster/zmean_example-050714_s13_ch-zmean-8-3-3_t0_z00.png
- (PNG copy)>] [26 <./Chapter5/Figs/Raster/431-zcomp_example-050714_s13_ch-zcomp
-_t00_z00.png (PNG copy)>]
-Overfull \hbox (24.4117pt too wide) in paragraph at lines 118--118
+ (PNG copy)>]
+Overfull \hbox (24.4117pt too wide) in paragraph at lines 119--119
 []\T1/ptm/b/n/17.28 Generating zEdge to pre-vent Cell-Pro-filer mis-recognition
 s 
  []
 
-<Chapter5/Figs/Raster/zdiff_example.png, id=580, 513.92pt x 513.92pt>
+[26 <./Chapter5/Figs/Raster/431-zcomp_example-050714_s13_ch-zcomp_t00_z00.png (
+PNG copy)>]
+<Chapter5/Figs/Raster/zdiff_example.png, id=582, 513.92pt x 513.92pt>
 File: Chapter5/Figs/Raster/zdiff_example.png Graphic file (type png)
 
 <use Chapter5/Figs/Raster/zdiff_example.png>
 Package pdftex.def Info: Chapter5/Figs/Raster/zdiff_example.png used on input l
-ine 126.
+ine 127.
 (pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
  [27] [28 <./Chapter5/Figs/Raster/zdiff_example.png (PNG copy)>]) [29]
 \openout2 = `Chapter6/chapter6.aux'.
@@ -1791,7 +1792,7 @@ ine 126.
 Chapter 6.
 
 <Chapter6/Figs/Raster/5111-zmod_example_outline-050714_s13_ch-zmod-8-3-3_t0_z00
-.png, id=604, 513.92pt x 513.92pt>
+.png, id=606, 513.92pt x 513.92pt>
 File: Chapter6/Figs/Raster/5111-zmod_example_outline-050714_s13_ch-zmod-8-3-3_t
 0_z00.png Graphic file (type png)
 
@@ -1801,7 +1802,7 @@ Package pdftex.def Info: Chapter6/Figs/Raster/5111-zmod_example_outline-050714_
 s13_ch-zmod-8-3-3_t0_z00.png used on input line 20.
 (pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
 
-<Chapter6/Figs/Raster/5-combined_R_sigma.png, id=606, 1037.8775pt x 1037.8775pt
+<Chapter6/Figs/Raster/5-combined_R_sigma.png, id=608, 1037.8775pt x 1037.8775pt
 >
 File: Chapter6/Figs/Raster/5-combined_R_sigma.png Graphic file (type png)
  <use Chapter6/Figs/Raster/5-combined_R_sigma.png>
@@ -1811,7 +1812,7 @@ put line 39.
  [31] [32 <./Chapter6/Figs/Raster/5111-zmod_example_outline-050714_s13_ch-zmod-
 8-3-3_t0_z00.png>] [33 <./Chapter6/Figs/Raster/5-combined_R_sigma.png>]
 <Chapter6/Figs/Raster/5121-zbf_example-050714_s13_ch-zbf-8-3-3_t0_z00.png, id=6
-22, 513.92pt x 513.92pt>
+24, 513.92pt x 513.92pt>
 File: Chapter6/Figs/Raster/5121-zbf_example-050714_s13_ch-zbf-8-3-3_t0_z00.png 
 Graphic file (type png)
 
@@ -1823,7 +1824,7 @@ f-8-3-3_t0_z00.png used on input line 60.
 [34] [35 <./Chapter6/Figs/Raster/5121-zbf_example-050714_s13_ch-zbf-8-3-3_t0_z0
 0.png (PNG copy)>]
 <Chapter6/Figs/Raster/5122-zedge_example-050714_s13_ch-zedge-8-3-3_t0_z00.png, 
-id=633, 513.92pt x 513.92pt>
+id=635, 513.92pt x 513.92pt>
 File: Chapter6/Figs/Raster/5122-zedge_example-050714_s13_ch-zedge-8-3-3_t0_z00.
 png Graphic file (type png)
 
@@ -1834,7 +1835,7 @@ zedge-8-3-3_t0_z00.png used on input line 75.
 (pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
 
 <Chapter6/Figs/Raster/5224-zedge_seg-tile_050714_s13_ch-zbf-8-5-5-outline-zcomp
--8-1-1-zedge-8-5-5-TYOGE5XI_t0.png, id=635, 513.92pt x 513.92pt>
+-8-1-1-zedge-8-5-5-TYOGE5XI_t0.png, id=637, 513.92pt x 513.92pt>
 File: Chapter6/Figs/Raster/5224-zedge_seg-tile_050714_s13_ch-zbf-8-5-5-outline-
 zcomp-8-1-1-zedge-8-5-5-TYOGE5XI_t0.png Graphic file (type png)
 
@@ -1845,7 +1846,7 @@ Package pdftex.def Info: Chapter6/Figs/Raster/5224-zedge_seg-tile_050714_s13_ch
 9.
 (pdftex.def)             Requested size: 437.46112pt x 437.46924pt.
 
-<Chapter6/Figs/Raster/good_protrusions-tile_260714_s14_t016.png, id=638, 1025.8
+<Chapter6/Figs/Raster/good_protrusions-tile_260714_s14_t016.png, id=640, 1025.8
 325pt x 508.90125pt>
 File: Chapter6/Figs/Raster/good_protrusions-tile_260714_s14_t016.png Graphic fi
 le (type png)
@@ -1855,7 +1856,7 @@ Package pdftex.def Info: Chapter6/Figs/Raster/good_protrusions-tile_260714_s14_
 t016.png used on input line 98.
 (pdftex.def)             Requested size: 437.46112pt x 217.02174pt.
 
-<Chapter6/Figs/Raster/6211-fscore_manual-GT_zmod_r3_s3-gmod-bmod.png, id=640, 7
+<Chapter6/Figs/Raster/6211-fscore_manual-GT_zmod_r3_s3-gmod-bmod.png, id=642, 7
 47.2718pt x 747.2718pt>
 File: Chapter6/Figs/Raster/6211-fscore_manual-GT_zmod_r3_s3-gmod-bmod.png Graph
 ic file (type png)
@@ -1871,15 +1872,16 @@ Underfull \vbox (badness 1320) has occurred while \output is active []
 [37 <./Chapter6/Figs/Raster/5122-zedge_example-050714_s13_ch-zedge-8-3-3_t0_z00
 .png (PNG copy)>] [38 <./Chapter6/Figs/Raster/5224-zedge_seg-tile_050714_s13_ch
 -zbf-8-5-5-outline-zcomp-8-1-1-zedge-8-5-5-TYOGE5XI_t0.png (PNG copy)>]
-File: Chapter6/Figs/Raster/6211-fscore_manual-GT_zmod_r3_s3-gmod-bmod.png Graph
-ic file (type png)
+<Chapter6/Figs/Raster/6211-fscore_gmod-GT_zmod_r3_s3.png, id=656, 578.16pt x 43
+3.62pt>
+File: Chapter6/Figs/Raster/6211-fscore_gmod-GT_zmod_r3_s3.png Graphic file (typ
+e png)
+ <use Chapter6/Figs/Raster/6211-fscore_gmod-GT_zmod_r3_s3.png>
+Package pdftex.def Info: Chapter6/Figs/Raster/6211-fscore_gmod-GT_zmod_r3_s3.pn
+g used on input line 124.
+(pdftex.def)             Requested size: 437.46112pt x 328.09238pt.
 
-<use Chapter6/Figs/Raster/6211-fscore_manual-GT_zmod_r3_s3-gmod-bmod.png>
-Package pdftex.def Info: Chapter6/Figs/Raster/6211-fscore_manual-GT_zmod_r3_s3-
-gmod-bmod.png used on input line 124.
-(pdftex.def)             Requested size: 437.46112pt x 437.4658pt.
-
-<Chapter6/Figs/Raster/6213-fscore_R_for_sigma3.png, id=655, 578.16pt x 433.62pt
+<Chapter6/Figs/Raster/6213-fscore_R_for_sigma3.png, id=658, 578.16pt x 433.62pt
 >
 File: Chapter6/Figs/Raster/6213-fscore_R_for_sigma3.png Graphic file (type png)
 
@@ -1887,10 +1889,14 @@ File: Chapter6/Figs/Raster/6213-fscore_R_for_sigma3.png Graphic file (type png)
 Package pdftex.def Info: Chapter6/Figs/Raster/6213-fscore_R_for_sigma3.png used
  on input line 135.
 (pdftex.def)             Requested size: 437.46112pt x 328.09238pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [39 <./Chapter6/Figs/Raster/good_protrusions-tile_260714_s14_t016.png>] [40 <.
-/Chapter6/Figs/Raster/6211-fscore_manual-GT_zmod_r3_s3-gmod-bmod.png>] [41] [42
- <./Chapter6/Figs/Raster/6213-fscore_R_for_sigma3.png>]
-<Chapter6/Figs/Raster/6222-fscore_sigma_for_R3.png, id=679, 578.16pt x 433.62pt
+/Chapter6/Figs/Raster/6211-fscore_manual-GT_zmod_r3_s3-gmod-bmod.png>] [41 <./C
+hapter6/Figs/Raster/6211-fscore_gmod-GT_zmod_r3_s3.png>] [42 <./Chapter6/Figs/R
+aster/6213-fscore_R_for_sigma3.png>]
+<Chapter6/Figs/Raster/6222-fscore_sigma_for_R3.png, id=683, 578.16pt x 433.62pt
 >
 File: Chapter6/Figs/Raster/6222-fscore_sigma_for_R3.png Graphic file (type png)
 
@@ -1909,7 +1915,7 @@ Package pdftex.def Info: Chapter6/Figs/Raster/6222-fscore_sigma_for_R3.png used
 Chapter 7.
 
 <Chapter7/Figs/Raster/5224-zedge_seg-tile_050714_s13_ch-zbf-8-5-5-outline-zcomp
--8-1-1-zedge-8-5-5-TYOGE5XI_t0.png, id=690, 513.92pt x 513.92pt>
+-8-1-1-zedge-8-5-5-TYOGE5XI_t0.png, id=694, 513.92pt x 513.92pt>
 File: Chapter7/Figs/Raster/5224-zedge_seg-tile_050714_s13_ch-zbf-8-5-5-outline-
 zcomp-8-1-1-zedge-8-5-5-TYOGE5XI_t0.png Graphic file (type png)
 
@@ -1922,7 +1928,7 @@ Package pdftex.def Info: Chapter7/Figs/Raster/5224-zedge_seg-tile_050714_s13_ch
  [45] [46 <./Chapter7/Figs/Raster/5224-zedge_seg-tile_050714_s13_ch-zbf-8-5-5-o
 utline-zcomp-8-1-1-zedge-8-5-5-TYOGE5XI_t0.png (PNG copy)>]
 <Chapter7/Figs/Raster/5223-bf_std_seg-tile_050714_s13_ch-zbf-8-5-5-outline-zcom
-p-8-1-1-bmod-PLG5WADE_t0.png, id=702, 513.92pt x 513.92pt>
+p-8-1-1-bmod-PLG5WADE_t0.png, id=706, 513.92pt x 513.92pt>
 File: Chapter7/Figs/Raster/5223-bf_std_seg-tile_050714_s13_ch-zbf-8-5-5-outline
 -zcomp-8-1-1-bmod-PLG5WADE_t0.png Graphic file (type png)
 
@@ -1974,10 +1980,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 185.
  ) 
 Here is how much of TeX's memory you used:
- 21477 strings out of 493488
- 392529 string characters out of 3141326
+ 21483 strings out of 493488
+ 392809 string characters out of 3141326
  462012 words of memory out of 3000000
- 23907 multiletter control sequences out of 15000+200000
+ 23911 multiletter control sequences out of 15000+200000
  50930 words of font info for 179 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,12n,45p,1130b,930s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1988,10 +1994,10 @@ ive/2012/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2012/te
 xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1
 /urw/times/utmri8a.pfb>
-Output written on thesis.pdf (68 pages, 4771620 bytes).
+Output written on thesis.pdf (68 pages, 4798193 bytes).
 PDF statistics:
- 809 PDF objects out of 1000 (max. 8388607)
- 688 compressed objects within 7 object streams
- 185 named destinations out of 1000 (max. 500000)
- 30759 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 814 PDF objects out of 1000 (max. 8388607)
+ 691 compressed objects within 7 object streams
+ 186 named destinations out of 1000 (max. 500000)
+ 30764 words of extra memory for PDF output out of 35830 (max. 10000000)
 
