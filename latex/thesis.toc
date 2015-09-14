@@ -47,10 +47,11 @@
 \contentsline {subsubsection}{Manual ground truth}{39}{section*.22}
 \contentsline {subsubsection}{Fluorescence ground truth}{39}{section*.24}
 \contentsline {subsection}{\numberline {6.2.3}zMod sensitivity analysis}{39}{subsection.6.2.3}
-\contentsline {chapter}{\numberline {7}Discussion}{43}{chapter.7}
-\contentsline {section}{\numberline {7.1}zEdge segmentation results}{43}{section.7.1}
-\contentsline {section}{\numberline {7.2}zMod sensitivity results}{43}{section.7.2}
-\contentsline {section}{\numberline {7.3}Comparison of preprocessing methods}{45}{section.7.3}
-\contentsline {chapter}{\numberline {8}Conclusion}{47}{chapter.8}
-\contentsline {section}{\numberline {8.1}Summary}{47}{section.8.1}
-\contentsline {section}{\numberline {8.2}Future work}{48}{section.8.2}
+\contentsline {chapter}{\numberline {7}Discussion}{45}{chapter.7}
+\contentsline {section}{\numberline {7.1}zEdge segmentation results}{45}{section.7.1}
+\contentsline {section}{\numberline {7.2}zMod sensitivity results}{45}{section.7.2}
+\contentsline {section}{\numberline {7.3}Comparison of preprocessing methods}{47}{section.7.3}
+\contentsline {chapter}{\numberline {8}Conclusion}{49}{chapter.8}
+\contentsline {section}{\numberline {8.1}Summary}{49}{section.8.1}
+\contentsline {section}{\numberline {8.2}Future work}{50}{section.8.2}
+\contentsline {chapter}{References}{53}{chapter*.30}

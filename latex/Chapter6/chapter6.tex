@@ -119,31 +119,31 @@ All three of the Fscore values over time stay quite consistent. zMod has a great
 
 \subsubsection{Fluorescence ground truth}
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{6211-fscore_gmod-GT_zmod_r3_s3}
-%\caption{GFP maximum projection segmentation}
-%\label{fig:gfp_maximum}
-%\end{figure}
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=1.0\textwidth]{6211-fscore_manual-GT_zmod_r3_s3-gmod-bmod}
+\caption{GFP maximum projection segmentation}
+\label{fig:gfp_maximum}
+\end{figure}
 
 In Figure~\ref{fig:gfp_maximum}, both of the methods zMod and bMod, with reference to maximum fluorescence levels used as ground truth (as seen in the Selinummi paper), have very constant median Fscores. The zMod Fscore is above the bMod Fscore.
 
 \subsection{zMod sensitivity analysis}
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{6213-fscore_R_for_sigma3}
-%\caption{Fscore results for increasing R at constant $\Sigma=3$}
-%\label{fig:fscore_sigma3}
-%\end{figure}
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=1.0\textwidth]{6213-fscore_R_for_sigma3}
+\caption{Fscore results for increasing R at constant $\Sigma=3$}
+\label{fig:fscore_sigma3}
+\end{figure}
 
 The Fscore for our method, zMod, does not vary significantly with increasing R, as shown in Figure~\ref{fig:fscore_sigma3}. This means that the quality of the segmentation, using standard values for segmentation parameters, is independent of the R-value or the size of the mask linearly mixing the z-values. This would not necessarily be the case with large numbers of cells that overlapped in the z-dimension.
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{6222-fscore_sigma_for_R3}
-%\caption{Fscore results for increasing $\Sigma$ at constant $R=3$}
-%\label{fig:fscore_r3}
-%\end{figure}
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=1.0\textwidth]{6222-fscore_sigma_for_R3}
+\caption{Fscore results for increasing $\Sigma$ at constant $R=3$}
+\label{fig:fscore_r3}
+\end{figure}
 
 Holding R constant, the Fscore does not vary significantly with increasing Sigma, as shown in Figure~\ref{fig:fscore_r3}. This indicates that the smoothing of the GFP in 2D has little effect on zMod and, in turn, on zEdge.

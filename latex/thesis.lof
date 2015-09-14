@@ -21,7 +21,10 @@
 \contentsline {figure}{\numberline {6.5}{\ignorespaces zEdge segmentation\relax }}{38}{figure.caption.20}
 \contentsline {figure}{\numberline {6.6}{\ignorespaces Accurately segmented protrusions using zEdge.\relax }}{39}{figure.caption.21}
 \contentsline {figure}{\numberline {6.7}{\ignorespaces Manual ground truth results\relax }}{40}{figure.caption.23}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces GFP maximum projection segmentation\relax }}{41}{figure.caption.25}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Fscore results for increasing R at constant $\Sigma =3$\relax }}{42}{figure.caption.26}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Fscore results for increasing $\Sigma $ at constant $R=3$\relax }}{43}{figure.caption.27}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces zEdge segmentation\relax }}{44}{figure.caption.25}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces bMod segmentation\relax }}{46}{figure.caption.26}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces zEdge segmentation\relax }}{46}{figure.caption.28}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces bMod segmentation\relax }}{48}{figure.caption.29}
 \addvspace {10\p@ }
