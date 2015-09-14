@@ -37,7 +37,7 @@ We make the following definitions:
 
 In addition, some assumptions are made about the environment and the imaging process:
 \begin{enumerate}
-\item In this 3D reconstruction of the GFP, cells are shown as flat discs in the z-dimension. Unfortunately, they are surrounded by high levels of noise, shown in Figure~\ref{fig:gfp_3d_recon}. We can't trust the GFP to produce an accurate 3D reconstruction of the cells, but we assume that the vertical position in z of maximum GFP intensity corresponds with the z-location of the cell in reality.
+\item Figure~\ref{fig:gfp_3d_recon} shows 3D reconstruction of the GFP, in which cells are shown as flat discs in the z-dimension. Unfortunately, they are surrounded by high levels of noise. We can't trust the GFP to produce an accurate 3D reconstruction of the cells, but we assume that the vertical position in z of maximum GFP intensity corresponds with the z-location of the cell in reality.
 \item We assume for our method that the 2D intensity discontinuities of the Brightfield edges can be approximated by a single function. In reality, even within a single cell, the functional form of the edge discontinuity can change significantly.
 \end{enumerate}
 
@@ -93,7 +93,7 @@ A user might spend 30 minutes to an hour tracking cells through a typical series
 
 We use some image processing to improve the contrast between the cells and the rest of the environment. This makes the cell locations clearer for the user and increases the speed of performing manual tracking.
 
-From each 3D GFP image stack, we produce a new 2D image that we term zMean. We take each GFP pixel profile, normalise the intensities by dividing every value by the maximum value (the height of the GFP intensity peak), and then calculate the mean of the normalised distribution. Profiles with peaks will have low normalised means. Profiles of background noise will have high normalised means. We therefore invert the mean, so that this algorithm will produce a high value for a profile that passes through a cell and low value for one that contains only background noise. We then store this value at the corresponding pixel in zMean. The final image is shown in Figure~\ref{fig:zmean_example}
+From each 3D GFP image stack, we produce a new 2D image that we term zMean. We take each GFP pixel profile, normalise the intensities by dividing every value by the maximum value (the height of the GFP intensity peak), and then calculate the mean of the normalised distribution. Profiles with peaks will have low normalised means. Profiles of background noise will have high normalised means. We therefore invert the mean, so that this algorithm will produce a high value for a profile that passes through a cell and low value for one that contains only background noise. We then store this value at the corresponding pixel in zMean. The final image is shown in Figure~\ref{fig:zmean_example}.
 
 \begin{figure}[htbp!]
 \centering
@@ -143,11 +143,11 @@ Precision = \frac{TP}{TP + FP}
 \begin{equation}
 Recall = \frac{TP}{TP + FN}
 \end{equation}
-
+\\
 A perfect precision indicates that every pixel in the test also exists in the ground truth. A perfect recall indicates that every pixel in the ground truth is reproduced in the test. The reduced mean of these two parameters is termed the Fscore of the test segmentation algorithm. The Fscore is defined by the following formula:
 
 \begin{equation}
 Fscore = \frac{2 \times Precision \times Recall}{Precision + Recall}
 \end{equation}
-
+\\
 An Fscore of 1.0 indicates that the test segmentation has produced an exact replica of the ground truth. An Fscore of 0.0 indicates that the recognition produced by the test segmentation does not correspond at any point to the ground truth.
