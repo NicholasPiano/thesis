@@ -6,11 +6,66 @@ Aur{\'e}lien~Rizk, Gr{\'e}gory~Paul, P.~I. (2014).
   fluorescence microscopy images using squassh.
 \newblock {\em Nature Protocols}, 10(1038).
 
+\bibitem[Canny, 1986]{canny}
+Canny, J. (1986).
+\newblock A computational approach to edge detection.
+\newblock {\em IEEE Transactions on pattern analysis and machine intelligence}.
+
 \bibitem[Cecilia~Zanella, 2009]{zanella}
 Cecilia~Zanella, Metteo~Campana, B.~R. (2009).
 \newblock Cells segmentation from 3-d confocal images of early zebrafish
   embryogenesis.
 \newblock {\em IEEE Transactions on image processing}.
+
+\bibitem[Dongeun~Huh and Ingber, 2011]{huh}
+Dongeun~Huh, G. A.~H. and Ingber, D.~E. (2011).
+\newblock From 3d cell culture to organs-on-chips.
+\newblock {\em Cell}, 21(12).
+
+\bibitem[Fidler, 2003]{fidler}
+Fidler, I.~J. (2003).
+\newblock The pathogenesis of cancer metastasis: the `seed and soil' hypothesis
+  revisited.
+\newblock {\em Nature Reviews}.
+
+\bibitem[Glassner, 1995]{glassner}
+Glassner, A.~S. (1995).
+\newblock {\em Principles of digital image synthesis}, volume~1.
+\newblock Elsevier.
+
+\bibitem[Haralick, 1980]{haralick}
+Haralick, R.~M. (1980).
+\newblock Edge and region analysis for digital image data.
+\newblock {\em Computer graphics and image processing}.
+
+\bibitem[K.~Carlsson, 1985]{carlsson}
+K.~Carlsson, P. E.~D. (1985).
+\newblock Three-dimensional microscopy using a confocal laser scanning
+  microscope.
+\newblock {\em Optics letters}.
+
+\bibitem[Lapotko and Zharov, 2005]{lapotko}
+Lapotko, D.~O. and Zharov, V.~P. (2005).
+\newblock Spectral evaluation of laser-induced cell damage with photothermal
+  microscopy.
+\newblock {\em Lasers in Surgery and Medicine}.
+
+\bibitem[Liao and Deng, 2002]{liao}
+Liao, Q. and Deng, Y. (2002).
+\newblock An accurate segmentation method for white blood cell images.
+\newblock In {\em Biomedical Imaging, 2002. Proceedings. 2002 IEEE
+  International Symposium on}, pages 245--248.
+
+\bibitem[Lindeberg and Eklundh, 1990]{lindeberg}
+Lindeberg, T. and Eklundh, J.-O. (1990).
+\newblock Scale detection and region extraction from a scale-space primal
+  sketch.
+\newblock {\em IEEE}.
+
+\bibitem[Martin J.~Booth, 2002]{booth}
+Martin J.~Booth, Mark A. A.~Neil, R.~J. (2002).
+\newblock Adaptive aberration correction in a confocal microscope.
+\newblock {\em PNAS}.
 
 \bibitem[Min~Liua, 2011]{liu}
 Min~Liua, Anirban~Chakrabortya, D.~S. (2011).
@@ -29,6 +84,12 @@ Selinummi~J, Ruusuvuori~P, P. I. e.~a. (2009).
 \newblock Bright field microscopy as an alternative to whole cell fluorescence
   in automated analysis of macrophage images.
 \newblock {\em PLoS ONE}, 4(10).
+
+\bibitem[Sotak and Boyer, 1989]{sotak}
+Sotak, G.~E. and Boyer, K.~L. (1989).
+\newblock The laplacian-of-gaussian kernel: A formal analysis and design
+  procedure for fast, accurate convolution and full-frame output.
+\newblock {\em Computer vision, graphics, and image processing}.
 
 \bibitem[Stephan Hugo~Arce, 2013]{arce}
 Stephan Hugo~Arce, Pei Hsan~Wu, Y.~T. (2013).
