@@ -22,7 +22,7 @@
 \label{fig:digital_image_sample_bf}
 \end{figure}
 
-The ability to segment cells is dependent on a mathematical description of digital images. Images are stored as 2D arrays of pixel intensities [ref]. Specifying two coordinates will access a single intensity value. This can be thought of as a matrix and is subject to many of the same algebra and element-wise operations. Image manipulation is the use of various algorithmic techniques to mathematically describe features and search for similar patterns within image data. 
+The ability to segment cells is dependent on a mathematical description of digital images. Images are stored as 2D arrays of pixel intensities [ref]. Specifying two coordinates will access a single intensity value. This can be thought of as a matrix and is subject to many of the same algebra and element-wise operations. Image manipulation is the use of various algorithmic techniques to mathematically describe features and search for similar patterns within image data.
 
 We use the term "pixel" in this paper to refer specifically to the data structure that holds one of these intensity values, not to the physical surface section in a detector. The data structure can be visualised as a parking space, into which "cars" (intensity values) are inserted. In this analogy, an image data structure is a large rectangular car park.
 
@@ -75,9 +75,9 @@ Cell segmentation algorithms use a variety of image processing techniques. A com
 
 \begin{figure}[htbp!]
 \centering
-\includegraphics[width=1.0\textwidth]{213-blobs_bf-050714_s13_ch1_t85_z30}
-\caption[Blob detection]{Contiguous blobs of colour can be found using a Gaussian filter.}
-\label{fig:blob_detection_bf}
+\includegraphics[width=1.0\textwidth]{bad_segmentation-tile_050714_s13_ch-zbf-8-5-5-outline-zcomp-8-1-1-zedge-8-1-1-YUZ29SWD_t2}
+\caption[Cell segmentation error examples]{Examples of cell segmentation errors. Cell recognition extends into the background if the edge is not clearly defined.}
+\label{fig:cell_segmentation_errors}
 \end{figure}
 
 In the group of three cells at the top of the image, all three of the recognitions fail, as the segmentation spills out of the cells into the background. We refer to these as segmentation errors or mis-recognitions.

@@ -28,12 +28,12 @@ We make the following definitions:
 \item A "cell instance" is the data object that contains a group of cell pixels that comprise one particular cell at a particular frame.
 \end{enumerate}
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{211-digital_image_sample_bf-050714_s13_ch1_t85_z30}
-%\caption[Brightfield image sample]{An example of a typical Brightfield image taken with a confocal microscope.}
-%\label{fig:digital_image_sample_bf}
-%\end{figure}
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=1.0\textwidth]{3D_gfp_extended_tails}
+\caption[GFP 3D reconstruction]{Extended regions of GFP intensity can be seen trailing from otherwise normal lenticular reconstructions of cells in 3D.}
+\label{fig:gfp_3d_recon}
+\end{figure}
 
 In addition, some assumptions are made about the environment and the imaging process:
 \begin{enumerate}
@@ -43,12 +43,12 @@ In addition, some assumptions are made about the environment and the imaging pro
 
 \section{GFP profile}
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{211-digital_image_sample_bf-050714_s13_ch1_t85_z30}
-%\caption[Brightfield image sample]{An example of a typical Brightfield image taken with a confocal microscope.}
-%\label{fig:digital_image_sample_bf}
-%\end{figure}
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=1.0\textwidth]{411-profile}
+\caption[GFP profile]{The 3D GFP profile.}
+\label{fig:3D_gfp_profile}
+\end{figure}
 
 In our experimental setup, the cells have very high fluorescence intensity compared to the background environment. Using the data from the GFP channel, we create a profile for each pixel. This GFP pixel profile is the basis for our combination algorithm.
 
@@ -56,12 +56,12 @@ If the profile does not pass through a cell, it will be comprised only of GFP ba
 
 We investigated three properties of the profile intensity distributions in particular: The mean, the variance, and the z-location of the profile peak.
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{211-digital_image_sample_bf-050714_s13_ch1_t85_z30}
-%\caption[Brightfield image sample]{An example of a typical Brightfield image taken with a confocal microscope.}
-%\label{fig:digital_image_sample_bf}
-%\end{figure}
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=1.0\textwidth]{412-scatter}
+\caption[GFP profile types scatter plot]{A scatter plot of GFP profile mean value against the variance. Several different types of profiles can be distinguished. Profiles from the centres of cells are found in the top left with low means and high variances. Blue points represent manually chosen points. Edge profiles cluster in a large group in the centre with median mean values and median variances. Points in the background tend to have a high mean and low variance. These are normalised values, so high mean inidicates a very flat distribution.}
+\label{fig:gfp_profile_scatter}
+\end{figure}
 
 During examination of these profile properties, we found a fairly linear relationship between normalised mean and variance. The profile distribution data was normalised by dividing every profile value by the maximum profile value. We then plotted the normalised variance against the normalised mean. This linear relationship shows that we can parameterise one property in terms of the other, so for the rest of this method we focus on only one of the two properties; the mean.
 
@@ -95,21 +95,21 @@ We use some image processing to improve the contrast between the cells and the r
 
 From each 3D GFP image stack, we produce a new 2D image that we term zMean. We take each GFP pixel profile, normalise the intensities by dividing every value by the maximum value (the height of the GFP intensity peak), and then calculate the mean of the normalised distribution. Profiles with peaks will have low normalised means. Profiles of background noise will have high normalised means. We therefore invert the mean, so that this algorithm will produce a high value for a profile that passes through a cell and low value for one that contains only background noise. We then store this value at the corresponding pixel in zMean.
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{211-digital_image_sample_bf-050714_s13_ch1_t85_z30}
-%\caption[Brightfield image sample]{An example of a typical Brightfield image taken with a confocal microscope.}
-%\label{fig:digital_image_sample_bf}
-%\end{figure}
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=1.0\textwidth]{zmean_example-050714_s13_ch-zmean-8-3-3_t0_z00}
+\caption[zMean image example]{An example of a typical zMean image.}
+\label{fig:zmean_example}
+\end{figure}
 
 We then multiply each pixel value in zBF by the corresponding pixel value in zMean. This raises the intensity of the cancer cells and darkens everything else in the image. We term the resulting image zComp.
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{211-digital_image_sample_bf-050714_s13_ch1_t85_z30}
-%\caption[Brightfield image sample]{An example of a typical Brightfield image taken with a confocal microscope.}
-%\label{fig:digital_image_sample_bf}
-%\end{figure}
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=1.0\textwidth]{431-zcomp_example-050714_s13_ch-zcomp_t00_z00}
+\caption[zComp image sample]{An example of a zComp image.}
+\label{fig:zcomp}
+\end{figure}
 
 Cell features such as protrusions are rather faint in raw GFP data, but in zComp the normalisation causes them to show up strongly. This highlighting effect helps a user to track cells much more quickly.
 
@@ -121,12 +121,12 @@ We now use the results of the manual tracking to produce a new 2D image that we 
 
 It should be noted that some background noise pixels elsewhere in the image might have GFP peaks at the same z-level as a marker. This will be included in zDiff. Hopefully, when we threshold zDiff, these background noise results will be suppressed. However, this may not happen if the noise pixels are adjacent to any of the cell pixels.
 
-%\begin{figure}[htbp!]
-%\centering
-%\includegraphics[width=1.0\textwidth]{211-digital_image_sample_bf-050714_s13_ch1_t85_z30}
-%\caption[Brightfield image sample]{An example of a typical Brightfield image taken with a confocal microscope.}
-%\label{fig:digital_image_sample_bf}
-%\end{figure}
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=1.0\textwidth]{zdiff_example}
+\caption[zDiff image sample]{An example of a zDiff image.}
+\label{fig:zdiff}
+\end{figure}
 
 zDiff is a 2D image with large, incoherent blobs that lack detail. However, each blob defines the limit of relevance within an image for a particular cell, according to the GFP. We can use this to limit the effect of a CellProfiler misrecognition error. We therefore use the blob outlines of zDiff to draw artificially darkened edges onto zBF. CellProfiler misrecognitions will generally not be able to spill out beyond these strengthened edges. We term the resulting image zEdge.
 
