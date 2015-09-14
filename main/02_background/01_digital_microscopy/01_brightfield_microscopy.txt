@@ -16,9 +16,9 @@ Brightfield imaging also has limits on the maximum resolution possible. Because 
 
 >>> A maximum live cell imaging resolution calculation based on cell size and cell speed in a medium
 
-A typical animal cell is between 10-20 microns in diameter [ref]. At maximum resolution of 0.2 microns per pixel, between 50-100 pixels are available to represent a cell in one dimension. However, images are restricted to the size of their sensors, which range from 256-2048 pixels across (50-400 microns) [ref]. The smallest (256 pixels, 50 microns) can only represent 2-5 cells. In order to represent hundreds of cells, the resolution must be limited. For example, to capture 20 cells in a 512 pixel sensor, the resolution is between 1-2 microns per pixel, much lower than the maximum.
+A typical animal cell is between 10-20 microns in diameter . At maximum resolution of 0.2 microns per pixel, between 50-100 pixels are available to represent a cell in one dimension. However, images are restricted to the size of their sensors, which range from 256-2048 pixels across (50-400 microns) . The smallest (256 pixels, 50 microns) can only represent 2-5 cells. In order to represent hundreds of cells, the resolution must be limited. For example, to capture 20 cells in a 512 pixel sensor, the resolution is between 1-2 microns per pixel, much lower than the maximum.
 
-A live cell can also move in the environment at speeds of between 0.1-1.0 microns per minute [ref]. These speeds are not insignificant compared with the size of the environment (50-200 microns). During the period of the imaging, which might be as long as 10-15 hours [ref], a cell can move between 100-1000 microns, so the field of view needs to accomodate this movement.
+A live cell can also move in the environment at speeds of between 0.1-1.0 microns per minute . These speeds are not insignificant compared with the size of the environment (50-200 microns). During the period of the imaging, which might be as long as 10-15 hours , a cell can move between 100-1000 microns, so the field of view needs to accomodate this movement.
 
 INCLUDE FULL CALCULATION WHEN FORMATTED
 

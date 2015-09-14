@@ -3,7 +3,7 @@ The goal of zMod is to represent the 3D environment in 2D in a meaningful way th
 Below are several examples of the zMod applied to different environments.
 [050714][260714]
 
-In [background > mask], the concept of a binary mask is introduced. The zMod image can be seen as an "N-mask", where N is the number of Z levels in the environment. Instead of selecting only on or off pixels in an image, zMod can be used to select pixels from many images. Binary masks were originally intended to add parts of a "sprite set" [ref] or composite of small images to a larger image or background by simple bitwise operations [ref]. The zMod approach is an extension of this concept applied to dimensionality instead of background/foreground image manipulation.
+In [background > mask], the concept of a binary mask is introduced. The zMod image can be seen as an "N-mask", where N is the number of Z levels in the environment. Instead of selecting only on or off pixels in an image, zMod can be used to select pixels from many images. Binary masks were originally intended to add parts of a "sprite set"  or composite of small images to a larger image or background by simple bitwise operations . The zMod approach is an extension of this concept applied to dimensionality instead of background/foreground image manipulation.
 
 Advantages:
 
@@ -17,13 +17,13 @@ Smoothing and other operations such as segmentation can be applied to the zMod i
 
 3. Can be used with any 3D data
 
-Although this study only uses 3D GFP data, any data captured using a 3D device such as other fluorescence targeting a different band of wavelengths or tissue can be used to generate a version of zMod. Below is a data taken from a multiphoton imaging system [figure]. This image set is not from live imaging, which allows a higher quality of imaging since the cells are fixed and inert [ref].
+Although this study only uses 3D GFP data, any data captured using a 3D device such as other fluorescence targeting a different band of wavelengths or tissue can be used to generate a version of zMod. Below is a data taken from a multiphoton imaging system [figure]. This image set is not from live imaging, which allows a higher quality of imaging since the cells are fixed and inert .
 
 Disadvantages:
 
 1. Depends on accuracy of GFP
 
-The accuracy of the GFP data, or any 3D data used is not under the control of the zMod algorithm, and cannot be corrected without supplementary information. Below is an example of a 3D reconstruction taken from a frame of the live imaging [figure]. The physical scaling relations have been applied such that the dimensions of the image box are proportional to those of the experiment. Dark pixels have been made transparent to allow structure to be visible. The outlined cell is visible as an extended structure that appears to span almost the whole environment. In reality, the cell cannot have this shape, and is flattened. Although this might appear unreliable, the important piece of the data used is the point at which the maximum occurs, which will remain the same. The cause of this distortion may because of reflection of light from the cell's material and other parts of the environment near the cell [ref], or refraction caused by materials in the experiment with different optical properties [ref].
+The accuracy of the GFP data, or any 3D data used is not under the control of the zMod algorithm, and cannot be corrected without supplementary information. Below is an example of a 3D reconstruction taken from a frame of the live imaging [figure]. The physical scaling relations have been applied such that the dimensions of the image box are proportional to those of the experiment. Dark pixels have been made transparent to allow structure to be visible. The outlined cell is visible as an extended structure that appears to span almost the whole environment. In reality, the cell cannot have this shape, and is flattened. Although this might appear unreliable, the important piece of the data used is the point at which the maximum occurs, which will remain the same. The cause of this distortion may because of reflection of light from the cell's material and other parts of the environment near the cell , or refraction caused by materials in the experiment with different optical properties .
 
 2. A GFP profile can have more than one peak due to the presence of more than one object.
 

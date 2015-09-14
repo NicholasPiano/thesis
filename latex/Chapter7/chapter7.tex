@@ -19,7 +19,7 @@
 \label{fig:zedge_segmentation}
 \end{figure}
 
-Several cells in Figure~\ref{fig:zedge_segmentation} were mis-recognised. The cell in the centre of the group on the lower left is a good example. The mis-recognition in this case is due to bright flecks in the interior of the cell that prevent the segmentation from extending from the marker to other locations in the interior. This could be ameliorated by selectively smoothing the Brightfield inside the edges. Unfortunately, this process would also dampen the appearance of other parts of the cells, such as protrusions, that have poorly defined edges. An analogous situation occurs in GFP images [ref Arce].
+Several cells in Figure~\ref{fig:zedge_segmentation} were mis-recognised. The cell in the centre of the group on the lower left is a good example. The mis-recognition in this case is due to bright flecks in the interior of the cell that prevent the segmentation from extending from the marker to other locations in the interior. This could be ameliorated by selectively smoothing the Brightfield inside the edges. Unfortunately, this process would also dampen the appearance of other parts of the cells, such as protrusions, that have poorly defined edges. An analogous situation occurs in GFP images~\cite{arce}.
 
 Another mis-recognition occurs in the cell at the top of the image in the centre of the group of three. This does not appear to be a result of highly non-uniform interior, but the segmentation algorithm did not allow the recognition to continue. This can be improved by increasing the contrast between the cell interior and the background, causing the cell interior to appear to be of higher value than the background and allowing the segmentation to continue.
 
