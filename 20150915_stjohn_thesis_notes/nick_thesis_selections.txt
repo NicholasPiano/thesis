@@ -1,0 +1,191 @@
+
+Brightfield images are commonly used in cell microscopy and have many advantages. They yield dark edges and light background and object interiors. Brightfield imaging is simple to set up and use, and is normally used to check manually that the microscope is focussed on the correct sample in the correct orientation. It does not require excessive amounts of illumination, so it can be used on live cells that might be damaged by high light levels. Disadvantages include the lack of contrast when viewing tissues; the edges will be dark, but often not dark enough to be easily visible. Cells usually have to be stained with coloured dyes or fluorescent proteins to be viewed with their features clearly outlined. Most dyes cannot be used on live cells, so the imaging is limited to fluorescent additions to the tissue.
+
+Brightfield imaging also has limits on the maximum resolution possible. Because of the wavelengths of light used to observe the sample (visible; 400-800 nm), the resolution of the images is limited to 0.2 microns. This is a fundamental limit as a combination of diffraction and the numerical aperture of the lens in the microscope. 
+
+
+>>> A maximum live cell imaging resolution calculation based on cell size and cell speed in a medium
+
+A typical animal cell is between 10-20 microns in diameter [ref]. At maximum resolution of 0.2 microns per pixel, between 50-100 pixels are available to represent a cell in one dimension. However, images are restricted to the size of their sensors, which range from 256-2048 pixels across (50-400 microns) [ref]. The smallest (256 pixels, 50 microns) can only represent 2-5 cells. In order to represent hundreds of cells, the resolution must be limited. For example, to capture 20 cells in a 512 pixel sensor, the resolution is between 1-2 microns per pixel, much lower than the maximum.
+
+A live cell can also move in the environment at speeds of between 0.1-1.0 microns per minute [ref]. These speeds are not insignificant compared with the size of the environment (50-200 microns). During the period of the imaging, which might be as long as 10-15 hours [ref], a cell can move between 100-1000 microns, so the field of view needs to accomodate this movement.
+
+
+
+
+With few exceptions, animal cells are translucent and colourless, making them difficult to see in most brightfield images [ref]. To work around this, cells can be stained with a variety of dyes and fluorescent proteins to help them show up [ref]. Most of these methods require the cells to be fixed (dead), but several can be used for live cell imaging, for example, GFP or Green Fluorescent Protein, which binds to the DNA inside the cytoplasm of the cell [ref]. When exposed to a blue or ultra-violet light, the GFP will fluoresce with green light and make the marked cells more identifiable.
+
+
+The cytoplasm extends within the cell interior, but does not include the nucleus or the cell wall [ref]. This makes the GFP ideal for indicating the bulk of the cell, but not for accurately locating the edges of cells.
+
+
+The power of the laser can be controlled and should be as high as possible to ensure a high response from the GFP, but low enough to allow the cells to survive for the duration of the imaging, since the laser can cause the cells to heat up and behave strangely or die [ref]. 
+
+
+Microscope apparatus is also sometimes equipped with autofocus software which attempts to keep the focal plane of the images constant between frames, accounting for any shift that might occur during imaging. The algorithm responsible for this sorts potential focal planes into in-focus, above-focus, and below-focus groups to decide which level to pick. Unfortunately, this is not alway reliable and can result in some fluctuation of the focal plane. 
+
+
+--- IMAGE PROCESSING
+
+An image can be described as a map of pixel intensities, usually represented by values between 0-255. Most images are stored as 2D arrays where intensity values can be accessed by specifying two coordinates, X and Y. When adjacent pixels in a line or an area have a similar value, that region can be said to be continuous. If the values in the region vary with some gradient, the pixels can be said to be discontinuous, and could indicate a feature such as an edge or a corner.
+
+Distinguishing discontinuous edges in a continuous background is a crucial task when segmenting objects. The intensity curve (variation) along a path can be described by its derivative and second derivative such that points in the image that satisfy the same profile can be highlighted and deemed to be edge pixels. This secondary 2D map of accepted and rejected pixels is known as a "binary mask" [ref]. A mask can be laid over an image of any channel and be used to select or reject pixels from that channel. In this way, binary decisions in one channel can be used to affect or make decisions about another.
+
+While binary masks can make simple choices about what pixels to keep, more complex masks can make decisions based on a number of criteria.
+
+A commonly used edge detection method uses the Canny filter. This selects edges by calculating the vertical and horizontal gradients of the image, suppressing pixels that do not lie on the highest point of the edge [diagram] (non-maximal suppression), and completing discontinuous edges with the same orientation (edge hysteresis). This method not only locates edges, but also indicates their orientation. This is especially useful when trying to locate complex, but closed shapes like cells. The orientations of the edges can help to guide the segmentation around the path of the edge until it meets itself. The Canny edge detector also ranks edge pixels by the strength of the gradient and removes those with a gradient that is either too small or too big, a "double threshold" [ref], assuming that these pixels are accounted for by noise. The final product very accurately represents the apparent edges in the image, hence the method's widespread use.
+
+Blobs can be indicative of solid objects or regions in the background. Typically, an object's interior will be a blob and its edge will separate it from the background. Blobs can have a characteristic size and intensity profile measured from the edge or centre. The intensity profile can be modelled using a function in much the same way as an edge. Locating blob centres can be useful in the first step of segmentation to get a general idea of where objects of interest might be located. This is known as a "primary" object. Once the location of a primary object is known, "secondary" objects can be searched for in the immediate vicinity. The primary object does not necessarily have to be a single point, but can be an extended region with features of its own. These can be preserved to encourage further segmentation around them. This can be useful for discovering finer details of cell protrusions or other boundaries.
+
+Blobs can be found using several methods, most notably the LoG/DoG (Laplacian of Gaussian/Difference of Gaussians) methods. These general functions model the intensity profile of a blob from its centre to an edge and approximate its size using the parametres of a Gaussian, the mean and variance. These approximate shapes can then be convolved with the image yielding a bright "response" at the location of each blob of the same size. Difference of Gaussians is often chosen as a computationally "cheaper" approximate of the LoG method, since it does not require differentiation.
+
+
+---
+
+--- cell segmentation
+
+
+Most segmentation algorithms focus on distinguishing continuous edges and solid blobs of uniform colour. When edges are clearly visible, objects are easier to pick out and mark as cells. Many algorithms begin to fail when edges become harder to differentiate from the background. This can happen when an object of interest is out of focus due to the optical configuration of the microscope. If the environment in the images is planar, this problem will not occur, but if the environment is extends into 3D, different parts of an image will segment unevenly, possibly affecting the usefulness of the data.
+
+
+---
+
+
+
+--- METHOD
+
+To combine these two channels, I built a database that could associate and access pixel data from any part of the images. I then scanned the GFP image set in Z to build up a GFP profile for each pixel in X and Y. This mean of and variance of this vertical profile gave an indication of the presence of an object, regardless of its absolute intensity. This meant parts of an object with low absolute intensity could be found with the GFP profile
+
+In this way, the parts of the image at the same level as a marker (the level of the object) were highlighted in the recognizer. This highlight formed the boundary of the segmentation. I made an artificial edge in the image that prevented the segmentation from spilling into the background. This would sometimes cutoff part of the segmentation that extended outside the GFP. This was because some of the cell protrusions contained no GFP above the background.
+
+
+Projection refers to the selection of pixel values from a Z range based on some criterion [ref]. 
+
+
+To ensure that data can be verified and compared with previous studies, the relationship between the data and the physical environment must be understood. Digital images, as previously described, consist of pixel values accessed by coordinates, usually in 2D. To convert these coordinates into their physical equivalents, certain scaling relations must be stored. To recover the speed of a cell in real world units, its speed must first be measured in pixel units. The scaling relations can then be applied. The real world is represented in terms of data abstractions.
+
+
+Tracks and markers
+
+The first abstraction is the concept of a track. Tracking refers to a record of the movements of a single object of interest over time. A single "track" can consist of "markers" that store locations and other properties of the object. A single marker stores properties at a single point in time. The period between points in time is known as the frame length, and represents the temporal resolution of the data. A typical frame length is between 5-10 minutes in the data for this project, and is dependent on the live cell imaging limitations detailed in [background > limitations]. Tracks and markers are the first layer of abstraction because they claim to have information only about the general location of a cell at a point in time. They do not attempt to describe the cell in any other way. This decision is left to the cell data structure.
+
+
+Cells and cell instances
+
+Cell and cell instance are analogous to track and marker, but more information is processed to arrive at a decision. Some markers can be filtered or combined before allowing them to represent cell instances. A cell instance refers to the combined properties of a cell object at a single point in time. In addition to position (there could be several positions specified such as centre of mass, point of highest density, point furthest from edge), other properties such as area, eccentricity of the bounding ellipse, and protrusion length can be stored in a cell instance. The cell object serves as the successor to the track object. The cell instance was created because a cell object cannot be said to have an area, since this changes with time. This applies to all other properties. This is the second abstraction.
+
+
+Coordinate system
+
+In order to describe the relationships between the images and objects in them mathematically, a coordinate system is imposed on the dataset. The coordinates X and Y refer respectively to the columns and rows in a single image from the top left-hand corner. The Z coordinate refers to the position in an image stack. Image files can only store a 2D array of pixel values, but stacking them vertically can add a third dimension. Z then refers to an image index. Referencing three coordinates, XYZ, will select a pixel found in the image in the stack with index Z and local pixel coordinates X and Y.
+
+Images are stacked with other images in the same frame, so that all data refers to the same point in time. The T, or frame coordinate, indicates the time index of the image stack. These four coordinates, XYZT have scaling relationships associated with them that can translate their values into real world dimensions.
+
+
+Images are also divided into channels. This "coordinate" is referred to as C. Images with different channels share the same physical space, but can contain very different information. For example, the Brightfield channel contains only 2D information about the environment, but the GFP channel can contain 3D information.
+[how so, 3D information?]
+
+References to these five coordinates, XYZTC, will yield a single pixel value.
+
+Object can sometimes be distinguished in one channel but not immediately in another. Information about their location in the first channel can provide a recogniser with enough information to find the same object in the second channel. In this way, cell representations, or "masks", can also be confined to a channel in the same way as a pixel.
+
+
+A mask is a simplified representation of a real world object found in image data.
+[true? i thought was image processing technique]
+
+
+
+The GFP profile is a mathematical description of the intensity distribution in the pixels near a cell. The coordinate system defined in the previous subsection [ref] allows a range of pixels in a bounded volume to be analysed. 
+
+A profile in this case refers to an array of pixel values taken from a range of Z points at a constant XYTC position.
+
+The values can also be a combination of values taken from an XY mask of a certain area centred on a constant XY at constant TC.
+
+A profile will give a unique value for each Z and form a distribution.
+
+
+A profile that passes through a cell will increase from the background value to a high value at the centre of a cell and then decrease on the other side. If this distribution is normalise, it can be compared to the distributions found in every other pixel. There are three parameters that are used to describe a distribution. Once normalised, the variance of the distribution is the amount by which the it increases when encountering an object. The mean is the mean value of all values in the distribution.
+
+This is dependent on the smoothing filter applied to the GFP data to reduce noise and the size of the mask used to create a profile. Mixing information in the GFP can lead to Z values of neighbouring pixels to become closer and have a smoother gradient among groups of pixels.
+
+zMod is highly dependent on the smoothing filter applied to GFP data.
+
+Increasing the size of the gaussian smoothing filter on the GFP data leads to smoother transitions between Z values in a region of pixels, such as those representing a cell. The values inside a cell will generally have the same or very similar Z values, leading to this zMod's utility in finding and outlining cells.
+
+Increasing the size of the mask in XY for creating the GFP profile will take into account more GFP data to estimate the Z position, but the peak will remain at a similar value. This is because neighbouring pixels tend to lie at similar levels, and a bright centre of the mask will dominate data on the outside.
+
+
+The zBF image can be adjusted by changing the three parameters (Delta-Z, Gaussian kernel size, and linear mask size), but the Delta-Z chosen in this work yields thick dark edges and uniform bright interiors.
+
+---
+
+
+
+--- METHOD 02: SEGMENTATION: OVERVIEW
+
+
+The intensity of the interior is very close to that of the background. [!!! don't understand] 
+If the dark edge is not complete, i.e. there is a small gap allowing the background to connect to the interior, the recognition could extend into the background from the intended object segmentation. This effect will often happen with long cell protrusions as the material stretches and becomes thinner at the end.
+
+
+PARAMETERS
+
+CellProfiler operates most effectively when appropriate parameters for its algorithms are specified. Most parameters can be estimated automatically, but some adjustments are often necessary to obtain the best results.
+
+Object size
+
+This parameter is meant as an initial estimate of the typical sizes of objects and can be used to search for contiguous blobs of colour. This is a single value and gives the size of the gaussian smoothing kernel that looks for responses from blobs. This is only necessary for picking up the markers, which are between 3-13 pixels across.
+
+Adaptive thresholding
+
+Thresholding is used to decide what regions of the image contain objects before deciding how to divide them into individual objects. Adaptive thresholding means the image will be divided into small squares for each square to be treated individually in terms of brightness. This accounts for uneven illumination and conditions in different parts of the image.
+
+Threshold correction factor
+
+The threshold correction factor can be used further constrain the recognition by raising the threshold value above its automatic estimate. This is usually used to prevent the segmentation from spreading too far. It is set to 1.1-1.2 meaning that the threshold value is allowed to vary by as much as 10%-20% more than it normally would.
+
+Three-class segmentation
+
+
+CELLPROFILER BEHAVIOUR
+
+Interior vs background with secondary objects
+
+Segmentation of zBF is done with primary objects (markers from manual tracking) and secondary objects (objects found using markers as a seed). The intensity of the background at the chosen focus level is very similar to the interior of cells. The recogniser divides the interior of objects from the background by using the dark edge. Gaps in this edge can cause the recognition to extend into the background. This is not desireable behaviour and can lead to large errors.
+
+Secondary objects is not biased to any range of sizes, but it can be adjusted so that the "energy function" used to extend the object values a stricter range of intensity values around the intensity of the primary (interior) than the distance from the primary or any other primary.
+
+Threshold
+
+
+
+--- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

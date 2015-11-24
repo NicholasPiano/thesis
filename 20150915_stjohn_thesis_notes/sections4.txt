@@ -1,0 +1,590 @@
+
+### NOTES
+
+Small corrections. Used {} to mark them. 
+
+didn't find:
+- "I", "me", "you"
+- "F-score"
+- "pre-processing"
+- "modeled", "labeled"
+- "focussed"
+
+In Latex:
+- replace "Sigma" with greek letter. 
+
+
+
+### TOC
+
+1 - Introduction
+1.1 - Motivation of current project
+1.2 - Importance of accurate cell segmentation
+1.3 - Thesis outline
+
+2 - Cell Segmentation
+2.1 - Basics of image manipulation
+2.1.1 - Image manipulation overview
+2.1.2 - Edge detection
+2.1.3 - Blobs
+2.1.4 - Complex features and machine learning
+2.2 - Basics of cell segmentation
+2.2.1 - Optical structure of the cell
+2.2.2 - Cell shape
+2.2.3 - Fluorescence microscopy
+2.2.4 - Cell segmentation errors
+2.3 - Review of studies on cell segmentation
+2.3.1 - Studies using GFP fluorescence data
+2.3.2 - Studies using Brightfield data
+2.3.3 - Studies using confocal image data
+2.3.4 - Review of studies
+
+3 - Preparing images for segmentation
+3.1 - 3D confocal imaging
+3.2 - Using Brightfield image data
+3.3 - Using GFP fluorescence data
+3.4 - Review of a study using Brightfield data
+
+4 - Experimental apparatus
+4.1 - Micro-fluidics environment
+4.2 - Imaging limitations
+
+
+5 - Methodology
+5.1 - Definitions and assumptions
+5.2 - GFP profile
+5.3 - Generating zMod
+5.4 - Generating zBF
+5.5 - Manual tracking
+5.6 - Generating zEdge to prevent CellProfiler misrecognitions {mis-recognitions}
+5.7 - Sensitivity analysis of zMod parameters
+
+6 - Results
+6.1 - Image modification
+6.1.1 - zMod
+6.1.2 - zBF
+6.1.3 - zEdge
+6.2 - Segmentation
+6.2.1 - Segmentation results
+6.2.2 - Fscore comparison
+6.2.2.1 - Manual ground truth
+6.2.2.2 - Fluorescence ground truth
+6.2.2 - zMod sensitivity analysis
+
+7 - Discussion
+7.1 - zEdge segmentation results
+7.2 - zMod sensitivity results
+7.3 - Comparison of preprocessing methods
+
+8 - Conclusion
+8.1 - Summary
+8.2 - Future work
+
+
+
+
+
+
+
+
+
+
+
+### SECTIONS
+
+=== 1 - Introduction
+
+=== 1.1 - Motivation of current project
+
+
+In cell microbiology and related fields, large amounts of cell image data are commonly generated. The processing of this data often relies on cell segmentation, which is the identification of the boundaries of each cell in each image. Manual segmentation of cells in microscopy images is time-consuming and arduous. Algorithms exist that will segment cells automatically, although they have some limitations.  
+
+3D environments containing cells can be used to simulate organs or blood vessels. Cells may be located at different heights within these environments. In an image produced at any particular focal length, some cells may be blurred or distorted. A confocal microscope can be used to produce a set of images using a range of focal lengths.
+
+Available cell segmentation software operates best using 2D images. Any single 2D image slice from a 3D image stack will be likely to include blurred and distorted cells. It is also difficult to perform manual segmentation on cells that are out-of-focus in a 2D image. 
+
+A confocal microscope can also be used to produce images using GFP fluorescence data (instead of using white light), which provides 3D spatial information about each cell. Cell segmentation algorithms can also be applied to GFP images. However, the results are again unsatisfactory, as the GFP intensity is often low in cell nuclei and protrusions, causing them to be omitted from the segmentation.
+
+The aim of this project is to find a robust, accurate method that uses GFP data about the 3D cell environment to preprocess Brightfield (visible light) image data into a form that cell segmentation algorithms can process more easily. 
+
+
+=== 1.2 - Importance of accurate cell segmentation
+
+The experiment from which data for this project was gathered involved tracking the movement of cancer cells through an endothelial cell wall. In this experimental context, in order to accurately judge the movements of a live cell, all aspects of its shape and extent should be identified. If data after segmentation produces only a small circular object at the centre of the cell, this is not an adequate representation for studying cell morphodynamics. 
+
+
+
+=== 1.3 - Thesis outline
+
+
+First, introductory information about image processing and manipulation is provided, followed by an overview of modern cell segmentation. Some common ways of preparing images for segmentation are discussed. Several studies that involve different ways of preprocessing images are reviewed. We will then describe the experimental apparatus used to produce data for this project and its limitations.  
+
+We then detail the method of image preparation. We investigate some of the aspects of the prepared images and the results of their segmentation. We also perform a sensitivity analysis of the parameters used to produce the images. 
+
+We then conclude with a summary of the work and note some opportunities for future study. 
+
+
+=== 2 - Cell Segmentation
+=== 2.1 - Basics of image manipulation
+
+
+=== 2.1.1 - Image manipulation overview
+
+
+The ability to segment cells is dependent on a mathematical description of digital images. Images are stored as 2D arrays of pixel intensities [ref]. Specifying two coordinates will access a single intensity value. This can be thought of as a matrix and is subject to many of the same algebra and element-wise operations. Image manipulation is the use of various algorithmic techniques to mathematically describe features and search for similar patterns within image data.
+
+We use the term "pixel" in this paper to refer specifically to the data structure that holds one of these intensity values, not to the physical surface section in a detector. The data structure can be visualised as a parking space, into which "cars" (intensity values) are inserted. In this analogy, an image data structure is a large rectangular car park.
+
+In this section, several key techniques are described that allow images to be segmented. Edge detection allows the boundaries between an object and the background to be identified. A blob is a continuous region of similar colour that can be contained inside an object or form part of the background. More complex features such as corners can be identified by increasingly specific search algorithms. Images and other data can be subjected to repeated machine learning techniques to identify objects more consistently. 
+
+
+=== 2.1.2 - Edge detection
+
+An edge in a 2d {2D} image can be described as an "intensity discontinuity" [ref] between two regions. This discontinuity can be described mathematically, and can be approximated by a number of functions, such as the commonly-used Laplacian of Gaussian function [ref]. Through convolution, parts of the image that share the same functional form as the approximating function can be highlighted and deemed to be edge pixels. A popular formalisation of this method is known as the Canny edge detection filter. This works by combining information about the directionality as well as the intensity of edges [ref]. 
+
+
+=== 2.1.3 - Blobs
+
+A blob is a continuous region of uniform colour in an image. "Uniform" means a single colour or slight variations around a single colour. Blobs are often associated with objects. A blob could represent the interior of a cell object, for example. Different objects that share similar properties might contain blobs of similar size or shape. In a similar way to edges, blobs can be convolved with an approximating function, often a Gaussian kernel [ref]. A Gaussian kernel of a defined size will highlight blobs of a similar size. Boundaries between blobs are edges. 
+
+
+=== 2.1.4 - Complex features and machine learning
+
+Blobs and edges can be combined into a generalised model of a an object, such as a cell [ref]. When two edges meet at a point, this can be recognised as a corner. Machine learning uses repeated training techniques to allow information stored about previously observed cells to improve recognition of cells present in new data. They can combine information about cell features, like blobs and edges, into much more complex models of a cell. 
+
+
+=== 2.2 - Basics of cell segmentation
+
+=== 2.2.1 - Optical structure of the cell
+
+A typical animal cell is both colourless and transparent [ref]. It is made up of a sheath of protein containing the cytoplasm of a cell and other cell structures like the nucleus and the cell skeleton. When observed using white light, the light will pass through most of the cell, but some light will be blocked when viewing parts of the cell tangential to its surface, leading to the appearance of an edge. 
+
+
+=== 2.2.2 - Cell shape
+
+
+Cell shape is highly variable and unpredictable, but it is generally composed of a circular region surrounding the nucleus. It also has various extensions of the cell wall, dubbed "protrusions", that allow the cell to move [ref]. These protrusions provide the greatest amount of information about the behaviour of the cell and are the focus of this project in terms of segmentation. This requires that the protrusions be associated with the correct cell. 
+
+
+=== 2.2.3 - Fluorescence microscopy
+
+To enhance contrast, cells are often stained with a fluorescent substance that can be excited by a laser and make the cells more visible. Most staining methods require the cells to be fixed, but a few, including Green Fluorescent Protein (GFP), can be used during live cell imaging [ref]. GFP highlights the cytoplasm of the cell [ref]. There are other staining substances that can highlight different parts of the cell such as the nucleus or the cytoskeleton. It should be noted that the distribution of intensity values within cell interiors or cell edges may be very different from cell to cell and from frame to frame. 
+
+
+=== 2.2.4 - Cell segmentation errors
+
+Cell segmentation algorithms use a variety of image processing techniques. A common approach is to start at a particular pixel (often chosen by a human user) and examine intensity values in neighbouring pixels. The algorithm will then decide whether or not an adjacent pixel belongs to the same object as the original pixel. Various parameter settings govern this choice. Often, this algorithm is recursive. If an adjacent pixel is added to the cell data object, the algorithm will restart at that adjacent pixel. This can lead the cell object spilling over unclear cell edges, since the algorithm does not find a clear place to stop. This is a common problem in cell segmentation and often occurs in cell protrusions, where the intensity values may shade smoothly into the background noise. 
+
+[image: bad_segmentation-tile_050714_s13_ch-zbf-8-5-5-outline-zcomp-8-1-1-zedge-8-1-1-YUZ29SWD_t2.png]
+
+In the group of three cells at the top of the image, all three of the recognitions fail, as the segmentation spills out of the cells into the background. We refer to these as segmentation errors or mis-recognitions. 
+
+
+=== 2.3 - Review of studies on cell segmentation
+
+
+=== 2.3.1 - Studies using GFP fluorescence data
+
+
+Cell segmentation studies using GFP fluorescence data focus on easily identifiable cell features such as the nucleus. Various problems are noted in these studies. The first is the GFP glare, where other materials in the environment reflect fluorescence. Other materials can sometimes generate fluorescence themselves. High noise levels are often encountered. 
+
+The GFP images are often not very sharp. Some studies have attempted to sharpen the images by passing them through a high-pass spatial filter. Unfortunately, this also amplifies the noise. One study [ref: Arce] experimented with using a low-pass spatial filter to sharpen the image and simultaneously reducing the noise via a mathematical technique. Arce et al. note that thresholding can also be used to reduce noise, but also that "it can omit low-intensity parts of cells". 
+
+Another study [ref: Rizk] used an approximation of the point spread function (or PSF) of the microscope hardware to deconvolve the images and correct for lens aberrations that might also cause noise-like effects and/or lower quality images. 
+
+
+=== 2.3.2 - Studies using Brightfield data
+
+Most studies that attempt to use the Brightfield for segmentation note that in-focus images of objects in the Brightfield do not have sufficient contrast with the background to distinguish edges. One study [ref: Ali] attempted to use a focus level that was slightly out of focus to locate the edges and separate different cells. They try to find the focus using the entropy of the whole image. They also consider several different types of textures (spatial frequencies) inside the cells. 
+
+
+=== 2.3.3 - Studies using confocal image data
+
+The study by Selinummi et all [ref] attempts to use the Brightfield 3D profile to increase the contrast in the Brightfield image data. They assume that the presence of a cell in an otherwise uniform background will cause a disturbance in the shape of the 3D profile. Thus, the standard deviation of this disturbance can be used to indicate the presence of a cell. 
+
+Two studies [ref: Zanella, Liu] segment 3D images using a spherical Hough transform, which highlights centres of spheres with a particular radius, marking potential cell candidates. 
+
+
+
+=== 2.3.4 - Review of studies
+
+Current state-of-the-art segmentation requires human interaction and long processing time due to high resolution. The studies here tend to sacrifice human interaction and resolution for high throughput. They employ various techniques to raise the accuracy of the segmentation given these two constraints to allow accurate cell boundaries to still be identified. 
+
+The methods reviewed here of preprocessing image data and performing cell segmentation have several limitations. The first is the significant effect of image noise on segmentation accuracy and the unreliability of most image de-noising techniques. Another problem is the lack of contrast when using Brightfield images that prevent edges from being recognised. Finally, a related issue is the ineffectiveness of thresholding with regard to differentiating between a cell and the background, since different parts of the cell might have different pixel intensity values. 
+
+
+
+
+=== 3 - Preparing images for segmentation
+
+
+=== 3.1 - 3D confocal imaging
+
+In normal cell imaging, a microscope can be calibrated to observe a single focal plane. Confocal microscopy produces a set of images, not just a single image [ref]. The focal length is incremented over a range. The extent of this range is the depth of the 3D environment. At each increment, the microscope produces an image. This is similar to looking through the viewfinder on a personal digital camera and steadily changing the focus, observing objects becoming alternately blurred and focused. Additionally, an area of an experiment can be scanned by moving the sample under the microscope section by section to reduce lens distortion for each image section. 
+
+If the band of wavelengths of light being imaged is small enough, the light detected by the microscope can be can be confined to the focal plane it originated from in reality [ref]. There is little to no interference from fluorescence sources located on other focal planes. The set of images produced via GFP fluorescence detection is therefore more similar to the results of an MRI than to normal photographs. 
+
+
+
+=== 3.2 - Using Brightfield image data
+
+
+The properties of a single object (such as a cell) will change if viewed at different focal planes. The intensity differences between their edges, their interiors, and the background will change. In order to provide ideal features for segmentation, the best focal plane to observe the cell needs to be located. This plane will contain the darkest edges and the most uniform interiors. It should be noted that a cell can spread over multiple focal planes, depending on the microscope resolution. 
+
+
+
+=== 3.3 - Using GFP fluorescence data
+
+There are three advantages of using GFP fluorescence data. Firstly, there is very high contrast between the cell matter and the background. The second is that we can choose to only mark the cells that we wish to observe. The third is that the data is localisable in 3D.
+
+GFP data also has some disadvantages. There are often large amounts of noise, causing cell interiors to be grainy and edges to be poorly defined. Important parts of the cell such as protrusions often contain lower amounts of GFP and are sometimes hard to distinguish from the background, given lower contrast. Another disadvantage is that reflection and other optical effects in the environment could cause higher intensities of GFP at levels where the cell is not present. 
+
+
+=== 3.4 - Review of a study using Brightfield data
+
+
+Selinummi et al. [ref] developed a method for preprocessing Brightfield image data for cell segmentation. They reasoned that pixels that contained only background noise would not vary very much in intensity through the z-dimension and that pixels that contained cells would vary more in intensity. They decided that for each pixel in the image, they would calculate various statistical properties: the standard deviation, the inter-quartile range, the coefficient of variation, and the mean absolute deviation. They aimed to quantify a measure of confidence that an x-y pixel contained (at some level in the stack) a part of a cell. Their larger goal was to develop a method that didn't rely on projection of GFP fluorescence data. Instead, they projected the Brightfield data. This would allow studies to be performed without gathering any fluorescence data. Their study includes a pixel-by-pixel analysis of the cell masks produced by the previous GFP method and their new Brightfield projection method. Their results showed high reliability for their method. 
+
+
+=== 4 - Experimental apparatus
+
+
+=== 4.1 - Micro-fluidics environment
+
+
+Endothelial cells are the cells that make up the blood vessel wall. This wall is held together by the extra-cellular matrix. As an analogy, if the cells are considered to be a brick wall, the extra-cellular matrix is the mortar. Cancer cells flowing in the bloodstream must break through this barrier in order to metastasize to some other tissue and then grow. This process can be simulated so that it can be observed more conveniently. 
+
+A micro-fluidics device is a 3D environment that can simulate the physical context of a blood vessel. Its substrate is a layer of PDMS (a popular type of plastic used in microscopy studies). Soft lithography is used to imprint a micro-channel framework on the substrate. These micro-channels are roughly the same order of magnitude as a blood vessel. 
+
+The refractive index of the PDMS is very similar to that of the oil used in the immersion lens in the confocal microscope. This means that the plastic substrate will not be very visible in the images produced by the confocal microscope, and will not interfere with the observation of the cells.
+
+The micro-channel framework consists of a central channel, which mimics the bloodstream. The central channel is filled with a medium that simulates blood plasma. Side channels radiate away from the central channel. These side channels each represent the wall of a single blood vessel. Collagen gel is placed in the side channels in order to simulate the extra-cellular matrix.
+
+Each side channel is seeded with blood vessel (endothelial) cells, which will link together to form a blood vessel wall across the side channel. The central channel is seeded with cancer cells, which have been marked with fluorescent GFP. We wish to detect how the cancer cells penetrate the blood vessel walls. 
+
+The environment is observed via a confocal microscope. An "experiment" in this context is a ~15-hour (between 10 and 20 hours) time period in which a single micro-fluidics device, having been seeded with cells, is observed with a microscope. The micro-fluidics device is mounted on a movable stage. The stage performs a sequence of movements that position each side channel location in turn under the microscope. The stage also adjusts the vertical height of the micro-fluidics device in order to vary the focal plane at which the location is observed. 
+
+At any particular location, data is gathered for 1 minute. A laser is used to excite the GFP proteins as data is gathered. The cells then require between 3 and 4 minutes to cool down and radiate away excess energy. During this cooldown period, the microscope is moved between different locations. The microscope scans the locations above the side channels in a repeating sequence. The combined period between imaging the same set of cells is about 10 minutes. This is a very low temporal resolution.
+
+A "series" refers to the data collected from a particular location scanned by the microscope. 5 to 8 series can be produced by one microscope collecting data from one micro-fluidics device.
+
+
+=== 4.2 - Imaging limitations
+
+We want to observe the cancer cells during the experimental time period in as much detail as possible, so we want to produce images as quickly as possible. However, our experimental apparatus sets some inherent limits on the capture rate and resolution of image data.
+
+Firstly, we are imaging live cells. Cell must be alive and behave naturally during the imaging process. Cells have a maximum rate at which they can absorb energy without dying. In order to observe cells via a confocal microscope's GFP detector, we use a laser to excite the GFP proteins within the cells. We must therefore introduce a cooldown period after producing each image so that the cells can successfully radiate the energy as heat.
+
+Secondly, we want to use a wide field of view. This allows us to view many cells at the same time and to track a single cell over a large area (it might move around quite a lot during a 15-hour period). However, this requires a lower resolution, reducing the cell detail in the images we produce.
+
+Thirdly, the mechanics of the movable stage have precision limits. The microscope produces an image at a specific location using a specific focal length. After the stage has moved the micro-fluidics device once through its movement sequence, and then returned it to the original position, the real focal length will not be the same. This effect can be somewhat compensated for by using the microscope's autofocus mechanism. The autofocus adjusts the focal length over a range, searching for an image entropy level that matches the entropy level of the previous image it produced at that location. This compensation is not always reliable. 
+
+Fourthly, the GFP data has some limitations in terms of detail. We are interested in the overall  cell shape and other properties such as protrusions (which indicate how the cell might be moving) over time. However, images produced using GFP detection are grainy and the cell edges are not clearly defined. The GFP stains cytoplasm, which is not present in the nucleus, so in the GFP data the nucleus is visible only as an empty hole within the cell. Also, the filaments that make up cell protrusions generally have only small amounts of cytoplasm. Protrusions are thus also often not found via GFP detection. 
+
+Finally, the best features for cell segmentation in the Brightfield do not always occur in the same focal plane as the most high-quality (most intense) GFP results. The difference in the z-dimension between these two focal planes is specific to a particular microscope during a particular experiment. In this paper, we use the term "delta-z" to denote the very empirical relationship between these two focal lengths.
+
+
+=== 5 - Methodology
+
+=== 5.1 - Definitions and assumptions
+
+
+Assumptions:
+
+1] The GFP fluorescence data can be used to localise the cells in the z-dimension of the 3D environment. 
+
+[image: 3D_gfp_extended_tails.png]
+
+In this 3D reconstruction of the GFP, cells are shown as flat discs in the z-dimension. Unfortunately, they are surrounded by high levels of noise. We can't trust the GFP to produce an accurate 3D reconstruction of the cells, but we assume that the vertical position in z of maximum GFP intensity corresponds with the z-location of the cell in reality. 
+
+2] We assume for our method that the 2D intensity discontinuities of the Brightfield edges can be approximated by a single function. In reality, even within a single cell, the functional form of the edge discontinuity can change significantly. 
+
+
+Definitions:
+
+1] A "channel" refers to image data gathered via a particular method of detection.
+- Brightfield data is one channel. GFP fluorescence data is another channel.
+- Two channels can gather data on a single physical area or volume. However, each channel records and stores data separately.
+- Two channels can be combined mathematically to produce a third channel.
+2] An "image" is a 2D array of pixels.
+3] A "frame" refers to a particular point in time at which a channel produces an image.
+- It should be noted that in reality an image is not produced instantaneously, and thus a frame actually refers to a relatively short period of time.
+4] A "pixel" refers to a data structure that holds an intensity value.
+- This value represents the intensity of light (visible or fluorescent) detected on a square section of a physical detector during the set exposure time period.
+5] "x" and "y" are the x-coordinate and y-coordinate of a pixel within a single image.
+6] A "stack" refers to the image set produced by a confocal microscope at a particular frame.
+- A stack can be visualised as a collection of images positioned vertically on top of each other, aligned in x and y such that a pixel's x-y location in a particular image is directly underneath or above its equivalent in any other image.
+- All images in a stack are considered to be produced at the same frame.
+- A stack can also be visualised as a multi-story car park. Each floor of the car park is an image and each parking space is a pixel.
+7] "z" is the index of an image within a stack. 
+- It can be thought of as the image's "height" or "level" within a stack.
+- We use the term "z-value" to mean the height (e.g. of a pixel) in the z-dimension of the stack. 
+8] "pixel value" refers to the intensity value at a particular pixel in a specific image.
+9] A "profile" is the distribution of intensity values obtained by taking a fixed x-y location and steadily incrementing z over the entire stack, noting each intensity value at each level.
+- It should be noted that the fixed location could be a 2D array (in x and y) of pixels, not just a single pixel. Generally, however, we use the term "profile" in this paper to mean the profile of a single pixel x-y location through the whole stack.
+10] A "cell pixel" refers to a pixel that, at a particular frame, is considered (by a human or by an algorithm) to represent a component section of a cell.
+- The cells move and change shape, so that a given pixel may only be a cell pixel during a few frames.
+11] A "cell instance" is the data object that contains a group of cell pixels that comprise one particular cell at a particular frame.
+
+
+
+
+
+
+=== 5.2 - GFP profile
+
+[image: 411-profile.png]
+
+In our experimental setup, the cells have very high fluorescence intensity compared to the background environment. Using the data from the GFP channel, we create a profile for each pixel. This GFP pixel profile is the basis for our combination algorithm.
+
+If the profile does not pass through a cell, it will be comprised only of GFP background noise. The distribution of its values will have low variance and be quite flat. Conversely, over a z-range where a GFP pixel profile passes through a cell instance, the profile will contain very high intensity values. The distribution will have high variance and a peak will be visible. In general, the description of a pixel profile that intercepts a cell is as follows: It will start at a low value where the cell is not present, slowly increase to a maximum at the centre of the cell in the z-dimension, and decrease again on the other side of the cell. If a profile passes through the edge of a cell, it will still show a peak, but the peak will be smaller and less distinct.
+
+We investigated three properties of the profile intensity distributions in particular: The mean, the variance, and the z-location of the profile peak. 
+
+[image: 412-scatter.png]
+
+During examination of these profile properties, we found a fairly linear relationship between normalised mean and variance. The profile distribution data was normalised by dividing every profile value by the maximum profile value. We then plotted the normalised variance against the normalised mean. This linear relationship shows that we can parameterise one property in terms of the other, so for the rest of this method we focus on only one of the two properties; the mean.
+
+There are three distinct observable groups in this graph. The first group has a high mean and a low variance. This indicates a profile that contains only GFP background noise. The second group has a low mean and high variance. This indicates a clear peak in the GFP profile. The third group clusters above the conceptual line of best fit, having a medium mean and medium variance. This indicates a profile that passes through the edge of a cell. It has a peak but one that is less distinct. 
+
+The blue points represent the profiles of a set of manually marked pixels from the manual tracking step. These profiles are clustered in the group of profiles of cell pixels. Their clustering demonstrates the consistency of the profile distribution groupings. We conclude that we can rely on these profile patterns to stay fairly constant during experiments. We can therefore develop image processing techniques that make use of this reliability. 
+
+
+=== 5.3 - Generating zMod
+
+From each 3D GFP image stack, we produce a new 2D image that we term zMod. For each profile in the stack, we find the z-location of its intensity peak. It should be noted that for background noise profiles, the z-location of the greatest absolute value will be somewhat random. It should also be noted that the PDMS barriers and pillars show even lower levels of noise and therefore have very flat GFP profile distributions, so their intensity peaks in z will be very random. We then set each pixel value in zMod to be proportional to this peak z-location. The resulting image is analogous to a terrain map. It collates the "heights" of each GFP peak in the 3D data into a single image. Low pixel values correspond to low heights and vice versa. We represent low values as dark pixels and high values as bright pixels. 
+
+This is similar to the method used by Selinummi et al. [ref], except that the Brightfield distributions, when generated in the same way as the GFP profile, do not produce intensity peaks at relevant locations, such as the centre of the cells. Therefore, the peaks in those distributions do not necessarily correspond to the vertical position of the cell in the z-dimension. The GFP profile might vary from the background noise in the same manner as the Brightfield profile, but the GFP profile accurately determines the cell height in the 3D environment. 
+
+The focal plane that contains the most high-quality GFP results may not be the same focal plane that is best for segmenting cells. We refer to the difference in z between these two planes as "delta-z". During this project, we found the value of delta-z to be constant for a given microscope and specific experiment. Delta-z is found by manually iterating over z in a stack until the selected image shows the characteristics that are helpful for segmentation. We then add the value of delta-z to every pixel in zMod. This slightly adjusts the stack "heights" represented by the pixel values in zMod. 
+
+If the shift in stack heights is large enough, a cell pixel may be moved past the limits of the 3D environment representation. In this case, either new data must be invented to fill the areas around the cell pixel(s) or the data must be truncated. Neither solution is desirable. However, this situation has not been encountered during this project. Delta-z is usually small and the cells are rarely located at the top of the environment.
+
+
+=== 5.4 - Generating zBF
+
+We then use zMod to produce another 2D image that we term zBF (for "zBrightfield"). We iterate over the image zMod, pixel by pixel, and use each pixel value to select a z-location in the original 3D Brightfield stack. We then use the pixel intensity value at this height in the Brightfield stack as the value for this x-y location in zBF. 
+
+Essentially, we have used the GFP fluorescence data to find the best focal plane for Brightfield observation of each individual cell pixel. Cell objects may spread through more than one focal plane (depending on the resolution), so a focal plane is selected for each cell pixel individually. We then extracted the corresponding pixel values from the 3D Brightfield stack and combined them into a single 2D composite image. Ideally, each cell object should now be in focus. Cell features should now be ideal for segmentation. 
+
+
+=== 5.5 - Manual tracking
+
+Tracking was performed using ImageJ manual tracking software. A user performs manual tracking by clicking on cells in a simple computer interface, frame by frame. The user tracks one specific cell at a time, proceeding through the entire time series of frames for a particular location, searching only for this cell. This is done so that the software can assign a definite numeric ID to specific cells. It is also easier for the user to track one cell from frame to frame instead of many cells simultaneously.
+
+A user might spend 30 minutes to an hour tracking cells through a typical series produced using our experimental setup, depending on the number of cells involved. The user must judge whether a particular cell is worth tracking. If a cell is mostly obscured for the whole series, there is not point trying to track it, even though it obviously exists. The user chooses not to track a particular cell by simply not clicking on it. 
+
+We use some image processing to improve the contrast between the cells and the rest of the environment. This makes the cell locations clearer for the user and increases the speed of performing manual tracking. 
+
+From each 3D GFP image stack, we produce a new 2D image that we term zMean. We take each GFP pixel profile, normalise the intensities by dividing every value by the maximum value (the height of the GFP intensity peak), and then calculate the mean of the normalised distribution. Profiles with peaks will have low normalised means. Profiles of background noise will have high normalised means. We therefore invert the mean, so that this algorithm will produce a high value for a profile that passes through a cell and low value for one that contains only background noise. We then store this value at the corresponding pixel in zMean. 
+
+[image: zmean_example-050714_s13_ch-zmean-8-3-3_t0_z00.tiff]
+
+We then multiply each pixel value in zBF by the corresponding pixel value in zMean. This raises the intensity of the cancer cells and darkens everything else in the image. We term the resulting image zComp. 
+
+[431-zcomp_example-050714_s13_ch-zcomp_t00_z00.tiff]
+
+Cell features such as protrusions are rather faint in raw GFP data, but in zComp the normalisation causes them to show up strongly. This highlighting effect helps a user to track cells much more quickly. 
+
+This is similar to the approach used by Selinummi et al. Because of the normalisation, the mean is statistically equivalent to the standard deviation used by Selinummi et al. 
+
+
+=== 5.6 - Generating zEdge to prevent CellProfiler misrecognitions {mis-recognitions}
+
+We now use the results of the manual tracking to produce a new 2D image that we term zDiff. Each manually-chosen marker has an x-y location. We need the z-value of the marker. zMod stores the z-values of the GFP intensity peaks, so we simply take the zMod pixel value at the marker's x-y location as the marker's z-value. Then, for each marker, we produce a temporary 2D difference image by iterating over each pixel and finding the difference between its profile's GFP peak z-value and the marker's z-value. A simple subtraction will yield low values for similar heights. We then invert the result so that pixels with similar GFP peak heights to this specific marker will have high values. We threshold each temporary difference image according to full-width, half-maximum (FWHM) value of the image's z-range. We now iterate over each x-y location and choose the maximum available value from the set of difference images. We then assign this value to the pixel at that x-y location in our final 2D difference image, zDiff.
+
+It should be noted that some background noise pixels elsewhere in the image might have GFP peaks at the same z-level as a marker. This will be included in zDiff. Hopefully, when we threshold zDiff, these background noise results will be suppressed. However, this may not happen if the noise pixels are adjacent to any of the cell pixels. 
+
+[image: zdiff_example.png]
+
+zDiff is a 2D image with large, incoherent blobs that lack detail. However, each blob defines the limit of relevance within an image for a particular cell, according to the GFP. We can use this to limit the effect of a CellProfiler misrecognition {mis-recognition} error. We therefore use the blob outlines of zDiff to draw artificially darkened edges onto zBF. CellProfiler misrecognitions {mis-recognitions} will generally not be able to spill out beyond these strengthened edges. We term the resulting image zEdge.
+
+
+=== 5.7 - Sensitivity analysis of zMod parameters
+
+
+The masks found by segmentation of zEdge are compared to the masks of some ground truth. In this case, we used manual segmentation for the ground truth. This is also compared firstly to the segmentation that uses the preprocessing method of Selinummi et al. and secondly to their ground truth (the GFP projection segmentation). Selinummi et al. define formulae for precision and recall, which are then combined to give a value for the Fscore. 
+
+To compare two versions of segmentation of the same cell, one is defined as the ground truth. Observing the segmentation pixel-by-pixel, three parameters are used, true positive, false positive, and false negative. Pixels that are true positive are contained both in the ground truth segmentation and the version of segmentation under testing. False positives are contained in the test segmentation but not in the ground truth. False negatives are contained in the ground truth but not in the test segmentation. These three parameters can be combined into two parameters, precision and recall, which are defined by the following formulas:
+
+Precision = Tp / (Tp + Fp)
+
+Recall = Tp / (Tp + Fn)
+
+A perfect precision indicates that every pixel in the test also exists in the ground truth. A perfect recall indicates that every pixel in the ground truth is reproduced in the test. The reduced mean of these two parameters is termed the Fscore of the test segmentation algorithm. The Fscore is defined by the following formula:
+
+Fscore = 2*Precision*Recall / (Precision + Recall)
+
+An Fscore of 1.0 indicates that the test segmentation has produced an exact replica of the ground truth. An Fscore of 0.0 indicates that the recognition produced by the test segmentation does not correspond at any point to the ground truth. 
+
+
+=== 6 - Results
+
+=== 6.1 - Image modification
+
+
+=== 6.1.1 - zMod
+
+[image: 5111-zmod_example_outline-050714_s13_ch-zmod-8-3-3_t0_z00.tiff]
+
+Although the cell outlines are not clearly visible, regions that contain cells have very uniform z-locations. Even regions outside the cells have assigned z-locations; this includes background noise and the even lower levels of background noise found in the PDMS pillars. 
+
+It should be noted that this image does not indicate anything about the absolute intensity of the GFP or the Brightfield. 
+
+It's clear that there are two types of background noise: the environment and the PDMS pillars. The zMod values inside the pillars are more highly variable. 
+
+Regions of similar level are quite contiguous, even in the background. This indicates a certain amount of smoothing of the GFP (R=3, sigma=3). Smoothing was done with a Gaussian filter. The smoothing also causes the gradual transitions between adjacent regions of similar levels.
+
+The three bright blobs at the top of the image represent three cells that lie at a high z-level in the image. At the bottom of the image, the very dark regions indicate a collection of cells that lie very low in the z-dimension of the 3D environment. It should be noted that some cells in the barrier have higher intensity than the cells below the barrier. There is a ring of lighter cancer cells in the middle. They are attached to the barrier. 
+
+This image does not indicate whether any cells overlap. It also does not reveal detailed protrusions or clear boundaries of individual cells. 
+
+[image: 5-combined_R_sigma.png]
+
+The two main parameters that we can vary are R and Sigma. 
+
+R indicates the size of the mask used to search around the x-y position of a pixel for GFP information to use in estimating the z-position of that pixel. If R=1, only information immediately in that pixel is used to make that decision and thus the z-levels of neighbouring GFP profiles do not affect each other. 
+
+If R=5, an 11-by-11 square of pixels profiles centred on the x-y position produces the final estimate of z. This can lead to larger contiguous regions sharing similar z-values. It is worth noting that smoothing or "mixing" of z-levels occurs in 3D. Since information from every profile inside the mask is taken into account, intensities at all levels will contribute to the estimate of the z-value. 
+
+Sigma is the size of the Gaussian kernel used to smooth the GFP in 2D. The smoothing is performed before GFP profiles are generated and analysed. Since the smoothing is performed in 2D, cells that exist at very different levels in z but close proximity in x-y will not affect the profiles in each other's pixels during smoothing. If Sigma=1, little smoothing is performed and the image is very noisy. The z-levels of the pixels inside the cells are less uniform. The cells are grainy. If R=5 and Sigma=1, an effect similar to aliasing is visible [ref]. This is because of the discrete size of the mask set by R. It still appears noisy, but the effects of the noise have been spread out and diminished. 
+
+As R increases, the continuous area of the cell becomes more uniform. It is however still noisy. As Sigma increases, the effect of noise is diminished. This is because increasing R does not decrease the noise, it simply distributes its effects more widely within a mask, which has an averaging effect on a cell interior. On the other hand, increasing Sigma does actually reduce the absolute level of noise. 
+
+If Sigma=1, then the transitions between z-levels are sharper. The noise in the GFP will have a larger effect on the selection of the z-level if the GFP is not smoothed. If Sigma=5, then there is a large amount of smoothing, and noise is greatly reduced, producing more gentler transitions between parts of the same cell. 
+
+
+=== 6.1.2 - zBF
+
+[image: 5121-zbf_example-050714_s13_ch-zbf-8-3-3_t0_z00.tiff]
+
+All cells previously marked with GFP are now in focus, regardless of their z-level in the 3d {3D} environment. Delta-z has been adjusted manually to optimise the features of the cells for segmentation, i.e. where the Brightfield edges are as dark as possible and the Brightfield cell interiors are as uniform as possible. If delta-z were chosen to be higher or lower, the entire environment would appear slightly out of focus. The interiors of the cells are often non-uniform but have a higher intensity than the background. Some protrusions can clearly be seen, but others have been hidden or appear closer to the intensity of the background because they did not contain enough GFP to be adjusted by zMod properly.
+
+The intensities in the background (notably the pillars) are highly randomised. This is due to the highly random nature of zMod in these regions but it does not directly affect the segmentation of the cancer cells. 
+
+There are some cells that appear out-of-focus such as within, above, and below the barrier. This is because they were not initially marked with GFP, so the z-position that zMod assigns to them is fairly arbitrary. The intensity profiles of these pixels are very flat, so even a small variation due to noise will cause a maximum in z to be located randomly. 
+
+
+=== 6.1.3 - zEdge
+
+[image: 5122-zedge_example-050714_s13_ch-zedge-8-3-3_t0_z00.tiff]
+
+The edges drawn on zEdge are similar to the Brightfield cell boundaries but are more distinct and regular. These edges closely approximate the true boundaries of the cells. They are also better defined, which will prevent the segmentation from spilling over into the background. The edges drawn in the background are highly randomised, but this will have no effect on segmentation because there are no markers in the background. 
+
+
+=== 6.2 - Segmentation
+
+=== 6.2.1 - Segmentation results
+
+
+[image: 5224-zedge_seg-tile_050714_s13_ch-zbf-8-5-5-outline-zcomp-8-1-1-zedge-8-5-5-TYOGE5XI_t0.png] 
+
+
+Most of the segmentation results very closely match the dark edges of the Brightfield. Some of the segmentation fails, especially when the interior of the cell is very non-uniform. In the bottom left of the image, there is a cluster of cells, in which there is a cell at the centre of this cluster for which segmentation has failed. The protrusions are not very well recognised, either because zEdge is limiting the protrusions or the protrusions are not distinct enough from the background because of the lack of GFP within them. 
+
+[image: good_protrusions-tile_260714_s14_t016.tiff]
+
+This image, taken from another experiment from which we gathered data, is included for illustrative purposes. In this series, the cell protrusions contain more GFP and extend further from the cells. This image showcases the results of applying the zMod method more clearly in terms of protrusions. Particularly noteworthy are Cells 43, 44, and 51, whose recognitions extend very far into their protrusions with no spillover effects. Admittedly, the protrusions are still longer than the segmentation results, due to the boundaries imposed by zEdge. 
+
+
+=== 6.2.2 - Fscore comparison
+
+
+=== 6.2.2.1 - Manual ground truth
+
+
+[image: 6211-fscore_manual-GT_zmod_r3_s3-gmod-bmod.png]
+
+In the graph, we take the result of manual segmentation to be the ground truth. The line labelled zMod represents the results of the method we propose. The line labelled bMod represents the results of the method used by Selinummi et al. The line labelled gMod represents the result of the segmentation of the GFP maximum, in which the maximum of each 3D profile in z is selected as the value for that 2D x-y position. gMod is used as ground truth in the paper by Selinummi et al. 
+
+All three of the Fscore values over time stay quite consistent. zMod has a greater median value than that of either gMod (Selinummi's ground truth) or bMod (their test method). 
+
+
+=== 6.2.2.2 - Fluorescence ground truth
+
+[image: 6211-fscore_gmod-GT_zmod_r3_s3.png] 
+
+In the graph, both of the methods zMod and bMod, with reference to maximum fluorescence levels used as ground truth (as seen in the Selinummi paper), have very constant median Fscores. The zMod Fscore is above the bMod Fscore. 
+
+
+=== 6.2.2 - zMod sensitivity analysis
+
+[6213-fscore_R_for_sigma3.png]
+
+The Fscore for our method, zMod, does not vary significantly with increasing R. This means that the quality of the segmentation, using standard values for segmentation parameters, is independent of the R-value or the size of the mask linearly mixing the z-values. This would not necessarily be the case with large numbers of cells that overlapped in the z-dimension. 
+
+[6222-fscore_sigma_for_R3.png]
+
+Holding R constant, the Fscore does not vary significantly with increasing Sigma. This indicates that the smoothing of the GFP in 2D has little effect on zMod and, in turn, on zEdge. 
+
+
+
+=== 7 - Discussion
+
+
+=== 7.1 - zEdge segmentation results
+
+[5224-zedge_seg-tile_050714_s13_ch-zbf-8-5-5-outline-zcomp-8-1-1-zedge-8-5-5-TYOGE5XI_t0.png]
+
+Several cells in this image were mis-recognised. The cell in the centre of the group on the lower left is a good example. The mis-recognition in this case is due to bright flecks in the interior of the cell that prevent the segmentation from extending from the marker to other locations in the interior. This could be ameliorated by selectively smoothing the brightfield {Brightfield} inside the edges. Unfortunately, this process would also dampen the appearance of other parts of the cells, such as protrusions, that have poorly defined edges. An analogous situation occurs in GFP images [ref Arce].
+
+Another mis-recognition occurs in the cell at the top of the image in the centre of the group of three. This does not appear to be a result of highly non-uniform interior, but the segmentation algorithm did not allow the recognition to continue. This can be improved by increasing the contrast between the cell interior and the background, causing the cell interior to appear to be of higher value than the background and allowing the segmentation to continue.
+
+In general, mis-recognition occurs when there is no clear reason for the segmentation to continue. This is also dependent on the starting location of the marker in the Brightfield. Another starting location with a higher intensity will be more likely to fill the lower intensities around it.
+
+
+=== 7.2 - zMod sensitivity results
+
+We expected that the correspondence between the manual segmentation ground truth and the zEdge segmentation would increase when the noise was reduced (by increasing Sigma). Increasing R (the size of the mask used to produce the GFP pixel profile for each x-y position) was expected to mix the z-levels in neighbouring pixels to make contiguous regions of similar z-levels more uniform. This was observed in the resulting images.
+
+However, neither increased R nor increased Sigma had significant effect on the Fscore of our preprocessed images. We had thought that smoother, less noisy images would produce more accurate segmentation, but this is contradicted by the Fscore results. The method itself, however, still yields higher Fscores than the method described by Selinummi et al.  
+
+
+=== 7.3 - Comparison of preprocessing methods
+
+[image: 5223-bf_std_seg-tile_050714_s13_ch-zbf-8-5-5-outline-zcomp-8-1-1-bmod-PLG5WADE_t0.png]
+
+Both segmentation results do fairly well at picking up the general shape of the cells. 
+
+Our segmentation more consistently approximates the dark Brightfield edges. It appears as though the Selinummi method compresses the segmentation; its resulting edges lie away from the true edges. It instead produces edges that are closer to the interior of the cell. This probably explains the decrease in Fscore for this method. 
+
+The regions assigned a higher contrast by the Selinummi method have highly variable Brightfield profiles in the z-dimension. In the Brightfield data, the locations of the true edges will not have highly variable profiles. Instead, the regions immediately on either side of the edge will be the most highly variable, as these are where Brightfield intensity discontinuities actually occur. The Selinummi method looks for this disturbances in order to find cell edge pixels. This causes a systematic underestimation of the extent of the cell. In contrast, our method use GFP intensity pixel profiles to select an image section from the Brightfield stack for each cell pixel or group of cell pixels. We thus preserve the darker edges and strengthen them. 
+
+
+=== 8 - Conclusion
+
+=== 8.1 - Summary
+
+This project was undertaken in order to improve the segmentation of cells in a 3D environment represented by a stack of Brightfield images. To achieve this, images from the 3D Brightfield stack were preprocessed to allow them to be segmented by CellProfiler, a popular cell segmentation software tool, which operates best on 2D images. 
+
+Various methods of preprocessing were already available, such as a 3D GFP maximum projection method and a Brightfield preprocessing method described by Selinummi et al. These methods had a number of disadvantages that we attempted to address. Among them: poor definition of cell edges, non-uniformity of cell interiors, and the lack of distinction between several types of cell in an experiment. 
+
+The method we propose for solving this problem involves the use of the 3D GFP stack to select high-quality portions of the Brightfield stack and combine them into a single image containing features that were easily and consistently recognisable by CellProfiler. These features include dark continuous edges and high-uniformity cell interiors. 
+
+This method does not increase the contrast between cells and the background. Instead it focusses on improving the quality of the features desired for segmentation. Optionally, the features can then be highlighted (contrast can be increased) by modifying the images using the GFP, with the disadvantage that this can suppress meaningful cell features (such as protrusions) as described by Arce et al. 
+
+The method is dependent on several parameters, the most important of which were thought to be the size of the smoothing kernel Sigma used for smoothing of the GFP in 2D and the size of the pixel mask R used to generate the 3D GFP pixel profile. An analysis of the sensitivity revealed that these parameters, while having a great effect on the visual outcome of the images, had little practical effect on the segmentation, at least using the metric of Fscore from Selinummi et al. 
+
+Unfortunately, the ground truth used in this analysis (the manual segmentation) is impractical to apply to large amounts of cell data. For their ground truth, Selinummi et al. use the GFP maximum projection method, which while easy to generate from large amounts of cell data, has a lower Fscore than the result of segmenting data preprocessed via our method. Hence, unless a clear relationship can be found between the GFP maximum projection and the current method, the GFP maximum projection should not be used as an effective ground truth to judge the cell segmentation data of the entire dataset. 
+
+A common problem in cell segmentation is the inability of the segmentation algorithms to distinguish between bright cell interiors and adjacent bright background regions. This is normally solved by increasing the contrast between cell matter and surrounding image background, but we found that the 3D GFP data can be used to clarify the full extent of the cell and therefore be used to derive maximum limits on the extent of the cells when the Brightfield is segmented. A disadvantage of our method is that limits may be placed on the extent of the cell protrusions. 
+
+In conclusion, we have used the 3D GFP information to locate cells individually in 3D space and find limits to their maximum size. This preprocessing of the Brightfield images improves cell segmentation and limits the effect of mis-recognition errors. 
+
+
+=== 8.2 - Future work
+
+A crucial assumption in this current study has been the uniformity of Brightfield edge discontinuity magnitudes. In reality, even within a single cell, the functional form of these discontinuities can vary significantly. A deeper analysis of these edges could lead to a more robust representation of a cell. Specifically, edges that lie closer to the core cell structure are often darker and more defined. This is perhaps due to the higher density of cell matter closer to the centre. As protrusions extend further from the cell, edges become less defined and closer to the background. This transition from defined to less defined edges could be modelled effectively to allow for better segmentation. 
+
+Another problem has been the poorly understood relationship between the extent of the GFP and the extent of the structure of the cell. An analysis of these boundary relationships, where the GFP cell data ends but the Brightfield cell data continues to exist,  could highlight areas where the investigation of the cell edges should extend beyond the limits seen in the GFP data. Traditionally, the GFP data is simply used to threshold this search, and data outside these thresholds is not considered. This does not correspond with reality and hence relevant data about the protrusion lengths and other cell features is lost. 
+
+Investigations of the issues noted above might greatly improve on the work done here.
+
+
+
+
+
+
+
+
+

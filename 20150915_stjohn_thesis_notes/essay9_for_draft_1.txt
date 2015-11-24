@@ -1,0 +1,291 @@
+
+### NOTES
+
+Some touchups. 
+Some factual corrections concerning the microscope and stage using nick_thesis_selections.txt.
+
+
+
+##### TOC
+
+1 - Introduction
+
+1.1 - Clinical Rationale and Background of Current Project
+
+1.2 - Digital Microscopy
+
+1.2.1 - Confocal Microscopy
+
+1.3 - Image Processing
+
+1.4 - Cell detection and segmentation
+
+1.5 - Micro-fluidics environment
+
+2 - Experimental apparatus
+
+2.1 - Micro-fluidics environment
+
+2.2 - Imaging limitations
+
+3 - Method
+
+3.1 - Definitions
+
+3.2 - Automatically project 3D image set into a single composite in-focus 2D image
+
+3.3 - Perform manual tracking of cells
+
+3.4 - Automatically set maximum cell boundaries
+
+3.5 - Perform final cell recognition using CellProfiler
+
+4 - Results and Discussion
+
+4.1 - Z-mod results
+
+4.2 - Segmentation results
+
+5 - Conclusion
+
+
+
+
+###### ESSAY 9
+
+
+1 - Introduction
+
+
+1.1 - Clinical Rationale and Background of Current Project
+
+In cell microbiology and related fields, cells in a flat environment are usually viewed with a microscope. The focal length of the microscope is adjusted until as many cells as possible are in focus, clearly visible, and easy to outline. The microscope is then used to produce an image of the cells. Cell recognition software is then applied to the image to automatically find the cell locations and boundaries. This software produces more accurate results if the images are well-focused.
+
+3D environments containing cells can be used to simulate organs or blood vessels. Cells may be located at different heights within these environments. In an image produced at any particular focal length, some cells may be blurred or distorted. Therefore, a set of images is produced using a range of focal lengths. If automatic cell recognition is desired, then an image from the middle of the image set is passed through the cell recognition software. Sometimes, a smoothing algorithm is applied first, which uses the other images in the set to reduce the effect of noise in the selected image. It is also possible to use slightly more complex techniques.
+
+This project demonstrates a method that greatly improves the results of applying cell recognition software to image sets of specific 3D environments. It consists of two major techniques. The first technique uses GFP fluorescence data to select high-quality image sections from the entire image set and combine them into a single image. The second technique uses GFP fluorescence data to set definitive maximum cell boundaries and thus limit the effect of cell recognition errors. 
+
+For this project, background information on confocal microscopy, image processing, and the principles of cell segmentation is useful.
+
+
+1.2 - Digital Microscopy
+
+Digital images produced by a microscope are stored as 2D arrays of intensity values. We use the term "pixel" in this paper to refer specifically to the data structure that holds one of these intensity values, not to the physical surface section in a detector. The data structure can be visualised as a parking space, into which "cars" (intensity values) are inserted. In this analogy, an image data structure is a large rectangular car park.
+
+The intensity value is proportional to the light gathered by a detector, such as a camera. Different types of light can be gathered by different detectors and stored as "channels" of data. In this paper, the only other channel besides visible light is GFP fluorescence data. 
+
+
+1.2.1 - Confocal Microscopy
+
+Confocal microscopy produces a set of images, not just a single image. The focal length is incremented over a range. The extent of this range is the depth of the 3D environment. At each increment, the microscope produces an image. This is similar to looking through the viewfinder on a personal digital camera and steadily changing the focus, observing objects becoming alternately blurred and focused. 
+
+When data is collected using visible light, the resulting images are similar to what a person using a microscope would see directly with the eye. This is referred to as gathering data using the "Brightfield". Any single image produced of the 3D environment via visible light will contain objects both when they are in-focus and out-of-focus.
+
+When a confocal microscope is used to gather GFP fluorescence data at a particular focal length, only fluorescence that lies within that focal plane will be visible. There is little to no interference from fluorescence sources located on other focal planes. The set of images produced via GFP fluorescence detection is therefore more similar to the results of an MRI than to normal photographs.
+
+
+1.3 - Image Processing
+
+Image processing is the use of various algorithmic techniques to mathematically describe features within image data and search for them within specific images. Basic techniques include detection of edges, blobs of colour, and more complex features such as corners.
+
+An edge in image data can be described as a simple transition from a dark region to a light region in an image. If the absolute difference between the intensity values in any two pixels (or groups of pixels) is greater than a chosen value, the pixels are classified as belonging to an edge. This mathematical profile is known as an "intensity discontinuity".
+
+In image processing, a "blob" is a technical term that signifies a contiguous, relatively uniform region of a specific colour. "Uniform" means a single colour or slight variations around a single colour. Like edges, blobs can be described as a mathematical profile. An image can then be searched for objects (collections of pixels) matching the profile of a blob.
+
+
+
+1.4 Cell detection and segmentation
+
+Cells may vary greatly in shape and size. The distribution of intensity values within cell interiors or cell edges may be very different from cell to cell. The features of a specific cell can also change significantly over time.
+
+We need to be able to search for a cell property that stays reasonably constant for a specific cell. Such a property must also generally apply to most cells. We can force this to be the case by altering the cells slightly before observing them. The cells are stained with GFP (or another fluorescent protein), which is visible in images produced by a confocal microscope that incorporate a GFP detector.
+
+Cell segmentation algorithms use a variety of image processing techniques. A common approach is to start at a particular pixel (often chosen by a human user) and examine intensity values in neighbouring pixels. The algorithm will then decide whether or not an adjacent pixel belongs to the same object as the original pixel. Various parameter settings govern this choice. Often, this algorithm is recursive. If an adjacent pixel is added to the cell data object, the algorithm will restart at that adjacent pixel. This can lead the cell object spilling over unclear cell edges, since the algorithm does not find a clear place to stop. This is a common problem in cell segmentation and often occurs in cell protrusions, where the intensity values may shade smoothly into the background noise. 
+
+
+2 - Experimental apparatus
+
+
+2.1 Micro-fluidics environment
+
+Endothelial cells are the cells that make up the blood vessel wall. This wall is held together by the extra-cellular matrix. As an analogy, if the cells are considered to be a brick wall, the extra-cellular matrix is the mortar. Cancer cells flowing in the bloodstream must break through this barrier in order to metastasize within some other tissue and then grow. This process can be simulated so that it can be observed more conveniently. 
+
+A micro-fluidics device is a 3D environment that can simulate the physical context of a blood vessel. Its substrate is a layer of PDMS (a plastic). Soft lithography is used to imprint a micro-channel framework on the substrate. These micro-channels are roughly the same order of magnitude as a blood vessel. 
+
+The refractive index of the PDMS is very similar to that of the oil used in the immersion lens in the confocal microscope. This means that the plastic substrate will not be very visible in the images produced by the confocal microscope.
+
+[diagram of micro-channel framework goes here]
+
+The micro-channel framework consists of a central channel, which mimics the bloodstream. The central channel is filled with a medium that simulates blood plasma. Side channels radiate away from the central channel. These side channels each represent the wall of a single blood vessel. Collagen gel is placed in the side channels in order to simulate the extra-cellular matrix.
+
+Each side channel is seeded with blood vessel cells, which will link together to form a blood vessel wall across the side channel. The central channel is seeded with cancer cells, which have been marked with fluorescent GFP. We wish to detect if the cancer cells penetrate the blood vessel walls. 
+
+The environment is observed via a confocal microscope. An "experiment" in this context is a ~15-hour (between 10 and 20 hours) time period in which a single micro-fluidics device, having been seeded with cells, is observed with a microscope. The micro-fluidics device is mounted on a movable stage. The stage performs a sequence of movements that position each side channel location in turn under the microscope. The stage also adjusts the vertical height of the micro-fluidics device in order to vary the focal plane at which the location is observed. 
+
+At any particular location, data is gathered for 1 minute. A laser is used to excite the GFP proteins as data is gathered. The cells then require 9 minutes to cool down and radiate energy. The time period between images is thus 10 minutes. During this cooldown period, the microscope is moved to another location. The microscope scans the locations above the side channels in a repeating sequence.
+
+A "series" refers to the data collected from a particular location scanned by the microscope. 5 to 8 series can be produced by one microscope collecting data from one micro-fluidics device.
+
+
+2.2 - Imaging limitations
+
+We want to observe the cancer cells during the experimental time period in as much detail as possible, so we want to produce images as quickly as possible. However, our experimental apparatus sets some inherent limits on the production rate and resolution of image data.
+
+Firstly, we are imaging live cells. Cell must be alive and behave naturally during the imaging process. Cells have a maximum rate at which they can absorb energy without dying. In order to observe cells via a confocal microscope's GFP detector, we use a laser to excite the GFP proteins within the cells. We must therefore introduce a cooldown period after producing each image so that the cells can successfully radiate the energy as heat.
+
+Secondly, we want to use a wide field of view. This allows us to view many cells at the same time and to track a single cell over a large area (it might move around quite a lot during a 15-hour period). However, this requires a lower resolution, reducing the cell detail in the images we produce.
+
+Thirdly, the mechanics of the movable stage have precision limits. The microscope produces an image at a specific location using a specific focal length. After the stage has moved the micro-fluidics device once through its movement sequence, and then returned it to the original position, the real focal length will not be the same. This effect can be somewhat compensated for by using the microscope's autofocus mechanism. The autofocus adjusts the focal length over a range, searching for an image entropy level that matches the entropy level of the previous image it produced at that location. This compensation is not always reliable. 
+
+Fourthly, the GFP data has some limitations in terms of detail. We are interested in the overall  cell shape and other properties such as protrusions (which indicate how the cell might be moving) over time. However, images produced using GFP detection are grainy and the cell edges are not clearly defined. The GFP stains cytoplasm, which is not present in the nucleus, so in the GFP data the nucleus is visible only as an empty hole within the cell. Also, the filaments that make up cell protrusions generally have only small amounts of cytoplasm. Protrusions are thus also often not found via GFP detection. 
+
+Finally, the best features for cell segmentation in the Brightfield do not always occur in the same focal plane as the most high-quality (most intense) GFP results. The difference in the z-dimension between these two focal planes is specific to a particular microscope during a particular experiment. In this paper, we use the term "delta-z" to denote the very empirical relationship between these two focal lengths.
+
+
+3 - Method
+
+The shape of a cell is highly variable and can change greatly, especially given a long time period between frames (~10 minutes). The absolute GFP fluorescence intensity in the cell pixels can vary substantially from frame to frame. The results produced by cell segmentation algorithms are often very variable. We cannot use the same parameter settings for every batch of cells. We must vary these settings by trial-and-error in order to obtain useful results. 
+
+Cell segmentation software already exists e.g. CellProfiler and ImageJ. This method does not replace or change these pre-existing tools. Our approach is to use GFP data about the 3D environment to pre-process image data into a form that the cell segmentation tools can process more easily.
+
+Our method involves 4 major steps:
+
+1) Automatically project 3D image set into a single composite in-focus 2D image
+2) Perform manual tracking of cells
+3) Automatically set maximum cell boundaries
+4) Perform cell recognition using CellProfiler
+
+Steps 2 & 4 are already regularly used in laboratory settings. Steps 1 & 3 are new and comprise the substance of this paper. Results from step 1 are used to improve the normal procedure in step 2. 
+
+
+3.1 - Definitions
+
+1] A "channel" refers to image data gathered via a particular method of detection.
+- Brightfield data is one channel. GFP fluorescence data is another channel.
+- Two channels can gather data on a single physical area or volume. However, each channel records and stores data separately.
+- Two channels can be combined mathematically to produce a third channel.
+2] An "image" is a 2D array of pixels.
+3] A "frame" refers to a particular point in time at which a channel produces an image.
+- It should be noted that in reality an image is not produced instantaneously, and thus a frame actually refers to a relatively short period of time.
+4] A "pixel" refers to a data structure that holds an intensity value.
+- This value represents the intensity of light (visible or fluorescent) detected on a square section of a physical detector during the set exposure time period.
+5] "x" and "y" are the x-coordinate and y-coordinate of a pixel within a single image.
+6] A "stack" refers to the image set produced by a confocal microscope at a particular frame.
+- A stack can be visualised as a collection of images positioned vertically on top of each other, aligned in x and y such that a pixel's x-y location in a particular image is directly underneath or above its equivalent in any other image.
+- All images in a stack are considered to be produced at the same frame.
+- A stack can also be visualised as a multi-story car park. Each floor of the car park is an image and each parking space is a pixel.
+7] "z" is the index of an image within a stack. 
+- It can be thought of as the image's "height" or "level" within a stack.
+- We use the term "z-value" to mean the height (e.g. of a pixel) in the z-dimension of the stack. 
+8] "pixel value" refers to the intensity value at a particular pixel in a specific image.
+9] A "profile" is the distribution of intensity values obtained by taking a fixed x-y location and steadily incrementing z over the entire stack, noting each intensity value at each level.
+- It should be noted that the fixed location could be a 2D array (in x and y) of pixels, not just a single pixel. Generally, however, we use the term "profile" in this paper to mean the profile of a single pixel x-y location through the whole stack.
+10] A "cell pixel" refers to a pixel that, at a particular frame, is considered (by a human or by an algorithm) to represent a component section of a cell.
+- The cells move and change shape, so that a given pixel may only be a cell pixel during a few frames.
+11] A "cell instance" is the data object that contains a group of cell pixels that comprise one particular cell at a particular frame. 
+
+
+3.2 - Automatically project 3D image set into a single composite in-focus 2D image
+
+In our experimental setup, the cells have very high fluorescence intensity compared to the background environment. Using the data from the GFP channel, we create a profile for each pixel. This GFP pixel profile is the basis for our combination algorithm.
+
+[image of the three types of profile goes here. cell centre, cell edge, and background noise]
+
+If the profile does not pass through a cell, it will be comprised only of GFP background noise. The distribution of its values will have low variance and be quite flat. Conversely, over a z-range where a GFP pixel profile passes through a cell instance, the profile will contain very high intensity values. The distribution will have high variance and a peak will be visible. In general, the description of a pixel profile that intercepts a cell is as follows: It will start at a low value where the cell is not present, slowly increase to a maximum at the centre of the cell in the z-dimension, and decrease again on the other side of the cell. If a profile passes through the edge of a cell, it will still show a peak, but the peak will be smaller and less distinct.
+
+We investigated three properties of the profile intensity distributions in particular: The mean, the variance, and the z-location of the profile peak. 
+
+[plot of normalised variance against normalised mean]
+
+During examination of these profile properties, we found a fairly linear relationship between normalised mean and variance. The profile distribution data was normalised by dividing every profile value by the maximum profile value. We then plotted the normalised variance against the normalised mean. This linear relationship shows that we can parameterise one property in terms of the other, so for the rest of this method we focus on only one of the two properties; the mean.
+
+There are three distinct observable groups in this graph. The first group has a high mean and a low variance. This indicates a profile that contains only GFP background noise. The second group has a low mean and high variance. This indicates a clear peak in the GFP profile. The third group clusters above the conceptual line of best fit, having a medium mean and medium variance. This indicates a profile that passes through the edge of a cell. It has a peak but one that is less distinct. 
+
+The blue points represent the profiles of a set of manually marked pixels from the manual tracking step. These profiles are clustered in the group of profiles of cell pixels. Their clustering demonstrates the consistency of the profile distribution groupings. We conclude that we can rely on these profile patterns to stay fairly constant during experiments. We can therefore develop image processing techniques that make use of this reliability.
+
+From each 3D GFP image stack, we produce a new 2D image that we term zMod. For each profile in the stack, we find the z-location of its intensity peak. It should be noted that for background noise profiles, the z-location of the greatest absolute value will be somewhat random. It should also be noted that the PDMS barriers and pillars show even lower levels of noise and therefore have very flat GFP profile distributions, so their intensity peaks in z will be very random. We then set each pixel value in zMod to be proportional to this peak z-location. The resulting image is analogous to a terrain map. It collates the "heights" of each GFP peak in the 3D data into a single image. Low pixel values correspond to low heights and vice versa. We represent low values as dark pixels and high values as bright pixels. 
+
+As noted in 2.2 - Imaging limitations, the focal plane that contains the most high-quality GFP results may not be the same focal plane that is best for segmenting cells. We refer to the difference in z between these two planes as "delta-z". During this project, we found the value of delta-z to be constant for a given microscope and specific experiment. Delta-z is found by manually iterating over z in a stack until the selected image shows the characteristics that are helpful for segmentation. 
+
+We then add the value of delta-z to every pixel in zMod. This slightly adjusts the stack "heights" represented by the pixel values in zMod. 
+
+If the shift is large enough, a cell pixel may be moved past the limits of the 3D environment representation. In this case, either new data must be invented to fill the areas around the cell pixel(s) or the data must be truncated. Neither solution is desirable. However, this situation has not been encountered during this project. Delta-z is usually small and the cells are rarely located at the top of the environment. 
+
+We then use zMod to produce another 2D image that we term zBF (for "zBrightfield"). We iterate over the image zMod, pixel by pixel, and use each pixel value to select a z-location in the original 3D Brightfield stack. We then use the pixel intensity value at this height in the Brightfield stack as the value for this x-y location in zBF. 
+
+Essentially, we have used the GFP fluorescence data to find the best focal plane for Brightfield observation of each individual cell pixel. Cell objects may spread through more than one focal plane (depending on the resolution), so a focal plane is selected for each cell pixel individually. We then extracted the corresponding pixel values from the 3D Brightfield stack and combined them into a single 2D composite image. Ideally, each cell object should now be in focus.
+
+
+
+3.3 - Perform manual tracking of cells
+
+Tracking was performed using ImageJ manual tracking software. A user performs manual tracking by clicking on cells in a simple computer interface, frame by frame. The user tracks one specific cell at a time, proceeding through the entire time series of frames for a particular location, searching only for this cell. This is done so that the software can assign a definite numeric ID to specific cells. It is also easier for the user to track one cell from frame to frame instead of many cells simultaneously.
+
+A user might spend 30 minutes to an hour tracking cells through a typical series produced using our experimental setup, depending on the number of cells involved. The user must judge whether a particular cell is worth tracking. If a cell is mostly obscured for the whole series, there is not point trying to track it, even though it obviously exists. The user chooses not to track a particular cell by simply not clicking on it. 
+
+We use some image processing to improve the contrast between the cells and the rest of the environment. This makes the cell locations clearer for the user and increases the speed of performing manual tracking. 
+
+From each 3D GFP image stack, we produce a new 2D image that we term zMean. We take each GFP pixel profile, normalise the intensities by dividing every value by the maximum value (the height of the GFP intensity peak), and then calculate the mean of the normalised distribution. Profiles with peaks will have low normalised means. Profiles of background noise will have high normalised means. We therefore invert the mean, so that this algorithm will produce a high value for a profile that passes through a cell and low value for one that contains only background noise. We then store this value at the corresponding pixel in zMean. 
+
+[image of zMean goes here]
+
+We then multiply each pixel value in zBF by the corresponding pixel value in zMean. This raises the intensity of the cancer cells and darkens everything else in the image. We term the resulting image zComp. 
+
+[image of zComp goes here]
+
+{zComp aids the user in cell segmentation} the size and shape of cell blobs remarkably well. Cell features such as protrusions are rather faint in raw GFP data, but here the normalisation causes them to show up strongly. This highlighting effect helps a user to track cells much more quickly. 
+
+
+
+
+3.4 - Automatically set maximum cell boundaries
+
+
+We now use the results of the manual tracking to produce a new 2D image that we term zDiff. Each manually-chosen marker has an x-y location. We need the z-value of the marker. zMod stores the z-values of the GFP intensity peaks, so we simply take the zMod pixel value at the marker's x-y location as the marker's z-value. Then, for each marker, we produce a temporary 2D difference image by iterating over each pixel and finding the difference between its profile's GFP peak z-value and the marker's z-value. A simple subtraction will yield low values for similar heights. We then invert the result so that pixels with similar GFP peak heights to this specific marker will have high values. We now iterate over each x-y location and choose the maximum available value from the set of difference images. We then assign this value to the pixel at that x-y location in our final 2D image, zDiff.
+
+[zDiff image goes here]
+
+[comments on zDiff go here]
+
+It should be noted that some background noise pixels elsewhere in the image might have GFP peaks at the same z-level as a marker. This will be included in zDiff. Hopefully, when we segment zDiff, these background noise results will be suppressed. However, this may not happen if the noise pixels are adjacent to any of the cell pixels. 
+
+We now use CellProfiler to segment zDiff. This produces a 2D image with large, incoherent blobs that lack detail.
+
+[blob image goes here]
+
+However, each blob defines the limit of relevance within an image for a particular cell. We can use this to limit the effect of a CellProfiler misrecognition error. We therefore use the blob outlines of the segmented zDiff to draw artificially darkened edges onto zBF. CellProfiler misrecognitions will generally not be able to spill out beyond these strengthened edges. We term the resulting image zEdge.
+
+[zEdge goes here]
+
+
+
+3.5 - Perform final cell recognition using CellProfiler
+
+
+We use CellProfiler to segment zEdge. 
+
+[image of final zSomething goes here]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3 - Results and Discussion
+
+
+
+
+
+
+
+
+

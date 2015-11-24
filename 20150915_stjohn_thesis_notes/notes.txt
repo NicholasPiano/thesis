@@ -1,0 +1,278 @@
+
+
+
+
+### TODO
+
+- dig through my archived MSc and find thesis examples
+- find thesis examples on the net. ideally with grades. ideally from Cambridge. 
+
+
+
+### AVENUES
+
+- style/formatting for Cambridge masters
+- any advice/resources from Cambridge info/bureau? 
+- define "mask", when it becomes necessary. 
+- explain how cell recognition is cell segmentation. 
+- need to define the term "focus level". "focal plane" is better.
+- define "slice"
+- "combine 3D image set into single composite 2D image"
+- capitalise after colon?
+- perhaps define "bulk" if it's used anywhere.
+- plastic -> PDMS
+- note problem of zEdge capping the segmentation of protrusions
+
+- sigma in zMod?
+
+- nMask instead of "pixel profile". need to note how the pixel profile values are actually calculated. 
+-> what n did Nick settle on for the data shown in the paper?
+-- note however that each pixel has a profile, it's just the mask used around each pixel can be of different sizes. 
+
+
+- note that cells can segmented manually? (is this possible? how?)
+-> CellProfiler has this option. manually click around each cell. everything there minus the segmentation algorithm. 
+-- "but for high throughput and statistically significant data, it is preferable to recognise the cells automatically"
+
+note that cells can overlap in z. (has this happened during experimentation?)
+- double peak detection would have to be implemented. 
+
+note smoothing at different points in the method. 
+
+dedicate to shery and to parents. 
+
+
+
+
+### QUESTIONS/ISSUES
+
+
+measure confidence? (confidence in what?)
+
+
+
+
+
+### MISC
+
+
+parts to cut:
+- image analysis. imaging (Brightfield vs GFP)
+
+parts to add: 
+- other paper that does something similar. need to show how ours is slightly better
+
+
+modify code to strip away the unnecessary parts of the code system.
+- originally designed to generate the data Christina needs. (the time dependence of properties of time -> speed, shape changes of cells). 
+-- Nick needs a sensitivity analysis
+--- don't care about how values change over time
+--- care about how segmentation with Nick's system compares against segmentation done in other ways (manually, etc)
+
+Bits that matter: 
+-> method
+-> results. discussion. 
+--- repeat this for different segmentation algorithms
+- wrap this up in sensitivity analysis where you have actual scores to compare
+-- "sensitivity analysis" = If I change a parameter by this much, how much does this area change. 
+
+
+
+the background should be called "preparing images for segmentation"
+Shery said most of the background was trivial. don't need to include anything about edge detection etc. 
+method: 
+- sections: definitions, how the images are organised (stacks, frames, etc), segmentation.
+-- segmentation: generate zMod, then zBF, then zMean, zComp, manual tracking, zDiff, then thresholded version of zDiff, then zEdge. 
+- for segmentation: only now interested in area. 
+
+i don't care about the time dependence, i care about comparing the area of the current method of segmentation with the areas found by previous methods of segmentation. 
+- gold standard: GFP projection segmentation. 
+-- need some manual segmentation results to test accuracy. 
+
+
+
+
+
+
+one person who knows about segmentation (this person cares about why this method is better or different). 
+and one who has no idea (this person cares about what the method does and is it robust). 
+
+
+
+Monday delivery: 
+The Graduate Studies Office on Mill Lane
+
+
+
+http://www.lib.cam.ac.uk/deptserv/openinghours.html
+
+Cambridge University Library
+West Road
+Cambridge
+CB3 9DR
+UK
+Email: library@lib.cam.ac.uk
+Tel: +44 (0) 1223 333000
+Fax: +44 (0) 1223 333160
+
+
+
+
+
+
+
+### DON'T FORGET
+
+Acknowledgements & Declaration. 
+
+
+
+
+### LINKS
+
+https://github.com/NicholasPiano/thesis
+
+
+
+
+### NOTES
+
+previous students' advice:
+- results section most important.
+- references important so that interested party can go learn more from appropriate places. 
+- conclusion must be valid and well-reasoned.
+
+
+for each section, there is a serious problem, which had to be solved before the next section could be tackled. 
+
+Shery:
+- no literature review necessary for MPhil. 
+
+-> I am using the images to demonstrate that I can get useful data.
+-> people care about the data so they can get graphs of cell properties over time. 
+
+the tracking of cells must be done by a person, who clicks and adds numbered markers. 
+
+in this project, pixel = data structure. when explaining microscopy, pixel = physical component.
+
+cell might lie on two or three z-levels. This depends on resolution.
+
+"projected area" = the projected area of a cell is the cell when viewed in 2D. 
+
+method should be thought of as one single item, even though it consists of two parts. 
+
+We are interested in the overall projected cell shape (and other properties, e.g. protrusions) over time.
+
+GFP = green fluorescent protein
+
+-- delta-z is constant over a device, not just a channel (micro-channel or data channel?). 
+
+capitalise Brightfield
+
+style: "Our method involves _4_ major steps"? 
+
+use "image" to by default mean an image produced using visible light detection. Specify GFP detection when necessary. 
+-> change this. image should be a general term. 
+
+when the manual tracking is done, which z-location is used to select the single 2D image (that is presented to the user) from the Brightfield stack for that particular frame? 
+- zDiff requires a starting z-location for each manual marker. 
+-> zMod is created before manual tracking occurs. so manual markers at specific pixels are considered to be at the z-location indicated by zMod. 
+
+
+[The goal of this project was to improve cell segmentation in order to gather data from a set of micro-fluidics experiments by Cristina Bertulli.]
+[should this be ignored for the thesis?]
+-> don't know. 
+
+
+
+
+
+### LOG
+
+
+Unlike visible light, fluorescence does not [spill over very much] between planes in a 3D environment.
+[why? confocal microscope uses a pinhole camera mechanism. visible light covers a big spectrum. so you get chromatic aberration - different frequencies react differently to the pinhole. fluorescence covers a much smaller spectrum - narrow band of frequencies. therefore less chromatic aberration, so can look at single plane with no interference from sources on different planes.
+
+
+top value in Z-mod = 1 - this might be equivalent to z-value of 98. 
+
+
+
+
+
+particularly interested in whatever mechanism the cancer cells use to get through the barrier. 
+-- this is actually not understood (in vivo)
+-- this is all a crude simulation. the mechanism is not even clear in the simulation. 
+- go through gaps in between other cells?
+- go through other cells completely?
+
+all channels are in fact connected. they contain a single environment.
+
+Note that the blood vessel barrier itself can move over time.
+
+
+
+when we are trying to find the cells, there is a property of the microscope observation that the best features for segmentation do not occur at the most intense of the GFP in a cell. 
+- for a single cell: the z-level at which the GFP is most intense (best for human observation via brightfield or GFP) does not correspond to the best level (in the brightfield) for segmentation.
+-- the very empirical relationship between these two levels we term delta-z. 
+
+Best focus:
+- focus for observation (reality)
+- focus for segmentation (edges, uniform blobs)
+- account for autofocus corrections
+
+
+Problem statement:
+- given a 3d environment with images in two channels (Brightfield and GFP), find the best focal plane with features for each cell that can be segmented consistently by CellProfiler. 
+- Track the cells so their properties can be observed over time. 
+
+
+
+better verb for algorithm: "combine". instead of stack/project/compress. 
+-> "projection" is better in terms of common practice. 
+
+Edge profile techniques include:
+- Intensity discontinuity (a simple transition)
+- Canny filter
+- Sobel filter
+- directionality
+
+[techniques for finding blobs go here]
+-> difference of Gaussians. 
+
+
+
+Problem statement: Given images of a 3D environment in two data channels (Brightfield and GFP), find the best focal plane with features associated with each cell that can be segmented consistently by CellProfiler. Track the cells so their properties can be observed over time. 
+
+
+
+obviously a larger mask will pick up more absolute intensity but when normalised to the maximum the curves are roughly similar / are very similar. 
+and also the maximum of the curves occurs at the same z. 
+this is independent of the absolute intensity, so the profile will remain the same (or rather, more similar) within a particular cell (ish) and from frame to frame. 
+
+
+
+
+[so how do you know that delta-z is constant over the entire composite image?]
+
+
+CellProfiler operates best on images with consistently identifiable cell features. Dark cell edges and uniform cell interiors are the most helpful characteristics for segmentation. We have found techniques that use the raw image data to generate new representations of the 3D environment that can be segmented more accurately by CellProfiler. 
+
+
+I haven't noted that the blood vessel wall can also move around. 
+-> results. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

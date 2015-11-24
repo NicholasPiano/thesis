@@ -1,0 +1,112 @@
+
+
+### ISSUES
+
+
+- marker image(s) should go in at some point.
+
+- Selinummi did not use variable pixel masks to create the 3D profiles from the stack. 
+
+- replace "image processing" with "image manipulation"?
+
+
+
+### TO DO
+
+- References
+- Appendices
+
+- refer to Ali for delta-z
+
+
+
+### CORRECTIONS
+
+- Selummi's method is called: Bpp for "Brightfield profile projection"
+- Nick's is called Gpp for "GFP profile projection" 
+- gMod -> Gmp for "GFP maximum projection"
+-- for now, these are referred to as bMod, zMod, and gMod, respectively
+
+- mis-recognition
+- pre-processing?
+- Fscore
+- zmod, bmod, gmod
+-- graphs
+- modelled, labelled. 
+- capitalisation after a colon
+- "brightfield"
+- 2d or 3d. 
+- de-noising
+- capitalise after a semicolon
+- focussed vs focused. 
+- search for "me", "I", "you". 
+- replace "Sigma". put "R" in maths text format. 
+
+
+
+- One study [ref: Arce] experimented with using a low-pass spatial filter to sharpen the image and simultaneously reducing the noise [via a mathematical technique.]
+
+- places where CellProfiler (or "existing cell segmentation software") is mentioned as only being able to segment 2D images. 
+
+
+
+### ADDITIONAL
+
+
+- manual tracking: ref: cite paper on tracking. graph that justifies this. the method that they propose in the tracking paper is not good enough to track the cells over time.
+
+- 6.2.2.1 - Manual ground truth: discussion: In their data, they get a much higher Fscore, about 0.7-0.8 on a constant basis, using their data. But they only have one type of cell. Ours has two types of cell, one of which is marked with GFP and the other is not.
+
+
+### ERRATA
+
+- References with many authors. "et al" issue. 
+
+
+
+
+
+### NOTES
+
+- Latex for specifying image sizes.
+-- \includegraphics[width=1.0\textwidth]{minion}
+-- \begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{TomandJerry}
+    \caption{Tom and Jerry}
+    \label{fig:TomJerry}   
+  \end{subfigure}
+  \caption{Best Animations}
+  \label{fig:animations}
+\end{figure}
+
+- Latex for citing images
+- I can cite Wall-E (see Fig.~\ref{fig:WallE}) 
+
+- Mailboxes etc: Printing and Binding - 01223 361 601. open Monday 9am. 23 King street. 
+
+- call: The Graduate Students Office. what time is deadline for handing in MPhil thesis? 
+-- phone number? 
+
+- Claire Puttock printed at engineering dept. £3, several minutes. open 8am-4pm.
+at the back of the dpo is the printing office and they will bind it for you while you wait (only takes a few minutes). 
+
+
+
+### LOG
+
+
+His never spill out but it never extends very far anyway, so it leads to poor recognition. It doesn't because the standard deviation of the brightfield limits the segmentation. It should be noted that this algorithm doesn't produce spillover. Taking the standard deviation of the brightfield produces high-contrast images, so no spillover. 
+
+
+This method should also only recognise cells marked with GFP, so that unmarked cells can be ignored.  
+
+
+
+
+
+
+
+
+

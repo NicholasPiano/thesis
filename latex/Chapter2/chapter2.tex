@@ -89,7 +89,7 @@ In the group of three cells at the top of the image, all three of the recognitio
 
 Cell segmentation studies using GFP fluorescence data focus on easily identifiable cell features such as the nucleus. Various problems are noted in these studies. The first is the GFP glare, where other materials in the environment reflect fluorescence. Other materials can sometimes generate fluorescence themselves. High noise levels are often encountered.
 
-The GFP images are often not very sharp. Some studies have attempted to sharpen the images by passing them through a high-pass spatial filter. Unfortunately, this also amplifies the noise. One study~\cite{arce} experimented with using a low-pass spatial filter to sharpen the image and simultaneously reducing the noise via a mathematical technique. Arce et al. note that thresholding can also be used to reduce noise, but also that ``it can omit low-intensity parts of cells"~\cite{arce}.
+The GFP images are often not very sharp. Some studies have attempted to sharpen the images by passing them through a high-pass spatial filter. Unfortunately, this also amplifies the noise. One study~\cite{arce} experimented with using a low-pass spatial filter to sharpen the image and simultaneously reducing the noise. Arce et al. note that thresholding can also be used to reduce noise, but also that ``it can omit low-intensity parts of cells"~\cite{arce}.
 
 Another study~\cite{rizk} used an approximation of the point spread function (or PSF) of the microscope hardware to deconvolve the images and correct for lens aberrations that might also cause noise-like effects and/or lower quality images.
 

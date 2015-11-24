@@ -1,0 +1,160 @@
+
+
+1 - Introduction
+
+1.1 - Clinical Rationale and Background of Current Project
+
+Rationale: Cells viewed in a planar environment can be focused using a microscope such that all cells are clearly visible and easy to outline. Cells viewed in a 3d environment such as those used to simulate organs or blood vessels can be at different heights in the environment leading to cells being blurred or distorted when not in the plane of the microscope. The goal of the project is to use image data to present cells [in a 2d context] such that they can be outlined easily by cell segmentation software. 
+
+Background: An understanding of this problem requires knowledge of different types of image data, confocal microscopy, and the principles of cell segmentation.
+
+1.2 Digital Microscopy
+
+Digital images are stored as 2d arrays of pixel intensities, where the value represents the light level received in the camera. 
+
+1.2.1 Confocal Microscopy
+
+Confocal microscopy stores a range of focal planes, essentially gathering 3d data. 
+
+The practical effect, when you look in the Bright Field, it's as though you're turning the focus on a camera, so that things become alternately blurred and in focus. What you see when using white, normal light, such as looking through a microscope. 
+
+When viewing fluorescence you have the ability to look at a single plane only. So when looking at a single plane, only fluorescence data that lies in that environment will be visible. There is little to no interference between planes. You can build a coherent 3d picture of the stack of planes. 
+- like a MRI. 
+
+1.3 Image Processing
+
+Requirement: Digital Microscopy. 
+Given the way images are stored, how can you describe features within them mathematically?
+Prerequisite knowledge for 1.4 Cell Segmentation. 
+
+1.4 Cell Segmentation
+
+A specific technique.
+Given the features we see in an image, how can we build up a picture of the objects within the image that we are interested in?
+and ultimately say what is an object and what is not? 
+
+
+Chapter 2 - Method
+
+2.1 - Z-mod compression
+
+Definitions:
+When I refer to x and y, I'm talking about pixels within a single image.
+When I refer to z, I mean potentially the same x and y position, but located within a different image within the same stack. 
+When I refer to a stack, I mean a collection of images positioned on top of each other vertically at the same frame. 
+When I say frame, I mean images gathered at the same point in time. 
+When I say channel, I mean images gathered using the same method. 
+For example GFP fluorescence data is one channel and the brightfield data is another. 
+Two channels can represent the same physical space but pixels in the same location can have two different values. 
+A channel can also be a combination of two other channels. Two channels can be combined mathematically in some way and produce a third. 
+
+set 2:
+In general, when I talk about a profile, I am talking about a column of pixel intensities at a fixed x and y but a range across z. 
+this need not be a single x and y, it might be a square of x and y pixels forming a column in z (oblong shape of pixels). 
+but in the end a profile has a unique value at each z-position. 
+
+Method:
+For each pixel in x and y, I created a profile in the GFP channel. When a cell is present, the intensity of the GFP will increase, but only at the z-location where the cell is present.
+If the cell is positioned at the top of the environment, the profile at the x and y location of the cell can have a very low value at the bottom environment. 
+The profile will increase where the cell is. 
+When picking a pixel in x and y, that contains only background, so there is no cell, the distribution will always have a very low value and be very flat, because there is no object presence and there is no high-intensity fluorescence. This will lead to a distribution with very low variance. Conversely a pixel containing a cell will have very high variance because it will vary a lot from the intensity of the background to the intensity of where the cell is. 
+So there are basically three properties that be found from this distribution. They are the mean, the variance, and the location of this maximum. 
+The mean and variance are linearly related. One can be parameterised in terms of the other, so they're basically one variable. 
+This leads to two key ingredients. The first, called Z-mean, is a single image where the value of each pixel is proportional to the mean of the distribution viewed in that pixel column in the environment / in that profile. 
+The second ingredient is Z-mod, where the value of each pixel is proportional to the z-position of the maximum in that distribution. comparable to a terrain profile. 
+An important thing to note is the z-mean is loosely related to the absolute intensity of the pixel column. But not completely, which means that very low-intensity parts of a cell can still show up very strongly in the mean, because they still have that distribution. So this is more valuable than the absolute intensity. It's more reliable in locating parts of a cell. 
+The final image that I produce is called Z-bf. Using Z-mod, pixel-by-pixel, each pixel of Z-bf is the value taken from the brightfield stack at the level of the pixel intensity indicated by z-mod. if Z-mod pixel is high-level, it will take a pixel from the high level in the bf-stack. I just use z-mod to pick and choose all the pixels I want from wherever they are in the environment. 
+So the fundamental process is to use the reliable 3d information of the gfp fluorescence to choose what parts of the brightfield stack to use in making a 2d image. 
+
+2.2 - Segmentation
+
+How did I use these images to do the segmentation?
+The first thing to note is that due to how the images are gathered, the level in the brightfield (the focus level that you're talking about for observing the cells and talking about what features they have) is not necessarily the same level as the best one for segmenting them. 
+[what makes a level good for segmentation. dark edges and uniform interior]
+So the very empirical trial-and-error way of determining the difference between these two levels we termed delta-z. 
+this difference is a property of the microscope. Within an environment the delta-z is an absolute value. 
+-> problem: if you shift, spike values will pass out of the 3d space. you must truncate or invent information. either way is undesirable. this has not happened yet - never had a delta-z that would push cell data out of the 3d space. 
+The delta-z is usually small. 
+Usually the cells are in the bottom or middle of the space. gravity + they like surfaces. 
+- note: not actually obvious which is bottom or top vis-a-vis gravity from the microscope data. 
+
+delta-z is an absolute value for a specific experiment with a specific microscope. 
+
+CellProfiler has a number of parameters that I had to choose.
+[explanation of parameters and why I chose particular values]. 
+[explanation of CellProfiler algorithms]
+[problem with these algos]
+[solution to problem - find a way to constrain the scope of the segmentation per cell.]
+z-diff is when placing a marker on a cell, you can determine the z-value of that marker from using z-mod. z-diff is the difference in z of that marker from every point in the image. So you build up an entire image where each pixel value is based on the difference between its "height" and the "height" of this marker. Now you combine the per-marker images into a stack. ["by the minimum"]
+turn stack into one image. 
+I then segment z-diff, which produces cell max_profiles (this is the constraint).
+Then I lay that on top of the z-bf image in order to impose an artificial boundary on each cell to limit the outcome of the segmentation. 
+Then I segment boundarised z-bf, and this final result is called z-edge. 
+-> I am using the images to demonstrate that I can get useful data.
+-> people care about the data so they can get graphs of cell properties over time. 
+
+the tracking of cells must be done by a person, who clicks and adds numbered markers. 
+
+
+
+Chapter 3 - Results & Discussion
+
+3.1 results zmod
+
+[successes also go here]
+
+The two components z-mean and z-mod. I will discuss the problems of z-mean. I will show an example of the z-mean image and then discuss its limitations.
+
+I want to compare it to two other images, which are the absolute intensity and just a smoothed mid-slice of the environment, which is what you would do primitively. You would just get one plane and use it to represent the whole environment. This is what you would do before this method.  
+
+Then I want to talk about the problems with zmod.
+Specifically smoothing - there's gaussian smoothing, which is when you're blurring the information across pixels - there's also linear smoothing, where you're increasing the size of your column. So you can look only across a single pixel, or a range/column of pixels, and that's a linear smoothing filter. You're just increasing the amount of information that you're using to estimate the z. 
+
+3.2 results segmentation
+
+How does the segmentation compare to traditional methods?
+Here's an image.
+What would the segmentation look like if I did it traditionally?
+- everyone uses CellProfiler. 
+Compare. 
+
+[success - cell protrusions. because of the boundary imposed by z-edge, the segmentation is allowed to extend into protrusions. However, very long protrusions might not contain much GFP, which means that the z-edge image might limit the segmentation, because the protrusion might extend beyond the imposed boundary. I know how it could be improved (future work).]
+
+
+Chapter 4 - Conclusion
+
+overview of project. 
+
+summarise results in 500 words. 
+
+future work - another 500 words. 
+
+applications - what this can be used for immediately. 
+
+
+References
+
+source references - what studies did you base stuff on? You're citing this paper because it has a method that you've used, and you have to acknowledge that you've used it. 
+
+information references - I don't have time to explain all of cell microscopy, so here's a textbook on cell microscopy.
+
+Appendices:
+
+Appendix A: Database Models
+- how does the database work?
+- how is information related to other information?
+
+Appendix B: Full step-by-step segmentation algorithm. Flow charts. 
+
+Appendix C: Software used. django. a description of my computer system. A description of the type of image files I used (i.e. TIFF). details about microscope model. I am running mac os x 10.10. everything is in python. numpy. list of packages. I sourced my code on github. 
+
+Acknowledgements & Declaration. 
+
+
+
+
+
+
+
+
+

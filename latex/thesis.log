@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  14 SEP 2015 11:08
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  14 SEP 2015 11:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1690,11 +1690,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
 [9 <./Chapter2/Figs/Raster/bad_segmentation-tile_050714_s13_ch-zbf-8-5-5-outlin
-e-zcomp-8-1-1-zedge-8-1-1-YUZ29SWD_t2.png (PNG copy)>] [10]) [11]
+e-zcomp-8-1-1-zedge-8-1-1-YUZ29SWD_t2.png (PNG copy)>]
+Underfull \vbox (badness 2189) has occurred while \output is active []
+
+ [10])
+[11]
 \openout2 = `Chapter3/chapter3.aux'.
 
-
-(./Chapter3/chapter3.tex [12
+ (./Chapter3/chapter3.tex [12
 
 
 
@@ -1980,11 +1983,11 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 185.
  ) 
 Here is how much of TeX's memory you used:
- 21483 strings out of 493488
- 392809 string characters out of 3141326
- 462012 words of memory out of 3000000
+ 21486 strings out of 493488
+ 392836 string characters out of 3141326
+ 462011 words of memory out of 3000000
  23911 multiletter control sequences out of 15000+200000
- 50930 words of font info for 179 fonts, out of 3000000 for 9000
+ 51155 words of font info for 181 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,12n,45p,1130b,930s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -1994,7 +1997,7 @@ ive/2012/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2012/te
 xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1
 /urw/times/utmri8a.pfb>
-Output written on thesis.pdf (68 pages, 4798193 bytes).
+Output written on thesis.pdf (68 pages, 4798148 bytes).
 PDF statistics:
  814 PDF objects out of 1000 (max. 8388607)
  691 compressed objects within 7 object streams
