@@ -17,4 +17,10 @@
 % 3. what goals it is meant to achieve
 % 4. how it improves on previous work. What does the previous method not do?
 
-\section{}
+\section{Motivation of current project}
+
+An important part of live cell microbiology is the accurate measurement and tracking of cell morphology during an experiment. Using a microscope, there are many different ways of observing the cells ranging from brightfield microscopy to 3D fluorescence reconstructions. Both 2D and 3D shape data from the cells along with their speed and directionality can provide information on the effectiveness of drugs or other agents in the experiment. The processing of cell data often relies on the quality of Cell Segmentation, or the automatic or manual differentiation of Objects of Interest, such as cells, from the background. Many algorithms and software packages, such as Cellprofiler and ImageJ, are used to segment cells automatically, yielding variable quality.
+
+A key limitation in widely used software that this paper seeks to address is the inability to account for consistent features that cannot be easily located in 3D data. 3D image data, such as from a confocal microscope, contains information about an environment on many focal planes. Objects can appear blurred or in focus depending the current focal plane. Consequently, features that are useful for segmentation; dark edges, uniform bright interiors, and other features such as fluorescent markers placed within cells are subject to any fluctuations in focus or the movement of objects vertically in the environment. This prevents consistent segmentation of the cell.
+
+The environment used in this study is a microfludics chip built to simulate a human blood vessel. This type of chip, a microchannel framework printed on a PDMS substrate, is widely used in the medical industry [ref] to mimic body tissue. The 3D nature of this setup requires the use of confocal microscopy or similar methods to observe objects in all parts of the environment. 
