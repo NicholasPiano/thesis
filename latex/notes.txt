@@ -1,0 +1,42 @@
+Corrections from Carola
+
+1. Abbreviations should be defined.
+
+2. All figure legends require more detail.
+
+3. Needs to demonstrate basic understanding of use of GFP in cell biology and the implications for how the variables in its use may influence image analysis.
+
+4. Explain how CellProfiler works.
+
+5. Clarify throughout aims of the project regarding segmentation and protrusions.
+
+6. Clarify the work you did and that which others did.
+
+7. Fig 2.4 indicate method of segmentation used.
+
+8. Make clear shortcomings of previous method which project aims to address in 3.4.
+
+9. Cite Fig 6.5 in text.
+
+10. Reorganise chapters 6 and 7.
+
+11. Include the comparison with previous approaches as in slide 21 of the presentation to demonstrate the degree to which it has improved segmentation.
+
+12. Emphasise benefits of new approach in conclusion chapter and identify using it to better identify protrusions as future work.
+
+13. Ensure references are complete and uniform in presentation.
+
+
+Revised corrections:
+
+1. Demonstrate understanding of GFP.
+
+2. Explain Cellprofiler.
+
+3. Clarify aim of project regarding cell shapes and protrusions.
+
+4. Clearly separate the work done from previous work.
+
+5. Use area segmentation to compare results with previous work. If not comparable, find some metric to compare them with.
+
+6. Emphasise benefits of new approach in conclusion chapter and identify using it to better identify protrusions as future work.
