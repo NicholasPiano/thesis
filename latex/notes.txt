@@ -29,11 +29,11 @@ Corrections from Carola
 
 Revised corrections:
 
-1. Demonstrate understanding of GFP.
+1. Demonstrate understanding of GFP. BACKGROUND
 
-2. Explain Cellprofiler.
+2. Explain Cellprofiler. BACKGROUND
 
-3. Clarify aim of project regarding cell shapes and protrusions.
+3. Clarify aim of project regarding cell shapes and protrusions. 
 
 4. Clearly separate the work done from previous work.
 
