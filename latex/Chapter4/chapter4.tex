@@ -11,9 +11,19 @@
 \fi
 
 %********************************** %First Section  **************************************
+\section{Introduction to the method}
+
+This method is based on the Selinummi brightfield method described in the previous chapter. An aim in developing it was to improve on two key problems. The first was the unwanted highlighting caused by objects other than those stained with GFP, preventing accurate segmentation of a multicellular environment. The second was a halo effect on the cells as the variance of the brightfield extended beyond the true edge of the cell due to optical mixing of the light in the brightfield. The Selinummi method was originally intended to replace GFP segmentation in 3D environments [ref]. This was previously done by projecting the GFP in the Z dimension, creating a new image where the value of each pixel corresponded to the sum or mean value of the pixels in that single XY profile distribution.
+
+The concept of this method is, instead of disposing of the GFP, to apply the variance method previously applied to the brightfield to the GFP itself. This yields a much more informative estimate of the position and shape of the cell. Due to the low quality of the GFP, the precise shape of the cell cannot be found, but the 3D information can then be used to search the brightfield data and construct an image such that every object of interest (marked with GFP) appears to be in focus. This is in effect a method of pre-processing, since the segmentation can then be done on the product by Cellprofiler or by other means in the manner of any other 2D image. In other words, the method proposed in this study casts 3D data in a 2D format that can be easily processed by well tested 2D algorithms.
+
+While this projection of 3D data into a 2D context is the main method proposed, a further method of optimising the segmentation of the product using additional 3D data is included as it is important to the testing of the method. This optimisation uses the creation of artificial edges drawn on an image delimiting the boundary for cell segmentation of single cell or group of cells to prevent the segmentation of areas of the background with similar intensity profiles but low GFP intensity. This is an improved alternative to simply highlighting areas of the image with the GFP intensity [ref].
+
 \section{The GFP profile}
 
-This method is based on the Selinummi brightfield method described in the previous chapter. An aim in developing it was to improve on two key problems. The first was the unwanted highlighting caused by objects other than those stained with GFP, allowing for a multicellular environment.
+The key component of this method is the GFP vertical intensity distribution or ``GFP profile". For a single pixel in XY, this appears as a single series of intensities spanning Z. These values can be smoothed both in XY and Z. Smoothing is Z is meaningful because of the spatial relationship between planes of GFP in the environment. Planes in the brightfield are not related spatially, as thus cannot be meaningfully smoothed. Any noise present between frames in the GFP can be minimised an properties such as the maximum value can be determined to sub-pixel accuracy via interpolation. 
+
+Similarly to the brightfield profile considered by Selinummi et al., it can be imbued with measureable properties such as a variance and mean value. GFP profiles with a high variance indicated the presence of a marked object in much the same way as the brightfield, but it additionally provides a point of maximum intensity
 
 Properties of the vertical GFP distribution
 Z position
