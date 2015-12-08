@@ -15,6 +15,8 @@
 
 Several constants were used to make zMod and zBF. They can be varied to produce different results.
 
+The weakest part of the method is the spatial relationship between the brightfield and the GFP. The brightfield is subject to fluctuations from the autofocus and has no intrinsic spatial information. The most important piece of information relating the GFP and the brightfield is for a hypothetical fixed object in focus in the brightfield, the GFP representation will always correspond to that level of focus. This is because the position of the microscope hardware is constant for a single frame and is set by the autofocus estimate from the brightfield. Assuming the same physical space is represented in both, the GFP can be used to account for the autofocus fluctuations, but the relationship between the GFP representation and the appearance of an object in the brightfield is arbitrary. A cell may be ``in focus" as far as possible, but still not be clearly visible by a human. This hinders manual tracking. optimum features for observation may not correspond to optimum features for segmentation. For tracking, it most effective to observe an object in a solid colour with or without clear edges since the precise shape is not necessary to indicate object centre. For segmentation, a clear object boundary with dark edges and a smooth, uniformally coloured interior yields the most accurate shape. This discrepancy is represented by the empirically determined value, delta-Z. Through further study, a value could be found automatically, but the focus level for optimum human observation is highly subjective. [SHOULD BE IN THE DISCUSSION]
+
 \section{zDiff and zEdge}
 
 Artificial edges can cut off parts of the cell that do not contain enough GFP.

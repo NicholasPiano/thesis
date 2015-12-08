@@ -21,15 +21,13 @@ While this projection of 3D data into a 2D context is the main method proposed, 
 
 \section{The GFP profile}
 
-The key component of this method is the GFP vertical intensity distribution or ``GFP profile". For a single pixel in XY, this appears as a single series of intensities spanning Z. These values can be smoothed both in XY and Z. Smoothing is Z is meaningful because of the spatial relationship between planes of GFP in the environment. Planes in the brightfield are not related spatially, as thus cannot be meaningfully smoothed. Any noise present between frames in the GFP can be minimised an properties such as the maximum value can be determined to sub-pixel accuracy via interpolation. 
+The key component of this method is the GFP vertical intensity distribution or ``GFP profile". For a single pixel in XY, this appears as a single series of intensities spanning Z. These values can be smoothed both in XY and Z. Smoothing is Z is meaningful because of the spatial relationship between planes of GFP in the environment. Planes in the brightfield are not related spatially, as thus cannot be meaningfully smoothed. Any noise present between frames in the GFP can be minimised an properties such as the maximum value can be determined to sub-pixel accuracy via interpolation. A profile can also be found by considering a square or mask of pixels in XY combined through some operation such as a mean value for each Z level. The size of this mask can be set arbitrarily to the size of a part of a cell, but analysis in Section [ref] will show that such a method of generating the profile amounts to a type of linear image smoothing and yields a profile with similar properties to a profile generated using only the centre point of the mask.
 
-Similarly to the brightfield profile considered by Selinummi et al., it can be imbued with measureable properties such as a variance and mean value. GFP profiles with a high variance indicated the presence of a marked object in much the same way as the brightfield, but it additionally provides a point of maximum intensity
-
-Properties of the vertical GFP distribution
-Z position
-Variance image compared with absolute GFP intensity
+Similarly to the brightfield profile considered by Selinummi et al., the GFP profile can be imbued with measureable properties such as a variance, a mean value, and the location of its maximum value. GFP profiles with a high variance indicate the presence of a marked object in much the same way as the brightfield, but it additionally provides a point of maximum intensity, whereas no property of the brightfield profile can be used to accurate estimate the Z location of the object observed due to lack of spatial relationship between the planes in the brightfield. The mean value of the distribution, if normalised and compared with other regions of the image, can be used to give a more accurate map of object extent than the absolute intensity of the GFP. For example, the absolute intensity of the GFP at the centre of a cell might be higher than at the extremities such as protrusions, but when observed in the mean of the GFP distribution, profiles that contain any part of an object, even protrusions, will contain a high value. This allows the full extent of a cell to be easily made out. This information is used in the second part of the method for optimising the segmentation.
 
 \section{Optimum features for cell recognition}
+
+
 
 Dark edges and uniform object interiors
 Vertical difference between maximum GFP and ideal features
