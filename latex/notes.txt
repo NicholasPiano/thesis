@@ -33,10 +33,56 @@ Revised corrections:
 
 2. Explain Cellprofiler. BACKGROUND
 
-3. Clarify aim of project regarding cell shapes and protrusions. 
+3. Clarify aim of project regarding cell shapes and protrusions.
 
 4. Clearly separate the work done from previous work.
 
 5. Use area segmentation to compare results with previous work. If not comparable, find some metric to compare them with.
 
 6. Emphasise benefits of new approach in conclusion chapter and identify using it to better identify protrusions as future work.
+
+LIST OF IMAGES
+
+Chapter3
+[IMG distributions of GFP]
+d[IMG the Canny filter applied to current data]
+d[IMG Blobs Gaussian convolution]
+[IMG Watershed example]
+[IMG masks]
+[IMG secondary objects expanding too far]
+[IMG blow/lasso example]
+[IMG increasing NewObjectCount]
+[IMG Brightfield profile]
+
+Chapter4
+[IMG GFP profile with different values of R]
+[IMG mean-variance plot]
+[IMG comparison between max GFP and best for observation and segmentation]
+[IMG zMod]
+[IMG side-by-side zBF and brightfield slice]
+[IMG zMean]
+[IMG zEdge]
+[IMG PLOT SHOWING RADIAL DISTRIBUTION OF CELL BORDER WITH PROTRUSION PEAKS MARKED]
+
+Chapter5
+[IMG SIDE BY SIDE COMPARISON OF ZBF AND ORIGINAL BRIGHTFIELD]
+[IMG EXAMPLE OF R TOO HIGH]
+[IMG EXAMPLE OF R TOO LOW]
+[IMG EXAMPLE OF VARYING THE PARAMETER R]
+[IMG EXAMPLE OF VARYING THE PARAMETER DELTA Z]
+[IMG EXAMPLE OF VARYING THE PARAMETER SIGMA]
+[IMG False variation in zMod]
+[IMG EXAMPLE OF IMAGE WITH A DROP IN GFP]
+[IMG EXAMPLE OF REDUCED EFFECTIVENESS FROM ZEDGE]
+[IMG CONSTANT LEVEL TIME SERIES]
+[IMG SELINUMMI METHOD TIME SERIES]
+[IMG MAX GFP TIME SERIES]
+[IMG ZBF TIME SERIES]
+[IMG ZEDGE TIME SERIES]
+[IMG 6 CELLS SAMPLED AT TIME INTERVALS SHOWING AREA FROM EACH METHOD]
+[IMG RADIAL PLOTS OF 6 CELL INSTANCES SHOWING PROTRUSION ANGLES AND LENGTHS]
+[IMG 6 CELLS -> 12 GRAPHS OF CELL PROTRUSION LENGTH AND ANGLE TIME SERIES]
+[IMG HYPOTHETICAL DIAGRAM OF TWO SUPERIMPOSED CELLS]
+[IMG SHOWING RESULT GIVEN LOW GFP -> 2 FRAMES]
+[IMG SHOWING CROSS-LEVEL ARTEFACTS]
+[IMG SHOWING LACK OF BRIGHTFIELD CONTRAST]
