@@ -11,21 +11,79 @@
 \fi
 
 %********************************** %First Section  **************************************
-\section{zMod parameters: R, Sigma, and Delta-z}
+\section{Introduction}
+
+To say that this method is an improvement on previously available methods is an understatement. This must be shown using comparable data. The best way to provide this data is to attempt to segment images from the current experiment. The methods can be compared easily under similar conditions using the same dataset. A readily available property of the cell instances found is the projected cell area. Other properties are the number and orientation of the cell protrusions. These will also be compared to judge the difference between the methods.
+
+[SIDE BY SIDE COMPARISON OF ZBF AND ORIGINAL BRIGHTFIELD]
+
+Despite the improvements made, the method developed is not without error. There are parameters that have optimal ranges, but outside those ranges, the method can fail. Some physical properties of the environment can limit the effectiveness of the method, for example, if the level of the GFP is too low to generate an accurate estimate of the Z level, the focus of GFP marked objects will not be corrected accurately, and the results will not be useful. Additionally, some configurations of cells in close proximity can cause problems for this method. A clear example is when two cell lie vertically one on top of the other, causing two visible peaks in the GFP. This, and other examples are discussed in the last section [ref].
+
+An important point when comparing different methods is the fact that there is no ``ground truth", or definitely correct answer to the question of the projected area of a cell, and despite the attempts of Selinummi et al. to define theirs as the segmentation of the projected GFP image [ref], all images are subject to error as are the results of their segmentation, and the results are judged subjectively. The only viable automatic means of judging different methods is to compare their consistency and repeatability. They could, however, be consistenty and repeatably wrong. For this reason, the ground truth chosen for the comparison of the methods shown here is the manual segmentation, or outlines of the cells drawn by eye on the zBF image. Only of sample of the frames are considered since manual segmentation is very time consuming.
+
+Yet another problem, is that not even the manual segmentation can be considered the ground truth. The human eye cannot be trusted to determine the shape of an object which it is totally unfit to identify in an environment that does not lend itself to casual observation. Despite this obstructing piece of philosophy, the final judgement must lie with something, and the best thing available is human vision, which is not saying much in the microscopic world. We are left with no choice but to accept a system of pattern recognition whose highest reccommendation is that it insists on discovering human faces wherever it looks [ref].
+
+\section{zBF parameters: R, Delta Z, Sigma}
+
+The three parameters that contribute to the generation of zBF must be carefully chosen, since a low quality result will be useless for segmentation. An analysis of the sensativity of the result to changes in the parameters can be used to determine the optimum values. Below, some examples of parameters chosen outside the optimal ranges are shown and some consequences of their segmentation is investigated.
+
+\subsection{The radius of GFP linear smoothing: $R$}
+
+
+
+The Too much linear smoothing can give incorrect estimates of the Z level of adjacent cells with different levels.
+
+Too little smoothing can allow noise to greatly affect the Z estimate for each pixel, leading to confusing results.
+
+[EXAMPLE OF VARYING THE PARAMETER R]
+
+\subsection{The brightfield level correction: $\Delta Z$}
+
+The weakest part of the method is the spatial relationship between the brightfield and the GFP and the decision about the value of [Delta Z]. The brightfield is subject to fluctuations from the autofocus and has no intrinsic spatial information. The most important piece of information relating the GFP and the brightfield is for a hypothetical fixed object in focus in the brightfield, the GFP representation will always correspond to that level of focus. This is because the position of the microscope hardware is constant for a single frame and is set by the autofocus estimate from the brightfield. Assuming the same physical space is represented in both, the GFP can be used to account for the autofocus fluctuations, but the relationship between the GFP representation and the appearance of an object in the brightfield is arbitrary. A cell may be ``in focus" as far as possible, but still not be clearly visible by a human. This hinders manual tracking. optimum features for observation may not correspond to optimum features for segmentation. For tracking, it most effective to observe an object in a solid colour with or without clear edges since the precise shape is not necessary to indicate object centre. For segmentation, a clear object boundary with dark edges and a smooth, uniformally coloured interior yields the most accurate shape. This discrepancy is represented by the empirically determined value, delta-Z. Through further study, a value could be found automatically, but the focus level for optimum human observation is highly subjective.
+
+[EXAMPLE OF VARYING THE PARAMETER DELTA Z]
+
+\subsection{The radius of level gaussian blur: $\Sigma$}
+
+GFP profiles with a high variance indicate the presence of a marked object in much the same way as the brightfield, but it additionally provides a point of maximum intensity, whereas no property of the brightfield profile can be used to accurate estimate the Z location of the object observed due to lack of spatial relationship between the planes in the brightfield.
+
+The mean value of the distribution, if normalised and compared with other regions of the image, can be used to give a more accurate map of object extent than the absolute intensity of the GFP. For example, the absolute intensity of the GFP at the centre of a cell might be higher than at the extremities such as protrusions, but when observed in the mean of the GFP distribution, profiles that contain any part of an object, even protrusions, will contain a high value. This allows the full extent of a cell to be easily made out. This information is used in the second part of the method for optimising the segmentation.
 
 Several constants were used to make zMod and zBF. They can be varied to produce different results.
 
-The weakest part of the method is the spatial relationship between the brightfield and the GFP. The brightfield is subject to fluctuations from the autofocus and has no intrinsic spatial information. The most important piece of information relating the GFP and the brightfield is for a hypothetical fixed object in focus in the brightfield, the GFP representation will always correspond to that level of focus. This is because the position of the microscope hardware is constant for a single frame and is set by the autofocus estimate from the brightfield. Assuming the same physical space is represented in both, the GFP can be used to account for the autofocus fluctuations, but the relationship between the GFP representation and the appearance of an object in the brightfield is arbitrary. A cell may be ``in focus" as far as possible, but still not be clearly visible by a human. This hinders manual tracking. optimum features for observation may not correspond to optimum features for segmentation. For tracking, it most effective to observe an object in a solid colour with or without clear edges since the precise shape is not necessary to indicate object centre. For segmentation, a clear object boundary with dark edges and a smooth, uniformally coloured interior yields the most accurate shape. This discrepancy is represented by the empirically determined value, delta-Z. Through further study, a value could be found automatically, but the focus level for optimum human observation is highly subjective. [SHOULD BE IN THE DISCUSSION]
+Note in Figure [ref] that even areas containing no GFP such as empty background regions have been assigned a level. This happens since even if the profile is flat, whatever noise exists will yield a maximum a value.
 
-\section{zDiff and zEdge}
+[EXAMPLE OF VARYING THE PARAMETER SIGMA]
+
+\section{zMean and zEdge}
 
 Artificial edges can cut off parts of the cell that do not contain enough GFP.
+
+[EXAMPLE OF IMAGE WITH A DROP IN GFP]
+
+[EXAMPLE OF REDUCED EFFECTIVENESS FROM ZEDGE]
 
 \section{Comparison with common methods}
 
 Previous methods cannot account for the inconsistencies in the focus fluctuations and so are not really comparable in their quality.
 
+[CONSTANT LEVEL TIME SERIES]
+[SELINUMMI METHOD TIME SERIES]
+[MAX GFP TIME SERIES]
+[ZBF TIME SERIES]
+[ZEDGE TIME SERIES]
+
+[6 CELLS SAMPLED AT TIME INTERVALS SHOWING AREA FROM EACH METHOD]
+[RADIAL PLOTS OF 6 CELL INSTANCES SHOWING PROTRUSION ANGLES AND LENGTHS]
+[6 CELLS -> 12 GRAPHS OF CELL PROTRUSION LENGTH AND ANGLE TIME SERIES]
+
 \section{Errors and limitations}
+
+Cells on top of each other
+
+In this case, a GFP profile for a single XY location could have two very prominent peaks. Currently, the method does not attempt to resolve this situation since it has not been observed in the current data, but trivially, it could be resolved by only taking account of the peak with the highest Z level, since the brightfield information is not 3D, and there is no way to recover any edge information about the lower cell if it is obscured. In this case, such a conflict could be noted and the GFP edge, which is not obscured, could act as a fallback for the segmentation. This information would allow the GFP edges, while they are suboptimal, to be incorporated into the outline of the rest of the cell if it is visible elsewhere in the brightfield. To reiterate, this situation has not been observed, but it is theoretically possible in such a 3D environment.
 
 Lack of GFP
 Cross-level focus artifacts
+
+Lack of brightfield edge and contrast
