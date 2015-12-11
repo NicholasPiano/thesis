@@ -39,7 +39,7 @@ Once blobs and edges have been found, it is possible that in a given cellular en
 
 [IMG Watershed example]
 
-\section{Cellprofiler and segmentation software}
+\section{CellProfiler and segmentation software}
 
 The last section details some of the methods used by Cellprofiler and other software packages, such as several ImageJ plugins, to segment cells. When Cellprofiler is provided with an image, it will first look for blobs of colour in the image. Dependent on the background, it will look for bright or dark blobs as potential candidates for objects. The edges close to these blobs are kept as potential object edges. The blobs of colour are then separated using a watershed method. Their contours are matched with the edge image and the space is filled in to form an object ``mask". The mask is a binary representation the object of interest. Every point in the mask is considered part of the object, and all points outside are considered part of the background. The watershed method allows adjacent masks to be separated. Every task that Cellprofiler performs on an image such as edge detection or blob detection is typically contained within a module that stores information about operations done to the image. These modules can be chained to compound effects and allow very specific workflows to suit all types of images. It can also combine images from several channels using basic mathematical operations.
 
