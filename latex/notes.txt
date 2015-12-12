@@ -31,7 +31,7 @@ Revised corrections:
 
 1. Demonstrate understanding of GFP. BACKGROUND
 
-2. Explain Cellprofiler. BACKGROUND
+2. Explain CellProfiler. BACKGROUND
 
 3. Clarify aim of project regarding cell shapes and protrusions.
 
@@ -46,6 +46,7 @@ LIST OF IMAGES
 Chapter2
 201 d[IMG brightfield sample]
 202 d[IMG gfp sample]
+203 [IMG environment schematic]
 
 Chapter3
 301 [IMG distributions of GFP]
