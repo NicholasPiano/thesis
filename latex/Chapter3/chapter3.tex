@@ -94,7 +94,7 @@ The last section details some of the methods used by CellProfiler and other soft
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{302_canny_bf}
+ \includegraphics[width=0.9\textwidth]{305_masks}
  \caption{
  	Masks
  }
@@ -105,7 +105,7 @@ CellProfiler has a particularly useful module called ``Secondary Objects". Rathe
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{305_secondary_objects_error}
+ \includegraphics[width=0.9\textwidth]{306_secondary_objects_error}
  \caption{
  	Secondary object error
  }
@@ -116,7 +116,7 @@ Another tool for segmentation is the Blow/Lasso tool in ImageJ. This treats the 
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{306_blow_lasso}
+ \includegraphics[width=0.9\textwidth]{307_blow_lasso}
  \caption{
  	Blow tool
  }
@@ -135,15 +135,6 @@ A popular tracking method is the LAP, or ``Linear Assignment Problem", framework
 
 The method yields four important numbers, namely ``LostObjectCount", ``NewObjectCount", ``SplitObjectCount", and ``MergedObjectCount". A measure of the reliability of the tracking is given by the consistency of these numbers. For example, if NewObjectCount continues to increase throughout the time series, it is likely that objects that should be connected are being rejected and treated as new objects. This can happen if objects move a long distance, such as many multiples of their length, between frames. If the ratio of distance moved to time between frames is too high, the tracking algorithm may be too unreliable for use. In this case, manual tracking may be necessary to provide accurate information about cells.
 
-\begin{figure}[p]
- \centering
- \includegraphics[width=0.9\textwidth]{302_canny_bf}
- \caption{
- 	New object count
- }
- \label{fig:newobjectcount}
-\end{figure}
-
 \section{The Selinummi brightfield profile method}
 
 In their 2009 paper, Bright Field Microscopy as an Alternative to Whole Cell Fluorescence in Automated Analysis of Macrophage Images [italic], Selinummi et al. describe a method of using 3D brightfield information to aid segmentation instead of relying on GFP imaging of cells. The images for their study were gathered in a similar way to this study. A confocal microscope was used to scan a 3D environment gathering images in brightfield and GFP channels. Gathering data with a confocal microscope is slow and expensive, so if adequate cell data can be produced using a single channel, this can save time. They proposed using the amplitude of the variation of the brightfield intensity in the Z dimension as an indicator of the presence of an object at a particular XY location. This exploits the behaviour of the brightfield representations of objects as they move in and out of focus. As outlined in Chapter [ref], the brightfield does not store 3D information, but changes with the focal plane of the environment. An area of background will not vary across focal planes, but a location or single pixel containing an object will vary with focal plane.
@@ -152,7 +143,7 @@ The basis of the method is an inspiration for the current project. The vertical 
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{302_canny_bf}
+ \includegraphics[width=0.9\textwidth]{308_bf_profiles}
  \caption{
  	Brightfield profile
  }
