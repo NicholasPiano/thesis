@@ -85,7 +85,10 @@ Once blobs and edges have been found, it is possible that in a given cellular en
 
 A watershed algorithm was proposed by F. Meyer in 1990. The steps for the watershed algorithm are as follows:
 \begin{enumerate}
-	\item asdf
+	\item Choosing starting points for the watershed. ``Water" will ``flow" from these points. These can be positioned at the maxima in an image, randomly, or in a grid. Each is given a different label (a simple integer value).
+	\item Each iteration, the neighbours of the marked pixels are placed into a queue and ordered by a priority proportional to their grayscale values. There will be one queue per label.
+	\item The neighbours of lowest priority pixel from each queue are checked. If they are all marked, the lowest priority pixel is marked with their label. Any un-queued neighbouring pixels are then queued.
+	\item Repeat step 3 until all queues are empty.
 \end{enumerate}
 
 \section{CellProfiler and segmentation software}
@@ -105,18 +108,31 @@ CellProfiler has a particularly useful module called ``Secondary Objects". Rathe
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{306_secondary_objects_error}
+ \includegraphics[width=0.9\textwidth]{306_secondary_objects_successful}
+ \caption{
+ 	Secondary object error
+ }
+ \label{fig:secondaryobjectsuccess}
+\end{figure}
+
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{307_secondary_objects_error}
  \caption{
  	Secondary object error
  }
  \label{fig:secondaryobjecterror}
 \end{figure}
 
-Another tool for segmentation is the Blow/Lasso tool in ImageJ. This treats the image as a ``terrain", where the ``height" of a pixel is proportional to its itensity. If an algorithm follows a path through the image, moving from one pixel to another can be assigned a cost based on the relationship between the intensities. An algorithm could be set up such that moving into dark edges could be very cheap, but moving out of them could be expensive, causing the path to follow a chain of edges closely. In a similar fashion, two points can be specified and the cost between them calculated [ref]. If one point is specified as the centre from which to search, the locus of points that share the same cost from the centre can yield a closed shape with dark edges such as a cell. While not reliable without tuning, the cost function can be made more specific to suit the application. Such a function can also be made to take account of multiple channels. Depending on how it is implemented, considering a central point can bias the shape towards a circular locus.
+Another tool for segmentation is the Blow/Lasso tool in ImageJ. This is based on the LASSO (or Least Absolute Shrinkage and Selection Operator) algorithm [ref]. LASSO is a least square regression algorithm that imposes a limit on...
+
+NEED TO CORRECT THIS [???]
+
+This treats the image as a ``terrain", where the ``height" of a pixel is proportional to its itensity. If an algorithm follows a path through the image, moving from one pixel to another can be assigned a cost based on the relationship between the intensities. An algorithm could be set up such that moving into dark edges could be very cheap, but moving out of them could be expensive, causing the path to follow a chain of edges closely. In a similar fashion, two points can be specified and the cost between them calculated [ref]. If one point is specified as the centre from which to search, the locus of points that share the same cost from the centre can yield a closed shape with dark edges such as a cell. While not reliable without tuning, the cost function can be made more specific to suit the application. Such a function can also be made to take account of multiple channels. Depending on how it is implemented, considering a central point can bias the shape towards a circular locus. Mathematically,
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{307_blow_lasso}
+ \includegraphics[width=0.9\textwidth]{308_blow_lasso}
  \caption{
  	Blow tool
  }
@@ -125,15 +141,24 @@ Another tool for segmentation is the Blow/Lasso tool in ImageJ. This treats the 
 
 A notable disadvantage of CellProfiler is the lack of comprehensive support for 3D environments and sets of images with 3D relationships. Although it can be made to behave in this way, images must be processed on an individual basis or in basic groupings, limiting the complexity of 3D operations. This makes true 3D segmentation difficult or impossible. Nevertheless, CellProfiler has a wide array of very powerful 2D operations. Thus an ideal solution is a method that is able to cast a 3D dataset in a 2D context in order to take advantage of 2D methods while preserving 3D data.
 
-The final data output from CellProfiler is a list of object masks along with some analysis of their shape such as their eccentricity or orientation (from a bounding ellipse). CellProfiler does allow the segmentation of connected objects, such as protrusions, and can provide their measurements, but this can be unreliable since the properties of protrusions are hard to specify. A larger problem with CellProfiler is the inability to adapt to inconsistencies. For example, the edges of a cell protrusion can have a very different appearance to the main body of the cell as the cell walls grow thinner. While the edge of a protrusion maybe remain visible towards its apex, the difference in edge properties might cause CellProfiler to conclude that they are unrelated edges, and lead to a protrusion being rejected and not represented in the final data. This unreliability with regards to ``tertiary object" like protrusions is insufficient for the accuracy required by this project. The method in Chapter [ref] will show how 3D information can enhance the recognition of tertiary objects.
+The final data output from CellProfiler is a list of object masks along with some analysis [???] of their shape such as their eccentricity or orientation (from a bounding ellipse). CellProfiler does allow the segmentation of connected objects, such as protrusions, and can provide their measurements, but this can be unreliable since the properties of protrusions are hard to specify. A larger problem with CellProfiler is the inability to adapt to inconsistencies. For example, the edges of a cell protrusion can have a very different appearance to the main body of the cell as the cell walls grow thinner. A cell protrusion is defined as an extension or stretching of the cell wall used by the cell for movement. While the edge of a protrusion maybe remain visible towards its apex, the difference in edge properties might cause CellProfiler to conclude that they are unrelated edges, and lead to a protrusion being rejected and not represented in the final data. This unreliability with regards to ``tertiary object" like protrusions is insufficient for the accuracy required by this project. The method in Chapter [ref] will show how 3D information can enhance the recognition of tertiary objects.
+
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{309_protrusions}
+ \caption{
+ 	Protrusions
+ }
+ \label{fig:cellprotrusions}
+\end{figure}
 
 \section{Cell tracking}
 
-Cell tracking is any method of associating recognised objects in different images gathered at different times and assigning them same identity. This can allow properties of the cells such as area and position to be plotted over time and for trends to be observed. In a low density packing of cells, this can be as simple as finding the distance between objects in different frames and assigning the next iteration to be the object with the smallest distance from the starting point. In this study, connected iterations of a single physical object are referred to as ``instances" as in ``cell instance". This is an important distinction, since a cell objects cannot be said to have an area or velocity since these properties change with time. Assigning an area to a particular cell at a point in time is equivalent to assigning the area to the cell instance. Thus a single cell can have many cell instances.
+Cell tracking is any method of associating recognised objects in different images gathered at different times and assigning them same identity. This can allow properties of the cells such as area and position to be plotted over time and for trends to be observed. In a low density packing of cells, this can be as simple as finding the distance between objects in different frames and assigning the next iteration to be the object with the smallest distance from the starting point. In this study, connected iterations of a single physical object are referred to as ``instances" as in ``cell instance". This is an important distinction, since a cell objects cannot be said to have an area or velocity since these properties change with time. Velocity also requires multiple frames to determine, so intermediate velocities can be assigned to the cell instance rather than the cell. Assigning an area to a particular cell at a point in time is equivalent to assigning the area to the cell instance. Thus a single cell can have many cell instances.
 
 A popular tracking method is the LAP, or ``Linear Assignment Problem", framework tracking algorithm. Once two lists of objects and their positions in subsequent images are found, they can be connected and ranked by a likelihood of correspondence. This is done by first constructing and solving a NxN [maths] matrix of correspondence parameters where N is the number of objects considered. A similar matrix is constructed to represent the probabilities of cells merging or splitting. The final step reconciles the two images into a list of corresponding cell instances. This process can then be repeated for subsequent frames. This algorithm is employed by CellProfiler as a module, so it can be applied to objects found through recognition. Other properties of the cells such as changing shape and size can contribute to the likelihood of correspondence. LAP also helps to associate cells that disappear and reappear, as well as cells that merge or split.
 
-The method yields four important numbers, namely ``LostObjectCount", ``NewObjectCount", ``SplitObjectCount", and ``MergedObjectCount". A measure of the reliability of the tracking is given by the consistency of these numbers. For example, if NewObjectCount continues to increase throughout the time series, it is likely that objects that should be connected are being rejected and treated as new objects. This can happen if objects move a long distance, such as many multiples of their length, between frames. If the ratio of distance moved to time between frames is too high, the tracking algorithm may be too unreliable for use. In this case, manual tracking may be necessary to provide accurate information about cells.
+The method yields four important numbers, namely ``LostObjectCount", ``NewObjectCount", ``SplitObjectCount", and ``MergedObjectCount". A measure of the reliability of the tracking is given by the consistency of these numbers. For example, if NewObjectCount continues to increase throughout the time series, it is likely that objects that should be connected are being rejected and treated as new objects. This can happen if objects move a long distance, such as many multiples of their length, between frames. If the ratio of distance moved to time between frames is too high, the tracking algorithm may be too unreliable for use. Due to this unreliability, manual tracking is necessary to provide accurate information about cells. Manual tracking is used throughout this study, but further possiblities for automatic tracking can be derived from the current research.
 
 \section{The Selinummi brightfield profile method}
 
@@ -143,7 +168,7 @@ The basis of the method is an inspiration for the current project. The vertical 
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{308_bf_profiles}
+ \includegraphics[width=0.9\textwidth]{310_bf_profiles}
  \caption{
  	Brightfield profile
  }
