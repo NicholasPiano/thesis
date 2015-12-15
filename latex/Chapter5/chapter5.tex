@@ -62,9 +62,9 @@ The weakest part of the method is the spatial relationship between the brightfie
  \label{fig:deltazvariation}
 \end{figure}
 
+
+
 \subsection{The radius of level gaussian blur: $\Sigma$}
-
-
 
 \begin{figure}[p]
  \centering
@@ -122,15 +122,27 @@ Artificial edges can cut off parts of the cell that do not contain enough GFP.
 
 Previous methods cannot account for the inconsistencies in the focus fluctuations and so are not really comparable in their quality. Below, some of the results from segmentation of images generated using several different method including the current method.
 
-[IMG CONSTANT LEVEL TIME SERIES]
-[IMG SELINUMMI METHOD TIME SERIES]
-[IMG MAX GFP TIME SERIES]
-[IMG ZBF TIME SERIES]
-[IMG ZEDGE TIME SERIES]
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{508_segmentation_area_comparison}
+ \caption{
+ 	Segmentation area comparison
+ }
+ \label{fig:areacomparison}
+\end{figure}
 
 [IMG 6 CELLS SAMPLED AT TIME INTERVALS SHOWING AREA FROM EACH METHOD]
 [IMG RADIAL PLOTS OF 6 CELL INSTANCES SHOWING PROTRUSION ANGLES AND LENGTHS]
 [IMG 6 CELLS -> 12 GRAPHS OF CELL PROTRUSION LENGTH AND ANGLE TIME SERIES]
+
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{509_protrusion_comparison}
+ \caption{
+ 	Protrusion comparison
+ }
+ \label{fig:protrusioncomparison}
+\end{figure}
 
 \section{Errors and limitations}
 
@@ -138,16 +150,44 @@ Several possible errors that would affect segmentation results must be mentioned
 
 A controversial example of a possible error is a situation where two cells are superimposed in Z. In this case, a GFP profile for a single XY location could have two very prominent peaks. Currently, the method does not attempt to resolve this situation since it has not been observed in the current data, but trivially, it could be resolved by only taking account of the peak with the highest Z level, since the brightfield information is not 3D, and there is no way to recover any edge information about the lower cell if it is obscured. In this case, such a conflict could be noted and the GFP edge, which is not obscured, could act as a fallback for the segmentation. This information would allow the GFP edges, while they are suboptimal, to be incorporated into the outline of the rest of the cell if it is visible elsewhere in the brightfield. To reiterate, this situation has not been observed, but it is theoretically possible in such a 3D environment.
 
-[IMG HYPOTHETICAL DIAGRAM OF TWO SUPERIMPOSED CELLS]
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{510_hypothetical_superimposed_cells}
+ \caption{
+ 	Superimposed cells
+ }
+ \label{fig:superimposedcells}
+\end{figure}
 
 In some cases, through a hardware fault or a temporary shift in the illumination of the environment, the level of the GFP intensity can drop in the whole experiment. This happened in one experiment done and caused the method to fail in a single frame, and subsequently rendered the area estimates in that frame for all objects unreliable.
 
-[IMG SHOWING RESULT GIVEN LOW GFP -> 2 FRAMES]
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{511_low_gfp_segmentation}
+ \caption{
+ 	Low GFP segmentation
+ }
+ \label{fig:lowgfpsegmentation}
+\end{figure}
 
 If the illumination of the environment is not uniform, and regions at the top are significantly brighter than the bottom for example, when brightfield pixel values from different Z levels are brought together to generate zBF, it is possible that the intensities are so different as to be discontinuous, leading to the appearance of a false edge. This type of effect is shown in Figure [ref]. This can be alleviated partially by the choice of $R$ or $\Sigma$, since both control to a certain extent the smoothing between levels. If transitions between levels are smoother, artefacts such as these are less likely to form.
 
-[IMG SHOWING CROSS-LEVEL ARTEFACTS]
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{512_cross_level_artefacts}
+ \caption{
+ 	Cross-level artefacts
+ }
+ \label{fig:crosslevelartefacts}
+\end{figure}
 
 Finally, if the configuration of the microscope is chosen before imaging to yield generally low contrast brightfield images, edges may not be visible in any focal plane. In this case, the method of finding the in-focus representations of cells may not be very useful as no more information is revealed. In this case, an alternative might be use the segmentation of the GFP primarily and gather what results are available from the brightfield. As with hypothetical superimposed cells, edges from GFP and brightfield channels could be combined, but here it might be more effective to weight the edges found in GFP to be more reliable than those in the brightfield. This is subject for future work.
 
-[IMG SHOWING LACK OF BRIGHTFIELD CONTRAST]
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{513_no_bf_contrast}
+ \caption{
+ 	No BF contrast
+ }
+ \label{fig:nobfcontrast}
+\end{figure}
