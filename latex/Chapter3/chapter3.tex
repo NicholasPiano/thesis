@@ -108,7 +108,7 @@ CellProfiler has a particularly useful module called ``Secondary Objects". Rathe
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{306_secondary_objects_successful}
+ % \includegraphics[width=0.9\textwidth]{306_secondary_objects_successful}
  \caption{
  	Secondary object error
  }
@@ -117,7 +117,7 @@ CellProfiler has a particularly useful module called ``Secondary Objects". Rathe
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{307_secondary_objects_error}
+ % \includegraphics[width=0.9\textwidth]{307_secondary_objects_error}
  \caption{
  	Secondary object error
  }
@@ -132,7 +132,7 @@ This treats the image as a ``terrain", where the ``height" of a pixel is proport
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{308_blow_lasso}
+ \includegraphics[width=0.9\textwidth]{309_blow_lasso}
  \caption{
  	Blow tool
  }
@@ -145,7 +145,7 @@ The final data output from CellProfiler is a list of object masks along with som
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{309_protrusions}
+ \includegraphics[width=0.9\textwidth]{310_protrusions}
  \caption{
  	Protrusions
  }
@@ -168,13 +168,23 @@ The basis of the method is an inspiration for the current project. The vertical 
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{310_bf_profiles}
+ \includegraphics[width=0.9\textwidth]{311_bf_profiles}
  \caption{
  	Brightfield profile
  }
  \label{fig:brightfieldprofile}
 \end{figure}
 
-Their results were promising for the data they gathered, but suffered when applied to the data from the current experiment. To test the method, they compared cell segmentation of the modified brightfield images to the GFP images of the same cells. They used the GFP segmentation as the ``ground truth" of their testing. Ground truth is assumed to be the best representation of the object. This is a failing of the study since there are many details omitted by the GFP, especially considering the variety of configurations cellular GFP can take, as discussed in Section [ref], earlier in this chapter. Segmentation was compared pixel by pixel using the ``FScore", or a compound ratio of the true and false positive scores.
+Their results were promising for the data they gathered, but suffered when applied to the data from the current experiment. To test the method, they compared cell segmentation of the modified brightfield images to the GFP images of the same cells. They used the GFP segmentation as the ``ground truth" of their testing. Ground truth is assumed to be the best representation of the object. This is a failing of the study since there are many details omitted by the GFP, especially considering the variety of configurations cellular GFP can take. Segmentation was compared pixel by pixel using the ``FScore", or a compound ratio of the true and false positive scores, given by:
+$$ Precision = \frac{tp}{tp + fp} $$
+$$ Recall = \frac{tp}{tp + fn} $$
+$$ FScore = \frac{2 (Precision \times Recall) }{Precision + Recall} $$
+where:
+\begin{enumerate}
+	\item $tp$ is the number of True Positive, or correctly recognised pixels in a mask, according to the ground truth, or accepted best measurement of the cell.
+	\item $fp$ is False Positive, or falsly accepted pixels.
+	\item $fn$ is False Negative, or pixels falsly rejected from the mask.
+\end{enumerate}
+FScore serves as a means of judging the accuracy of a mask from a certain algorithm in one single value.
 
-There are several disadvantages of the Selinummi method, especially when applied to the current data. Firstly, the method was originally applied to a single cell environment with no visible materials other than cells. in contrast, the current environment is primarily composed of PDMS plastic. It is also a multicellular environment. The images thus contain many other objects in the brightfield that are not desired as part of the dataset, but they still have similar edges and strong variations in their intensity profiles. Regions of the image where any kind of object is found will appear bright. This can hinder accurate segmentation since unwanted objects are highlighted. Secondly, due to the brightfield variation in the images, strongly varying pixels can occur outside the true edge of the cell, causing these regions to be highlighted, and giving the cell a bright halo. This halo is picked up in the recognition and contributes to the measured area of the cell. This can cause an over-estimation of the cell area and a false representation of the cell's shape. These problems must be addressed for a variant of this method to be useful.
+There are several disadvantages of the Selinummi method, especially when applied to the current data. Firstly, the method was originally applied to a single cell environment with no visible materials other than cells. In contrast, the current environment is primarily composed of PDMS plastic. It is also a multicellular environment. The images thus contain many other objects in the brightfield that are not desired as part of the dataset, but they still have similar edges and strong variations in their intensity profiles. Regions of the image where any kind of object is found will appear bright. This can hinder accurate segmentation since unwanted objects are highlighted. Secondly, due to the brightfield variation in the images, strongly varying pixels can occur outside the true edge of the cell, causing these regions to be highlighted, and giving the cell a bright halo. This halo is picked up in the recognition and contributes to the measured area of the cell. This can cause an over-estimation of the cell area and a false representation of the cell's shape. These problems must be addressed for a variant of this method to be useful.

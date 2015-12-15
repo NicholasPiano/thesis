@@ -65,7 +65,7 @@ Chapter4
 403 [IMG comparison between max GFP and best for observation and segmentation]
 404 d[IMG zMod]
 405 [IMG side-by-side zBF and brightfield slice]
-406 [IMG zMean]
+406 [IMG zVar]
 407 [IMG zEdge]
 408 [IMG PLOT SHOWING RADIAL DISTRIBUTION OF CELL BORDER WITH PROTRUSION PEAKS MARKED]
 

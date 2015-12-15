@@ -15,7 +15,14 @@
 
 To say that this method is an improvement on previously available methods is an understatement. This must be shown using comparable data. The best way to provide this data is to attempt to segment images from the current experiment. The methods can be compared easily under similar conditions using the same dataset. A readily available property of the cell instances found is the projected cell area. Other properties are the number and orientation of the cell protrusions. These will also be compared to judge the difference between the methods.
 
-[IMG SIDE BY SIDE COMPARISON OF ZBF AND ORIGINAL BRIGHTFIELD]
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{501_zbf_comparison}
+ \caption{
+ 	zBF comparison
+ }
+ \label{fig:zbfcomparison}
+\end{figure}
 
 Despite the improvements made, the method developed is not without error. There are parameters that have optimal ranges, but outside those ranges, the method can fail. Some physical properties of the environment can limit the effectiveness of the method, for example, if the level of the GFP is too low to generate an accurate estimate of the Z level, the focus of GFP marked objects will not be corrected accurately, and the results will not be useful. Additionally, some configurations of cells in close proximity can cause problems for this method. A clear example is when two cell lie vertically one on top of the other, causing two visible peaks in the GFP. This, and other examples are discussed in the last section [ref].
 
@@ -31,25 +38,42 @@ The three parameters that contribute to the generation of zBF must be carefully 
 
 The parameter $R$ is the radius of the linear smoothing filter applied to the GFP in order to generate a profile for a point in XY. The filter mixes values in XY, but not Z. It has the effect of reducing noise and making transitions between levels of neighbouring pixels more fluid. This helps to reduce the problem of cross-level artifacts, discussed in Section [ref]. In the case where neighbouring objects in XY has very different levels in Z, the level transition would be smoothed such that the point half way between them would be assigned to a level half way in Z. While this case has not been observed, it could lead to strange results, such as half of each cell being in focus, while the halves closest to the other cell are out of focus. This would depend on the radius of the linear filter, but at a certain point, the information is too smoothed and ceases to be useful. Below [ref] is an example of the linear filter set too high. The logical limit is a smoothing filter the size of the image itself in XY. This would simply yield the sum or mean of the GFP for each focal plane, which would not provide any more information than where most of the cells were found in the environment.
 
-[IMG EXAMPLE OF R TOO HIGH]
-
 On the other hand, if the size of the linear filter is too low, such as a single pixel, the noise in the GFP would dominate the Z estimate, leading to highly fluctuating Z values across even a single cell. The result in the zBF image is an extremely noisy cell interior and edge, surrounded by an equally noisy background. This does not lend itself to accurate segmentation. Below [ref] is an example of the linear filter using a small $R$.
 
-[IMG EXAMPLE OF R TOO LOW]
-
-[IMG EXAMPLE OF VARYING THE PARAMETER R]
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{502_r_variation}
+ \caption{
+ 	Varying R
+ }
+ \label{fig:rvariation}
+\end{figure}
 
 \subsection{The brightfield level correction: $\Delta Z$}
 
 The weakest part of the method is the spatial relationship between the brightfield and the GFP and the decision about the value of [Delta Z]. The brightfield is subject to fluctuations from the autofocus and has no intrinsic spatial information. The most important piece of information relating the GFP and the brightfield is for a hypothetical fixed object in focus in the brightfield, the GFP representation will always correspond to that level of focus. This is because the position of the microscope hardware is constant for a single frame and is set by the autofocus estimate from the brightfield. Assuming the same physical space is represented in both, the GFP can be used to account for the autofocus fluctuations, but the relationship between the GFP representation and the appearance of an object in the brightfield is arbitrary. A cell may be ``in focus" as far as possible, but still not be clearly visible by a human. This hinders manual tracking. optimum features for observation may not correspond to optimum features for segmentation. For tracking, it most effective to observe an object in a solid colour with or without clear edges since the precise shape is not necessary to indicate object centres. For segmentation, a clear object boundary with dark edges and a smooth, uniformally coloured interior yields the most accurate shape. This discrepancy is represented by the empirically determined value, delta-Z. Through further study, a value could be found automatically, but the focus level for optimum human observation is highly subjective.
 
-[IMG EXAMPLE OF VARYING THE PARAMETER DELTA Z]
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{503_deltaz_variation}
+ \caption{
+ 	Delta Z variation
+ }
+ \label{fig:deltazvariation}
+\end{figure}
 
 \subsection{The radius of level gaussian blur: $\Sigma$}
 
 
 
-[IMG EXAMPLE OF VARYING THE PARAMETER SIGMA]
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{504_sigma_variation}
+ \caption{
+ 	GFP profile
+ }
+ \label{fig:sigmavariation}
+\end{figure}
 
 \subsection{Final choice of parameters}
 
@@ -61,17 +85,38 @@ The three variables used to produce zBF were fixed to the following values:
 
 It should be noted that background pixels in XY that contain very little GFP at any Z, and thus have very flat profiles, are still assigned a value for the Z position. This may appear misleading, as it can be highly random as the ``maximum" of a flat distribution is given by the noise alone. This can be seen clearly in the PDMS pillars in Figure [ref], indicated by an arrow. While this might be thought to produce errors, other means of filtering background can be used that do not rely on the Z position, such as the mean image. It is more reliable to be unbiased when generating the zMod image since there is no certain way of determining whether a particular Z value should be assigned. If filtering must be done eventually, it can be done using other 3D data.
 
-[IMG False variation in zMod]
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{505_false_variation}
+ \caption{
+ 	False Z variation
+ }
+ \label{fig:falsezvariation}
+\end{figure}
 
-\section{zMean and zEdge}
+\section{zVar and zEdge}
 
 The zEdge image is intended to improve the segmentation by bounding it.
 
 Artificial edges can cut off parts of the cell that do not contain enough GFP.
 
-[IMG EXAMPLE OF IMAGE WITH A DROP IN GFP]
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{506_low_gfp}
+ \caption{
+ 	Low GFP
+ }
+ \label{fig:lowgfp}
+\end{figure}
 
-[IMG EXAMPLE OF REDUCED EFFECTIVENESS FROM ZEDGE]
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.9\textwidth]{507_bad_zedge}
+ \caption{
+ 	Bad zEdge
+ }
+ \label{fig:badzedge}
+\end{figure}
 
 \section{Comparison with common methods}
 
