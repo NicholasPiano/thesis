@@ -15,9 +15,13 @@
 
 Given the limitations on cell segmentation in 3D image data, the method described in this study performs well in overcoming problems and improves on the previously proposed method by Selinummi et al. by a large margin. It also compares favourably with previous attempts at segmentation using conventional means, such as Z projection of the GFP and segmentation at a constant Z level. It can also be used as a method to correct the autofocus fluctuations in brightfield data, which while not originally intended, is a natural consequence of the treatment of the 3D data.
 
+The method depends on several parameters, such as R, the radius of the linear smoothing kernel; $\Delta Z$, the level correction of the edges; and $\Sigma$, the size of the gaussian smoothing in 3D. The method is mostly invariant under these parameters, but can be adjusted using $\Delta Z$ depending on the type of edges needed for segmentation. Ideally, these parameters would not have be chosen, they would simply be used to explore the data available. In this method, a lot of data is discarded, leaving the level-corrected images.
 
+Throughout this study, the guiding philosophy has been that a cell segmentation method cannot be fully automatic, and must rely on human input as long as cells cannot be modelled as part of the segmentation. For now, the human brain is the most consistent pattern recognition available, but future methods could allow for more complex segmentation, such as matching mechanical models of cells to corresponding images and calculating the most likely routes for a cell to take. This philosophy has led to the creation of different images, such as zVar, which, while useful for segmentation, are most useful for observation and for letting a human know where to look for cells and allow for easier cell tracking.
 
 \section{Further work}
+
+This research leaves many opportunities for future study, such as improved cell segmentation and tracking, with and without human aid. Live cell segmentation in microscope software, 
 
 Could be used to help locate seeds in images to simplify microscope imaging.
 Currently the method only does pre-processing. Can be used instead to do segmentation directly using more information than a current segmentation algorithm is able to use.
