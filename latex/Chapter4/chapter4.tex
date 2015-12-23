@@ -145,12 +145,14 @@ To summarise the steps taken to pre-process 3D image data for segmentation:
 \item Smooth the data to reduce noise.
 \item For each pixel in XY for the 3D data, find the vertical intensity distribution in Z, or ``profile", for each pixel nd evaluate its properties.
 \item Using the profile for each pixel, create an image where the value of a pixel is proportional to the Z level of the maximum intensity of GFP at that XY location. This is zMod.
-\item For zMod, there are three parameters that must be chosen: $R$, $\Delta Z$, and $\Sigma$. These affect the smoothing of the final image.
+\item For zMod, there are three parameters that must be chosen: $R$, the radius of the linear smoothing kernel, which affects only the GFP in XY; $\Delta Z$, the vertical shift to locate the ideal edges for segmentation; and $\Sigma$, the size of the gaussian smoothing kernel, which affects the GFP in Z.
 \item Map the Z values in zMod to the stack of image data for the brightfield. Select pixel values from the brightfield whose Z level corresponds to that indicated by zMod and place them into a new image, called zBF.
 \item Although zBF now contains in-focus representations of each object marked with GFP, a further improvement can be made using the outlines of the GFP mean image. The mean image, zVar, takes the mean value of the normalised GFP profile as the value of each pixel. This gives a maximum extent of the cell and limits segmentation to a boundary to prevent it from extending into the background and incorrectly judging the area of a cell.
+\item The final image, zEdge, is prepared for segmentation by using the zVar and edges of regions in zMod to automatically draw edges on the image that follow a similar edge profile to the dark edges found in the zBF image. zEdge then contains the same information as zBF, but with bounding edges beyond which the segmentation cannot extend.
 \item Finally, once segmentation is complete, cell properties such as project area can be obtained along with protrusion lengths and orientations. Protrusions are found by radially plotting the distance of the edge from the centre point and designating outliers as protrusions.
 \end{enumerate}
 
+Figure [ref] below shows the full paradigm of the method. 
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{409_method_flowchart}

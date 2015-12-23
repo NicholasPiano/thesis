@@ -62,8 +62,6 @@ The weakest part of the method is the spatial relationship between the brightfie
  \label{fig:deltazvariation}
 \end{figure}
 
-
-
 \subsection{The radius of level gaussian blur: $\Sigma$}
 
 \begin{figure}[p]
@@ -102,7 +100,7 @@ Artificial edges can cut off parts of the cell that do not contain enough GFP.
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{506_low_gfp}
+ \includegraphics[width=0.9\textwidth]{506_low_gfp_edges}
  \caption{
  	Low GFP
  }
@@ -152,7 +150,7 @@ A controversial example of a possible error is a situation where two cells are s
 
 \begin{figure}[p]
  \centering
- % \includegraphics[width=0.9\textwidth]{510_hypothetical_superimposed_cells}
+ \includegraphics[width=0.9\textwidth]{510_hypothetical_superimposed_cells}
  \caption{
  	Superimposed cells
  }
@@ -163,18 +161,18 @@ In some cases, through a hardware fault or a temporary shift in the illumination
 
 \begin{figure}[p]
  \centering
- % \includegraphics[width=0.9\textwidth]{511_low_gfp_segmentation}
+ \includegraphics[width=0.9\textwidth]{511_low_gfp_illumination}
  \caption{
  	Low GFP segmentation
  }
- \label{fig:lowgfpsegmentation}
+ \label{fig:lowgfpillumination}
 \end{figure}
 
 If the illumination of the environment is not uniform, and regions at the top are significantly brighter than the bottom for example, when brightfield pixel values from different Z levels are brought together to generate zBF, it is possible that the intensities are so different as to be discontinuous, leading to the appearance of a false edge. This type of effect is shown in Figure [ref]. This can be alleviated partially by the choice of $R$ or $\Sigma$, since both control to a certain extent the smoothing between levels. If transitions between levels are smoother, artefacts such as these are less likely to form.
 
 \begin{figure}[p]
  \centering
- % \includegraphics[width=0.9\textwidth]{512_cross_level_artefacts}
+ \includegraphics[width=0.9\textwidth]{512_cross_level_artefacts}
  \caption{
  	Cross-level artefacts
  }
@@ -185,7 +183,7 @@ Finally, if the configuration of the microscope is chosen before imaging to yiel
 
 \begin{figure}[p]
  \centering
- % \includegraphics[width=0.9\textwidth]{513_no_bf_contrast}
+ \includegraphics[width=0.9\textwidth]{513_no_bf_contrast}
  \caption{
  	No BF contrast
  }
