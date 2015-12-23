@@ -451,6 +451,9 @@ INPUT ./Chapter4/Figs/Raster/402_gfp_scatter.png
 INPUT Chapter4/Figs/Raster/403_zmod_example.png
 INPUT ./Chapter4/Figs/Raster/403_zmod_example.png
 INPUT ./Chapter4/Figs/Raster/403_zmod_example.png
+INPUT Chapter4/Figs/Raster/404_zbf_example.png
+INPUT ./Chapter4/Figs/Raster/404_zbf_example.png
+INPUT ./Chapter4/Figs/Raster/404_zbf_example.png
 INPUT Chapter4/Figs/Raster/405_zvar.png
 INPUT ./Chapter4/Figs/Raster/405_zvar.png
 INPUT ./Chapter4/Figs/Raster/405_zvar.png
@@ -466,6 +469,9 @@ INPUT ./Chapter4/Figs/Raster/409_method_flowchart.png
 OUTPUT Chapter5/chapter5.aux
 INPUT Chapter5/chapter5.tex
 INPUT Chapter5/chapter5.tex
+INPUT Chapter5/Figs/Raster/501_zbf_comparison.png
+INPUT ./Chapter5/Figs/Raster/501_zbf_comparison.png
+INPUT ./Chapter5/Figs/Raster/501_zbf_comparison.png
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmb8t.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/zptmcm7t.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/zptmcm7t.tfm
