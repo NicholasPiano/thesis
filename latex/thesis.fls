@@ -398,10 +398,11 @@ INPUT Chapter2/chapter2.tex
 OUTPUT Chapter3/chapter3.aux
 INPUT Chapter3/chapter3.tex
 INPUT Chapter3/chapter3.tex
+INPUT Chapter3/Figs/Raster/301_gfp_distributions.png
+INPUT ./Chapter3/Figs/Raster/301_gfp_distributions.png
+INPUT ./Chapter3/Figs/Raster/301_gfp_distributions.png
 INPUT Chapter3/Figs/Raster/302_canny_bf.png
 INPUT ./Chapter3/Figs/Raster/302_canny_bf.png
-INPUT ./Chapter3/Figs/Raster/302_canny_bf.png
-INPUT Chapter3/Figs/Raster/302_canny_bf.png
 INPUT ./Chapter3/Figs/Raster/302_canny_bf.png
 INPUT Chapter3/Figs/Raster/303_blobs_bf.png
 INPUT ./Chapter3/Figs/Raster/303_blobs_bf.png
