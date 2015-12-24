@@ -26,8 +26,8 @@ Cells can be marked by injecting a variety of fluorescent proteins into differen
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{301_gfp_distributions}
- \caption{
-	 GFP distributions
+ \caption[Possible GFP distributions]{
+	Different parts of a cell are composed of different materials that can be made to bind with fluorescent proteins such as GFP to highlight the cell structure in a microscope image. For example the rigid skeleton of the cell and the outer wall are composed primarily of actin filaments. The wall is marked as the cytoskeleton, but in reality it extends throughout the cell in filaments. This method relies on a consistent formation of the GFP inside a cell. It could be made to bind with the cytoskeleton, such as in B. This would produce a vertical intensity profile along the blue line similar to the plot on the right with two peaks. This method expects a single peaks for the centre of the cell, such as in A, since this type of staining is used in the experiemnts. The method would have to be modified to account for these types of changes. Note the lack of GFP expressed in the nucleus.
  }
  \label{fig:gfpdistributions}
 \end{figure}
@@ -38,9 +38,9 @@ One of the most important features that can be extracted from an image is the lo
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{302_canny_bf}
- \caption{
- 	Canny
+ \includegraphics[width=0.9\textwidth]{302_sample_canny}
+ \caption[Example of the Canny edge filter]{
+ 	By analysing the intensity gradients in an image, the Canny edge filter highlights the points with the highest intensity discontinuities. These appear as the edges of the image in the above example.
  }
  \label{fig:canny}
 \end{figure}
@@ -65,9 +65,9 @@ Another tool for recognition is the blob detector. A ``blob" is a technical term
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{303_blobs_bf}
- \caption{
- 	Blobs Gaussian
+ \includegraphics[width=0.9\textwidth]{303_sample_blobs}
+ \caption[Sample of blob detection]{
+ 	Blobs, a technical term, are regions of contiguous (or interconnected) similar colours. Boundaries between these regions are edges and can be found using an appropriate filter as before. Blobs are found by convolving the image with a choice of filters. This image, A, was convolved with a simple Difference of Gaussians (DoG) curve. The size difference between the gaussians determines the scale of the blob that can be highlighted. Similarly sized blobs will give a similar ``response" and appear brighter in the final image, B.
  }
  \label{fig:blob}
 \end{figure}
@@ -76,9 +76,9 @@ Once blobs and edges have been found, it is possible that in a given cellular en
 
 \begin{figure}[p]
  \centering
- \includegraphics[width=0.9\textwidth]{304_sample_bf_watershed}
- \caption{
- 	Watershed example
+ \includegraphics[width=0.9\textwidth]{304_sample_watershed}
+ \caption[Watershed example]{
+ 	The watershed algorithm can be used to separate neighbouring objects by analysing the intensity curve joining their centres. If there is an inflection point in the intensity curve between them, it can be used to draw a line separating them. B shows an example of this type of algorithm applied to A, the original brightfield image. Parameters can be varied controlling the size of the objects separated to better estimate the types of curves that should be prioritised.
  }
  \label{fig:watershed}
 \end{figure}
@@ -98,8 +98,8 @@ The last section details some of the methods used by CellProfiler and other soft
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{305_masks}
- \caption{
- 	Masks
+ \caption[Object masks]{
+ 	A mask is the general term for a binary representation of an object. Pixels inside the mask, marked variously as white, true, 1, or 255, represent parts of the image that lie inside the object of interest. Pixels that are black, 0 or false, lie outside the object and are considered part of the background. If multiple objects are contained within the same mask image, they can be marked with a different integer such as 2, 23, 44, etc. to allow them to be differentiated. They may have previously been separated using a watershed algorithm or similar. By marking them with a unique grayscale id, they can be individually extracted from the image and observed. The examples given in B are typical outputs from cell recognisers such as CellProfiler.
  }
  \label{fig:masks}
 \end{figure}
@@ -108,18 +108,9 @@ CellProfiler has a particularly useful module called ``Secondary Objects". Rathe
 
 \begin{figure}[p]
  \centering
- % \includegraphics[width=0.9\textwidth]{306_secondary_objects_successful}
- \caption{
- 	Secondary object error
- }
- \label{fig:secondaryobjectsuccess}
-\end{figure}
-
-\begin{figure}[p]
- \centering
- % \includegraphics[width=0.9\textwidth]{307_secondary_objects_error}
- \caption{
- 	Secondary object error
+ \includegraphics[width=0.9\textwidth]{308_secondary_objects_error}
+ \caption[Secondary object error example]{
+ 	The Secondary Objects module in CellProfiler can caused errors in the recognition. In this case, the colour of the interior of the cell is very similar to that of the background. They are separated only by the dark colour of the edges. If there is a gap in the edge, or some interaction with exceptions at the edge of the image, the boundary separating the interior of the cell from the background can be poorly visible, allowing the segmentation to ``spill" from the previously marked interior into the background. This leads to results such as B. This causes the area or other numerical properties of the cell recognition to be overestimated and calls into question the utility of the recogniser.
  }
  \label{fig:secondaryobjecterror}
 \end{figure}
@@ -133,8 +124,8 @@ This treats the image as a ``terrain", where the ``height" of a pixel is proport
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{309_blow_lasso}
- \caption{
- 	Blow tool
+ \caption[The LASSO tool]{
+ 	The LASSO algorithm, implemented in ImageJ as the Blow/Lasso tool, traverses the images from a centre to a test point and matches other points and paths in the image around that point that share the same ``energy". This can be used to closely fit the edges of an object, as the algorithm will avoid entering edges and other dark features. This can be used as a form of segmentation given a starting point.
  }
  \label{fig:blow}
 \end{figure}
@@ -146,8 +137,8 @@ The final data output from CellProfiler is a list of object masks along with som
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{310_protrusions}
- \caption{
- 	Protrusions
+ \caption[Cell protrusion example]{
+ 	The cell wall is a malleable series of interconnected proteins that can respond to a variety of chemical gradients. A typical response can take the form of a ``protrusion", which extends from the cell in a particular direction, usually in the direction of a stimulus. The cell depicted here is using the protrusion to move from the bottom of the image to the top. The protrusion first extends and then retreats as the movement is completed. Any useful cell recognition tool must allow such cell features to be tracked and measured. This is a key goal of this study.
  }
  \label{fig:cellprotrusions}
 \end{figure}
@@ -169,8 +160,8 @@ The basis of the method is an inspiration for the current project. The vertical 
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{311_bf_profiles}
- \caption{
- 	Brightfield profile
+ \caption[Selinummi brightfield profile]{
+ 	The brightfield profile was shown by Selinummi et al. to be a powerful indicator of the presence of an object in an image. The profile for each pixel in XY is the intensity distrbution of the column of pixels in Z. For three typical points in an image of a cell, A, the background, the edge of a cell, and the interior of a cell have very different profiles, seen in B. These differences can be used to separate parts of the image that can contain cells from those that contain only background.
  }
  \label{fig:brightfieldprofile}
 \end{figure}

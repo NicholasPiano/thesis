@@ -59,15 +59,6 @@ By searching the brightfield with the GFP profile, the goal is to find the optim
 
 For manual tracking, the accurate shape of the cell does not need to be known; it is better to see the interior of the cell clearly in order to make a good estimate of the centre to place a marker. The focal plane best for this type of observation also does not lie on plane with the maximum GFP. This shift is also empirically determined and is between 10-12 levels above the maximum GFP. This parameter is not crucial to the outcome of the method and is set by personal preference of the user tasked with finding the cells.
 
-\begin{figure}[p]
- \centering
- \includegraphics[width=0.9\textwidth]{403_deltaz}
- \caption{
- 	Delta Z
- }
- \label{fig:deltaz}
-\end{figure}
-
 \section{zMod and zBF}
 
 For each frame in time, the Z position of the maximum of the GFP profile is calculated for each pixel in XY. A new image is created, called ``zMod", where the value of each pixel proportionally represents a Z position in the environment. This is analogous to a terrain. The range of values lies between 0 and 1, but the intermediate values are discretised to multiples of $\frac{1}{numberOfZPlanes}$ in order to represent the full Z range of the experiment. Floating point representation is easier to keep track of than integer representation in an image since the float value also works as a percentage height in the environment. This map of Z positions can be smoothed to make transitions between levels more gradual. The smoothing applied used a Gaussian blur with a radius of 3 pixels. This is the third important parameter and is given the symbol $\Sigma$.
