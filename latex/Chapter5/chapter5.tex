@@ -129,6 +129,8 @@ Previous methods cannot account for the inconsistencies in the focus fluctuation
  \label{fig:areacomparison}
 \end{figure}
 
+[TABLE OF PRECISE COMPARISON VALUES -> MEAN SQUARE DIFFERENCE OR SOMETHING]
+
 [IMG 6 CELLS SAMPLED AT TIME INTERVALS SHOWING AREA FROM EACH METHOD]
 [IMG RADIAL PLOTS OF 6 CELL INSTANCES SHOWING PROTRUSION ANGLES AND LENGTHS]
 [IMG 6 CELLS -> 12 GRAPHS OF CELL PROTRUSION LENGTH AND ANGLE TIME SERIES]
@@ -151,8 +153,8 @@ A controversial example of a possible error is a situation where two cells are s
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{510_hypothetical_superimposed_cells}
- \caption{
- 	Superimposed cells
+ \caption[Unaccounted for: superimposed cells]{
+ 	A potential weakness of this method is a situation which has not been fully encountered. If two cells lie superimposed at very different levels in the environment, as depicted in A, it is possible that there will be two distinct peaks in Z as shown in C. In this situation, the current algorithm would take the maximum peak as the value to be added to zMod. If the cell with the greater value is the lower one, the brightfield representation would not be complete. The brightfield information between different levels in mixed and can only be seen from above. The cell above would be the most useful candidate to level-correct. This situation has not been encountered in the current data, and the method would have to be modified to account for this possibility.
  }
  \label{fig:superimposedcells}
 \end{figure}
@@ -162,8 +164,8 @@ In some cases, through a hardware fault or a temporary shift in the illumination
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{511_low_gfp_illumination}
- \caption{
- 	Low GFP segmentation
+ \caption[Effects of low GFP illumination]{
+ 	As stated before in Figure [ref], this method does not work in low GFP conditions. From left to right, the images are A, The GFP Z projection; B, the zVar image; C, the zMod image; D, the zUnique image; and E, the zBF image. ABCDE shows the method under normal GFP conditions. FGHIJ shows the environment one frame later when the illumination has dropped significantly. Note particularly A compared to F. There is very little GFP present. In contrast, the variance image, zVar, still shows a strong response, a testament to the utility of this information. zMod suffers from the drop in GFP lacking a consistent Z location within cells. Similarly, the zUnique contrast drops. The result is an incorrectly level-corrected image in zBF.
  }
  \label{fig:lowgfpillumination}
 \end{figure}
@@ -173,8 +175,8 @@ If the illumination of the environment is not uniform, and regions at the top ar
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{512_cross_level_artefacts}
- \caption{
- 	Cross-level artefacts
+ \caption[Cross-level artefacts]{
+ 	zBF is created by taking brightfield values from all different parts of the image stack. It is possible that illumination at the top and bottom of the stack may differ, sometimes significantly. In this case, darker pixels may be placed in the zBF image adjacent to light pixels from another level. This results in a mottled appearance of the zBF image. The highlighted boxes contain features that could be interpreted as objects or parts of objects by a recogniser. This is possible a weakness. Improved smoothing methods and gradual object recognition could solve this problem. This means segmentation carried out at each stage of the image modification process could be combined to decrease error at the final stage.
  }
  \label{fig:crosslevelartefacts}
 \end{figure}
@@ -184,8 +186,8 @@ Finally, if the configuration of the microscope is chosen before imaging to yiel
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{513_no_bf_contrast}
- \caption{
- 	No BF contrast
+ \caption[Lack of brightfield contrast]{
+ 	Low GFP intensity is very harmful to this method, but even if the GFP is very high contrast with low noise, a lack of brightfield contrast can also prevent the method from working. If the brightfield has low contrast, then edges of cells and other objects will not be as visible. Even if the images are level corrected properly, there might not be enough information to segment the cells properly. Shown is an example of an experiment with very poor contrast in the brightfield. This cannot be solved numerically and must be carefully adjusted in the microscope prior to imaging.
  }
  \label{fig:nobfcontrast}
 \end{figure}
