@@ -18,8 +18,8 @@ To say that this method is an improvement on previously available methods is an 
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{501_zbf_comparison}
- \caption{
- 	zBF comparison
+ \caption[zBF comparison with brightfield]{
+ 	This is a side-by-side comparison of the zBF modification with a single slice of the original brightfield data. The changes that have been made are mostly the adjustment of focus in the appearance of cells that are marked with GFP. Note first of all that cells a) and b) have not been adjusted. These are not marked with GFP and are not affected by any of the algorithms. Cells c), d), and e) originally appear to be out of focus in image A, but in B, they appear in focus. This is part of the correction made. The cells in group f) have been adjusted, but their corrections lie much closer to the focus they originally occupied in this slice. They still appear in focus. All cells marked with GFP have been level corrected. This is the most powerful result of this study.
  }
  \label{fig:zbfcomparison}
 \end{figure}
@@ -43,8 +43,8 @@ On the other hand, if the size of the linear filter is too low, such as a single
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{502_r_variation}
- \caption{
- 	Varying R
+ \caption[Varying R]{
+ 	This is an example of the variation of the parameter R, or the linear smoothing kernel that operates in 2D in the GFP. Note no brightfield information has been mixed. The Brightfield data stays in the same location and is not mixed and does not have its values changed. It is simply accepted or rejected by decisions made using the GFP. Consequently, the parameter R does not have much of an effect on the final product. It can be set to a constant value. That is neither 0, such that noise is not preserved, nor proportional to the size of the image, such that information about features is not destroyed.
  }
  \label{fig:rvariation}
 \end{figure}
@@ -56,8 +56,8 @@ The weakest part of the method is the spatial relationship between the brightfie
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{503_deltaz_variation}
- \caption{
- 	Delta Z variation
+ \caption[Varying $\Delta Z$]{
+ 	The value of $\Delta Z$ is very important to the final appearance of the images, but must be determined empiracally, or by a trusted, previously determined algorithm. It is the level offset between the location of the GFP representations of cells and their brightfield counterparts. Changing $\Delta Z$ is equivalent to focussing a microscope objective that is looking at a 2D slide or other simple environment. Focussing too far in one direction will have the effect of leaving every corrected object in the environment out of focus.
  }
  \label{fig:deltazvariation}
 \end{figure}
@@ -67,8 +67,8 @@ The weakest part of the method is the spatial relationship between the brightfie
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{504_sigma_variation}
- \caption{
- 	GFP profile
+ \caption[Varying $\Sigma$]{
+ 	$\Sigma$ is a very important parameter that affects the smoothing of the GFP in 3D. If it is set too high, features can be destroyed very easily. A reasonable value can prevent noise dominating the level corrections. The best example of dominant noise is the image in A. Even though the brightfield is not affected by the GFP processing, the noise in the GFP leads to a very noisy appearance in the values chosen from the brightfield.
  }
  \label{fig:sigmavariation}
 \end{figure}
@@ -86,8 +86,8 @@ It should be noted that background pixels in XY that contain very little GFP at 
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{505_false_variation}
- \caption{
- 	False Z variation
+ \caption[False Z variation]{
+ 	Even the noise and background is assigned a Z value. The seems counterintuitive, but the philosophy of this study is that any analysis or segmentation cannot be biased to sizes and shapes of objects. All locations in an image must be considered and treated equally until enough knowledge has been gathered and assumptions have been made to treats different areas differently. At the zMod stage, there is no certainty or assumptions about the locations or shapes of cells, so all pixels in the image are subject to the same calculations. When a profile is measured in a pixel column that contains no GFP, there will still be background noise and any slight fluctuation will yield a maximum value and its position. This value is placed in the zMod image. The rationale is that it will not affect the segmentation since these areas will be rejected as part of the background anyway. These areas are filtered out at the zVar stage which is dependent on degree of variance. These locations have no variance and will not affect the final result.
  }
  \label{fig:falsezvariation}
 \end{figure}
@@ -101,8 +101,8 @@ Artificial edges can cut off parts of the cell that do not contain enough GFP.
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{506_low_gfp_edges}
- \caption{
- 	Low GFP
+ \caption[Edges in low GFP regions]{
+ 	One serious problem with this method is the lack of edge detection in low-contrast regions or frames in the GFP. If, due to a mechanical fault or other variation in the hardware of the microscope, the level of the GFP is lower in one frame, the method will suffer and be unable to level-correct key parts of the cell such as the protrusions. In A, the protrusion has been outlined clearly, but in B, the zEdge image has cut off the protrusion, which will prevent its segmentation. For future work, a compromise can be made between the zEdge segmentation and the unbridled zBF segmentation.
  }
  \label{fig:lowgfp}
 \end{figure}
@@ -110,8 +110,8 @@ Artificial edges can cut off parts of the cell that do not contain enough GFP.
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{507_bad_zedge}
- \caption{
- 	Bad zEdge
+ \caption[Ineffective zEdge]{
+ 	Sometimes, zUnique can yield a low-contrast image, usually, but not necessarily due to low contrast in the GFP. This can prevent the drawing of edges altogether leaving a dark spot at the position of the marker in each cell and possibly negatively affecting segmentation.
  }
  \label{fig:badzedge}
 \end{figure}
@@ -123,8 +123,8 @@ Previous methods cannot account for the inconsistencies in the focus fluctuation
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.9\textwidth]{508_segmentation_area_comparison}
- \caption{
- 	Segmentation area comparison
+ \caption[Testing: segmentation area comparison]{
+ 	In order to test the method of image modification, the best thing to be done is attempt to segment the images produced. The method of comparison used in the Selinummi paper [ref], which involves the comparison with the GFP projection in 3D, is insufficient to be certain about the result of segmentation. For this reason, a sample of the cells were segmented manually to provide a baseline from which to measure. Selinummi refers to this as the ``ground truth". This is shown as the purple line in each plot. The blue line is the method from the Selinummi paper. This suffers from an inability to distinguish between different types of cells and plastic, leading to an overestimate of areas as other material is incorporated into the mask from segmentation.
  }
  \label{fig:areacomparison}
 \end{figure}

@@ -5,3 +5,11 @@
 *.toc
 *.out
 *.fls
+
+*.blg
+
+*.ilg
+
+*.ind
+
+*.lof
