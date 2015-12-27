@@ -31,7 +31,7 @@ where:
 	\item $x$ is a single pixel in the area $A$.
 \end{enumerate}
 
-\begin{figure}[p]
+\begin{figure}[h!]
  \centering
  \includegraphics[width=0.9\textwidth]{401_gfp_profile}
  \caption[The GFP profile]{
@@ -42,7 +42,7 @@ where:
 
 Similarly to the brightfield profile considered by Selinummi et al., measureable properties such as the variance, the location of the maximum value, and the mean value can be found for the GFP profile. The variance was found using the normalised profile, that is, the maximum value in each individual distribution is set to 1. Comparing profiles in an image can then be done using their mean value and variance. These are linearly related as shown in Figure [ref]. A background pixel will have a flat profile, giving a low variance and a high mean, since the majority of the distribution stays close the maximum value. As peaks appear in the profile due to the presence of objects, the mean will decrease, but the variance will increase proportionally. In this way, pixels with varying profile strengths can show very clearly whether they contain an object. Figure [ref] also shows a collections of blue points indicating points manually chosen to be inside cells. These are clustered in the high variance - low mean portion of the plot. The large cluster of points at low variance represent background pixels.
 
-\begin{figure}[p]
+\begin{figure}[h!]
  \centering
  \includegraphics[width=0.9\textwidth]{402_gfp_scatter}
  \caption[GFP scatter plot]{
@@ -63,7 +63,7 @@ For manual tracking, the accurate shape of the cell does not need to be known; i
 
 For each frame in time, the Z position of the maximum of the GFP profile is calculated for each pixel in XY. A new image is created, called ``zMod", where the value of each pixel proportionally represents a Z position in the environment. This is analogous to a terrain. The range of values lies between 0 and 1, but the intermediate values are discretised to multiples of $\frac{1}{numberOfZPlanes}$ in order to represent the full Z range of the experiment. Floating point representation is easier to keep track of than integer representation in an image since the float value also works as a percentage height in the environment. This map of Z positions can be smoothed to make transitions between levels more gradual. The smoothing applied used a Gaussian blur with a radius of 3 pixels. This is the third important parameter and is given the symbol $\Sigma$.
 
-\begin{figure}[p]
+\begin{figure}[h!]
  \centering
  \includegraphics[width=0.9\textwidth]{403_zmod_example}
  \caption[zMod example]{
@@ -74,7 +74,7 @@ For each frame in time, the Z position of the maximum of the GFP profile is calc
 
 The zMod image for each frame can be mapped to the entire set of brightfield data for the same frame by selecting a pixel value from the brightfield stack focal plane that corresponds to the Z index indiciated by the zMod image. This produces the most important result of this study, the ``zBF" image. It is a single 2D image for each frame containing representations of all objects in focus with clear edges and interiors. This works by only selecting pixel values from the levels where the objects are in focus. This does not correct the focus of objects not marked by the GFP. This image is used to segment all cells in the environment simultaneously independently of their level in the experiment using 2D segmentation techniques.
 
-\begin{figure}[p]
+\begin{figure}[h!]
  \centering
  \includegraphics[width=0.9\textwidth]{404_zbf_example}
  \caption[zBF example]{
@@ -87,7 +87,7 @@ The zMod image for each frame can be mapped to the entire set of brightfield dat
 
 A further improvement can be made to the segmentation. Part of the 3D data has already been used to correct the focus of objects marked with GFP. The part of the 3D data not used for this method is the mean (or equivalently the variance due to the linear relationship). This can indicate presence of an object more reliably than the absolute value of the GFP. Pixels with very different values in the GFP can have similar values in the mean image since the profiles are normalised such that only the shape of the distribution matters. If the mean of the normalised and inverted (since low mean/high variance indicates an object) GFP profile for each pixel in a frame is found, a new image, ``zVar" can be made. Depending on the linear smoothing of the original data (the parameter $R$), the boundary of objects in the mean image can extend beyond the edges of objects in the brightfield.
 
-\begin{figure}[p]
+\begin{figure}[h!]
  \centering
  \includegraphics[width=0.9\textwidth]{405_zvar}
  \caption[zVar example]{
@@ -98,7 +98,7 @@ A further improvement can be made to the segmentation. Part of the 3D data has a
 
 The extra extent of the zVar image is exploited to provide a maximum boundary for segmentation, this is combined with zMod to produce outlines around cells. This does not require the edges to be followed correctly, but only needs to enclose the general shape of the cell. These shapes are then segmented to separate objects or even rough groups of objects. The outlines of the segmentation are used to generate artificial edges using a DoF (Difference of Gaussians) edge model. These edges cut through background values that are similar in intensity to the interiors of cells. If there is a gap in the cell edge with an intensity close to the background, the segmentation will expand into the background and cause a major overestimation of the area of the cell. This image is called ``zEdge" and is the image for each frame used to provide the final segmentation data for each experiment.
 
-\begin{figure}[p]
+\begin{figure}[h!]
  \centering
  \includegraphics[width=0.9\textwidth]{406_zunique}
  \caption[zUnique example]{
@@ -107,7 +107,7 @@ The extra extent of the zVar image is exploited to provide a maximum boundary fo
  \label{fig:zunique}
 \end{figure}
 
-\begin{figure}[p]
+\begin{figure}[h!]
  \centering
  \includegraphics[width=0.9\textwidth]{407_zedge}
  \caption{
@@ -120,9 +120,9 @@ The extra extent of the zVar image is exploited to provide a maximum boundary fo
 
 One of the main aims of this study is to accurately measure the lengths and orientations of the cell protrusions to gather useful data on cell behaviour. The protrusions were measured by plotting the outline of the cell on a polar graph and measuring the divergence from a smooth circular shape as measured from the calculated cell centre. The protrusions show as peaks in this plot and their length is measured from the tip of the peak to the mean radius, not the centre of the cell.
 
-\begin{figure}[p]
+\begin{figure}[h!]
  \centering
- \includegraphics[width=0.9\textwidth]{408_protrusion_calculations}
+ \includegraphics[width=0.3\textwidth]{408_protrusion_calculations}
  \caption[Protrusion calulation]{
  	In this study, the length of the protrusion is defined from the centre of the cell. This centre can be the manually marked point or the calculated centre of the cell mask after recognition. Both have their disadvantages. A manually chosen point might lie away from the true nucleus due to human error, but an automatically chosen point could be placed in an extension of the cell depending on the algorithm used.
  }
@@ -144,7 +144,7 @@ To summarise the steps taken to pre-process 3D image data for segmentation:
 \end{enumerate}
 
 Figure [ref] below shows the full paradigm of the method.
-\begin{figure}[p]
+\begin{figure}[h!]
  \centering
  \includegraphics[width=0.9\textwidth]{409_method_flowchart}
  \caption[Method flow chart]{
