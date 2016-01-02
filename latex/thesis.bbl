@@ -1,9 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[Lei, ]{Leica}
-{\em {L}eica DMI6000 B with Adaptive Focus Control}.
-\newblock Leica Microsystems.
-
 \bibitem[Carlsson et~al., 1985]{Carlsson:85}
 Carlsson, K., Danielsson, P.~E., Liljeborg, A., Majl\"{o}f, L., Lenz, R., and
   {\AA}slund, N. (1985).
@@ -26,6 +22,11 @@ Halldorsson, S., Lucumi, E., Gómez-Sjöberg, R., and Fleming, R.~M. (2015).
 Herold, K.~E. and Rasooly, A. (2009).
 \newblock {\em Lab-on-a-chip technology}, volume~2, chapter~16, pages 269--284.
 \newblock Caister Academic.
+
+\bibitem[Leica, ]{Leica}
+Leica.
+\newblock {\em {L}eica DMI6000 B with Adaptive Focus Control}.
+\newblock Leica Microsystems.
 
 \bibitem[Peters et~al., 1990]{Peters:90}
 Peters, V.~G., Wyman, D.~R., Patterson, M.~S., and Frank, G.~L. (1990).
