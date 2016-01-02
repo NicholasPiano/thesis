@@ -7,10 +7,39 @@ Carlsson, K., Danielsson, P.~E., Liljeborg, A., Majl\"{o}f, L., Lenz, R., and
   microscope.
 \newblock {\em Opt. Lett.}, 10(2):53--55.
 
+\bibitem[Halldorsson et~al., 2015]{Halldorsson:15}
+Halldorsson, S., Lucumi, E., Gómez-Sjöberg, R., and Fleming, R.~M. (2015).
+\newblock Advantages and challenges of microfluidic cell culture in
+  polydimethylsiloxane devices.
+\newblock {\em Biosensors and Bioelectronics}, 63:218 -- 231.
+
+\bibitem[Herold and Rasooly, 2009]{Herold:09}
+Herold, K.~E. and Rasooly, A. (2009).
+\newblock {\em Lab-on-a-chip technology}, volume~2, chapter~16, pages 269--284.
+\newblock Caister Academic.
+
+\bibitem[Reymond et~al., 2013]{Reymond:13}
+Reymond, N., d'Agua, B.~B., and Ridley, A.~J. (2013).
+\newblock {{C}rossing the endothelial barrier during metastasis}.
+\newblock {\em Nat. Rev. Cancer}, 13(12):858--870.
+
+\bibitem[Selinummi et~al., 2009]{Selinummi:09}
+Selinummi, J., Ruusuvuori, P., Podolsky, I., Ozinsky, A., Gold, E., Yli-Harja,
+  O., Aderem, A., and Shmulevich, I. (2009).
+\newblock Bright field microscopy as an alternative to whole cell fluorescence
+  in automated analysis of macrophage images.
+\newblock {\em PLoS ONE}, 4(10):e7497.
+
 \bibitem[Tsui et~al., 2013]{Tsui:13}
 Tsui, J.~H., Lee, W., Pun, S.~H., Kim, J., and Kim, D.~H. (2013).
 \newblock {{M}icrofluidics-assisted in vitro drug screening and carrier
   production}.
 \newblock {\em Adv. Drug Deliv. Rev.}, 65(11-12):1575--1588.
+
+\bibitem[Zheng et~al., 2010]{Zheng:10}
+Zheng, W., Wang, Z., Zhang, W., and Jiang, X. (2010).
+\newblock A simple pdms-based microfluidic channel design that removes bubbles
+  for long-term on-chip culture of mammalian cells.
+\newblock {\em Lab Chip}, 10:2906--2910.
 
 \end{thebibliography}

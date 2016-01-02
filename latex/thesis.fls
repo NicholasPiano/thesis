@@ -395,6 +395,8 @@ INPUT Chapter1/chapter1.tex
 OUTPUT Chapter2/chapter2.aux
 INPUT Chapter2/chapter2.tex
 INPUT Chapter2/chapter2.tex
+INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmri8t.tfm
+INPUT /usr/local/texlive/2012/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
 INPUT Chapter2/Figs/Raster/201_sample_data.png
 INPUT ./Chapter2/Figs/Raster/201_sample_data.png
 INPUT ./Chapter2/Figs/Raster/201_sample_data.png
@@ -579,8 +581,6 @@ INPUT Chapter6/chapter6.tex
 INPUT Chapter6/chapter6.tex
 INPUT thesis.bbl
 INPUT thesis.bbl
-INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmri8t.tfm
-INPUT /usr/local/texlive/2012/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf
 OUTPUT Appendix1/appendix1.aux
 INPUT Appendix1/appendix1.tex
 INPUT Appendix1/appendix1.tex
