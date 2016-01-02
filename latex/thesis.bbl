@@ -1,11 +1,20 @@
 \begin{thebibliography}{}
 
+\bibitem[Lei, ]{Leica}
+{\em {L}eica DMI6000 B with Adaptive Focus Control}.
+\newblock Leica Microsystems.
+
 \bibitem[Carlsson et~al., 1985]{Carlsson:85}
 Carlsson, K., Danielsson, P.~E., Liljeborg, A., Majl\"{o}f, L., Lenz, R., and
   {\AA}slund, N. (1985).
 \newblock Three-dimensional microscopy using a confocal laser scanning
   microscope.
 \newblock {\em Opt. Lett.}, 10(2):53--55.
+
+\bibitem[Firestone et~al., 1991]{Firestone:91}
+Firestone, L., Cook, K., Culp, K., Talsania, N., and Preston, K. (1991).
+\newblock {{C}omparison of autofocus methods for automated microscopy}.
+\newblock {\em Cytometry}, 12(3):195--206.
 
 \bibitem[Halldorsson et~al., 2015]{Halldorsson:15}
 Halldorsson, S., Lucumi, E., Gómez-Sjöberg, R., and Fleming, R.~M. (2015).
