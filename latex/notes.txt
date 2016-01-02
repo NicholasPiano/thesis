@@ -91,3 +91,5 @@ Chapter5
 519 [IMG SHOWING RESULT GIVEN LOW GFP -> 2 FRAMES]
 520 [IMG SHOWING CROSS-LEVEL ARTEFACTS]
 521 [IMG SHOWING LACK OF BRIGHTFIELD CONTRAST]
+
+Dealing with references: http://www.bioinformatics.org/texmed/
