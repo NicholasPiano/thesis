@@ -23,10 +23,11 @@ Herold, K.~E. and Rasooly, A. (2009).
 \newblock {\em Lab-on-a-chip technology}, volume~2, chapter~16, pages 269--284.
 \newblock Caister Academic.
 
-\bibitem[Leica, ]{Leica}
-Leica.
-\newblock {\em {L}eica DMI6000 B with Adaptive Focus Control}.
-\newblock Leica Microsystems.
+\bibitem[Parvati et~al., 2008]{Parvati:08}
+Parvati, K., Prakasa~Rao, B.~S., and Mariya~Das, M. (2008).
+\newblock Image segmentation using gray-scale morphology and marker-controlled
+  watershed transformation.
+\newblock {\em Discrete Dynamics in Nature and Society}, 2008:1--8.
 
 \bibitem[Peters et~al., 1990]{Peters:90}
 Peters, V.~G., Wyman, D.~R., Patterson, M.~S., and Frank, G.~L. (1990).
@@ -52,6 +53,11 @@ Selinummi, J., Ruusuvuori, P., Podolsky, I., Ozinsky, A., Gold, E., Yli-Harja,
   in automated analysis of macrophage images.
 \newblock {\em PLoS ONE}, 4(10):e7497.
 
+\bibitem[sung Liao et~al., 2001]{Liao:01}
+sung Liao, P., sheng Chen, T., and choo Chung, P. (2001).
+\newblock A fast algorithm for multilevel thresholding.
+\newblock {\em Journal of Information Science and Engineering}, 17:713--727.
+
 \bibitem[Tsui et~al., 2013]{Tsui:13}
 Tsui, J.~H., Lee, W., Pun, S.~H., Kim, J., and Kim, D.~H. (2013).
 \newblock {{M}icrofluidics-assisted in vitro drug screening and carrier
@@ -63,5 +69,12 @@ Zheng, W., Wang, Z., Zhang, W., and Jiang, X. (2010).
 \newblock A simple pdms-based microfluidic channel design that removes bubbles
   for long-term on-chip culture of mammalian cells.
 \newblock {\em Lab Chip}, 10:2906--2910.
+
+\bibitem[Zou et~al., 2005]{Zou:05}
+Zou, J., Ye, Y., Welshhans, K., Lurtz, M., Ellis, A.~L., Louis, C., Rehder, V.,
+  and Yang, J.~J. (2005).
+\newblock {{E}xpression and optical properties of green fluorescent protein
+  expressed in different cellular environments}.
+\newblock {\em J. Biotechnol.}, 119(4):368--378.
 
 \end{thebibliography}
