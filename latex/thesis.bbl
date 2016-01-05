@@ -1,5 +1,11 @@
 \begin{thebibliography}{}
 
+\bibitem[Canny, 1986]{Canny:86}
+Canny, J. (1986).
+\newblock A computational approach to edge detection.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  PAMI-8(6):679--698.
+
 \bibitem[Carlsson et~al., 1985]{Carlsson:85}
 Carlsson, K., Danielsson, P.~E., Liljeborg, A., Majl\"{o}f, L., Lenz, R., and
   {\AA}slund, N. (1985).
@@ -46,6 +52,12 @@ Reymond, N., d'Agua, B.~B., and Ridley, A.~J. (2013).
 \newblock {{C}rossing the endothelial barrier during metastasis}.
 \newblock {\em Nat. Rev. Cancer}, 13(12):858--870.
 
+\bibitem[Saluja et~al., 2013]{Saluja:13}
+Saluja, S., Singh, A.~K., and Agrawal, S. (2013).
+\newblock A study of edge-detection methods.
+\newblock {\em nternational Journal of Advanced Research in Computer and
+  Communication Engineering}, 2(1):994--999.
+
 \bibitem[Selinummi et~al., 2009]{Selinummi:09}
 Selinummi, J., Ruusuvuori, P., Podolsky, I., Ozinsky, A., Gold, E., Yli-Harja,
   O., Aderem, A., and Shmulevich, I. (2009).
@@ -58,11 +70,29 @@ sung Liao, P., sheng Chen, T., and choo Chung, P. (2001).
 \newblock A fast algorithm for multilevel thresholding.
 \newblock {\em Journal of Information Science and Engineering}, 17:713--727.
 
+\bibitem[Tibshirani, 2011]{Tibshirani:11}
+Tibshirani, R. (2011).
+\newblock Regression shrinkage and selection via the lasso: a retrospective.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)}, 73(3):273--282.
+
 \bibitem[Tsui et~al., 2013]{Tsui:13}
 Tsui, J.~H., Lee, W., Pun, S.~H., Kim, J., and Kim, D.~H. (2013).
 \newblock {{M}icrofluidics-assisted in vitro drug screening and carrier
   production}.
 \newblock {\em Adv. Drug Deliv. Rev.}, 65(11-12):1575--1588.
+
+\bibitem[Wang et~al., 2007]{Wang:07}
+Wang, H., Li, G., and Tsai, C.-L. (2007).
+\newblock Regression coefficient and autoregressive order shrinkage and
+  selection via the lasso.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)}, 69(1).
+
+\bibitem[Yan and Deng, 2012]{Yan:12}
+Yan, W.~Z. and Deng, D.~Z. (2012).
+\newblock Study of image edge detection techniques.
+\newblock {\em AMR}, 505:393--396.
 
 \bibitem[Zheng et~al., 2010]{Zheng:10}
 Zheng, W., Wang, Z., Zhang, W., and Jiang, X. (2010).
