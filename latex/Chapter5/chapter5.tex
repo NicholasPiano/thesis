@@ -2,7 +2,7 @@
 %****************************** Fifth Chapter *********************************
 %*******************************************************************************
 
-\chapter{Results and discussion}
+\chapter{Image processing results and discussion}
 
 \ifpdf
     \graphicspath{{Chapter5/Figs/Raster/}{Chapter5/Figs/PDF/}{Chapter5/Figs/}}
@@ -13,7 +13,7 @@
 %********************************** %First Section  **************************************
 \section{Introduction}
 
-To say that this method is an improvement on previously available methods is an understatement. This must be shown using comparable data. The best way to provide this data is to attempt to segment images from the current experiment. The methods can be compared easily under similar conditions using the same dataset. A readily available property of the cell instances found is the projected cell area. Other properties are the number and orientation of the cell protrusions. These will also be compared to judge the difference between the methods.
+To compare this method with previous work, the images generated were evaluated based on their use in segmentation as compared with a manually segmented subset of the data. The methods, Selinummi, Maximum GFP, and the current method, can be compared easily under similar conditions using the same dataset. A readily available property of the cell instances found is the projected cell area. Other properties are the number and orientation of the cell protrusions. These will also be compared to judge the difference between the methods.
 
 \begin{figure}[h!]
  \centering
@@ -26,11 +26,9 @@ To say that this method is an improvement on previously available methods is an 
 
 Despite the improvements made, the method developed is not without error. There are parameters that have optimal ranges, but outside those ranges, the method can fail. Some physical properties of the environment can limit the effectiveness of the method, for example, if the level of the GFP is too low to generate an accurate estimate of the Z level, the focus of GFP marked objects will not be corrected accurately, and the results will not be useful. Additionally, some configurations of cells in close proximity can cause problems for this method. A clear example is when two cell lie vertically one on top of the other, causing two visible peaks in the GFP. This, and other examples are discussed in the last section [section].
 
-An important point when comparing different methods is the fact that there is no ``ground truth", or definitely correct answer to the question of the projected area of a cell, and despite the attempts of Selinummi et al. to define theirs as the segmentation of the projected GFP image~\cite{Selinummi:09}, all images are subject to error as are the results of their segmentation, and the results are judged subjectively. The only viable automatic means of judging different methods is to compare their consistency and repeatability. They could, however, be consistenty and repeatably wrong. For this reason, the ground truth chosen for the comparison of the methods shown here is the manual segmentation, or outlines of the cells drawn by eye on the zBF image. Only of sample of the frames are considered since manual segmentation is very time consuming.
+A common problem when comparing methods of the segmentation is that there is no objective ``ground truth", or definitely correct answer to the question of the shape parameters of the objects of interest. In their paper, Selinummi et al. attempted to define the ground truth as the segmented shape from the GFP projection~\cite{Selinummi:09}. This method is a poor representation of the cell and is prone to errors. For this reason, the ground truth chosen for the comparison of the methods shown here is the manual segmentation, or outlines of the cells drawn by eye on the zBF image. Only of sample of the frames are considered since manual segmentation is very time consuming. Yet another problem, is that not even the manual segmentation can be considered the ground truth. The human eye cannot be trusted to determine the shape of an object which it is totally unfit to identify in an environment that does not lend itself to casual observation. Despite this obstructing piece of philosophy, the final judgement must lie with something, and the best thing available is human vision, which is not saying much in the microscopic world. We are left with no choice but to accept a system of pattern recognition whose highest reccommendation is that it insists on discovering human faces wherever it looks~\cite{Fyfe:08}.
 
-Yet another problem, is that not even the manual segmentation can be considered the ground truth. The human eye cannot be trusted to determine the shape of an object which it is totally unfit to identify in an environment that does not lend itself to casual observation. Despite this obstructing piece of philosophy, the final judgement must lie with something, and the best thing available is human vision, which is not saying much in the microscopic world. We are left with no choice but to accept a system of pattern recognition whose highest reccommendation is that it insists on discovering human faces wherever it looks~\cite{Fyfe:08}.
-
-\section{zBF parameters: R, Delta Z, Sigma}
+\section{Parameter sensativity study: R, Delta Z, Sigma}
 
 The three parameters that contribute to the generation of zBF must be carefully chosen, since a low quality result will be useless for segmentation. An analysis of the sensativity of the result to changes in the parameters can be used to determine the optimum values. Below, some examples of parameters chosen outside the optimal ranges are shown and some consequences of their segmentation is investigated.
 
