@@ -48,10 +48,16 @@ One of the most important features that can be extracted from an image is the lo
 Here is a list of steps to complete the Canny algorithm:
 \begin{enumerate}
 	\item The image is smoothed using a Gaussian kernel of the form, with size $2k + 1$:
-	$$ H_{ij} = \frac{1}{2 \pi \sigma^2} exp \left( -\frac{(i - k - 1)^2 + (j - k - 1)^2}{2 \sigma^2} \right) $$
+	\begin{equation}
+	H_{ij} = \frac{1}{2 \pi \sigma^2} exp \left( -\frac{(i - k - 1)^2 + (j - k - 1)^2}{2 \sigma^2} \right)
+	\end{equation}
 	\item Find the intensity gradient of the image in 2D (both magnitude, $G$ and direction, $\Theta$).
-	$$ G = \sqrt{G^2_x + G^2_y} $$
-	$$ \Theta = tan^{-1} (\frac{G_y}{G_x}) $$
+	\begin{equation}
+	G = \sqrt{G^2_x + G^2_y}
+	\end{equation}
+	\begin{equation}
+	\Theta = tan^{-1} (\frac{G_y}{G_x})
+	\end{equation}
 	\item Perform non-maximal suppression on the resulting gradient image. This is done in two stages:
 	\begin{enumerate}
 		\item Compare the edge response of each pixel to the its nearest neighbours in each gradient direction.

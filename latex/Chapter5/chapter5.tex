@@ -36,9 +36,9 @@ The three parameters that contribute to the generation of zBF must be carefully 
 
 \subsection{The radius of GFP linear smoothing: $R$}
 
-The parameter $R$ is the radius of the linear smoothing filter applied to the GFP in order to generate a profile for a point in XY. The filter mixes values in XY, but not Z. It has the effect of reducing noise and making transitions between levels of neighbouring pixels more fluid. This helps to reduce the problem of cross-level artifacts, discussed in Section [section]. In the case where neighbouring objects in XY has very different levels in Z, the level transition would be smoothed such that the point half way between them would be assigned to a level half way in Z. While this case has not been observed, it could lead to strange results, such as half of each cell being in focus, while the halves closest to the other cell are out of focus. This would depend on the radius of the linear filter, but at a certain point, the information is too smoothed and ceases to be useful. Below [fig] is an example of the linear filter set too high. The logical limit is a smoothing filter the size of the image itself in XY. This would simply yield the sum or mean of the GFP for each focal plane, which would not provide any more information than where most of the cells were found in the environment.
+The parameter $R$ is the radius of the linear smoothing filter applied to the GFP in order to generate a profile for a point in XY. The filter mixes values in XY, but not Z. It has the effect of reducing noise and making transitions between levels of neighbouring pixels more fluid. This helps to reduce the problem of cross-level artifacts, discussed in Section [section]. In the case where neighbouring objects in XY has very different levels in Z, the level transition would be smoothed such that the point half way between them would be assigned to a level half way in Z. While this case has not been observed, it could lead to strange results, such as half of each cell being in focus, while the halves closest to the other cell are out of focus. This would depend on the radius of the linear filter, but at a certain point, the information is too smoothed and ceases to be useful. Below in Figure~\ref{fig:rvariation} is an example of the linear filter set too high. The logical limit is a smoothing filter the size of the image itself in XY. This would simply yield the sum or mean of the GFP for each focal plane, which would not provide any more information than where most of the cells were found in the environment.
 
-On the other hand, if the size of the linear filter is too low, such as a single pixel, the noise in the GFP would dominate the Z estimate, leading to highly fluctuating Z values across even a single cell. The result in the zBF image is an extremely noisy cell interior and edge, surrounded by an equally noisy background. This does not lend itself to accurate segmentation. Below [fig] is an example of the linear filter using a small $R$.
+On the other hand, if the size of the linear filter is too low, such as a single pixel, the noise in the GFP would dominate the Z estimate, leading to highly fluctuating Z values across even a single cell. The result in the zBF image is an extremely noisy cell interior and edge, surrounded by an equally noisy background. This does not lend itself to accurate segmentation. Figure~\ref{fig:rvariation} is an example of the linear filter using a small $R$.
 
 \begin{figure}[h!]
  \centering
@@ -81,7 +81,7 @@ The three variables used to produce zBF were fixed to the following values:
 
 \subsection{The subject of the background}
 
-It should be noted that background pixels in XY that contain very little GFP at any Z, and thus have very flat profiles, are still assigned a value for the Z position. This may appear misleading, as it can be highly random as the ``maximum" of a flat distribution is given by the noise alone. This can be seen clearly in the PDMS pillars in Figure [fig], indicated by an arrow. While this might be thought to produce errors, other means of filtering background can be used that do not rely on the Z position, such as the mean image. It is more reliable to be unbiased when generating the zMod image since there is no certain way of determining whether a particular Z value should be assigned. If filtering must be done eventually, it can be done using other 3D data.
+It should be noted that background pixels in XY that contain very little GFP at any Z, and thus have very flat profiles, are still assigned a value for the Z position. This may appear misleading, as it can be highly random as the ``maximum" of a flat distribution is given by the noise alone. This can be seen clearly in the PDMS pillars in Figure~\ref{fig:falsezvariation}, indicated by an arrow. While this might be thought to produce errors, other means of filtering background can be used that do not rely on the Z position, such as the mean image. It is more reliable to be unbiased when generating the zMod image since there is no certain way of determining whether a particular Z value should be assigned. If filtering must be done eventually, it can be done using other 3D data.
 
 \begin{figure}[h!]
  \centering
@@ -129,16 +129,19 @@ Previous methods cannot account for the inconsistencies in the focus fluctuation
  \label{fig:areacomparison}
 \end{figure}
 
-[TABLE OF PRECISE COMPARISON VALUES -> MEAN SQUARE DIFFERENCE OR SOMETHING]
-
-[IMG 6 CELLS SAMPLED AT TIME INTERVALS SHOWING AREA FROM EACH METHOD]
-[IMG RADIAL PLOTS OF 6 CELL INSTANCES SHOWING PROTRUSION ANGLES AND LENGTHS]
-[IMG 6 CELLS -> 12 GRAPHS OF CELL PROTRUSION LENGTH AND ANGLE TIME SERIES]
+\begin{figure}[h!]
+ \centering
+ \includegraphics[width=0.9\textwidth]{509_segmentation_area_comparison_values}
+ \caption[Testing: segmentation area comparison values]{
+	Segmentation area comparison values
+ }
+ \label{fig:areacomparisonvalues}
+\end{figure}
 
 \begin{figure}[h!]
  \centering
- % \includegraphics[width=0.9\textwidth]{509_protrusion_comparison}
- \caption{
+ \includegraphics[width=0.9\textwidth]{510_protrusion_comparison}
+ \caption[Testing: protrusion comparison]{
  	Protrusion comparison
  }
  \label{fig:protrusioncomparison}
@@ -152,7 +155,7 @@ A controversial example of a possible error is a situation where two cells are s
 
 \begin{figure}[h!]
  \centering
- \includegraphics[width=0.9\textwidth]{510_hypothetical_superimposed_cells}
+ \includegraphics[width=0.9\textwidth]{511_hypothetical_superimposed_cells}
  \caption[Unaccounted for: superimposed cells]{
  	A potential weakness of this method is a situation which has not been fully encountered. If two cells lie superimposed at very different levels in the environment, as depicted in A, it is possible that there will be two distinct peaks in Z as shown in C. In this situation, the current algorithm would take the maximum peak as the value to be added to zMod. If the cell with the greater value is the lower one, the brightfield representation would not be complete. The brightfield information between different levels in mixed and can only be seen from above. The cell above would be the most useful candidate to level-correct. This situation has not been encountered in the current data, and the method would have to be modified to account for this possibility.
  }
@@ -163,18 +166,18 @@ In some cases, through a hardware fault or a temporary shift in the illumination
 
 \begin{figure}[h!]
  \centering
- \includegraphics[width=0.9\textwidth]{511_low_gfp_illumination}
+ \includegraphics[width=0.9\textwidth]{512_low_gfp_illumination}
  \caption[Effects of low GFP illumination]{
- 	As stated before in Figure [fig], this method does not work in low GFP conditions. From left to right, the images are A, The GFP Z projection; B, the zVar image; C, the zMod image; D, the zUnique image; and E, the zBF image. ABCDE shows the method under normal GFP conditions. FGHIJ shows the environment one frame later when the illumination has dropped significantly. Note particularly A compared to F. There is very little GFP present. In contrast, the variance image, zVar, still shows a strong response, a testament to the utility of this information. zMod suffers from the drop in GFP lacking a consistent Z location within cells. Similarly, the zUnique contrast drops. The result is an incorrectly level-corrected image in zBF.
+ 	As stated before in Figure~\ref{fig:lowgfp}, this method does not work in low GFP conditions. From left to right, the images are A, The GFP Z projection; B, the zVar image; C, the zMod image; D, the zUnique image; and E, the zBF image. ABCDE shows the method under normal GFP conditions. FGHIJ shows the environment one frame later when the illumination has dropped significantly. Note particularly A compared to F. There is very little GFP present. In contrast, the variance image, zVar, still shows a strong response, a testament to the utility of this information. zMod suffers from the drop in GFP lacking a consistent Z location within cells. Similarly, the zUnique contrast drops. The result is an incorrectly level-corrected image in zBF.
  }
  \label{fig:lowgfpillumination}
 \end{figure}
 
-If the illumination of the environment is not uniform, and regions at the top are significantly brighter than the bottom for example, when brightfield pixel values from different Z levels are brought together to generate zBF, it is possible that the intensities are so different as to be discontinuous, leading to the appearance of a false edge. This type of effect is shown in Figure [fig]. This can be alleviated partially by the choice of $R$ or $\Sigma$, since both control to a certain extent the smoothing between levels. If transitions between levels are smoother, artefacts such as these are less likely to form.
+If the illumination of the environment is not uniform, and regions at the top are significantly brighter than the bottom for example, when brightfield pixel values from different Z levels are brought together to generate zBF, it is possible that the intensities are so different as to be discontinuous, leading to the appearance of a false edge. This type of effect is shown in Figure~\ref{fig:crosslevelartefacts}. This can be alleviated partially by the choice of $R$ or $\Sigma$, since both control to a certain extent the smoothing between levels. If transitions between levels are smoother, artefacts such as these are less likely to form.
 
 \begin{figure}[h!]
  \centering
- \includegraphics[width=0.9\textwidth]{512_cross_level_artefacts}
+ \includegraphics[width=0.9\textwidth]{513_cross_level_artefacts}
  \caption[Cross-level artefacts]{
  	zBF is created by taking brightfield values from all different parts of the image stack. It is possible that illumination at the top and bottom of the stack may differ, sometimes significantly. In this case, darker pixels may be placed in the zBF image adjacent to light pixels from another level. This results in a mottled appearance of the zBF image. The highlighted boxes contain features that could be interpreted as objects or parts of objects by a recogniser. This is possible a weakness. Improved smoothing methods and gradual object recognition could solve this problem. This means segmentation carried out at each stage of the image modification process could be combined to decrease error at the final stage.
  }
@@ -185,7 +188,7 @@ Finally, if the configuration of the microscope is chosen before imaging to yiel
 
 \begin{figure}[h!]
  \centering
- \includegraphics[width=0.9\textwidth]{513_no_bf_contrast}
+ \includegraphics[width=0.9\textwidth]{514_no_bf_contrast}
  \caption[Lack of brightfield contrast]{
  	Low GFP intensity is very harmful to this method, but even if the GFP is very high contrast with low noise, a lack of brightfield contrast can also prevent the method from working. If the brightfield has low contrast, then edges of cells and other objects will not be as visible. Even if the images are level corrected properly, there might not be enough information to segment the cells properly. Shown is an example of an experiment with very poor contrast in the brightfield. This cannot be solved numerically and must be carefully adjusted in the microscope prior to imaging.
  }
