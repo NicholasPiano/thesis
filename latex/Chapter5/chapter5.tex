@@ -78,16 +78,10 @@ The three variables used to produce zBF were fixed to the following values:
 \begin{center}
 	\begin{tabular}{ | l | l | l | p{5cm} |}
 		\hline
-		Day & Min Temp & Max Temp & Summary \\ \hline
-		Monday & 11C & 22C & A clear day with lots of sunshine.
-		However, the strong breeze will bring down the temperatures. \\ \hline
-		Tuesday & 9C & 19C & Cloudy with rain, across many northern regions. Clear spells
-		across most of Scotland and Northern Ireland,
-		but rain reaching the far northwest. \\ \hline
-		Wednesday & 10C & 21C & Rain will still linger for the morning.
-		Conditions will improve by early afternoon and continue
-		throughout the evening. \\
-		\hline
+		Parameter & Description & Chosen range & Reason \\ \hline
+		R & Radius of 2D linear smoothing kernel in XY & 3-5 pixels & Reduce noise in GFP images. \\ \hline
+		$\Delta z$ & Difference between observed in-focus level and optimal edges for segmentation & -6 to -8 levels & Determined by observation and segmentation testing. \\ \hline
+		$\Sigma$ & Radius of 3D Gaussian smoothing kernel & 5-7 pixels & Make transitions between regions with similar Z more gradual to prevent cross-level artefacts. See Figure~\ref{fig:crosslevelartefacts}. \\ \hline
 	\end{tabular}
 \end{center}
 
