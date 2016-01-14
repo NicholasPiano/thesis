@@ -85,16 +85,14 @@ It should be noted that background pixels in XY that contain very little GFP at 
  \centering
  \includegraphics[width=0.9\textwidth]{505_false_variation}
  \caption[False Z variation]{
- 	Even the noise and background is assigned a Z value. The seems counterintuitive, but the philosophy of this study is that any analysis or segmentation cannot be biased to sizes and shapes of objects. All locations in an image must be considered and treated equally until enough knowledge has been gathered and assumptions have been made to treats different areas differently. At the zMod stage, there is no certainty or assumptions about the locations or shapes of cells, so all pixels in the image are subject to the same calculations. When a profile is measured in a pixel column that contains no GFP, there will still be background noise and any slight fluctuation will yield a maximum value and its position. This value is placed in the zMod image. The rationale is that it will not affect the segmentation since these areas will be rejected as part of the background anyway. These areas are filtered out at the zVar stage which is dependent on degree of variance. These locations have no variance and will not affect the final result.
+ 	Even the noise and background is assigned a Z value. This seems counterintuitive when applied to the background, but the philosophy of this study is that any analysis or segmentation cannot be biased to sizes and shapes of objects. All locations in an image must be considered and treated equally until enough knowledge has been gathered and assumptions have been made to treat different areas differently. At the zMod stage, there is no certainty or assumptions about the locations or shapes of cells, so all pixels in the image are subject to the same calculations. When a profile is measured in a pixel column that contains no GFP, there will still be background noise and any slight fluctuation will yield a maximum value and its position. This value is placed in the zMod image. The rationale is that it will not affect the segmentation since these areas will be rejected as part of the background anyway. These areas are filtered out at the zVar stage which is dependent on degree of variance. These locations have no variance and will not affect the final result.
  }
  \label{fig:falsezvariation}
 \end{figure}
 
 \section{zVar and zEdge}
 
-The zEdge image is intended to improve the segmentation by bounding it.
-
-Artificial edges can cut off parts of the cell that do not contain enough GFP.
+The zEdge image is intended to improve the segmentation by bounding it. The edges are drawn on the image artificially using the edges from the segmentation of the zVar channel. The colour profile of the images is determined by scanning the XY brightness profile of in-focus edges in the brightfield. The quality of the edges is determined by the reliability of the segmentation of the zVar channel, which can lead to errors. Artificial edges can cut off parts of the cell that do not contain enough GFP. An example of this effect is shown in Figure~\ref{fig:lowgfp}. If the segmentation fails completely, there will be no edge drawn. In most cases, segmentation of the brightfield in zEdge can continue as normal, although there will be no barrier to stop the segmentation from expanding. This type of effect is shown in Figure~\ref{fig:badzedge}.
 
 \begin{figure}[h!]
  \centering
@@ -116,7 +114,7 @@ Artificial edges can cut off parts of the cell that do not contain enough GFP.
 
 \section{Comparison with common methods}
 
-Previous methods cannot account for the inconsistencies in the focus fluctuations and so are not really comparable in their quality. Below, some of the results from segmentation of images generated using several different method including the current method.
+Previous methods cannot account for the inconsistencies in the focus fluctuations and so are not really comparable in their quality. Below, some of the results from segmentation of images generated using several different method including the current method. The comparisons here are based on the segmentation area, shown in Figure~\ref{fig:areacomparison} and Figure~\ref{fig:areacomparisonvalues}, although in reality, judging by the area of segmentation alone is unreliable, and an analysis of all available shape parameters should be done instead. This analysis is partially beyond the scope of this project, but leaves an opportunity for future work. Another method of comparison comes from tracking smaller cell features, such as protrusions, individually. This is also currently beyond the capabilities of the study, but current research can be easily extended to include this. A small example of how protrusions can be tracked and measured is shown in Figure~\ref{fig:protrusioncomparison}.
 
 \begin{figure}[h!]
  \centering
@@ -129,9 +127,9 @@ Previous methods cannot account for the inconsistencies in the focus fluctuation
 
 \begin{figure}[h!]
  \centering
- \includegraphics[width=0.9\textwidth]{509_segmentation_area_comparison_values}
+ \includegraphics[width=0.9\textwidth]{509_segmentation_comparison_values}
  \caption[Testing: segmentation area comparison values]{
-	Segmentation area comparison values
+	Each plot shows the comparison of the segmented area of different images generated from the original image data. The first two (cyan and red) show the intermediate stage, zVar, and the final stage of the current processing method, zEdge. The last two (green and blue) show the maximum projection of the GFP and the Selinummi method respectively. A high score on the y-axis shows a better match to the manually segmented test data. The boxes show the mean (central black line) and variance (coloured box) of time series data for each cell mask. The mean and variance values for a single channel are generated by comparing the area of each mask per frame to the manually drawn mask. This series of differences is then normalised to the maximum difference from all channels at each frame. The mean of this normalised series is found for each channel and inverted, such that a high value represents a typically low difference compared with other channels. Mathematically, this can be expressed as $v(c) = 1 - \frac{1}{F} \frac{A_f(c)}{\max A_f(c)}$. Where $v(c)$ is the final comparison value shown, $c$ is the channel index, $F$ is the number of frames, $f$ is the frame index, and $A_f(c)$ is the area of the mask for channel $c$ at frame $f$. A similar comparison between the segmentation of the areas can be seen in Figure~\ref{fig:protrusioncomparison}.
  }
  \label{fig:areacomparisonvalues}
 \end{figure}
@@ -140,7 +138,7 @@ Previous methods cannot account for the inconsistencies in the focus fluctuation
  \centering
  \includegraphics[width=0.9\textwidth]{510_protrusion_comparison}
  \caption[Testing: protrusion comparison]{
- 	Protrusion comparison
+	Cell masks can also be compared by how well the extremities of the cell are segmented. ABCD show four different masks of the same cell from four different channels (Selinummi, zEdge, zVar, and mGFP (the maximum GFP projection) respectively). By tracing a line around the perimeter of the shape, a distribution similar to that shown in E can be found for each cell; an ordered list of distance against angle around the centre point. This can then be used to find any peaks that diverge from the mean radius. These can be classed as protrusions and their lengths and orientations found. F shows protrusion length over time for several channels including manually for comparison. Such a comparison is hard to compress into one or two values such as in Figure~\ref{fig:areacomparisonvalues}. For example, the protrusion on the left, marked G, is longer in the zVar (C) channel than in the zEdge (B) channel, but the zEdge segmentation of the protrusion is closer to the overall shape. Most protrusion lengths will fall short of the true length as segmented manually. This type of analysis is not current quantifiable, but it can be investigated using this method of image pre-processing.
  }
  \label{fig:protrusioncomparison}
 \end{figure}
