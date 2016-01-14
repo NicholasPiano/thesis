@@ -63,7 +63,7 @@ For manual tracking, the accurate shape of the cell does not need to be known; i
 
 \section{zMod and zBF}
 
-For each frame in time, the Z position of the maximum of the GFP profile is calculated for each pixel in XY. A new image is created, called ``zMod", where the value of each pixel proportionally represents a Z position in the environment. This is analogous to a terrain. The range of values lies between 0 and 1, but the intermediate values are discretised to multiples of $\frac{1}{numberOfZPlanes}$ in order to represent the full Z range of the experiment. Floating point representation is easier to keep track of than integer representation in an image since the float value also works as a percentage height in the environment. This map of Z positions can be smoothed to make transitions between levels more gradual. This is the third important parameter and is given the symbol $\Sigma$. In the present dataset, $\Sigma$ is set to be a 3 pixel radius.
+For each frame in time, the Z position of the maximum of the GFP profile is calculated for each pixel in XY. A new image is created, called ``zMod", shown in Figure~\ref{fig:zmodexample}, where the value of each pixel proportionally represents a Z position in the environment. This is analogous to a terrain. The range of values lies between 0 and 1, but the intermediate values are discretised to multiples of $\frac{1}{numberOfZPlanes}$ in order to represent the full Z range of the experiment. Floating point representation is easier to keep track of than integer representation in an image since the float value also works as a percentage height in the environment. This map of Z positions can be smoothed to make transitions between levels more gradual. This is the third important parameter and is given the symbol $\Sigma$. In the present dataset, $\Sigma$ is set to be a 3 pixel radius.
 
 \begin{figure}[h!]
  \centering
@@ -74,7 +74,7 @@ For each frame in time, the Z position of the maximum of the GFP profile is calc
  \label{fig:zmodexample}
 \end{figure}
 
-The zMod image for each frame can be mapped to the entire set of brightfield data for the same frame by selecting a pixel value from the brightfield stack focal plane that corresponds to the Z index indiciated by the zMod image. This produces the most important result of this study, the ``zBF" image. It is a single 2D image for each frame containing representations of all objects in focus with clear edges and interiors. This works by only selecting pixel values from the levels where the objects are in focus. This does not correct the focus of objects not marked by the GFP. This image is used to segment all cells in the environment simultaneously independently of their level in the experiment using 2D segmentation techniques.
+The zMod image for each frame can be mapped to the entire set of brightfield data for the same frame by selecting a pixel value from the brightfield stack focal plane that corresponds to the Z index indiciated by the zMod image. This produces the most important result of this study, the ``zBF" image, shown in Figure~\ref{fig:zbf}. It is a single 2D image for each frame containing representations of all objects in focus with clear edges and interiors. This works by only selecting pixel values from the levels where the objects are in focus. This does not correct the focus of objects not marked by the GFP. This image is used to segment all cells in the environment simultaneously independently of their level in the experiment using 2D segmentation techniques.
 
 \begin{figure}[h!]
  \centering
@@ -98,7 +98,7 @@ A further improvement can be made to the segmentation. Part of the 3D data has a
  \label{fig:zvar}
 \end{figure}
 
-The extra extent of the zVar image is exploited to provide a maximum boundary for segmentation, this is combined with zMod to produce outlines around cells. This does not require the edges to be followed correctly, but only needs to enclose the general shape of the cell. These shapes are then segmented to separate objects or even rough groups of objects. The outlines of the segmentation are used to generate artificial edges using a DoF (Difference of Gaussians) edge model. These edges cut through background values that are similar in intensity to the interiors of cells. If there is a gap in the cell edge with an intensity close to the background, the segmentation will expand into the background and cause a major overestimation of the area of the cell. This image is called ``zEdge" and is the image for each frame used to provide the final segmentation data for each experiment.
+The extra extent of the zVar image is exploited to provide a maximum boundary for segmentation, this is combined with zMod to produce outlines around cells. This does not require the edges to be followed correctly, but only needs to enclose the general shape of the cell. A further image, ``zUnique", can be used to better highlight where the cells edges are. This image takes the intensity of pixels found at a certain level according to zMod, and amplifies them based on their mean intensity. This is shown in Figure~\ref{fig:zunique} These shapes are then segmented to separate objects or even rough groups of objects. The outlines of the segmentation are used to generate artificial edges using a DoF (Difference of Gaussians) edge model. These edges cut through background values that are similar in intensity to the interiors of cells. If there is a gap in the cell edge with an intensity close to the background, the segmentation will expand into the background and cause a major overestimation of the area of the cell. This image is called ``zEdge" and is the image for each frame used to provide the final segmentation data for each experiment. An example is shown in Figure~\ref{fig:zedge}.
 
 \begin{figure}[h!]
  \centering
@@ -120,7 +120,7 @@ The extra extent of the zVar image is exploited to provide a maximum boundary fo
 
 \section{Protrusion measurement}
 
-One of the main aims of this study is to accurately measure the lengths and orientations of the cell protrusions to gather useful data on cell behaviour. The protrusions were measured by plotting the outline of the cell on a polar graph and measuring the divergence from a smooth circular shape as measured from the calculated cell centre. This is shown in Figure [fig]. The protrusions show as peaks in this plot and their length is measured from the tip of the peak to the mean radius, not the centre of the cell.
+One of the main aims of this study is to accurately measure the lengths and orientations of the cell protrusions to gather useful data on cell behaviour. The protrusions were measured by plotting the outline of the cell on a polar graph and measuring the divergence from a smooth circular shape as measured from the calculated cell centre. This is shown in Figure [fig]. The protrusions show as peaks in this plot and their length is measured from the tip of the peak to the mean radius, not the centre of the cell. An example of a protrusion that can be measured is shown in Figure~\ref{fig:protrusioncalc}.
 
 \begin{figure}[h!]
  \centering

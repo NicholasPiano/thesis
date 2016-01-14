@@ -13,7 +13,7 @@
 %********************************** %First Section  **************************************
 \section{Introduction}
 
-To compare this method with previous work, the images generated were evaluated based on their use in segmentation as compared with a manually segmented subset of the data. The methods, Selinummi, Maximum GFP, and the current method, can be compared easily under similar conditions using the same dataset. A readily available property of the cell instances found is the projected cell area. Other properties are the number and orientation of the cell protrusions. These will also be compared to judge the difference between the methods.
+To compare this method with previous work, the images generated were evaluated based on their use in segmentation as compared with a manually segmented subset of the data. The methods, Selinummi, Maximum GFP, and the current method, can be compared easily under similar conditions using the same dataset. A readily available property of the cell instances found is the projected cell area. Other properties are the number and orientation of the cell protrusions. These will also be compared to judge the difference between the methods. An example of the comparison between the original brightfield and the final zBF image can be seen in Figure~\ref{fig:zbfcomparison}.
 
 \begin{figure}[h!]
  \centering
@@ -49,7 +49,7 @@ On the other hand, if the size of the linear filter is too low, such as a single
 
 \subsection{The brightfield level correction: $\Delta Z$}
 
-The weakest part of the method is the spatial relationship between the brightfield and the GFP and the decision about the value of [Delta Z]. The brightfield is subject to fluctuations from the autofocus and has no intrinsic spatial information. The most important piece of information relating the GFP and the brightfield is for a hypothetical fixed object in focus in the brightfield, the GFP representation will always correspond to that level of focus. This is because the position of the microscope hardware is constant for a single frame and is set by the autofocus estimate from the brightfield. Assuming the same physical space is represented in both, the GFP can be used to account for the autofocus fluctuations, but the relationship between the GFP representation and the appearance of an object in the brightfield is arbitrary. A cell may be ``in focus" as far as possible, but still not be clearly visible by a human. This hinders manual tracking. optimum features for observation may not correspond to optimum features for segmentation. For tracking, it most effective to observe an object in a solid colour with or without clear edges since the precise shape is not necessary to indicate object centres. For segmentation, a clear object boundary with dark edges and a smooth, uniformally coloured interior yields the most accurate shape. This discrepancy is represented by the empirically determined value, delta-Z. Through further study, a value could be found automatically, but the focus level for optimum human observation is highly subjective.
+The weakest part of the method is the spatial relationship between the brightfield and the GFP and the decision about the value of [Delta Z]. The brightfield is subject to fluctuations from the autofocus and has no intrinsic spatial information. The most important piece of information relating the GFP and the brightfield is for a hypothetical fixed object in focus in the brightfield, the GFP representation will always correspond to that level of focus. This is because the position of the microscope hardware is constant for a single frame and is set by the autofocus estimate from the brightfield. Assuming the same physical space is represented in both, the GFP can be used to account for the autofocus fluctuations, but the relationship between the GFP representation and the appearance of an object in the brightfield is arbitrary. A cell may be ``in focus" as far as possible, but still not be clearly visible by a human. This hinders manual tracking. optimum features for observation may not correspond to optimum features for segmentation. For tracking, it most effective to observe an object in a solid colour with or without clear edges since the precise shape is not necessary to indicate object centres. For segmentation, a clear object boundary with dark edges and a smooth, uniformally coloured interior yields the most accurate shape. This discrepancy is represented by the empirically determined value, delta-Z. Changing this value results in what would normally be seen as focussing a simple lens looking at a 2D environment. This effect can be seen in Figure~\ref{fig:deltazvariation}. Through further study, a value could be found automatically, but the focus level for optimum human observation is highly subjective.
 
 \begin{figure}[h!]
  \centering
@@ -60,7 +60,9 @@ The weakest part of the method is the spatial relationship between the brightfie
  \label{fig:deltazvariation}
 \end{figure}
 
-\subsection{The radius of level gaussian blur: $\Sigma$}
+\subsection{The radius of level Gaussian blur: $\Sigma$}
+
+The radius of the Gaussian blur between levels, or $\Sigma$, affects how smooth the transitions between levels are in the GFP. It mixes data from different parts of the environment in 3D. This does not affect the output in the brightfield greatly, but it can prevent errors. An example of the variation can be seen in Figure~\ref{fig:sigmavariation}, and the results of the ignoring this parameter can be seen in Figure~\ref{fig:crosslevelartefacts}.
 
 \begin{figure}[h!]
  \centering
@@ -155,7 +157,7 @@ Previous methods cannot account for the inconsistencies in the focus fluctuation
 
 Several possible errors that would affect segmentation results must be mentioned for completeness. Some of these error have not been observed, but are possible given certain conditions. Errors can be caused by faults in the microscope hardware, irregularities in the illumination of the environment for any reason, poor choices in imaging setup, or particular configurations of cells that cause the method to fail.
 
-A controversial example of a possible error is a situation where two cells are superimposed in Z. In this case, a GFP profile for a single XY location could have two very prominent peaks. Currently, the method does not attempt to resolve this situation since it has not been observed in the current data, but trivially, it could be resolved by only taking account of the peak with the highest Z level, since the brightfield information is not 3D, and there is no way to recover any edge information about the lower cell if it is obscured. In this case, such a conflict could be noted and the GFP edge, which is not obscured, could act as a fallback for the segmentation. This information would allow the GFP edges, while they are suboptimal, to be incorporated into the outline of the rest of the cell if it is visible elsewhere in the brightfield. To reiterate, this situation has not been observed, but it is theoretically possible in such a 3D environment.
+A controversial example of a possible error is a situation where two cells are superimposed in Z. In this case, a GFP profile for a single XY location could have two very prominent peaks. Currently, the method does not attempt to resolve this situation since it has not been observed in the current data, but trivially, it could be resolved by only taking account of the peak with the highest Z level, since the brightfield information is not 3D, and there is no way to recover any edge information about the lower cell if it is obscured. In this case, such a conflict could be noted and the GFP edge, which is not obscured, could act as a fallback for the segmentation. This information would allow the GFP edges, while they are suboptimal, to be incorporated into the outline of the rest of the cell if it is visible elsewhere in the brightfield. To reiterate, this situation has not been observed, but it is theoretically possible in such a 3D environment. A hypothetical example can be seen in Figure~\ref{fig:superimposedcells}.
 
 \begin{figure}[h!]
  \centering
@@ -166,7 +168,7 @@ A controversial example of a possible error is a situation where two cells are s
  \label{fig:superimposedcells}
 \end{figure}
 
-In some cases, through a hardware fault or a temporary shift in the illumination of the environment, the level of the GFP intensity can drop in the whole experiment. This happened in one experiment done and caused the method to fail in a single frame, and subsequently rendered the area estimates in that frame for all objects unreliable.
+In some cases, through a hardware fault or a temporary shift in the illumination of the environment, the level of the GFP intensity can drop in the whole experiment. This happened in one experiment done and caused the method to fail in a single frame, and subsequently rendered the area estimates in that frame for all objects unreliable. This effect can be seen in Figure~\ref{fig:lowgfpillumination}.
 
 \begin{figure}[h!]
  \centering
