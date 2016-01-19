@@ -2,4 +2,8 @@
 % Use `abstract' as an option in the document class to print only the titlepage and the abstract.
 \begin{abstract}
 
+Accurate cell segmentation is crucial to biological and medical studies in providing repre- sentative data of cell movements and shapes. Useful data regarding cell behaviour can be used to test drugs and models in both in vivo and in vitro environments. Current methods rely on outlining the cell projected in 2D or a volumetric approximation based on 3D data. A common imaging method is confocal microscopy, where the images stored capture a range of focal planes in an environment. This provides 3D data and the ability to move an object of interest in and out of focus after the images have been captured, potentially offering accurate segmentation. However, 3D data is often not fully used when it could provide more relevant information about the most useful boundaries of a cell to outline.
+
+Here we describe a method for selecting focal planes from the images using 3D data and combining them into a form that can be more accurately segmented by popular software such as CellProfiler. This method is based on the use of the vertical distribution of GFP (Green Fluorescent Protein, used to mark cells) in the environment. Images of the environment can be simplified into a 2D projection by selecting pixels from another channel such as the brightfield from the most intense regions in the GFP. This method has been tested on breast cancer cells in a PDMS micro-fluidics environment an yields clear segmentation. This is an improvement over previous 2D methods of image pre-processing, which are unable to extract usable information from a 3D environment.
+
 \end{abstract}
